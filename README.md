@@ -2,12 +2,17 @@
 
 Course notes and resources for Stanford University graduate lecture course PHYS366.
 
-## Contents
+### Preliminaries
 
-* [Overview](https://github.com/drphilmarshall/StatisticalMethods/blob/master/Overview.md)
-* [Schedule](https://github.com/drphilmarshall/StatisticalMethods/blob/master/Schedule.md) (coming soon!)
+* [Prerequisites](https://github.com/drphilmarshall/StatisticalMethods/blob/master/doc/Prereqs.md)
+* [Schedule](https://github.com/drphilmarshall/StatisticalMethods/blob/master/doc/Schedule.md) (coming soon!)
+* [Getting Started](https://github.com/drphilmarshall/StatisticalMethods/blob/master/doc/GettingStarted.md)
 
-## Contact
+### Lessons
+
+Coming soon.
+
+### Contact
 
 * Phil Marshall
 * Risa Wechsler
