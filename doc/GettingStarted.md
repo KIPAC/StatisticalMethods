@@ -61,6 +61,20 @@ If you still can't figure out what's going wrong, send us an [issue](https://git
 
 -----
 
+### Astropy
+
+If you have `anaconda` or `miniconda` python,
+```bash
+conda install astropy
+```
+otherwise
+```bash
+pip install astropy
+```
+See [their website](http://astropy.readthedocs.org/en/stable/install.html) if neither of these works.
+
+-----
+
 ### git and GitHub
 
 You are probably reading this file in a browser on the GitHub website.
