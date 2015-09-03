@@ -55,3 +55,9 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# ipython notebook checkpoints
+*-checkpoint.ipynb
+
+# Data files
+*.FTZ
