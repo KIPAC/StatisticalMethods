@@ -69,3 +69,23 @@ PHYS366. Some of them are IPython Notebooks that you will need in class
 for various exercises, and others are stubs that will be used in
 homework assignments. You need a local copy of all of this stuff to be
 able to do the course work. 
+
+#### Fork the repo, and clone it to your local machine:
+
+On the [PHYS366 GitHub repository site](https://github.com/drphilmarshall/StatisticalMethods), make sure you are logged in and you should see a button in the top righthand corner marked "Fork". Press this button.
+
+A fork is a copy (a "clone") of a repository, that belongs to you. You can edit the files in it and run the code, either on its GitHub page, or on your local machine. 
+
+To get your new files onto your laptop, you need to make a local copy, with:
+```bash
+git clone <address>
+```
+Here, `<address>` is the git address of your remote fork, and will have an address something like `git@github.com:USERNAME/StatisticalMethods.git` where `USERNAME` is your github username. Give this command a try.
+
+It will likely fail, with one of two errors. If you get a message like this:
+```
+Permission denied (publikey)
+```
+it's is because you are not yet authorized to write to files on GitHub's computers. To enable them to let you in, you just have to give them your *public SSH key*. (This is all worth it, I promise: setting this up will allow you to push and pull without typing your GitHub password all the time.) Go to the [SSH settings part of your GitHub profile](https://github.com/settings/ssh) and add a new key, pasting in the contents of your file "~/.ssh/id_rsa.pub". If that file doesn't exist, you can make one with the command `ssh-keygen`.
+
+Alternatively, you might get an error message because you don't have `git` installed. There are a number of ways to install `git`, and the best one will depend on your operating system. A good Google search query could be, for example, "install git Mac OS X 10.8.5".
