@@ -18,6 +18,7 @@ Try the following on the command line:
 ```bash
 pip install "ipython[notebook]"
 ```
+This will install IPython from source, so may take a few minutes. 
 
 #### If you do not have `python`:
 
@@ -40,6 +41,15 @@ conda install pandas
 conda install matplotlib
 conda install ipython-notebook
 ```
+
+#### To edit and run a notebook:
+
+In a new shell, try
+```bash
+ipython notebook &
+```
+You should see a new tab open in your web browser, and a display of your file system (starting from your current directory) appear. 
+
 
 #### If you get stuck:
 
