@@ -5,9 +5,9 @@ Course notes and resources for Stanford University graduate lecture course PHYS3
 ### Preliminaries
 
 * [Prerequisites](https://github.com/drphilmarshall/StatisticalMethods/blob/master/doc/Prereqs.md)
-* [Schedule](https://github.com/drphilmarshall/StatisticalMethods/blob/master/doc/Schedule.md) (coming soon!)
+* [Schedule](https://github.com/drphilmarshall/StatisticalMethods/blob/master/doc/Schedule.md)
 * [Getting Started](https://github.com/drphilmarshall/StatisticalMethods/blob/master/doc/GettingStarted.md)
-
+* [Homework](https://github.com/drphilmarshall/StatisticalMethods/blob/master/doc/Homework.md)
 ### Lessons
 
 Coming soon.
