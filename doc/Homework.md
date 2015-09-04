@@ -1,6 +1,10 @@
 
 # Doing Homework via GitHub
 
+#### Homework Schedule:
+There will be three homeworks in the 5-week course, due on Tuesdays
+before class (Sept 29, Oct 6, Oct 13).
+
 #### Getting your assignments:
 
 Notebooks containing homework assignments will be uploaded to the
@@ -20,7 +24,6 @@ pushed to origin. To stake your claim, you will need to reply to that
 week's homework issue thread with the numbers of the questions you
 have attempted, and are willing to show attempts at.  Then, in class
 we will draw names at random and ask you to talk us through your
-solution, in your notebook.  %Everyone in the class will be able These
-attempts do not need to be complete!  You should be able to show what
-approach you took, and then either what solution you got or describe
-where you got stuck.
+solution, in your notebook.  These attempts do not need to be
+complete!  You should be able to show what approach you took, and then
+either what solution you got or describe where you got stuck.
