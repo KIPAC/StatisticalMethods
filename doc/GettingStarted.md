@@ -1,6 +1,7 @@
 ## Getting Started
 
-We will be using [IPython Notebooks](http://ipython.org/notebook.html)
+We will be using [Jupyter Notebooks](https://jupyter.org/) 
+with [IPython](http://ipython.org/)
 extensively in this course, so you
 will need a laptop computer that is running `linux` or `Mac OS X` and
 is set up to run them.
@@ -10,13 +11,15 @@ distribute course materials, including homework assignments, and to
 keep track of your work - so you will need to be set up with `git` and
 GitHub too.
 
-### IPython Notebooks
+### Jupyter Notebooks with IPython
 
 #### If you have `python` already installed on your machine:
 
 Try the following on the command line:
+
+(Note that even if `python` is already installed, this `pip` method may not work as some packages require additional libraries that your system may not have. In such senarios, use the `conda` method below.)
 ```bash
-pip install "ipython[notebook]"
+pip install ipython jupyter
 ```
 This will install IPython from source, so may take a few minutes. 
 
@@ -39,22 +42,22 @@ conda install numpy
 conda install scipy
 conda install pandas
 conda install matplotlib
-conda install ipython-notebook
+conda install ipython jupyter
 ```
 
 #### To edit and run a notebook:
 
 In a new shell, try
 ```bash
-ipython notebook &
+jupyter notebook &
 ```
 You should see a new tab open in your web browser, and a display of your file system (starting from your current directory) appear. 
 
 
 #### If you get stuck:
 
-Good Google search queries are "pip install ipython notebook" and
-"miniconda install ipython notebook".
+Good Google search queries are "pip install jupyter" and
+"miniconda install jupyter".
 Also many of the KIPAC grad students have been through this before,
 and can help you out if you ask them nicely.
 If you still can't figure out what's going wrong, send us an [issue](https://github.com/drphilmarshall/StatisticalMethods/issues).
