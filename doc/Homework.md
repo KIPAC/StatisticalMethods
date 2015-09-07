@@ -2,7 +2,7 @@
 # Doing Homework via GitHub
 
 We'll go through these instructions on the first day of class.
-Familiarity with Github will be rapidly generated and then assumed.
+[Familiarity with GitHub](https://github.com/drphilmarshall/StatisticalMethods/blob/master/doc/GettingStarted.md#github) will be rapidly generated and then assumed.
 
 #### Homework Schedule:
 There will be three homeworks in the 5-week course, due on Tuesdays
