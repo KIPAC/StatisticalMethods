@@ -1,7 +1,16 @@
 ## Schedule
 
-10 sessions, 80 minutes each, to run twice a week for 5 weeks in Fall 2015.
-To be written on Monday.
+#### Course Details:
+The course will run for 10 sessions, 80 minutes.
+
+Sept 22 -- Oct 22, 2015.
+
+Tues, Thur 3-4:20pm
+
+Hewlett 102
+
+
+
 
 
 
