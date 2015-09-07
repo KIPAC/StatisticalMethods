@@ -1,4 +1,4 @@
-## Getting Started
+# <a name="top"></a>Getting Started
 
 We will be using [IPython Notebooks](http://ipython.org/notebook.html)
 extensively in this course, so you
@@ -64,6 +64,8 @@ Also many of the KIPAC grad students have been through this before,
 and can help you out if you ask them nicely.
 If you still can't figure out what's going wrong, send us an [issue](https://github.com/drphilmarshall/StatisticalMethods/issues).
 
+[Back to top.](#top)
+
 -----
 
 ### <a name="packages"></a>Python Packages
@@ -91,9 +93,11 @@ If neither of these works for `astropy`, please
 see [their website](http://astropy.readthedocs.org/en/stable/install.html)
 for installation help.
 
+[Back to top.](#top)
+
 -----
 
-### <a name="github"></a>`git` and GitHub
+### <a name="github"></a>Git and GitHub
 
 You are probably reading this file in a browser on the GitHub website.
 By exploring a little you can find all the course materials for
@@ -124,6 +128,9 @@ it's is because you are not yet authorized to write to files on GitHub's compute
 
 > Alternatively, you might get an error message because you don't have `git` installed. There are a number of ways to install `git`, and the best one will depend on your operating system. A good Google search query could be, for example, "install git Mac OS X 10.8.5".
 
+[Back to top.](#top)
+
+
 #### <a name="homework"></a>Fork the homework repo, and clone it to your local machine:
 
 If you cannot navigate to [the homework repository](https://github.com/drphilmarshall/PHYS366-Homework-2015) to fork it,
@@ -135,6 +142,8 @@ at [the sign-up issue thread](https://github.com/drphilmarshall/StatisticalMetho
 
 Each of your local clones is connected to your corresponding
 "remote" fork at GitHub: `git` knows where you cloned your repository from, and names it "origin." If a file changes on the GitHub site (e.g. because you edited it there directly), you can get that latest version with `git pull origin master`. Likewise, if you edit a file locally, you can bring your remote fork up to date with `git push origin master`. New files have to be added to the local repository with `git add <filename>` and then edits saved ("checked in" or "committed") with `git commit -m "Some brief but informative commentary" <filename>` Commit often (as soon as the code *runs*), and push as often as possible (so that other people can see what you're doing).
+
+[Back to top.](#top)
 
 -----
 
@@ -165,3 +174,5 @@ Other good books to check out:
 * **Gelman et al “Bayesian Data Analysis”**
 
 Should be available from the library, or [for online purchase here](http://www.amazon.com/Bayesian-Analysis-Chapman-Statistical-Science/dp/1439840954/).
+
+[Back to top.](#top)
