@@ -35,12 +35,9 @@ Then try:
 conda update conda
 ```
 `conda` is the package manager command, and can be used to install a
-number of things you will need for this course:
+number of things you will need for this course. First of all, you'll
+need to be able to run IPython notebook:
 ```bash
-conda install numpy
-conda install scipy
-conda install pandas
-conda install matplotlib
 conda install ipython-notebook
 ```
 
@@ -63,21 +60,34 @@ If you still can't figure out what's going wrong, send us an [issue](https://git
 
 -----
 
-### Astropy
+### Python packages
 
-If you have `anaconda` or `miniconda` python,
+You'll need a number of python packages available for this course.
+Here's the shopping list:
+```python
+numpy
+scipy
+pandas
+matplotlib
+astropy
+```
+
+If you have `anaconda` or `miniconda` python, you can install these
+with e.g.:
 ```bash
 conda install astropy
 ```
-otherwise
+Otherwise, try:
 ```bash
 pip install astropy
 ```
-See [their website](http://astropy.readthedocs.org/en/stable/install.html) if neither of these works.
+If neither of these works for `astropy`, please
+see [their website](http://astropy.readthedocs.org/en/stable/install.html)
+for installation help.
 
 -----
 
-### git and GitHub
+### `git` and GitHub
 
 You are probably reading this file in a browser on the GitHub website.
 By exploring a little you can find all the course materials for
@@ -98,7 +108,7 @@ To get your new files onto your laptop, you need to make a local copy, with:
 ```bash
 git clone <address>
 ```
-Here, `<address>` is the git address of your remote fork, and will have an address something like `git@github.com:USERNAME/StatisticalMethods.git` where `USERNAME` is your github username. Give this command a try.
+Here, `<address>` is the git address of your remote fork, and will have an address something like `git@github.com:USERNAME/StatisticalMethods.git` where `USERNAME` is your GitHub username. Give this command a try.
 
 > It will likely fail, with one of two errors. If you get a message like this:
 ```
@@ -108,7 +118,7 @@ it's is because you are not yet authorized to write to files on GitHub's compute
 
 > Alternatively, you might get an error message because you don't have `git` installed. There are a number of ways to install `git`, and the best one will depend on your operating system. A good Google search query could be, for example, "install git Mac OS X 10.8.5".
 
-#### Fork the main repo, and clone it to your local machine:
+#### Fork the homework repo, and clone it to your local machine:
 
 If you cannot navigate to [the homework repository](https://github.com/drphilmarshall/PHYS366-Homework-2015) to fork it,
 that's because you have not been given read access to it yet. To request
@@ -118,4 +128,4 @@ at [the sign-up issue thread](https://github.com/drphilmarshall/StatisticalMetho
 #### Edit the notebooks, and check in your work:
 
 Each of your local clones is connected to your corresponding
-"remote" fork at GitHub: `git` knows where you cloned your repository from, and names it "origin." If a file changes on the GitHub site (e.g. because you edited it there directly), you can get that latest version with `git pull origin master`. Likewise, if you edit a file locally, you can bring your remote fork up to date with `git push origin master`. New files have to be added to the local repository with `git add <filename>` and then edits saved ("checked in" or "committed") with `git commit -m "Some brief but informative commentary" <filename>` Commit often (as soon as the code *runs*), and push as often as possible (so that other people can see what you're doing). 
+"remote" fork at GitHub: `git` knows where you cloned your repository from, and names it "origin." If a file changes on the GitHub site (e.g. because you edited it there directly), you can get that latest version with `git pull origin master`. Likewise, if you edit a file locally, you can bring your remote fork up to date with `git push origin master`. New files have to be added to the local repository with `git add <filename>` and then edits saved ("checked in" or "committed") with `git commit -m "Some brief but informative commentary" <filename>` Commit often (as soon as the code *runs*), and push as often as possible (so that other people can see what you're doing).
