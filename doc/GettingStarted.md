@@ -112,9 +112,9 @@ course work.
 
 On the [PHYS366 GitHub repository site](https://github.com/drphilmarshall/StatisticalMethods), make sure you are logged in and you should see a button in the top righthand corner marked "Fork". Press this button.
 
-A fork is a copy (a "clone") of a repository, that belongs to you. You can edit the files in it and run the code, either on its GitHub page, or on your local machine.
+A fork is a copy (a "clone") of a repository, that belongs to you. You can edit the files in it and run the code, either on its GitHub page, or on your local machine. (If all this talk of "forks", "clones", "git" etc is beginning to sound scary, you might want to have a read of [this guide to getting started with git and GitHub](https://github.com/drphilmarshall/GettingStarted#top).)
 
-To get your new files onto your laptop, you need to make a local copy, with:
+To get your new files onto your laptop, you need to make a local copy, with (on the command line):
 ```bash
 git clone <address>
 ```
@@ -122,7 +122,7 @@ Here, `<address>` is the git address of your remote fork, and will have an addre
 
 > It will likely fail, with one of two errors. If you get a message like this:
 ```
-Permission denied (publikey)
+Permission denied (publickey)
 ```
 it's is because you are not yet authorized to write to files on GitHub's computers. To enable them to let you in, you just have to give them your *public SSH key*. (This is all worth it, I promise: setting this up will allow you to push and pull without typing your GitHub password all the time.) Go to the [SSH settings part of your GitHub profile](https://github.com/settings/ssh) and add a new key, pasting in the contents of your file (do "`more ~/.ssh/id_rsa.pub`". "Title" can be anything - I use "laptop".) If that file doesn't exist, you can make one with the command `ssh-keygen`. Now you should be able to interact with GitHub repositories via the command line.
 
