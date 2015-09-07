@@ -10,6 +10,8 @@ distribute course materials, including homework assignments, and to
 keep track of your work - so you will need to be set up with `git` and
 GitHub too.
 
+-----
+
 ### IPython Notebooks
 
 #### If you have `python` already installed on your machine:
@@ -18,7 +20,7 @@ Try the following on the command line:
 ```bash
 pip install "ipython[notebook]"
 ```
-This will install IPython from source, so may take a few minutes. 
+This will install IPython from source, so may take a few minutes.
 
 #### If you do not have `python`:
 
@@ -48,7 +50,7 @@ In a new shell, try
 ```bash
 ipython notebook &
 ```
-You should see a new tab open in your web browser, and a display of your file system (starting from your current directory) appear. 
+You should see a new tab open in your web browser, and a display of your file system (starting from your current directory) appear.
 
 
 #### If you get stuck:
@@ -65,16 +67,18 @@ If you still can't figure out what's going wrong, send us an [issue](https://git
 
 You are probably reading this file in a browser on the GitHub website.
 By exploring a little you can find all the course materials for
-PHYS366. Some of them are IPython Notebooks that you will need in class
-for various exercises, and others are stubs that will be used in
-homework assignments. You need a local copy of all of this stuff to be
-able to do the course work. 
+PHYS366. Some of them are IPython Notebooks that you will need in
+class for various exercises. Meanwhile, your homework assignments will
+be made available at [this private
+repository](https://github.com/drphilmarshall/PHYS366-Homework-2015)
+You will need local copies of both these repos to be able to do the
+course work.
 
-#### Fork the repo, and clone it to your local machine:
+#### Fork the main repo, and clone it to your local machine:
 
 On the [PHYS366 GitHub repository site](https://github.com/drphilmarshall/StatisticalMethods), make sure you are logged in and you should see a button in the top righthand corner marked "Fork". Press this button.
 
-A fork is a copy (a "clone") of a repository, that belongs to you. You can edit the files in it and run the code, either on its GitHub page, or on your local machine. 
+A fork is a copy (a "clone") of a repository, that belongs to you. You can edit the files in it and run the code, either on its GitHub page, or on your local machine.
 
 To get your new files onto your laptop, you need to make a local copy, with:
 ```bash
@@ -90,8 +94,14 @@ it's is because you are not yet authorized to write to files on GitHub's compute
 
 > Alternatively, you might get an error message because you don't have `git` installed. There are a number of ways to install `git`, and the best one will depend on your operating system. A good Google search query could be, for example, "install git Mac OS X 10.8.5".
 
+#### Fork the main repo, and clone it to your local machine:
+
+If you cannot navigate to [the homework repository](https://github.com/drphilmarshall/PHYS366-Homework-2015) to fork it,
+that's because you have not been given read access to it yet. To request
+this, please come and introduce yourself to your teachers and classmates
+at [the sign-up issue thread](https://github.com/drphilmarshall/StatisticalMethods/issues/25).
 
 #### Edit the notebooks, and check in your work:
 
-Your local clone is connected to your "remote" fork at GitHub: `git` knows where you cloned your repository from, and names it "origin." If a file changes on the GitHub site (e.g. because you edited it there directly), you can get that latest version with `git pull origin master`. Likewise, if you edit a file locally, you can bring your remote fork up to date with `git push origin master`. New files have to be added to the local repository with `git add <filename>` and then edits saved ("checked in" or "committed") with `git commit -m "Some brief but informative commentary" <filename>` Commit often (as soon as the code *runs*), and push as often as possible (so that other people can see what you're doing). 
-
+Each of your local clones is connected to your corresponding
+"remote" fork at GitHub: `git` knows where you cloned your repository from, and names it "origin." If a file changes on the GitHub site (e.g. because you edited it there directly), you can get that latest version with `git pull origin master`. Likewise, if you edit a file locally, you can bring your remote fork up to date with `git push origin master`. New files have to be added to the local repository with `git add <filename>` and then edits saved ("checked in" or "committed") with `git commit -m "Some brief but informative commentary" <filename>` Commit often (as soon as the code *runs*), and push as often as possible (so that other people can see what you're doing). 
