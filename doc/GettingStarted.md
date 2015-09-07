@@ -2,8 +2,8 @@
 
 We will be using [IPython Notebooks](http://ipython.org/notebook.html)
 extensively in this course, so you
-will need a laptop computer that is running `linux` or `Mac OS X` and
-is set up to run them.
+will need a computer that is running `linux` or `Mac OS X` and
+is set up to run them. Ideally you have a laptop, since there will be in-class activities - otherwise you will need to share (in-class projects will generally be in groups in any case). If you do not have a laptop or a desktop that can run the required software, see below for information about the Stanford-wide unix systems.
 
 We will also be using the [GitHub](https://github.com) web service to
 distribute course materials, including homework assignments, and to
@@ -15,6 +15,7 @@ GitHub too.
 * [Git and GitHub](#github)
 * [Homework](#homework)
 * [Textbooks](#textbooks)
+* [Stanford unix systems](#stanfordunix)
 
 -----
 
@@ -167,5 +168,13 @@ Other good books to check out:
 * **Gelman et al “Bayesian Data Analysis”**
 
 > Should be available from the library, or [for online purchase here](http://www.amazon.com/Bayesian-Analysis-Chapman-Statistical-Science/dp/1439840954/).
+
+[Back to top.](#top)
+
+-----
+
+### <a name="stanfordunix"></a>Stanford unix systems
+
+See the information on unix systems accessible to all students [here](https://itservices.stanford.edu/service/sharedcomputing), including the Getting Started if you are unfamiliar with unix. Note that the appropriate cluster to use is `corn` (interactive use, including compute-intensive tasks). These systems have `git` and `python` installed, but appear to have an old version of `notebook`, so you should follow the instructions above for installing `miniconda` and the required `python` packages within your home space.
 
 [Back to top.](#top)
