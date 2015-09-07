@@ -10,9 +10,15 @@ distribute course materials, including homework assignments, and to
 keep track of your work - so you will need to be set up with `git` and
 GitHub too.
 
+* [IPython Notebooks](#ipynb)
+* [Python Packages](#packages)
+* [Git and GitHub](#github)
+* [Homework](#homework)
+* [Textbooks](#textbooks)
+
 -----
 
-### IPython Notebooks
+### <a name="ipynb"></a>IPython Notebooks
 
 #### If you have `python` already installed on your machine:
 
@@ -60,7 +66,7 @@ If you still can't figure out what's going wrong, send us an [issue](https://git
 
 -----
 
-### Python packages
+### <a name="packages"></a>Python Packages
 
 You'll need a number of python packages available for this course.
 Here's the shopping list:
@@ -87,7 +93,7 @@ for installation help.
 
 -----
 
-### `git` and GitHub
+### <a name="github"></a>`git` and GitHub
 
 You are probably reading this file in a browser on the GitHub website.
 By exploring a little you can find all the course materials for
@@ -118,7 +124,7 @@ it's is because you are not yet authorized to write to files on GitHub's compute
 
 > Alternatively, you might get an error message because you don't have `git` installed. There are a number of ways to install `git`, and the best one will depend on your operating system. A good Google search query could be, for example, "install git Mac OS X 10.8.5".
 
-#### Fork the homework repo, and clone it to your local machine:
+#### <a name="homework"></a>Fork the homework repo, and clone it to your local machine:
 
 If you cannot navigate to [the homework repository](https://github.com/drphilmarshall/PHYS366-Homework-2015) to fork it,
 that's because you have not been given read access to it yet. To request
@@ -129,3 +135,33 @@ at [the sign-up issue thread](https://github.com/drphilmarshall/StatisticalMetho
 
 Each of your local clones is connected to your corresponding
 "remote" fork at GitHub: `git` knows where you cloned your repository from, and names it "origin." If a file changes on the GitHub site (e.g. because you edited it there directly), you can get that latest version with `git pull origin master`. Likewise, if you edit a file locally, you can bring your remote fork up to date with `git push origin master`. New files have to be added to the local repository with `git add <filename>` and then edits saved ("checked in" or "committed") with `git commit -m "Some brief but informative commentary" <filename>` Commit often (as soon as the code *runs*), and push as often as possible (so that other people can see what you're doing).
+
+-----
+
+### <a name="textbooks"></a>Textbooks
+
+This course will be mostly self-contained, but it's a good  
+to read around the subject (and you might find clues to some of the
+exercises while you're at it). We recommend the following textbooks to
+accompany this course:
+
+* **[Ivezic et al “Statistics, Data Mining and Machine Learning in Astronomy”](http://www.astroml.org/)**
+
+This is a very useful "cookbook," providing easy-to-follow recipes in
+astronomical data analysis and good, clear explanations. The library
+has a few copies that you can borrow, as do the course teachers - but it's
+also a [good one to invest in](http://www.amazon.com/Statistics-Mining-Machine-Learning-Astronomy/dp/0691151687).
+
+* **[MacKay “Information Theory, Inference and Learning Algorithms”](http://www.inference.phy.cam.ac.uk/mackay/itprnn/book.html)**
+
+This book goes way beyond the scope of PHYS366, but it's introduction to
+Bayesian inference is excellent, and it's free to download from the
+above website. You can also click through to an online bookseller from there
+if you like.
+
+
+Other good books to check out:
+
+* **Gelman et al “Bayesian Data Analysis”**
+
+Should be available from the library, or [for online purchase here](http://www.amazon.com/Bayesian-Analysis-Chapman-Statistical-Science/dp/1439840954/).
