@@ -30,4 +30,4 @@ Coming soon.
 * Phil Marshall
 * Risa Wechsler
 
-All materials Copyright 2015 Phil Marshall, Adam Mantz, Elisabeth Krause and Risa Wechsler, and distributed for copying and extension under the GPLv2 License. If you have any feedback for us, please [write us an issue](https://github.com/drphilmarshall/StatisticalMethods/issues). If you would like to help us improve this course, please do fork this repo and submit a pull request.
+All materials Copyright 2015 Phil Marshall, Adam Mantz, Elisabeth Krause, and Risa Wechsler, and distributed for copying and extension under the GPLv2 License. If you have any feedback for us, please [write us an issue](https://github.com/drphilmarshall/StatisticalMethods/issues). If you would like to help us improve this course, please do fork this repo and submit a pull request.
