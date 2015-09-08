@@ -19,6 +19,7 @@ students will encounter in their research.
 * [Schedule](https://github.com/drphilmarshall/StatisticalMethods/blob/master/doc/Schedule.md)
 * [Getting Started](https://github.com/drphilmarshall/StatisticalMethods/blob/master/doc/GettingStarted.md)
 * [Textbooks and Course Materials](https://github.com/drphilmarshall/StatisticalMethods/blob/master/doc/Textbooks.md)
+* [Course Requirements](https://github.com/drphilmarshall/StatisticalMethods/blob/master/doc/Requirements.md)
 * [Homework](https://github.com/drphilmarshall/StatisticalMethods/blob/master/doc/Homework.md)
 
 ### Lessons
