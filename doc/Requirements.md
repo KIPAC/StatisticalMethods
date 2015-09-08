@@ -4,7 +4,7 @@
 #### Class Participation:
 This is intended to be a hands-on, participatory course, so regular attendance 
 and active participation is expected. Class participation will contribute 20%
-of the final grade
+of the final grade.
 
 #### Homework:
 There will be three homeworks in the 5-week course, due on Tuesdays
@@ -15,4 +15,4 @@ final grade.  See more [here](https://github.com/drphilmarshall/StatisticalMetho
 Each student will be required to present a final project.
 Projects will be presented during the final class on October 22,
 and final written reports will be due on November 3.
-The final project will contribute 35\% of the final grade.
+The final project will contribute 35% of the final grade.
