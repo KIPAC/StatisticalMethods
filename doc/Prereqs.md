@@ -1,9 +1,15 @@
 ## Course Description and Prerequisites
 
-Existing and emerging statistical techniques and their application to astronomical surveys and cosmological data analysis. Topics covered will include statistical frameworks (Bayesian inference and frequentist statistics), numerical methods including Markov Chain Monte Carlo, and machine learning applied to classification and regression. Hands on activities based on open-source software in python.
+Existing and emerging statistical techniques and their application to
+astronomical surveys and cosmological data analysis. Topics covered
+will include statistical frameworks (Bayesian inference and
+frequentist statistics), numerical methods including Markov Chain
+Monte Carlo, and machine learning applied to classification and
+regression. Hands on activities based on open-source software in
+python.
 
 The course is aimed at graduate students intending to do research in
-astrophysics and cosomology.  The level will be aimed at first and
+astrophysics and cosmology.  The level will be aimed at first and
 second year students, but more advanced students are welcome.
 
 [PHYSICS 160/260](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0CB4QFjAA&url=https%3A%2F%2Fexplorecourses.stanford.edu%2Fsearch%3Fview%3Dcatalog%26filter-coursestatus-Active%3Don%26page%3D0%26catalog%3D%26q%3DPHYSICS%2B260%253A%2BIntroduction%2Bto%2BStellar%2Band%2BGalactic%2BAstrophysics%26collapse%3D&ei=CyeLVYjoOpTtoATIi4aIAw&usg=AFQjCNEOtbEuUK5J_-aRnBLSGTMC-itFTQ&sig2=nrrWmJEjwWbTA7t0oJaksQ) and
