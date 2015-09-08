@@ -21,13 +21,20 @@ GitHub too.
 
 ### <a name="ipynb"></a>IPython Notebooks
 
+The notebooks provided with this course are
+["Jupyter"](https://jupyter.org/) notebooks,  which run IPython
+version 4.0. You can read more at [the IPython
+website](http://ipython.org/) but the bottom line is: you need the
+latest version.
+
 #### If you have `python` already installed on your machine:
 
 Try the following on the command line:
 ```bash
 pip install "ipython[notebook]"
 ```
-This will install IPython from source, so may take a few minutes.
+This will install IPython 4.0 from source, so may take a few minutes.
+
 
 #### If you do not have `python`:
 
@@ -43,7 +50,7 @@ conda update conda
 ```
 `conda` is the package manager command, and can be used to install a
 number of things you will need for this course. First of all, you'll
-need to be able to run IPython notebook:
+need to be able to run IPython 4.0 notebooks:
 ```bash
 conda install ipython-notebook
 ```
@@ -159,8 +166,12 @@ also a [good one to invest in](http://www.amazon.com/Statistics-Mining-Machine-L
 
 * **[MacKay “Information Theory, Inference and Learning Algorithms”](http://www.inference.phy.cam.ac.uk/mackay/itprnn/book.html)**
 
-> This book goes way beyond the scope of PHYS366, but it's introduction to Bayesian inference is excellent, and it's free to download from the above website. You can also click through to an online bookseller from there
-if you like.
+> This book goes way beyond the scope of PHYS366, but it's
+introduction to Bayesian inference is excellent, and it's free to
+download from the above website. You can also click through to an
+online bookseller from there to order a hard copy. Page X of the
+Preface  lists the chapters relating to inference: we will focus on
+chapters 2,3,20,21,22,24,27,28,29 and 30.
 
 
 Other good books to check out:
@@ -175,6 +186,14 @@ Other good books to check out:
 
 ### <a name="stanfordunix"></a>Stanford unix systems
 
-See the information on unix systems accessible to all students [here](https://itservices.stanford.edu/service/sharedcomputing), including the Getting Started if you are unfamiliar with unix. Note that the appropriate cluster to use is `corn` (interactive use, including compute-intensive tasks). These systems have `git` and `python` installed, but appear to have an old version of `notebook`, so you should follow the instructions above for installing `miniconda` and the required `python` packages within your home space.
+See the information on the unix computing systems accessible to all
+Stanford students
+[here](https://itservices.stanford.edu/service/sharedcomputing),
+including the "Getting Started" if you are unfamiliar with unix. Note
+that the appropriate cluster to use is `corn` (interactive use,
+including compute-intensive tasks). These systems have `git` and
+`python` installed, but appear to have an old version of `notebook`,
+so you should follow the instructions above for installing `miniconda`
+and the required `python` packages within your home space.
 
 [Back to top.](#top)
