@@ -61,3 +61,6 @@ target/
 
 # Data files
 *.FTZ
+
+# Homework
+*Homework*
