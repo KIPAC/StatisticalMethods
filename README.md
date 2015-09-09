@@ -24,7 +24,16 @@ students will encounter in their research.
 
 ### Lessons
 
-Coming soon.
+* Exploring Data
+* Understanding from Data
+* Inference in Practice: PDF Characterization
+* Inference in Practice: Sampling Techniques
+* Inference in Practice: Coping with Complications 
+* Inference in Practice: Evaluating Models
+* Applications in Astroparticle Physics
+* Applications in Cosmology
+* Machine Learning
+* Project Presenations
 
 ### Contact
 
