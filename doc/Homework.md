@@ -48,10 +48,9 @@ pushed to origin. To stake your claim, you will need to
 
 1) _submit a `pull request`_,
 
-2) _fill out the google form_ *circulated with the homework) selecting which problems you have attempted, and
-are willing to show attempts at.
+2) _fill out the google form_ (circulated with the homework) selecting which problems you have attempted, and are willing to show attempts at.
 
-You can edit your home work submission (pull request + google form)
+You can edit your homework submission (pull request + google form)
 any time until class starts.
 
 Then, in the Tuesday class, for each homework problem we will draw

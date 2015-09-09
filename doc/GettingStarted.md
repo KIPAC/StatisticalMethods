@@ -114,7 +114,7 @@ By exploring a little you can find all the course materials for
 PHYS366. Some of them are IPython Notebooks that you will need in
 class for various exercises. Meanwhile, your homework assignments will
 be made available at [this private
-repository](https://github.com/drphilmarshall/PHYS366-Homework-2015)
+repository](https://github.com/drphilmarshall/PHYS366-Homework-2015).
 You will need local copies of both these repos to be able to do the
 course work.
 
