@@ -44,12 +44,16 @@ can see what you're doing).
 Homework will be graded according to the *number of solutions you are
 willing to present in class*. To present, you will need to show your
 work, in your edited version of the assignment notebook that you have
-pushed to origin. To stake your claim, you will need to submit a `pull
-request`,  telling everyone which problems you have attempted, and
-are willing to show attempts at. You can edit this pull request comment
+pushed to origin. To stake your claim, you will need to
+
+1) _submit a `pull request`_,
+
+2) _fill out the google form_ (circulated with the homework) selecting which problems you have attempted, and are willing to show attempts at.
+
+You can edit your homework submission (pull request + google form)
 any time until class starts.
 
-Then, in the Tuesday class, for each homework problem we will   draw
+Then, in the Tuesday class, for each homework problem we will draw
 names at random from the list of people willing to present,  and ask
 you to talk us through your solution, in your notebook (on your fork).
 These attempts do not need to be complete!  You should be able to show

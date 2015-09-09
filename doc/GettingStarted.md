@@ -1,5 +1,8 @@
 # <a name="top"></a>Getting Started
 
+We encourage all 366 students, **especially first year students**, to consider
+attending all or part of the [KIPAC Computing Boot Camp](https://kipac.github.io/BootCamp/), which will be held during the first week of class, Sept 23, 24, 25.
+
 We will be using [IPython Notebooks](http://ipython.org/notebook.html)
 extensively in this course, so you
 will need a computer that is running `linux` or `Mac OS X` and
@@ -14,7 +17,6 @@ GitHub too.
 * [Python Packages](#packages)
 * [Git and GitHub](#github)
 * [Homework](#homework)
-* [Textbooks](#textbooks)
 * [Stanford unix systems](#stanfordunix)
 
 -----
@@ -112,7 +114,7 @@ By exploring a little you can find all the course materials for
 PHYS366. Some of them are IPython Notebooks that you will need in
 class for various exercises. Meanwhile, your homework assignments will
 be made available at [this private
-repository](https://github.com/drphilmarshall/PHYS366-Homework-2015)
+repository](https://github.com/drphilmarshall/PHYS366-Homework-2015).
 You will need local copies of both these repos to be able to do the
 course work.
 
@@ -150,35 +152,6 @@ at [the sign-up issue thread](https://github.com/drphilmarshall/StatisticalMetho
 
 Each of your local clones is connected to your corresponding
 "remote" fork at GitHub: `git` knows where you cloned your repository from, and names it "origin." If a file changes on the GitHub site (e.g. because you edited it there directly), you can get that latest version with `git pull origin master`. Likewise, if you edit a file locally, you can bring your remote fork up to date with `git push origin master`. New files have to be added to the local repository with `git add <filename>` and then edits saved ("checked in" or "committed") with `git commit -m "Some brief but informative commentary" <filename>` Commit often (as soon as the code *runs*), and push as often as possible (so that other people can see what you're doing).
-
-[Back to top.](#top)
-
------
-
-### <a name="textbooks"></a>Textbooks
-
-This course will be mostly self-contained, but it's good to read around the subject (and you might find clues to some of the exercises while you're at it). We recommend the following textbooks to accompany this course:
-
-* **[Ivezic et al “Statistics, Data Mining and Machine Learning in Astronomy”](http://www.astroml.org/)**
-
-> This is a very useful "cookbook," providing easy-to-follow recipes in astronomical data analysis and good, clear explanations. The library has a few copies that you can borrow, as do the course teachers - but it's
-also a [good one to invest in](http://www.amazon.com/Statistics-Mining-Machine-Learning-Astronomy/dp/0691151687).
-
-* **[MacKay “Information Theory, Inference and Learning Algorithms”](http://www.inference.phy.cam.ac.uk/mackay/itprnn/book.html)**
-
-> This book goes way beyond the scope of PHYS366, but it's
-introduction to Bayesian inference is excellent, and it's free to
-download from the above website. You can also click through to an
-online bookseller from there to order a hard copy. Page X of the
-Preface  lists the chapters relating to inference: we will focus on
-chapters 2,3,20,21,22,24,27,28,29 and 30.
-
-
-Other good books to check out:
-
-* **Gelman et al “Bayesian Data Analysis”**
-
-> Should be available from the library, or [for online purchase here](http://www.amazon.com/Bayesian-Analysis-Chapman-Statistical-Science/dp/1439840954/).
 
 [Back to top.](#top)
 
