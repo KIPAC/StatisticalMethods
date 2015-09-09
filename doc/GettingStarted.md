@@ -14,7 +14,6 @@ GitHub too.
 * [Python Packages](#packages)
 * [Git and GitHub](#github)
 * [Homework](#homework)
-* [Textbooks](#textbooks)
 * [Stanford unix systems](#stanfordunix)
 
 -----
