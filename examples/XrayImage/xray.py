@@ -18,6 +18,13 @@ def betaModelImage(xs, ys, x0, y0, S0, rc, beta):
     '''
     return betaModelFun(np.sqrt( (xs-x0)**2 + (ys-y0)**2 ), x0, y0, S0, rc, beta)
 
+def modelImage(data, x0, y0, S0, rc, beta, bg):
+    '''
+    where xs and ys are arrays of x and y coordinate values, and the rest are beta model parameters
+    The whole model
+    '''
+    return (betaModelImage(data.xs, data.ys, x0, y0, S0, rc, beta) + bg) * data.ex + data.bk
+
 
 
 class XrayData:
@@ -57,18 +64,32 @@ class XrayData:
 
 
 def lnpost(params, data):
+    # assumes S0 is a free parameter
     x0 = params[0]
     y0 = params[1]
     S0 = params[2]
     rc = params[3]
     beta = params[4]
     bg = params[5]
-    if x0 < 0. or x0 >= data.im.shape[0] or y0 < 0. or y0 > data.im.shape[1] or S0 <= 0. or rc <= 0. or beta <= 0.:
+    if x0 < 0. or x0 >= data.im.shape[0] or y0 < 0. or y0 > data.im.shape[1] or S0 <= 0. or rc <= 0. or beta <= 0.0:
         return -np.inf
-    mod = (betaModelImage(data.xs, data.ys, x0, y0, S0, rc, beta) + bg) * data.ex + data.bk
+    mod = modelImage(data, x0, y0, S0, rc, beta, bg)
+    if np.min(mod) <= 0.0:
+        return -np.inf
     return np.sum( (-mod + data.im * np.log(mod)) * data.mask )
 
         
-    
-
-
+def lnpost2(params, data):
+    # assumes log(S0) is a free parameter
+    x0 = params[0]
+    y0 = params[1]
+    S0 = np.exp(params[2])
+    rc = params[3]
+    beta = params[4]
+    bg = params[5]
+    if x0 < 0. or x0 >= data.im.shape[0] or y0 < 0. or y0 > data.im.shape[1] or S0 <= 0. or rc <= 0. or beta <= 0.0:
+        return -np.inf
+    mod = modelImage(data, x0, y0, S0, rc, beta, bg)
+    if np.min(mod) <= 0.0:
+        return -np.inf
+    return np.sum( (-mod + data.im * np.log(mod)) * data.mask )
