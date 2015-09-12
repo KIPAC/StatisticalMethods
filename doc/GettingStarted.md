@@ -123,7 +123,7 @@ course work.
 
 On the [PHYS366 GitHub repository site](https://github.com/drphilmarshall/StatisticalMethods), make sure you are logged in and you should see a button in the top righthand corner marked "Fork". Press this button.
 
-A fork is a copy (a "clone") of a repository, that belongs to you. You can edit the files in it and run the code, either on its GitHub page, or on your local machine. (If all this talk of "forks", "clones", "git" etc is beginning to sound scary, you might want to have a read of [this guide to getting started with git and GitHub](https://github.com/drphilmarshall/GettingStarted#top).)
+A fork is a copy (a "clone") of a repository, that belongs to you. You can edit the files in it and run the code, either on its GitHub page, or on your local machine. (If all this talk of "forks", "clones", "git" etc is beginning to sound scary, you might want to have a read of [this guide to getting started with git and GitHub](https://github.com/drphilmarshall/GettingStarted#top), and perhaps listen to Phil explaining (hopefully) everything you need to know in [this video](https://www.youtube.com/watch?v=2g9lsbJBPEs).)
 
 To get your new files onto your laptop, you need to make a local copy, with (on the command line):
 ```bash
