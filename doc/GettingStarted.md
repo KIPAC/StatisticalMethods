@@ -17,7 +17,8 @@ GitHub too.
 * [Python Packages](#packages)
 * [Git and GitHub](#github)
 * [Homework](#homework)
-* [Stanford unix systems](#stanfordunix)
+* [Stanford Unix systems](#stanfordunix)
+* **[Before the First Class](#firstclass)**
 
 -----
 
@@ -157,7 +158,7 @@ Each of your local clones is connected to your corresponding
 
 -----
 
-### <a name="stanfordunix"></a>Stanford unix systems
+### <a name="stanfordunix"></a>Stanford Unix systems
 
 See the information on the unix computing systems accessible to all
 Stanford students
@@ -170,3 +171,16 @@ so you should follow the instructions above for installing `miniconda`
 and the required `python` packages within your home space.
 
 [Back to top.](#top)
+
+
+-----
+
+### <a name="firstclass"></a>Before the First Class
+
+* If you have a laptop computer, that is running `git` and IPython notebooks, please do bring it to class so you can
+work through the in-class exercises. If you are not set up, don't worry: just let us know if you need help [via the issues](https://github.com/drphilmarshall/StatisticalMethods/issues) and then come to class ready to pair up with someone who has everything up and running.
+
+* Make sure you have `git clone`'d this repository, and have The Plan notebook `lessons/0.ThePlan.ipynb` open and running locally (that is, not just viewing it on GitHub).
+
+[Back to top.](#top)
+
