@@ -117,7 +117,7 @@ class for various exercises. Meanwhile, your homework assignments will
 be made available at [this private
 repository](https://github.com/drphilmarshall/PHYS366-Homework-2015).
 You will need local copies of both these repos to be able to do the
-course work.
+course work. If you got a 404 Error from the homework repo link, you can request read access by identifying yourself at [this issue thread](https://github.com/drphilmarshall/StatisticalMethods/issues/25) or telling us your GitHub username in class.
 
 #### Fork the main repo, and clone it to your local machine:
 
