@@ -17,7 +17,8 @@ GitHub too.
 * [Python Packages](#packages)
 * [Git and GitHub](#github)
 * [Homework](#homework)
-* [Stanford unix systems](#stanfordunix)
+* [Stanford Unix systems](#stanfordunix)
+* **[Before the First Class](#firstclass)**
 
 -----
 
@@ -116,13 +117,13 @@ class for various exercises. Meanwhile, your homework assignments will
 be made available at [this private
 repository](https://github.com/drphilmarshall/PHYS366-Homework-2015).
 You will need local copies of both these repos to be able to do the
-course work.
+course work. If you got a 404 Error from the homework repo link, you can request read access by identifying yourself at [this issue thread](https://github.com/drphilmarshall/StatisticalMethods/issues/25) or telling us your GitHub username in class.
 
 #### Fork the main repo, and clone it to your local machine:
 
 On the [PHYS366 GitHub repository site](https://github.com/drphilmarshall/StatisticalMethods), make sure you are logged in and you should see a button in the top righthand corner marked "Fork". Press this button.
 
-A fork is a copy (a "clone") of a repository, that belongs to you. You can edit the files in it and run the code, either on its GitHub page, or on your local machine. (If all this talk of "forks", "clones", "git" etc is beginning to sound scary, you might want to have a read of [this guide to getting started with git and GitHub](https://github.com/drphilmarshall/GettingStarted#top).)
+A fork is a copy (a "clone") of a repository, that belongs to you. You can edit the files in it and run the code, either on its GitHub page, or on your local machine. (If all this talk of "forks", "clones", "git" etc is beginning to sound scary, you might want to have a read of [this guide to getting started with git and GitHub](https://github.com/drphilmarshall/GettingStarted#top), and perhaps listen to Phil explaining (hopefully) everything you need to know in [this video](https://www.youtube.com/watch?v=2g9lsbJBPEs).)
 
 To get your new files onto your laptop, you need to make a local copy, with (on the command line):
 ```bash
@@ -157,7 +158,7 @@ Each of your local clones is connected to your corresponding
 
 -----
 
-### <a name="stanfordunix"></a>Stanford unix systems
+### <a name="stanfordunix"></a>Stanford Unix systems
 
 See the information on the unix computing systems accessible to all
 Stanford students
@@ -170,3 +171,16 @@ so you should follow the instructions above for installing `miniconda`
 and the required `python` packages within your home space.
 
 [Back to top.](#top)
+
+
+-----
+
+### <a name="firstclass"></a>Before the First Class
+
+* If you have a laptop computer, that is running `git` and IPython notebooks, please do bring it to class so you can
+work through the in-class exercises. If you are not set up, don't worry: just let us know if you need help [via the issues](https://github.com/drphilmarshall/StatisticalMethods/issues) and then come to class ready to pair up with someone who has everything up and running.
+
+* Make sure you have `git clone`'d this repository, and have The Plan notebook `lessons/0.ThePlan.ipynb` open and running locally (that is, not just viewing it on GitHub).
+
+[Back to top.](#top)
+
