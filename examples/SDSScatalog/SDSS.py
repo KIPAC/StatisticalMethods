@@ -3,7 +3,7 @@ import pandas as pd
 def select(sql):
     from StringIO import StringIO # To read a string like a file
     import mechanize
-    url = "http://skyserver.sdss3.org/dr10/en/tools/search/sql.aspx"
+    url = "http://skyserver.sdss3.org/dr12/en/tools/search/sql.aspx"
     br = mechanize.Browser()
     br.open(url)
     br.select_form(name="sql")
