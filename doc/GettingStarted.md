@@ -1,6 +1,6 @@
 # <a name="top"></a>Getting Started
 
-We encourage all 366 students, **especially first year students**, to consider
+We encourage all PHYS366 students, **especially first year students**, to consider
 attending all or part of the [KIPAC Computing Boot Camp](https://kipac.github.io/BootCamp/), which will be held during the first week of class, Sept 23, 24, 25.
 
 We will be using [IPython Notebooks](http://ipython.org/notebook.html)
