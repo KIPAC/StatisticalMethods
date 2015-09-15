@@ -60,11 +60,11 @@ conda install ipython-notebook
 
 #### To edit and run a notebook:
 
-In a new shell, try
+In a new shell, and the top level directory of the repository, try
 ```bash
 ipython notebook &
 ```
-You should see a new tab open in your web browser, and a display of your file system (starting from your current directory) appear.
+You should see a new tab open in your web browser, and a display of your file system (starting from your current directory) appear. It's important you start the notebook from the top level directory, so that the links between the notebooks work correctly.
 
 
 #### If you get stuck:
