@@ -44,6 +44,8 @@ Our goal is that students taking this course will:
 * Machine Learning
 * Project Presenations
 
+You can help write a glossary of terms used in the lectures [here](doc/Glossary.md).
+
 ### Contact
 
 * Phil Marshall
