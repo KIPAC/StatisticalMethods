@@ -2,7 +2,7 @@
 
 Course notes and resources for Stanford University graduate lecture course PHYS366.
 
-### Course Objectives
+### Course Description
 
 The course is intended to provide an introduction to modern
 statistical methodology and its applications to problems in
@@ -12,6 +12,15 @@ strongly encourage most first and second year students working in
 KIPAC to take the course.  Our goal is to provide a background that
 will be directly relevant to the kind of problems that typical KIPAC
 students will encounter in their research.
+
+### Course Objectives
+
+Our goal is that students taking this course will:
+* develop familiarity in working with various types of astronomical data.
+* understand the role of modeling in data analysis.
+* develop facility with various types of inference from data.
+* be able to critically evaluate and apply commonly used statistical methodologies.
+* be able to apply advanced statistical reasoning to problems they are likely to encounter in their research.
 
 ### Preliminaries
 
