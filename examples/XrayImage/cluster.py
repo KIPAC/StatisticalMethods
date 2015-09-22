@@ -108,7 +108,7 @@ class XrayData:
 
 
     def evaluate_log_prior(self):
-        # Uniform in all parameters!
+        # Uniform in all parameters...
         return 0.0
 
 
@@ -126,6 +126,9 @@ class XrayData:
 
 
 # ====================================================================
+'''
+
+Adam's routines for input into MCMC:
 
 def lnpost(params, data):
     # assumes S0 is a free parameter
@@ -157,3 +160,4 @@ def lnpost2(params, data):
     if np.min(mod) <= 0.0:
         return -np.inf
     return np.sum( (-mod + data.im * np.log(mod)) * data.mask )
+'''
