@@ -7,7 +7,7 @@ Each of the 10 sessions will be 80 minutes.
 
 Tues, Thur 3-4:20pm
 
-Hewlett 102
+Hewlett 103
 
 
 [Back to PHYS366 home](https://github.com/drphilmarshall/StatisticalMethods/blob/master/README.md)
