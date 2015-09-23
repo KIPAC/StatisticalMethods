@@ -89,6 +89,9 @@ scipy
 pandas
 matplotlib
 astropy
+mechanize
+seaborn
+TreeCorr
 ```
 
 If you have `anaconda` or `miniconda` python, you can install these
@@ -96,7 +99,7 @@ with e.g.:
 ```bash
 conda install astropy
 ```
-Otherwise, try:
+Otherwise, or for some of these packages that are not in conda, try:
 ```bash
 pip install astropy
 ```
