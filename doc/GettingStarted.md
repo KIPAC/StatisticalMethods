@@ -96,6 +96,10 @@ scipy
 pandas
 matplotlib
 astropy
+mechanize
+seaborn
+TreeCorr
+triangle
 ```
 
 If you have `anaconda` or `miniconda` python, you can install these
@@ -103,13 +107,15 @@ with e.g.:
 ```bash
 conda install astropy
 ```
-Otherwise, try:
+Otherwise, or for some of these packages that are not in conda, try:
 ```bash
 pip install astropy
 ```
 If neither of these works for `astropy`, please
 see [their website](http://astropy.readthedocs.org/en/stable/install.html)
 for installation help.
+
+Note that, unusually, `triangle` is installed by `pip install triangle_plot`.
 
 [Back to top.](#top)
 
