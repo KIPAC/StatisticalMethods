@@ -3,7 +3,8 @@
 We encourage all PHYS366 students, **especially first year students**, to consider
 attending all or part of the [KIPAC Computing Boot Camp](https://kipac.github.io/BootCamp/), which will be held during the first week of class, Sept 23, 24, 25.
 
-We will be using [IPython Notebooks](http://ipython.org/notebook.html)
+We will be using [Jupyter Notebooks](https://jupyter.org/)
+with [IPython](http://ipython.org/)
 extensively in this course, so you
 will need a computer that is running `linux` or `Mac OS X` and
 is set up to run them. Ideally you have a laptop, since there will be in-class activities - otherwise you will need to share (in-class projects will generally be in groups in any case). If you do not have a laptop or a desktop that can run the required software, see below for information about the Stanford-wide unix systems.
@@ -22,7 +23,7 @@ GitHub too.
 
 -----
 
-### <a name="ipynb"></a>IPython Notebooks
+### <a name="ipynb"></a>Jupyter Notebooks with IPython
 
 The notebooks provided with this course are
 ["Jupyter"](https://jupyter.org/) notebooks,  which run IPython
@@ -33,8 +34,10 @@ latest version.
 #### If you have `python` already installed on your machine:
 
 Try the following on the command line:
+
+(Note that even if `python` is already installed, this `pip` method may not work as some packages require additional libraries that your system may not have. In such senarios, use the `conda` method below.)
 ```bash
-pip install "ipython[notebook]"
+pip install ipython jupyter
 ```
 This will install IPython 4.0 from source, so may take a few minutes.
 
@@ -55,22 +58,26 @@ conda update conda
 number of things you will need for this course. First of all, you'll
 need to be able to run IPython 4.0 notebooks:
 ```bash
-conda install ipython-notebook
+conda install ipython jupyter
+conda install numpy
+conda install scipy
+conda install pandas
+conda install matplotlib
 ```
 
 #### To edit and run a notebook:
 
 In a new shell, and the top level directory of the repository, try
 ```bash
-ipython notebook &
+jupyter notebook &
 ```
 You should see a new tab open in your web browser, and a display of your file system (starting from your current directory) appear. It's important you start the notebook from the top level directory, so that the links between the notebooks work correctly.
 
 
 #### If you get stuck:
 
-Good Google search queries are "pip install ipython notebook" and
-"miniconda install ipython notebook".
+Good Google search queries are "pip install jupyter" and
+"miniconda install jupyter".
 Also many of the KIPAC grad students have been through this before,
 and can help you out if you ask them nicely.
 If you still can't figure out what's going wrong, send us an [issue](https://github.com/drphilmarshall/StatisticalMethods/issues).
@@ -144,10 +151,12 @@ it's is because you are not yet authorized to write to files on GitHub's compute
 
 #### <a name="homework"></a>Fork the homework repo, and clone it to your local machine:
 
-If you cannot navigate to [the homework repository](https://github.com/drphilmarshall/PHYS366-Homework-2015) to fork it,
-that's because you have not been given read access to it yet. To request
-this, please come and introduce yourself to your teachers and classmates
-at [the sign-up issue thread](https://github.com/drphilmarshall/StatisticalMethods/issues/25).
+If you cannot navigate to [the homework
+repository](https://github.com/drphilmarshall/PHYS366-Homework-2015)
+to fork it, that's because you have not been given read access to it
+yet. To request this, please come and introduce yourself to your
+teachers and classmates at [the sign-up issue
+thread](https://github.com/drphilmarshall/StatisticalMethods/issues/25).
 
 #### Edit the notebooks, and check in your work:
 
@@ -183,4 +192,3 @@ work through the in-class exercises. If you are not set up, don't worry: just le
 * Make sure you have `git clone`'d this repository, and have The Plan notebook `lessons/0.ThePlan.ipynb` open and running locally (that is, not just viewing it on GitHub).
 
 [Back to top.](#top)
-
