@@ -71,8 +71,13 @@ In a new shell, and the top level directory of the repository, try
 ```bash
 jupyter notebook &
 ```
-You should see a new tab open in your web browser, and a display of your file system (starting from your current directory) appear. It's important you start the notebook from the top level directory, so that the links between the notebooks work correctly.
+You should see a new tab open in your web browser, and a display of your file system (starting from your current directory) appear. 
 
+**NB. It's important you start the notebook from the top level directory, so that the links between the notebooks work correctly.** If you don't do this, you will get a "404" error each time you click on one of the links to another notebook.
+```bash
+cd StatisticalMethods
+jupyter notebook &
+```
 
 #### If you get stuck:
 
