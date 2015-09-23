@@ -92,6 +92,7 @@ astropy
 mechanize
 seaborn
 TreeCorr
+triangle
 ```
 
 If you have `anaconda` or `miniconda` python, you can install these
@@ -106,6 +107,8 @@ pip install astropy
 If neither of these works for `astropy`, please
 see [their website](http://astropy.readthedocs.org/en/stable/install.html)
 for installation help.
+
+Note that, unusually, `triangle` is installed by `pip install triangle_plot`.
 
 [Back to top.](#top)
 
