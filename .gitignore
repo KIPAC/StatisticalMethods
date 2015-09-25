@@ -60,7 +60,7 @@ target/
 *-checkpoint.ipynb
 
 # Data files
-*.FTZ
+#*.FTZ
 
 # Homework
 *omework*
