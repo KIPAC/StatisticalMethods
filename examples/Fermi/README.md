@@ -1,6 +1,6 @@
-# Statistical Applications in Astroparticle Physics:
+## Statistical Applications in Astroparticle Physics:
 
-## Fermi-LAT Data Analysis
+# Fermi-LAT Data Analysis
 
 _Guest Lecturer: Eric Charles (@eacharles - SLAC, Fermi)_
 
