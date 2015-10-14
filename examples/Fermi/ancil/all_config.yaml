@@ -1,0 +1,117 @@
+### Default Analysis Definition
+
+# Target definitions
+targets    : ['bootes_I', 'bootes_II', 'bootes_III', 'canes_venatici_I', 'canes_venatici_II', 'canis_major', 'carina', 'coma_berenices', 'draco', 'fornax', 'hercules', 'leo_I', 'leo_II', 'leo_IV', 'leo_V', 'pisces_II', 'sagittarius', 'sculptor', 'segue_1', 'segue_2', 'sextans', 'ursa_major_I', 'ursa_major_II', 'ursa_minor', 'willman_1']
+
+composite:
+
+  composite: ['bootes_I', 'carina', 'canes_venatici_II', 'coma_berenices', 'draco', 'fornax', 'hercules', 'leo_II', 'leo_IV', 'sculptor', 'segue_1', 'sextans', 'ursa_major_II', 'ursa_minor', 'willman_1']
+  composite_ultrafaint: ['bootes_I', 'canes_venatici_II', 'coma_berenices', 'hercules', 'leo_IV', 'segue_1', 'ursa_major_II', 'willman_1']
+  composite_classical: ['carina', 'draco', 'fornax', 'leo_II', 'sculptor', 'sextans', 'ursa_minor']
+  composite_nosegue: ['bootes_I', 'carina', 'canes_venatici_II', 'coma_berenices', 'draco', 'fornax', 'hercules', 'leo_II', 'leo_IV', 'sculptor', 'sextans', 'ursa_major_II', 'ursa_minor', 'willman_1']
+  composite_nowillman: ['bootes_I', 'carina', 'canes_venatici_II', 'coma_berenices', 'draco', 'fornax', 'hercules', 'leo_II', 'leo_IV', 'sculptor', 'segue_1', 'sextans', 'ursa_major_II', 'ursa_minor']
+
+targetfile: 'dwarfs/dwarfs_extra.yaml'
+profile       : 'nfw'
+template_npix : 1000
+
+# Analysis definition
+emin       : 500.00000
+emax       : 1000000.0
+tmin       : 239557414
+tmax       : 428903014 # 6 years
+radius     : 10
+zmax       : 100
+chatter    : 2
+proj       : 'AIT'
+evclsmin   : 'INDEF' 
+evclass    : 128       
+evtype     : 3
+irfs       : "P8R2_SOURCE_V6"
+ptlike_irfs  : "P7REP_SOURCE_V15"
+
+# Pointlike
+ptlike_emin   : 500.00000
+ptlike_emax   : 500000.00
+binsperdec    : 1
+
+# pyLikelihood
+gtlike_mode     : 'binned'
+gtlike_emin     : 500.00000
+gtlike_emax     : 500000.00
+gtlike_edisp    : true
+gtlike_edisp_disable : ['isodiff','gll_iem_v06']
+enumbins        : 24
+npix            : 100
+allsky_expcube  : True # PRL Comparison
+binsz           : 0.1
+minbinsz        : 0.05
+optimizer       : "MINUIT"
+
+# save intermediate products to output
+# commented out -- save to default
+# null -- write to scratch and discard
+# anything else -- write to that directory
+#savedir         : null
+
+gtlike_joint:
+  evtype: [4,8,16,32]
+  irfs: 
+    - P8R2_SOURCE_V6
+    - P8R2_SOURCE_V6
+    - P8R2_SOURCE_V6
+    - P8R2_SOURCE_V6
+  isodiff: 
+    - /nfs/slac/g/ki/ki20/cta/mdwood/fermi/diffuse/v5r0/iso_P8R2_SOURCE_V6_PSF0_v06.txt
+    - /nfs/slac/g/ki/ki20/cta/mdwood/fermi/diffuse/v5r0/iso_P8R2_SOURCE_V6_PSF1_v06.txt
+    - /nfs/slac/g/ki/ki20/cta/mdwood/fermi/diffuse/v5r0/iso_P8R2_SOURCE_V6_PSF2_v06.txt
+    - /nfs/slac/g/ki/ki20/cta/mdwood/fermi/diffuse/v5r0/iso_P8R2_SOURCE_V6_PSF3_v06.txt
+
+# Likelihood scan
+npts           : 25
+delta          : 5
+
+# Model parameters
+galdiff     : /nfs/slac/g/ki/ki20/cta/mdwood/fermi/diffuse/v5r0/gll_iem_v06.fits
+isodiff     : /nfs/slac/g/ki/ki20/cta/mdwood/fermi/diffuse/v5r0/iso_P8R2_SOURCE_V6_v06.txt
+catalog     :
+  catalog_type : '3FGL'
+  fitsfile   : /nfs/slac/g/ki/ki20/cta/mdwood/fermi/catalogs/gll_psc_v14.fit
+  latextdir  : /nfs/slac/g/ki/ki20/cta/mdwood/fermi/catalogs/Extended_archive_v14
+
+# flag for adding new sources
+modify    : False
+
+free_radius  : 10
+free_roidist : 5
+
+spectra:
+  'uu'     : [ 2, 5, 10, 25, 50, 100, 250, 500, 1000, 2500, 5000, 10000 ]
+  'dd'     : [ 2, 5, 10, 25, 50, 100, 250, 500, 1000, 2500, 5000, 10000 ]
+  #'cc'     : [ 2, 5, 10, 25, 50, 100, 250, 500, 1000, 2500, 5000, 10000 ]
+  'ss'     : [ 2, 5, 10, 25, 50, 100, 250, 500, 1000, 2500, 5000, 10000 ]
+  'bb'     : [    6, 10, 25, 50, 100, 250, 500, 1000, 2500, 5000, 10000 ]
+  #'tt'     : [                   176, 250, 500, 1000, 2500, 5000, 10000 ]
+  'ww'     : [               81, 100, 250, 500, 1000, 2500, 5000, 10000 ]
+  'ee'     : [ 2, 5, 10, 25, 50, 100, 250, 500, 1000, 2500, 5000, 10000 ]
+  'mumu'   : [ 2, 5, 10, 25, 50, 100, 250, 500, 1000, 2500, 5000, 10000 ]
+  'tautau' : [ 2, 5, 10, 25, 50, 100, 250, 500, 1000, 2500, 5000, 10000 ]
+  'pwl'    : [ 2.0 ]
+
+# Data products
+evfile  : /nfs/slac/g/ki/ki20/cta/mdwood/fermi/data/P8_SOURCE_V6/P8_SOURCE_V6_239557414_428903014_z100_r180_gti_ft1.lst
+scfile  : /nfs/slac/g/ki/ki20/cta/mdwood/fermi/data/P8_SOURCE_V4/P8_P301_SOURCE_239557414_428903014_ft2.fits 
+ltcube  : /nfs/slac/g/ki/ki20/cta/mdwood/fermi/data/P8_SOURCE_V6/P8_SOURCE_V6_239557414_428903014_z100_r180_gti_ft1_gtltcube_z100.fits
+
+# Flags for multiple iterations
+seed      : 36
+
+# Pick random ROIs
+randomize :
+  glat : true
+  glon : true
+  jvalue : true
+  dist : 0.5
+
+mc        : false
+
