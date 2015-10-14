@@ -69,9 +69,9 @@ target/
 attic
 
 # Large Fermi data files
-data/test_events_0000.fits
-data/test_scData_0000.fits
-data/draco_ccube.fits
-data/ltcube_6year.fits
-data/draco_bexmap.fits
-data/draco_srcmap.fits
+test_events_0000.fits
+test_scData_0000.fits
+draco_ccube.fits
+ltcube_6year.fits
+draco_bexmap.fits
+draco_srcmap.fits
