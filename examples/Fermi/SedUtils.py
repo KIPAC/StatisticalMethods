@@ -23,10 +23,10 @@ import matplotlib.pyplot as plt
 import LikeFitUtils as lfu
 
 class SedBin:
-    """
+    """ This is a small utility class to look up the log-likelihood for a given flux in an energy bin
     """
     def __init__(self,sedDict):
-        """
+        """ C'tor, takes a results dictionary as defined in the *_sed.yaml file
         """
         self.emin = sedDict["emin"]
         self.emax = sedDict["emax"]
@@ -40,23 +40,23 @@ class SedBin:
 
         
     def __call__(self,fluxVal):
-        """
+        """ Return the log-likelihood for a given flux value
         """ 
         return self.interp(fluxVal)
 
 
     def logLikeFromEFlux(self,efluxVal):
-        """
+        """ Return the log-likelihood for a given energy flux value
         """
         fluxVal = efluxVal / self.emean
         return self.interp(fluxVal)
 
 
 class SED:
-    """
+    """ This is a small utility class to add together the log-likelihoods for several energy bins
     """
     def __init__(self,sedBinList):
-        """
+        """ C'tor, takes a list of results dictionaries as defined in the *_sed.yaml file
         """
         self.binList = []
         self.nBin = len(sedBinList)
@@ -70,7 +70,7 @@ class SED:
         self.binByBinUls = None
 
     def __call__(self,fluxVals):
-        """
+        """ Return the log-likelihood for a spectrum (i.e., a set of flux values for the various energy bins)
         """
         retVal = 0.
         for bin,fluxVal in zip(self.binList,fluxVals):
@@ -83,14 +83,21 @@ class SED:
 
 
     def NLL_func(self,fluxVals):
-        """
+        """ Returns a function of a single normalization paramter that can be passed to a minimizer
+        
+        fluxVals   :   The baseline flux values, we will be fitting for a globlal scale factor w.r.t. these values           
         """
         func = lambda x : self(x*fluxVals)
         return func
 
 
     def Minimize(self,fluxVals,x0):
-        """
+        """ Minimize the negative log-likelihood w.r.t. an overall scale factor, given an input spectrum
+        
+        fluxVals   :   The baseline flux values, we will be fitting for a globlal scale factor w.r.t. these values           
+        x0         :   Initial value for the global scale factor
+
+        returns a scipy.optimize result object
         """
         ftomin = self.NLL_func(fluxVals)
         result = optimize.fmin(ftomin,[x0],full_output=1,disp=0)
@@ -98,7 +105,7 @@ class SED:
 
 
     def BinByBinULs(self):
-        """
+        """ Calculat the 95% CL Upper limits in each energy bin and return them
         """
         if self.binByBinUls is not None:
             return self.binByBinUls
@@ -116,7 +123,13 @@ class SED:
 
 
 def PlotSED(eBins,uls,bandDict=None):
-    """
+    """ Make a plot of the Spectral Energy Distribution.
+    
+    In fact this just plots the values as upper limits
+    
+    eBins    : The energy bin edges
+    uls      : The corresponding upper limits
+    bandDict : An optional dictionary with the expected upper limit quantiles for the Brazil bands
     """
     figure = plt.figure()
     ax = figure.add_subplot(111)
@@ -145,7 +158,12 @@ def PlotSED(eBins,uls,bandDict=None):
 
 
 def PlotLimits(masses,uls,bandDict=None):
-    """
+    """ Make a plot of the upper limits as a function of mass for a DM channel
+    
+    
+    masses   : The mass values (in GeV)
+    uls      : The corresponding upper limits
+    bandDict : An optional dictionary with the expected upper limit quantiles for the Brazil bands
     """
     figure = plt.figure()
     ax = figure.add_subplot(111)
