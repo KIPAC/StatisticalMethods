@@ -36,7 +36,7 @@ class SedBin:
         self.flux = sedDict["flux"]
         self.eflux = sedDict["eflux"]
         self.logLike = sedDict["logLike"]
-        self.interp = interpolate.interp1d(self.flux,self.logLike,bounds_error=False,fill_value=-1e5)
+        self.interp = interpolate.interp1d(self.flux,self.logLike,bounds_error=True,fill_value=-1e5)
 
         
     def __call__(self,fluxVal):
@@ -105,11 +105,11 @@ class SED:
         self.binByBinUls = np.ndarray((self.nBin))
         for i,sedBin in enumerate(self.binList):
             xbounds = (sedBin.interp.x[0],sedBin.interp.x[-1])
-            xinit = np.sqrt(sedBin.interp.x[-1])
-            result = optimize.fmin(sedBin.interp,[xinit],full_output=1,disp=0)
+            xinit = sedBin.interp.x[-1]*sedBin.interp.x[-1]
+            result = optimize.fmin(sedBin,[xinit],full_output=1,disp=0)
             mle = result[0][0]
             nll_min = result[1]
-            ul95 = lfu.SolveForErrorLevel(sedBin.interp,nll_min,1.35,mle,xbounds)
+            ul95 = lfu.SolveForErrorLevel(sedBin,nll_min,-1.35,mle,xbounds)
             self.binByBinUls[i] = ul95
             pass
         return self.binByBinUls
@@ -123,21 +123,23 @@ def PlotSED(eBins,uls,bandDict=None):
     ax.set_xlabel("E [MeV]")
     ax.set_ylabel(r"Energy Flux 95% CL UL [$MeV cm^{-2} s^{-1}$]")
     ax.set_xlim(eBins[0],eBins[-1])
-    ax.set_ylim(1e-12,1e-2)
+    ax.set_ylim(1e-8,1e-4)
     ax.set_xscale('log')
     ax.set_yscale('log',nonposy='clip')
 
     xvals = np.sqrt(eBins[0:-1]*eBins[1:])
     xerr = np.array([xvals-eBins[0:-1],eBins[1:]-xvals])
-    yvals = uls*xvals
-    yerr = np.array([yvals-yvals,yvals])
-    print uls
-    print xvals
-    print yvals
-    print yerr
-   
-    ax.errorbar(xvals, yvals, yerr=yerr, lolims=True, lw=1, ls='none', zorder=1)
-    ax.errorbar(xvals, yvals, xerr=xerr, lw=1.35, ls='none', zorder=2, capsize=0)
+    yvals = xvals*uls
+    yerr = np.array([0.5*yvals,yvals-yvals])
+       
+    if bandDict:   
+        ax.fill_between(xvals,np.array(bandDict['q05']),np.array(bandDict['q95']),color='y',label='2sigma')    
+        ax.fill_between(xvals,np.array(bandDict['q16']),np.array(bandDict['q84']),color='g',label='1sigma')
+        ax.loglog(xvals,np.array(bandDict['q50']),ls='--',color='black',label='Median')
+
+    ax.errorbar(xvals, yvals, yerr=yerr, uplims=True, lw=1, color='black', ls='none', zorder=1)
+    ax.errorbar(xvals, yvals, xerr=xerr, lw=1.35, color='black', ls='none', zorder=2, capsize=0)
+
     return figure,ax
 
 
@@ -154,7 +156,7 @@ def PlotLimits(masses,uls,bandDict=None):
     if bandDict:
         ax.fill_between(masses,np.array(bandDict['q05']),np.array(bandDict['q95']),color='y',label='2sigma')
         ax.fill_between(masses,np.array(bandDict['q16']),np.array(bandDict['q84']),color='g',label='1sigma')
-        ax.loglog(masses,np.array(bandDict['q50']),ls='--',color='black',label='NLL')
+        ax.loglog(masses,np.array(bandDict['q50']),ls='--',color='black',label='Median')
     ax.loglog(masses,uls*1e-26,ls='-',color='r',label='NLL')
     return figure,ax
     
