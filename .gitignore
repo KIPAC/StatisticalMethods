@@ -67,3 +67,12 @@ target/
 
 # Don't look in the attic!
 attic
+
+# Large Fermi data files
+test_events_0000.fits
+test_scData_0000.fits
+draco_ccube.fits
+ltcube_6year.fits
+draco_bexmap.fits
+draco_srcmap.fits
+draco_mcube.fits
