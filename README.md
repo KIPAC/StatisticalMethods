@@ -33,7 +33,9 @@ Our goal is that students taking this course will:
 
 ### Lessons
 
-* **[Work through the lessons online](http://mybinder.org/repo/drphilmarshall/StatisticalMethods)**: [![Binder](http://mybinder.org/badge.svg)](http://mybinder.org/repo/drphilmarshall/StatisticalMethods)
+* **[Work through the lessons online.](http://mybinder.org/repo/drphilmarshall/StatisticalMethods)** Getting the course notebooks online at `binder` can take a few minutes.
+
+<!-- This badge does not always appear - the binder instance of the repo is very temporary indeed! [![Binder](http://mybinder.org/badge.svg)](http://mybinder.org/repo/drphilmarshall/StatisticalMethods) --> 
 
 * [Browse the lessons on GitHub](https://github.com/drphilmarshall/StatisticalMethods/blob/master/index.ipynb)
 
