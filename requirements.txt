@@ -6,7 +6,9 @@ sklearn
 astropy
 corner
 daft
-treecorr
+
+# Does not build at mybinder.org:
+# treecorr
 
 # Standard packages we don't need to install:
 # StringIO
