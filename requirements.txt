@@ -5,7 +5,7 @@ mechanize
 pandas
 seaborn
 # IPython
-__future__
+# __future__
 sklearn
 astropy
 corner
