@@ -1,21 +1,21 @@
 # StringIO
 mechanize
-copy
-matplotlib
+# copy
+# matplotlib
 pandas
 seaborn
-IPython
+# IPython
 __future__
 sklearn
 astropy
 corner
 daft
-numpy
-os
+# numpy
+# os
 # pylab
-scipy
+# scipy
 treecorr
-urllib
+# urllib
 # yaml
 # random
 # csv
