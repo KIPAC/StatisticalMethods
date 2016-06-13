@@ -33,7 +33,7 @@ Our goal is that students taking this course will:
 
 ### Lessons
 
-* [Browse the lessons on GitHub](https://github.com/drphilmarshall/StatisticalMethods/index.ipynb)
+* [Browse the lessons on GitHub](https://github.com/drphilmarshall/StatisticalMethods/blob/master/index.ipynb)
 
 You can help write a glossary of terms used in the lectures [here](doc/Glossary.md).
 
