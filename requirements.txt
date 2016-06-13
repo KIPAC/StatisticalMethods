@@ -1,4 +1,4 @@
-StringIO
+# StringIO
 mechanize
 copy
 matplotlib
