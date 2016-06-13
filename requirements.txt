@@ -12,10 +12,10 @@ corner
 daft
 numpy
 os
-pylab
+# pylab
 scipy
 treecorr
 urllib
-yaml
-random
-csv
+# yaml
+# random
+# csv
