@@ -1,20 +1,23 @@
-# StringIO
+# Custom packages needed by the notebooks:
 mechanize
-# copy
-# matplotlib
 pandas
 seaborn
-# IPython
-# __future__
 sklearn
 astropy
 corner
 daft
+treecorr
+
+# Standard packages we don't need to install:
+# StringIO
+# copy
+# matplotlib
+# IPython
+# __future__
 # numpy
 # os
 # pylab
 # scipy
-treecorr
 # urllib
 # yaml
 # random
