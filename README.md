@@ -33,16 +33,7 @@ Our goal is that students taking this course will:
 
 ### Lessons
 
-* Exploring Data
-* Understanding from Data
-* Inference in Practice: PDF Characterization
-* Inference in Practice: Sampling Techniques
-* Inference in Practice: Coping with Complications 
-* Inference in Practice: Evaluating Models
-* Applications in Astroparticle Physics
-* Applications in Cosmology
-* Machine Learning
-* Project Presenations
+* [Browse the lessons on GitHub](https://github.com/drphilmarshall/StatisticalMethods/index.ipynb)
 
 You can help write a glossary of terms used in the lectures [here](doc/Glossary.md).
 
