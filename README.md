@@ -35,7 +35,7 @@ Our goal is that students taking this course will:
 
 * **[Work through the lessons online.](http://mybinder.org/repo/drphilmarshall/StatisticalMethods)** [![Binder](http://mybinder.org/badge.svg)](http://mybinder.org/repo/drphilmarshall/StatisticalMethods)  
 <!-- This badge does not always appear - the binder instance of the repo is very temporary indeed! --> 
-Getting the course notebooks online at `binder` can take a few minutes - and if you don't see the content you were expecting, that might be because the `binder` copy of the repo needs updating. You can do that yourself by re-entering `drphilmarshall/StatisticalMethods` in the form at [mybinder.org](http://mybinder.org), checking `requirements.txt` and then clicking "make my binder."
+Getting the course notebooks online at `binder` can take a few minutes - and if you don't see the content you were expecting, that might be because the `binder` copy of the repo needs updating. You can do that yourself by re-entering `drphilmarshall/StatisticalMethods` in the form at [mybinder.org](http://mybinder.org), checking `requirements.txt` and then clicking "make my binder." The status of the most recent binder build can be viewed [here](http://mybinder.org/repo/drphilmarshall/StatisticalMethods/status).
  
 
 * [Browse the lessons on GitHub.](https://github.com/drphilmarshall/StatisticalMethods/blob/master/index.ipynb) Fork and clone the repository, and run the notebooks locally.
