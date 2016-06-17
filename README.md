@@ -4,10 +4,10 @@ Course notes and resources for Stanford University graduate lecture course PHYS3
 
 ### Course Description
 
-The course is intended to provide an introduction to modern
-statistical methodology and its applications to problems in
-astrophysics and cosmology.  The course is aimed at graduate students
-intending to do research in astrophysics and cosmology, and we
+This course is intended to provide an introduction to modern
+statistical methodology, and its applications to problems in
+astrophysics and cosmology, and is aimed at graduate students
+intending to do research in this area. We
 strongly encourage most first and second year students working in
 KIPAC to take the course.  Our goal is to provide a background that
 will be directly relevant to the kind of problems that typical KIPAC
