@@ -22,7 +22,7 @@ Classes will be **Tu,Th 3:00-4:20pm in Building 380 Room 381T.**
 
 Each of the 20 sessions will be 80 minutes long, and will include time to do exercises and go through homework.
 
-[Back to PHYS366 home](https://github.com/drphilmarshall/StatisticalMethods/blob/master/README.md)
+[Back to PHYS366 home](https://github.com/KIPAC/StatisticalMethods/blob/master/README.md)
 
 ----
 
@@ -49,7 +49,7 @@ Related courses:
 [PHYSICS 100](https://explorecourses.stanford.edu/search?view=catalog&filter-coursestatus-Active=on&page=0&catalog=&academicYear=&q=PHYSICS+100%3A+%3A+Introduction+to+Observational+and+Laboratory+Astronomy&collapse=) (Introduction to Observational and Laboratory Astronomy) will cover basic practical error analysis, and
 [PHYSICS 363]() (Computational Cosmology and Astrophysics) will cover some research making use of techniques introduced in PHYS 366).
 
-[Back to PHYS366 home](https://github.com/drphilmarshall/StatisticalMethods/blob/master/README.md)
+[Back to PHYS366 home](https://github.com/KIPAC/StatisticalMethods/blob/master/README.md)
 
 ----
 
@@ -73,14 +73,14 @@ Projects will be presented during the final class on March 16,
 and final written reports will be due on March 30.
 The final project will contribute 35% of the final grade.
 
-[Back to PHYS366 home](https://github.com/drphilmarshall/StatisticalMethods/blob/master/README.md)
+[Back to PHYS366 home](https://github.com/KIPAC/StatisticalMethods/blob/master/README.md)
 
 ----
 
 ## Homework
 
 [Familiarity with
-GitHub](https://github.com/drphilmarshall/StatisticalMethods/blob/master/doc/GettingStarted.md#github)
+GitHub](https://github.com/KIPAC/StatisticalMethods/blob/master/doc/GettingStarted.md#github)
 will be rapidly generated early in the course, and then assumed. You'll
 need to fork the homework repo, and clone it to your local machine. If
 you cannot navigate to [the homework
@@ -88,7 +88,7 @@ repository](https://github.com/drphilmarshall/PHYS366-Homework-2017) to
 fork it, that's because you have not been given read access to it yet.
 <!-- To request
 this, please come and introduce yourself to your teachers and classmates
-at [the sign-up issue thread](https://github.com/drphilmarshall/StatisticalMethods/issues/25).-->
+at [the sign-up issue thread](https://github.com/KIPAC/StatisticalMethods/issues/25).-->
 
 #### Getting your Homework Assignments:
 
@@ -142,4 +142,4 @@ These attempts do not need to be complete!  You should be able to show
 what approach you took, and then either what solution you got or
 describe where you got stuck.
 
-[Back to PHYS366 home](https://github.com/drphilmarshall/StatisticalMethods/blob/master/README.md)
+[Back to PHYS366 home](https://github.com/KIPAC/StatisticalMethods/blob/master/README.md)

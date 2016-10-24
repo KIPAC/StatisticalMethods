@@ -2,7 +2,7 @@
 # Doing Homework via GitHub
 
 We'll go through these instructions on the first day of class.
-[Familiarity with GitHub](https://github.com/drphilmarshall/StatisticalMethods/blob/master/doc/GettingStarted.md#github) will be rapidly generated and then assumed.
+[Familiarity with GitHub](https://github.com/KIPAC/StatisticalMethods/blob/master/doc/GettingStarted.md#github) will be rapidly generated and then assumed.
 
 #### Homework Schedule:
 There will be three homeworks in the 5-week course, due on Tuesdays
@@ -14,22 +14,22 @@ before class (Sept 29, Oct 6, Oct 13).
 You'll need to fork the homework repo, and clone it to your local machine.
 If you cannot navigate to [the homework repository](https://github.com/drphilmarshall/PHYS366-Homework-2015) to fork it, that's because you have not been given read access to it yet. To request
 this, please come and introduce yourself to your teachers and classmates
-at [the sign-up issue thread](https://github.com/drphilmarshall/StatisticalMethods/issues/25).
+at [the sign-up issue thread](https://github.com/KIPAC/StatisticalMethods/issues/25).
 
 
 #### Getting your assignments:
 
 Notebooks containing homework assignments will be uploaded to the
 [private homework
-repository](https://github.com/drphilmarshall/PHYS366-Homework-2015)
+repository](https://github.com/KIPAC/PHYS366-Homework-2015)
 as we go. You'll need to fork this repo, and then `git clone` to your machine so that you
-can work on them. 
+can work on them.
 
-Each week, new assignments will appear, in the "base" repository. 
+Each week, new assignments will appear, in the "base" repository.
 To get them, you will need to be able to pull directly from this repository - which
 means that you need to connect to the base repo by adding it as another "remote."
 
-To tell `git` that you want to connect to the 
+To tell `git` that you want to connect to the
 base repository, do:
 ```bash
 git remote add base git@github.com:drphilmarshall/PHYS366-Homework-2015.git

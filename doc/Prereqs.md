@@ -21,4 +21,4 @@ Related courses:
 [PHYSICS 100](https://explorecourses.stanford.edu/search?view=catalog&filter-coursestatus-Active=on&page=0&catalog=&academicYear=&q=PHYSICS+100%3A+%3A+Introduction+to+Observational+and+Laboratory+Astronomy&collapse=) (Introduction to Observational and Laboratory Astronomy) will cover basic practical error analysis, and 
 [PHYSICS 363]() (Computational Cosmology and Astrophysics) will cover some research making use of techniques introduced in PHYS 366).
 
-[Back to PHYS366 home](https://github.com/drphilmarshall/StatisticalMethods/blob/master/README.md)
+[Back to PHYS366 home](https://github.com/KIPAC/StatisticalMethods/blob/master/README.md)

@@ -1,7 +1,7 @@
 # <a name="top"></a>Getting Started
 
 We encourage all PHYS366 students, **especially first year students**, to consider
-attending all or part of the [KIPAC Computing Boot Camp](https://kipac.github.io/BootCamp/), which will be held during the first week of class, Sept 23, 24, 25.
+attending all or part of the [KIPAC Computing Boot Camp](https://kipac.github.io/BootCamp/), which will have been held early on in the year.
 
 We will be using [Jupyter Notebooks](https://jupyter.org/)
 with [IPython](http://ipython.org/)
@@ -71,7 +71,7 @@ In a new shell, and the top level directory of the repository, try
 ```bash
 jupyter notebook &
 ```
-You should see a new tab open in your web browser, and a display of your file system (starting from your current directory) appear. 
+You should see a new tab open in your web browser, and a display of your file system (starting from your current directory) appear.
 
 **NB. It's important you start the notebook from the top level directory, so that the links between the notebooks work correctly.** If you don't do this, you will get a "404" error each time you click on one of the links to another notebook.
 ```bash
@@ -85,7 +85,7 @@ Good Google search queries are "pip install jupyter" and
 "miniconda install jupyter".
 Also many of the KIPAC grad students have been through this before,
 and can help you out if you ask them nicely.
-If you still can't figure out what's going wrong, send us an [issue](https://github.com/drphilmarshall/StatisticalMethods/issues).
+If you still can't figure out what's going wrong, send us an [issue](https://github.com/KIPAC/StatisticalMethods/issues).
 
 [Back to top.](#top)
 
@@ -135,13 +135,13 @@ class for various exercises. Meanwhile, your homework assignments will
 be made available at [this private
 repository](https://github.com/drphilmarshall/PHYS366-Homework-2015).
 You will need local copies of both these repos to be able to do the
-course work. If you got a 404 Error from the homework repo link, you can request read access by identifying yourself at [this issue thread](https://github.com/drphilmarshall/StatisticalMethods/issues/25) or telling us your GitHub username in class.
+course work. If you got a 404 Error from the homework repo link, you can request read access by identifying yourself at [this issue thread](https://github.com/KIPAC/StatisticalMethods/issues/25) or telling us your GitHub username in class.
 
 #### Fork the main repo, and clone it to your local machine:
 
-On the [PHYS366 GitHub repository site](https://github.com/drphilmarshall/StatisticalMethods), make sure you are logged in and you should see a button in the top righthand corner marked "Fork". Press this button.
+On the [PHYS366 GitHub repository site](https://github.com/KIPAC/StatisticalMethods), make sure you are logged in and you should see a button in the top righthand corner marked "Fork". Press this button.
 
-A fork is a copy (a "clone") of a repository, that belongs to you. You can edit the files in it and run the code, either on its GitHub page, or on your local machine. (If all this talk of "forks", "clones", "git" etc is beginning to sound scary, you might want to have a read of [this guide to getting started with git and GitHub](https://github.com/drphilmarshall/GettingStarted#top), and perhaps listen to Phil explaining (hopefully) everything you need to know in [this video](https://www.youtube.com/watch?v=2g9lsbJBPEs).)
+A fork is a copy (a "clone") of a repository, that belongs to you. You can edit the files in it and run the code, either on its GitHub page, or on your local machine. (If all this talk of "forks", "clones", "git" etc is beginning to sound scary, you might want to have a read of [this guide to getting started with git and GitHub](https://github.com/KIPAC/GettingStarted#top), and perhaps listen to Phil explaining (hopefully) everything you need to know in [this video](https://www.youtube.com/watch?v=2g9lsbJBPEs).)
 
 To get your new files onto your laptop, you need to make a local copy, with (on the command line):
 ```bash
@@ -167,7 +167,7 @@ repository](https://github.com/drphilmarshall/PHYS366-Homework-2015)
 to fork it, that's because you have not been given read access to it
 yet. To request this, please come and introduce yourself to your
 teachers and classmates at [the sign-up issue
-thread](https://github.com/drphilmarshall/StatisticalMethods/issues/25).
+thread](https://github.com/KIPAC/StatisticalMethods/issues/25).
 
 #### Edit the notebooks, and check in your work:
 
@@ -198,7 +198,7 @@ and the required `python` packages within your home space.
 ### <a name="firstclass"></a>Before the First Class
 
 * If you have a laptop computer, that is running `git` and IPython notebooks, please do bring it to class so you can
-work through the in-class exercises. If you are not set up, don't worry: just let us know if you need help [via the issues](https://github.com/drphilmarshall/StatisticalMethods/issues) and then come to class ready to pair up with someone who has everything up and running.
+work through the in-class exercises. If you are not set up, don't worry: just let us know if you need help [via the issues](https://github.com/KIPAC/StatisticalMethods/issues) and then come to class ready to pair up with someone who has everything up and running.
 
 * Make sure you have `git clone`'d this repository, and have The Plan notebook `lessons/0.ThePlan.ipynb` open and running locally (that is, not just viewing it on GitHub).
 

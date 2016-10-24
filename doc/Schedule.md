@@ -10,4 +10,4 @@ Tues, Thur 3-4:20pm
 Hewlett 103
 
 
-[Back to PHYS366 home](https://github.com/drphilmarshall/StatisticalMethods/blob/master/README.md)
+[Back to PHYS366 home](https://github.com/KIPAC/StatisticalMethods/blob/master/README.md)
