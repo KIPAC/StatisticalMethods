@@ -1,12 +1,24 @@
 # Information for Stanford Students
 
+From the course handbook:
+```
+PHYSICS 366: Special Topics in Astrophysics: Statistical Methods
 
+Existing and emerging statistical techniques and their application to astronomical surveys and cosmological data analysis. Topics covered will include statistical frameworks (Bayesian inference and frequentist statistics), numerical methods including Markov Chain Monte Carlo, and machine learning applied to classification and regression. Hands on activities based on open-source software in python. Recommended prerequisites: PHYSICS 260 and 261, or equivalent. Familiarity with Python coding and basic statistics at level of STATS 116. This course runs for the first ten weeks of the quarter.
+
+Schedule for PHYSICS 366
+2016-2017 Winter
+PHYSICS 366 | 2 units | Class # 32621 | Section 01 | Grading: Letter or Credit/No Credit | LEC
+01/09/2017 - 03/17/2017 Tu, Thu 3:00 PM - 4:50 PM at Building 380 Room 381T with Marshall, P. (PI) and Mantz, A.
+Instructors: Marshall, P. (PI) and Mantz, A.
+Notes: 2-unit, 10-week special topics course.
+```
 
 ## Class Schedule and Location
 
-This is a ten week, 20 lesson, 2-credit course, running from tuesday January 10 through Thursday March 16, 2017.
+This is a ten week, 20 lesson, 2-credit course, running from Tuesday January 10 through Thursday March 16, 2017.
 
-Classes will be Tu,Th 3:00-4:20pm in Building 380 Room 381T.
+Classes will be **Tu,Th 3:00-4:20pm in Building 380 Room 381T.**
 
 Each of the 20 sessions will be 80 minutes long, and will include time to do exercises and go through homework.
 
