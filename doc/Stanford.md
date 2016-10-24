@@ -11,7 +11,7 @@ Schedule for PHYSICS 366
 PHYSICS 366 | 2 units | Class # 32621 | Section 01 | Grading: Letter or Credit/No Credit | LEC
 01/09/2017 - 03/17/2017 Tu, Thu 3:00 PM - 4:50 PM at Building 380 Room 381T with Marshall, P. (PI) and Mantz, A.
 Instructors: Marshall, P. (PI) and Mantz, A.
-Notes: 2-unit, 10-week special topics course.
+Notes: 2-unit, 10-week, 20-session special topics course.
 ```
 
 ## Class Schedule and Location
