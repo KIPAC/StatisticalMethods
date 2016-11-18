@@ -14,7 +14,8 @@ def bayesDemo(alpha0, beta0, N, showLikelihood=False):
     mu = np.linspace(0.0, np.max([10.0, N+5.0*np.sqrt(N)]), 100)
     prior = GammaPDF(mu, alpha0, beta0)
     like = st.poisson.pmf(N,mu)
-    post = GammaPDF(mu, alpha0+N, beta0+1)
+    postpar = (alpha0+N, beta0+1)
+    post = GammaPDF(mu, postpar[0], postpar[1])
     postLine, = plt.plot(mu,post)
     priorLine, = plt.plot(mu,prior)
     if showLikelihood:
@@ -25,4 +26,5 @@ def bayesDemo(alpha0, beta0, N, showLikelihood=False):
         plt.legend((priorLine, dataLine, postLine), ('Prior', 'Measurement', 'Posterior'), fontsize='x-large')
     plt.xlabel(r'$\mu$', fontsize=22)
     plt.ylabel('density', fontsize=22)
+    return postpar
 
