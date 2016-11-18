@@ -1,30 +1,26 @@
-import matplotlib.pyplot as plt
-plt.rc('text', usetex=True)
-plt.rcParams['xtick.labelsize'] = 'x-large'
-plt.rcParams['ytick.labelsize'] = 'x-large'
-import numpy as np
-from scipy.special import gamma as Gamma
-import scipy.stats as st
+from matplotlib import rc
+import daft
 
-# scipy.stat's implementation of the Gamma distribution is ridiculous
-def GammaPDF(x,a,b):
-    return b**a * x**(a-1.0) * np.exp(-b*x) / Gamma(a)
+rc("font", family="serif", size=12)
+rc("text", usetex=True)
 
-def bayesDemo(alpha0, beta0, N, showLikelihood=False):
-    mu = np.linspace(0.0, np.max([10.0, N+5.0*np.sqrt(N)]), 100)
-    prior = GammaPDF(mu, alpha0, beta0)
-    like = st.poisson.pmf(N,mu)
-    postpar = (alpha0+N, beta0+1)
-    post = GammaPDF(mu, postpar[0], postpar[1])
-    postLine, = plt.plot(mu,post)
-    priorLine, = plt.plot(mu,prior)
-    if showLikelihood:
-        likeLine, = plt.plot(mu,like)
-        plt.legend((priorLine, likeLine, postLine), ('Prior', 'Likelihood', 'Posterior'))
-    else:
-        dataLine, = plt.plot([N]*2, [0.0, np.max(post)*1.1], '--')
-        plt.legend((priorLine, dataLine, postLine), ('Prior', 'Measurement', 'Posterior'), fontsize='x-large')
-    plt.xlabel(r'$\mu$', fontsize=22)
-    plt.ylabel('density', fontsize=22)
-    return postpar
+pgm = daft.PGM([2.4, 1.65], observed_style="inner")
+pgm.add_node(daft.Node("alpha", r"$\alpha$", 0.25, 0.25, fixed=True))
+pgm.add_node(daft.Node("beta", r"$\beta$", 0.25, 1.25, fixed=True))
+pgm.add_node(daft.Node("mu", r"$\mu$", 1.0, 0.75))
+pgm.add_node(daft.Node("N", r"$N$", 2.0, 0.75, observed=True))
+pgm.add_edge("alpha", "mu")
+pgm.add_edge("beta", "mu")
+pgm.add_edge("mu", "N")
+pgm.render()
+pgm.figure.savefig("bayes_poissoneg_pgm.png", dpi=200)
+
+pgm = daft.PGM([2.4, 1.65], observed_style="inner")
+pgm.add_node(daft.Node("prior", "prior", 0.25, 0.75, fixed=True))
+pgm.add_node(daft.Node("mu", r"$\mu$", 1.0, 0.75))
+pgm.add_node(daft.Node("N", r"$N$", 2.0, 0.75, observed=True))
+pgm.add_edge("prior", "mu")
+pgm.add_edge("mu", "N")
+pgm.render()
+pgm.figure.savefig("bayes_poissoneg_pgm0.png", dpi=200)
 
