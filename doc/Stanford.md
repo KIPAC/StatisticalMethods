@@ -39,7 +39,6 @@ Projects will be presented during the final class on March 16,
 and final written reports will be due on March 30.
 The final project will contribute 35% of the final grade.
 
-----
 
 ## Homework
 
