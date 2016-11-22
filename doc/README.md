@@ -1,6 +1,6 @@
 # README (general)
 
-Stanford PHYSICS 366 students should see the [README_Stanford.md](doc/README_Stanford.md) document in addition to the information below.
+Stanford PHYSICS 366 students should see the [Stanford.md](doc/Stanford.md) document in addition to the information below.
 
 Everyone should see the [Getting Started](doc/GettingStarted.md) document to set up their computing environment.
 
