@@ -15,14 +15,14 @@ Notes: 2-unit, 10-week, 20-session special topics course.
 ```
 
 See below for
-* Class Schedule and Location
-* Course Requirements
-* Communication
-* Homework Guidelines
-* Final Project Guidelines
-* Computing
+* [Class Schedule and Location](#whenwhere)
+* [Course Requirements](#require)
+* [Communication](#comm)
+* [Homework Guidelines](#hw)
+* [Final Project Guidelines](#projects)
+* [Computing](#computing)
 
-## Class Schedule and Location
+## <a name="whenwhere"></a>Class Schedule and Location
 
 This is a ten week, 20 lesson, 2-credit course, running from Tuesday January 10 through Thursday March 16, 2017.
 
@@ -30,7 +30,7 @@ Classes will be **Tu,Th 3:00-4:20pm in Building 380 Room 381T.**
 
 Each of the 20 sessions will be 80 minutes long, and will include time to do exercises and go through homework.
 
-## Course Requirements
+## <a name="require"></a>Course Requirements
 
 1. **Class Participation:**
 This is intended to be a hands-on, participatory course, so regular attendance
@@ -47,13 +47,13 @@ Projects will be presented during the final class on March 16,
 and final written reports will be due on March 30.
 The final project will contribute 35% of the final grade.
 
-## Communication
+## <a name="comm"></a>Communication
 
 Outside of class, we will make any important annoucements through the "issues" of the homework GitHub repository (see below). This means that you must "watch" the HW repo by clicking the Watch (eyeball) button on its main GitHub page. Also, double-check your GitHub notification preferences to make sure that you'll get emails or otherwise be notified about repositories you're watching. The issues can also be used to ask us questions or raise issues (!) related to the course.
 
 We also have a [Slack](http://slack.com) team set up for the course, which you can use use to communicate with other students or with the instructors if you wish. Bug one of us if you haven't been invited to join this team by the second week of class.
 
-## Homework Guidlines
+## <a name="hw"></a>Homework Guidlines
 
 Each assignment will consist of one relatively short exercise and one more involved problem.
 We discuss solutions in class on the day that homeworks are due.
@@ -101,7 +101,7 @@ When you're finished, and your fork is up to date, submit a "pull request" from 
 
 Your solutions themselves obviously need to be in some digital form. The only restriction on format is that they need to be in a form that we can see without installing special software - typically something like PDF, Jupyter notebook or plain text (for code). If your solutions involve multiple files, you might want to include a README.md to explain what each one is and where we should be looking.
 
-## Final Project Guidelines
+## <a name="projects"></a>Final Project Guidelines
 
 Projects will be presented during the final class on March 16, and final written reports will be due on March 30. Students are encouraged to work in groups and, unlike homeworks, there will be only one presentation and one report per group. However, we expect the ambition of the project, and consequently the length of the presentation and write-up, to reflect the number of people working on it.
 
@@ -137,7 +137,7 @@ including conclusions of what worked well, and what did not.
 
 2. The written report will be submitted in the same manner as homework assignments, and should comprehensively cover the points above. The report should be written using LaTeX (a markup language used to produce most physics publications). If you've never used LaTeX before, you will soon enough, so this is as good a time as any to learn; we will provide a template to get you started. Your submission should include your LaTeX source and supporting files (e.g. figures) as well as a compiled PDF of your report. We'll use the source files to combine everyone's reports into a single document immortalizing your accomplishments.
 
-## Computing
+## <a name="computing"></a>Computing
 
 Likely it will easiest for you to do computing on either your own system or one provided by your lab. If this doesn't work for you, there is a Stanford-wide unix system accessible to all
 Stanford students documented [here](https://itservices.stanford.edu/service/sharedcomputing), including a "Getting Started" if you are unfamiliar with unix. Note
