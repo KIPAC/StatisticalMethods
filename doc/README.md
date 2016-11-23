@@ -1,4 +1,4 @@
-# README (general)
+# About this course
 
 Stanford PHYSICS 366 students should see the [Stanford.md](Stanford.md) document in addition to the information below.
 
