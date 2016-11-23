@@ -32,8 +32,8 @@ This course will be mostly self-contained, but at the beginning of each chunk we
 These are mostly drawn from the following sources:
 * **[MacKay "Information Theory, Inference and Learning Algorithms"](http://www.inference.phy.cam.ac.uk/mackay/itprnn/book.html)** (free download)
 * **[Ivezic et al. "Statistics, Data Mining and Machine Learning in Astronomy"](http://www.astroml.org/)**
-* **[Gelman et al. "Bayesian Data Analysis"](http://www.stat.columbia.edu/~gelman/book/)**
-* **Ross "A First Course in Probability"**
+* **[Gelman et al. "Bayesian Data Analysis"](http://www.stat.columbia.edu/~gelman/book/)** (2nd ed.)
+* **Ross "A First Course in Probability"** (7th ed.)
 * **Fishman "A First Course in Monte Carlo"**
 
 ## <a name="org"></a>Organization
