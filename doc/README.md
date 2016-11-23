@@ -4,13 +4,18 @@ Stanford PHYSICS 366 students should see the [Stanford.md](Stanford.md) document
 
 Everyone should see the [Getting Started](GettingStarted.md) document to set up their computing environment.
 
-## Course Description
+* [Course Description](#descrip)
+* [Prerequisites](#prereq)
+* [Textbooks](#books)
+* [Organization](#org)
+
+## <a name="descrip"></a>Course Description
 
 Existing and emerging statistical techniques and their application to astronomical surveys and cosmological data analysis. Topics covered will include statistical frameworks (Bayesian inference and frequentist statistics), numerical methods including Markov Chain Monte Carlo, and machine learning applied to classification and regression. Hands on activities based on open-source software in python.
 
 The course is aimed at graduate students intending to do research in astrophysics and cosmology, although the content is broadly applicable to statistical data analysis.
 
-## Prerequisites
+## <a name="prereq"></a>Prerequisites
 
 The following background is recommended.
 
@@ -21,7 +26,7 @@ old notes available [here](http://statweb.stanford.edu/~susan/courses/s116/)) or
 
 2. Basic familiarity with writing code in Python, or a burning desire to learn quickly. No Python knowledge is needed for the first few lessons, but, this being a hands-on course, the amount of code and coding increases quickly after that. It's of course possible to do the various exercises using some other language or environment; we will stick with Python for consistency.
 
-## Textbooks
+## <a name="books"></a>Textbooks
 
 This course will be mostly self-contained, but at the beginning of each chunk we list some opportunities for additional reading.
 These are mostly drawn from the following sources:
@@ -31,7 +36,7 @@ These are mostly drawn from the following sources:
 * **Ross "A First Course in Probability"**
 * **Fishman "A First Course in Monte Carlo"**
 
-## Organization
+## <a name="org"></a>Organization
 
 The content of this course is divided thematically into "chunks of stuff", each of which resides in a Jupyter Notebook (`.ipynb`) file in the `chunks` folder of this repository.
 These notebooks serve dual purposes
