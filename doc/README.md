@@ -19,7 +19,7 @@ Previous exposure to these subjects at the undergraduate level in statistics (e.
 old notes available [here](http://statweb.stanford.edu/~susan/courses/s116/)) or physics
 (undergraduate statistical mechanics and/or quantum mechanics) courses will be helpful.
 
-2. Basic familiarity with writing code in Python, or a burning desire to learn quickly.
+2. Basic familiarity with writing code in Python, or a burning desire to learn quickly. No Python knowledge is needed for the first few lessons, but, this being a hands-on course, the amount of code and coding increases quickly after that. It's of course possible to do the various exercises using some other language or environment; we will stick with Python for consistency.
 
 ## Textbooks
 
