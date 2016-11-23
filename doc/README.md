@@ -1,8 +1,8 @@
 # README (general)
 
-Stanford PHYSICS 366 students should see the [Stanford.md](doc/Stanford.md) document in addition to the information below.
+Stanford PHYSICS 366 students should see the [Stanford.md](Stanford.md) document in addition to the information below.
 
-Everyone should see the [Getting Started](doc/GettingStarted.md) document to set up their computing environment.
+Everyone should see the [Getting Started](GettingStarted.md) document to set up their computing environment.
 
 ## Course Description
 
@@ -38,9 +38,9 @@ These notebooks serve dual purposes
 
 1. In class, we use the RISE extension for Jupyter to display them as slides.
 2. Each notebook can also be read through directly through a web browser (using GitHub's rendering engine) or interacted with on the user's own machine through Jupyter Notebook.
-See [Getting Started](doc/GettingStarted.md).
+See [Getting Started](GettingStarted.md).
 
 Each chunk is a combination of lecture material, worked examples, demos (using Python) and exercises.
 Their length varies; we expect individual chunks to take between 20 and (at most) 80 minutes of class time.
 Bonus exercises (that we typically don't expect to get to during class) often appear at the end of a notebook.
-There is a logical order to the chunks, reflected in their file names and in the [Schedule](doc/Schedule.md) document.
+There is a logical order to the chunks, reflected in their file names and in the [Schedule](Schedule.md) document.
