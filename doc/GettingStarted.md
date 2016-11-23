@@ -17,6 +17,7 @@ GitHub too.
 * [Git and GitHub](#github)
 * [IPython Notebooks](#ipynb)
 * [Python Packages](#packages)
+* [Guidlines for Keeping Notebooks in Git](#gitnote)
 
 ## <a name="github"></a>Git and GitHub
 
@@ -140,3 +141,13 @@ pip install astropy
 If neither of these works for `astropy`, please
 see [their website](http://astropy.readthedocs.org/en/stable/install.html)
 for installation help.
+
+## <a name="gitnote"></a>Guidlines for Keeping Notebooks in Git
+
+This section is mainly a reminder for us, but might also be useful information for those hoping to avoid conflicts when git pulling and pushing.
+
+Jupyter notebooks are fundamentally a text-based format, and thus relatively straightforward to difference between versions. This breaks down when graphics are embedded within a notebook, however. In general, cell outputs are more difficult to difference than "clean" notebooks, although purely text outputs shouldn't be too bad.
+
+To minimize the possibility of conflicts, we will attempt to obey the following rule ourselves: *Only check in notebooks that have been cleared of all outputs.* Static images may still be included via html within markdown, but any interactively produced graphics or text outputs will be missing.
+
+We will also endeavor not to update or fix notebooks once they have been covered in class, in case people have been taking notes in their local copies. In principle, this should not cause any problems as long as your notes are added in separate cells (and we abide by the italicized rule above). To be safe, however, *we recommend that students not take notes in the original version-controlled file* - either make a copy or take notes some other way. This is especially true given that individual files may change significantly or even disappear from year to year.
