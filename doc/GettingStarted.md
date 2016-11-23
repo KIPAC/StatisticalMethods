@@ -32,6 +32,8 @@ A fork is a copy (a "clone") of a repository, within GitHub, that belongs to you
 
 While viewing the GitHub repository that you want to fork, make sure you are logged in, and you should see a button in the top righthand corner marked "Fork". Click this button. Ta-daa! You have your own copy of the repository, hosted at GitHub.
 
+In some circumstances, it seems that GitHub will automatically have you "watching" previous forks of the repo by others. Go ahead and unwatch them, if you want to avoid the associated notifications.
+
 ### Cloning a repo
 
 To get a repo onto your local system, you need to clone it with the command
