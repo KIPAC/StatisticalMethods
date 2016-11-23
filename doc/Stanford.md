@@ -54,7 +54,7 @@ We encourage students to collaborate on solving the assigned problems, and even 
 ### Mechanics
 
 Homeworks will be distributed and collected through a [private GitHub repository]((https://github.com/drphilmarshall/PHYS366-Homework-2017)) (separate from this one) which only PHYSICS 366 instructors and students can access.
-If you cannot navigate to the link above, that's because you have not been given read access to it yet. You will need to create a GitHub account for yourself (if you don't already have one) and provide one of the instructors with your user name so that you can be added. Once you have access, you will need to fork the HW repo and then clone the fork to your local machine (see [GettingStarted](doc/GettingStarted.md)).
+If you cannot navigate to the link above, that's because you have not been given read access to it yet. You will need to create a GitHub account for yourself (if you don't already have one) and provide one of the instructors with your user name so that you can be added. Once you have access, you will need to fork the HW repo and then clone the fork to your local machine (see [GettingStarted](GettingStarted.md)).
 
 #### Getting assignments
 
@@ -84,3 +84,7 @@ Use `git add yourfolder`, `git commit` and `git push origin master` to upload th
 When you're finished, and your fork is up to date, submit a "pull request" from your fork to the base repository. This notifies us that you would like to merge your solutions into the base repository, which we can do after verifying that doing so is safe (e.g. no important files will be overwritten, which should be the case if you've followed these instructions).
 
 ## Final project
+
+Projects will be presented during the final class on March 16, and final written reports will be due on March 30. Students are encouraged to work in groups and, unlike homeworks, there will be only one presentation and one report per group. However, we expect the ambition of the project, and consequently the length of the presentation and write-up, to reflect the number of people working on it.
+
+
