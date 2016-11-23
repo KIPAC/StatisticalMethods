@@ -14,6 +14,13 @@ Instructors: Marshall, P. (PI) and Mantz, A.
 Notes: 2-unit, 10-week, 20-session special topics course.
 ```
 
+See below for
+* Class Schedule and Location
+* Course Requirements
+* Homework Guidelines
+* Final Project Guidelines
+* Computing
+
 ## Class Schedule and Location
 
 This is a ten week, 20 lesson, 2-credit course, running from Tuesday January 10 through Thursday March 16, 2017.
@@ -40,7 +47,7 @@ and final written reports will be due on March 30.
 The final project will contribute 35% of the final grade.
 
 
-## Homework
+## Homework Guidlines
 
 Each assignment will consist of one relatively short exercise and one more involved problem.
 We discuss solutions in class on the day that homeworks are due.
@@ -49,7 +56,7 @@ Each student will be responsible for presenting at least one solution (class siz
 The student presenting a given problem will be determined no later than the actual assignment of the problem, i.e. a week in advance.
 You should approach these presentations as though you were giving a very short talk (probably something like 5-10 minutes) at a conference; in other words, put a reasonable amount of effort into organizing your solutions and making them presentable. Like any other class discussion, presenting and discussing homework solutions is part of the "class participation" aspect of the course.
 
-We encourage students to collaborate on solving the assigned problems, and even on the presentation material if they wish. A given actual presentation is, however, ultimately the responsibility of one student.
+We encourage students to collaborate on solving the assigned problems, and even on the presentation material if they wish. A given presentation is, however, ultimately the responsibility of one student.
 
 ### Mechanics
 
@@ -83,8 +90,42 @@ Use `git add yourfolder`, `git commit` and `git push origin master` to upload th
 
 When you're finished, and your fork is up to date, submit a "pull request" from your fork to the base repository. This notifies us that you would like to merge your solutions into the base repository, which we can do after verifying that doing so is safe (e.g. no important files will be overwritten, which should be the case if you've followed these instructions).
 
-## Final project
+## Final Project Guidelines
 
 Projects will be presented during the final class on March 16, and final written reports will be due on March 30. Students are encouraged to work in groups and, unlike homeworks, there will be only one presentation and one report per group. However, we expect the ambition of the project, and consequently the length of the presentation and write-up, to reflect the number of people working on it.
 
+The timeline for projects is
 
+* First ~half of the course: brainstorm ideas
+* Week 6 *at the latest*: arrange to pitch your idea to Phil and/or Adam. We'll give you feedback as to whether the content and scope are appropriate. The homework due this week will include writing a brief abstract describing your project.
+* Weeks 6-10: work on the project with your teammates.
+* March 16: presentations
+* By March 30: turn in written report
+
+The purpose of these projects is to apply what you've learned in the course (or go beyond it) to a real or realistic data analysis problem. The problem may be from your own research, although it need not be.
+
+You do not have to limit yourselves to projects that can be fully completed in just a few weeks. Especially if the project is relevant to your research, it's fine to pitch a more ambitious project and not reach the end of it during the course. However, it should be possible to present some progress and understanding after a few weeks, even if the inferences are limited to simulated data and/or a simplified version of the full problem.
+
+### Requirements
+
+We anticipate significant variety in the projects people pursue, but the following elements are broadly required in the presentations and reports.
+
+* A brief introduction to the data being analyzed.
+* A discussion of the model you are investigating, including a cartoon
+showing its parameters, and a list of the assumptions you make (in some form).
+* A probabilistic graphical model, accompanied by the probability expressions that go with it.
+* A description of any approximations you make in deviating from the
+probability theory you outline.
+* Visualisations of your inferences, including verification of convergence etc.
+* Discussion of how you would, given more time, extend this analysis -
+including conclusions of what worked well, and what did not.
+
+### Deliverables
+
+1. A presentation to be delivered in the final class meeting. This should be pitched at a level understandable to your classmates, and cover the required points above. The time available will depend on the class size, but typically we expect about 10 minutes minimum per project, or about 5 minutes per team member (if there are more than two), with 5 minutes for questions afterwards.
+
+2. The written report will be submitted in the same manner as homework assignments, and should comprehensively cover the points above. The report should be written using LaTeX (a markup language used to produce most physics publications). If you've never used LaTeX before, you will soon enough, so this is as good a time as any to learn; we will provide a template to get you started. Your submission should include your LaTeX source and supporting files (e.g. figures) as well as a compiled PDF of your report. We'll use the source files to combine everyone's reports into a single document immortalizing your accomplishments.
+
+## Computing
+
+*todo*
