@@ -128,4 +128,10 @@ including conclusions of what worked well, and what did not.
 
 ## Computing
 
-*todo*
+Likely it will easiest for you to do computing on either your own system or one provided by your lab. If this doesn't work for you, there is a Stanford-wide unix system accessible to all
+Stanford students documented [here](https://itservices.stanford.edu/service/sharedcomputing), including a "Getting Started" if you are unfamiliar with unix. Note
+that the appropriate cluster to use is `corn` (interactive use,
+including compute-intensive tasks). These systems have `git` and
+`python` installed, but (as of 2015) appear to have an old version of `notebook`,
+so you should follow the instructions above for installing `miniconda`
+and the required `python` packages within your home space.
