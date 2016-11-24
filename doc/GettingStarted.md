@@ -1,7 +1,7 @@
 # <a name="top"></a>Getting Started
 
-We encourage all PHYS366 students, **especially first year students**, to consider
-attending all or part of the [KIPAC Computing Boot Camp](https://kipac.github.io/BootCamp/), which will have been held early on in the year.
+We encourage all PHYS366 students, especially first year students, to 
+attend all or part of the [KIPAC Computing Boot Camp](https://kipac.github.io/BootCamp/), which is held at the beginning of the academic year.
 
 We will be using [Jupyter Notebooks](https://jupyter.org/)
 with [IPython](http://ipython.org/)
@@ -151,3 +151,10 @@ Jupyter notebooks are fundamentally a text-based format, and thus relatively str
 To minimize the possibility of conflicts, we will attempt to obey the following rule ourselves: *Only check in notebooks that have been cleared of all outputs.* Static images may still be included via html within markdown, but any interactively produced graphics or text outputs will be missing.
 
 We will also endeavor not to update or fix notebooks once they have been covered in class, in case people have been taking notes in their local copies. In principle, this should not cause any problems as long as your notes are added in separate cells (and we abide by the italicized rule above). To be safe, however, *we recommend that students not take notes in the original version-controlled file* - either make a copy or take notes some other way. This is especially true given that individual files may change significantly or even disappear from year to year.
+
+If, despite all efforts, you end up with conflicts for individual files when trying to pull, you can try the following
+
+1. Make a copy of your version of the offending file.
+2. Run `git checkout -- <filename>` to revert `filename` to its state the last time you pulled.
+
+In the worst case, there's always the [XKCD method](https://xkcd.com/1597/): rename the StatisticalMethods folder to something else, and clone a fresh copy of the repo from GitHub.
