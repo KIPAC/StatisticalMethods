@@ -5,6 +5,23 @@ open.png = function(name, width=3.05, height=2.8, units='in', resolution=300, po
 blue.shading = c("#89BAF5", "#DEEBFA")
 
 
+open.png('mc1_invtrans0.png', resolution=200, height=2.5, xmin=0.175, ymin=0.19, xmax=0.98)
+par(xaxs='i', yaxs='i')
+curve(dchisq(x, 3), 0, 17, col=4, xlim=c(0, 17), ylim=c(0, 0.265), xlab='x', ylab='p(x)')
+dev.off()
+
+open.png('mc1_invtrans1.png', resolution=200, height=2.5, xmin=0.175, ymin=0.19, xmax=0.98)
+par(xaxs='i', yaxs='i')
+curve(pchisq(x, 3), 0, 17, ylim=c(0,1.05), col=2, xlab='x', ylab='F(x)')
+segments(4, 0, y1=pchisq(4,3), lty=2)
+segments(0, pchisq(4,3), x1=4, lty=2)
+arrows(4.7, 0, y1=pchisq(4,3), code=3, length=0.1)
+arrows(0, 0.78, x1=4, code=3, length=0.1)
+text(5.2, pchisq(4,3)/2, 'u')
+text(3, 0.89, expression(x*minute==F^{-1}*(u)), srt=30)
+mtext(expression(phantom(minute)*x*minute), 1, at=4, line=0)
+dev.off()
+
 open.png('mc1_rejection.png', resolution=200, height=2.5, xmin=0.175, ymin=0.19, xmax=0.98)
 par(xaxs='i', yaxs='i')
 plot(1, 1, type='n', axes=F, xlim=c(0, 17), ylim=c(0, 0.265), xlab='x', ylab='')
