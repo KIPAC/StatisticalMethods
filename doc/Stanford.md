@@ -14,7 +14,15 @@ Instructors: Marshall, P. (PI) and Mantz, A.
 Notes: 2-unit, 10-week, 20-session special topics course.
 ```
 
-## Class Schedule and Location
+See below for
+* [Class Schedule and Location](#whenwhere)
+* [Course Requirements](#require)
+* [Communication](#comm)
+* [Homework Guidelines](#hw)
+* [Final Project Guidelines](#projects)
+* [Computing](#computing)
+
+## <a name="whenwhere"></a>Class Schedule and Location
 
 This is a ten week, 20 lesson, 2-credit course, running from Tuesday January 10 through Thursday March 16, 2017.
 
@@ -22,88 +30,56 @@ Classes will be **Tu,Th 3:00-4:20pm in Building 380 Room 381T.**
 
 Each of the 20 sessions will be 80 minutes long, and will include time to do exercises and go through homework.
 
-[Back to PHYS366 home](https://github.com/KIPAC/StatisticalMethods/blob/master/README.md)
+## <a name="require"></a>Course Requirements
 
-----
-
-## Course Description and Prerequisites
-
-Existing and emerging statistical techniques and their application to
-astronomical surveys and cosmological data analysis. Topics covered
-will include statistical frameworks (Bayesian inference and
-frequentist statistics), numerical methods including Markov Chain
-Monte Carlo, and machine learning applied to classification and
-regression. Hands on activities based on open-source software in
-python.
-
-The course is aimed at graduate students intending to do research in
-astrophysics and cosmology.  The level will be aimed at first and
-second year students, but more advanced students are welcome.
-
-[PHYSICS 160/260](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0CB4QFjAA&url=https%3A%2F%2Fexplorecourses.stanford.edu%2Fsearch%3Fview%3Dcatalog%26filter-coursestatus-Active%3Don%26page%3D0%26catalog%3D%26q%3DPHYSICS%2B260%253A%2BIntroduction%2Bto%2BStellar%2Band%2BGalactic%2BAstrophysics%26collapse%3D&ei=CyeLVYjoOpTtoATIi4aIAw&usg=AFQjCNEOtbEuUK5J_-aRnBLSGTMC-itFTQ&sig2=nrrWmJEjwWbTA7t0oJaksQ) and
-[PHYSICS 161/261](https://explorecourses.stanford.edu/search?view=catalog&filter-coursestatus-Active=on&page=0&catalog=&academicYear=&q=PHYSICS+261+Introduction+to+Extragalactic+Astrophysics+and+Cosmology&collapse=), or equivalent (ie. advanced undergraduate courses in cosmology and astrophysics) are recommended.  However, we aim to make the course accessible and relevant to first year graduate students intending to work in astrophysics and cosmology, even if they do not have extensive experience in these fields.  
-
-Basic familiarity with Python coding (or willingness to learn quickly!), and basic statistics at the level of [STATS 116](https://explorecourses.stanford.edu/search?view=catalog&filter-coursestatus-Active=on&page=0&catalog=&academicYear=&q=STATS+116%3A+Theory+of+Probability&collapse=) (Old notes available [here](http://statweb.stanford.edu/~susan/courses/s116/)) are expected.
-
-Related courses:
-[PHYSICS 100](https://explorecourses.stanford.edu/search?view=catalog&filter-coursestatus-Active=on&page=0&catalog=&academicYear=&q=PHYSICS+100%3A+%3A+Introduction+to+Observational+and+Laboratory+Astronomy&collapse=) (Introduction to Observational and Laboratory Astronomy) will cover basic practical error analysis, and
-[PHYSICS 363]() (Computational Cosmology and Astrophysics) will cover some research making use of techniques introduced in PHYS 366).
-
-[Back to PHYS366 home](https://github.com/KIPAC/StatisticalMethods/blob/master/README.md)
-
-----
-
-## Course Requirements
-
-#### Class Participation:
+1. **Class Participation:**
 This is intended to be a hands-on, participatory course, so regular attendance
 and active participation is expected. Class participation will contribute 20%
 of the final grade.
 
-#### Homework
+2. **Homework:**
+There will be homework assignments approximately weekly.
+Homework will contribute a total of 45% of the final grade.
 
-There will be six homeworks in the 10-week course, due on Tuesdays
-before class.  Each homework will contribute 7.5% of the final grade.
-
-Homework assignments will be made available via GitHub.  Instructions can be found below; we will go through these instructions on the first day of class.
-
-#### Final Project
+3. **Final Project:**
 Each student will be required to present a final project.
 Projects will be presented during the final class on March 16,
 and final written reports will be due on March 30.
 The final project will contribute 35% of the final grade.
 
-[Back to PHYS366 home](https://github.com/KIPAC/StatisticalMethods/blob/master/README.md)
+## <a name="comm"></a>Communication
 
-----
+Outside of class, we will make any important annoucements through the "issues" of the homework GitHub repository (see below). This means that you must "watch" the HW repo by clicking the Watch (eyeball) button on its main GitHub page. Also, double-check your GitHub notification preferences to make sure that you'll get emails or otherwise be notified about repositories you're watching. The issues can also be used to ask us questions or raise issues (!) related to the course.
 
-## Homework
+We also have a [Slack](http://slack.com) team set up for the course, which you can use use to communicate with other students or with the instructors if you wish. Bug one of us if you haven't been invited to join this team by the second week of class.
 
-[Familiarity with
-GitHub](https://github.com/KIPAC/StatisticalMethods/blob/master/doc/GettingStarted.md#github)
-will be rapidly generated early in the course, and then assumed. You'll
-need to fork the homework repo, and clone it to your local machine. If
-you cannot navigate to [the homework
-repository](https://github.com/drphilmarshall/PHYS366-Homework-2017) to
-fork it, that's because you have not been given read access to it yet.
-<!-- To request
-this, please come and introduce yourself to your teachers and classmates
-at [the sign-up issue thread](https://github.com/KIPAC/StatisticalMethods/issues/25).-->
+## <a name="hw"></a>Homework Guidlines
 
-#### Getting your Homework Assignments:
+Each assignment will consist of one relatively short exercise and one more involved problem.
+We discuss solutions in class on the day that homeworks are due.
 
-Notebooks containing homework assignments will be uploaded to the
-[private homework
-repository](https://github.com/drphilmarshall/PHYS366-Homework-2017) as
-we go. You'll need to fork this repo, and then `git clone` to your
-machine so that you can work on them.
+Each student will be responsible for presenting at least one solution (class size dependent) during the quarter.
+The student presenting a given problem will be determined no later than the actual assignment of the problem, i.e. a week in advance.
+You should approach these presentations as though you were giving a very short talk (probably something like 5-10 minutes) at a conference; in other words, put a reasonable amount of effort into organizing your solutions and making them presentable. Like any other class discussion, presenting and discussing homework solutions is part of the "class participation" aspect of the course.
+If your presentation requires some file(s) in addition to the solutions themselves (e.g. a slides), it should be submitted along with your solutions through the same mechanism (see below).
 
-Each week, new assignments will appear, in the "base" repository.  To
-get them, you will need to be able to pull directly from this repository -
+We encourage students to collaborate on solving the assigned problems, and even on the presentation material if they wish. A given presentation is, however, ultimately the responsibility of one student.
+
+### Mechanics
+
+Homeworks will be distributed and collected through a [private GitHub repository]((https://github.com/drphilmarshall/PHYS366-Homework-2017)) (separate from this one) which only PHYSICS 366 instructors and students can access.
+If you cannot navigate to the link above, that's because you have not been given read access to it yet. You will need to create a GitHub account for yourself (if you don't already have one) and provide one of the instructors with your user name so that you can be added. Once you have access, you will need to fork the HW repo and then clone the fork to your local machine (see [GettingStarted](GettingStarted.md)).
+
+Note that GitHub may set you up to be watching other people's forks of the repo, depending on your settings. If you want to avoid getting notifications related to these, go ahead and unwatch them. **Make sure that you are still watching the base HW repo**, however, as we will use it to make announcements.
+
+#### Getting assignments
+
+When we assign them, homework problems will appear on the base HW repo.
+To get them, you will need to be able to pull directly from this repository -
 which means that you need to connect to the base repo by adding it as
 another "remote."
 
-To tell `git` that you want to connect to the
+On your local machine, to tell `git` that you want to connect to the
 base repository, do:
 ```bash
 git remote add base git@github.com:drphilmarshall/PHYS366-Homework-2017.git
@@ -113,33 +89,60 @@ Once you have done this, you should be able to get the latest homework assignmen
 git pull base master
 ```
 
-#### Checking in your work:
+#### Submitting your solutions
 
-Use `git push origin master` to keep your remote fork (whose name is "origin")
-up to date as
-you work through the assignment notebooks. Commit often (as soon as
-the code *runs*), and push as often as possible (so that other people
-can see what you're doing).
+Within the folder corresponding to a given problem, create a subfolder called by your name or the names of all students who collaborated on your solutions. Keep all materials related to your solutions in that subfolder. This will greatly reduce confusion.
 
-#### Submitting your work:
+If you're working in a group, only one copy of the solution needs to be uploaded. Please list the names of your collaborators in some prominent place in the solution itself, in addition to the subfolder name.
 
-Homework will be graded according to the *number of solutions you are
-willing to present in class*. To present, you will need to show your
-work, in your edited version of the assignment notebook that you have
-pushed to origin. To stake your claim, you will need to
+Use `git add yourfolder`, `git commit` and `git push origin master` to upload the solutions to your remote fork (whose name is "origin"), or to update them after an initial upload.
 
-1) Push your commits to your fork, and then _submit a `pull request`_,
+When you're finished, and your fork is up to date, submit a "pull request" from your fork to the base repository. This notifies us that you would like to merge your solutions into the base repository, which we can do after verifying that doing so is safe (e.g. no important files will be overwritten, which should be the case if you've followed these instructions).
 
-2) _fill out the Google form_ (circulated with the homework) selecting which problems you have attempted, and are willing to show attempts at.
+Your solutions themselves obviously need to be in some digital form. The only restriction on format is that they need to be in a form that we can see without installing special software - typically something like PDF, Jupyter notebook or plain text (for code). If your solutions involve multiple files, you might want to include a README.md to explain what each one is and where we should be looking.
 
-You can edit your homework submission (pull request + Google form)
-any time until class starts.
+## <a name="projects"></a>Final Project Guidelines
 
-Then, in the Tuesday class, for each homework problem we will draw
-names at random from the list of people willing to present,  and ask
-you to talk us through your solution, in your notebook (on your fork).
-These attempts do not need to be complete!  You should be able to show
-what approach you took, and then either what solution you got or
-describe where you got stuck.
+Projects will be presented during the final class on March 16, and final written reports will be due on March 30. Students are encouraged to work in groups and, unlike homeworks, there will be only one presentation and one report per group. However, we expect the ambition of the project, and consequently the length of the presentation and write-up, to reflect the number of people working on it.
 
-[Back to PHYS366 home](https://github.com/KIPAC/StatisticalMethods/blob/master/README.md)
+The timeline for projects is
+
+* First ~half of the course: brainstorm ideas
+* Week 6 *at the latest*: arrange to pitch your idea to Phil and/or Adam. We'll give you feedback as to whether the content and scope are appropriate. The homework due this week will include writing a brief abstract describing your project.
+* Weeks 6-10: work on the project with your teammates.
+* March 16: presentations
+* By March 30: turn in written report
+
+The purpose of these projects is to apply what you've learned in the course (or go beyond it) to a real or realistic data analysis problem. The problem may be from your own research, although it need not be.
+
+You do not have to limit yourselves to projects that can be fully completed in just a few weeks. Especially if the project is relevant to your research, it's fine to pitch a more ambitious project and not reach the end of it during the course. However, it should be possible to present some progress and understanding after a few weeks, even if the inferences are limited to simulated data and/or a simplified version of the full problem.
+
+### Requirements
+
+We anticipate significant variety in the projects people pursue, but the following elements are broadly required in the presentations and reports.
+
+* A brief introduction to the data being analyzed.
+* A discussion of the model you are investigating, including a cartoon
+showing its parameters, and a list of the assumptions you make (in some form).
+* A probabilistic graphical model, accompanied by the probability expressions that go with it.
+* A description of any approximations you make in deviating from the
+probability theory you outline.
+* Visualisations of your inferences, including verification of convergence etc.
+* Discussion of how you would, given more time, extend this analysis -
+including conclusions of what worked well, and what did not.
+
+### Deliverables
+
+1. A presentation to be delivered in the final class meeting. This should be pitched at a level understandable to your classmates, and cover the required points above. The time available will depend on the class size, but typically we expect about 10 minutes minimum per project, or about 5 minutes per team member (if there are more than two), with 5 minutes for questions afterwards.
+
+2. The written report will be submitted in the same manner as homework assignments, and should comprehensively cover the points above. The report should be written using LaTeX (a markup language used to produce most physics publications). If you've never used LaTeX before, you will soon enough, so this is as good a time as any to learn; we will provide a template to get you started. Your submission should include your LaTeX source and supporting files (e.g. figures) as well as a compiled PDF of your report. We'll use the source files to combine everyone's reports into a single document immortalizing your accomplishments.
+
+## <a name="computing"></a>Computing
+
+Likely it will easiest for you to do computing on either your own system or one provided by your lab. If this doesn't work for you, there is a Stanford-wide unix system accessible to all
+Stanford students documented [here](https://itservices.stanford.edu/service/sharedcomputing), including a "Getting Started" if you are unfamiliar with unix. Note
+that the appropriate cluster to use is `corn` (interactive use,
+including compute-intensive tasks). These systems have `git` and
+`python` installed, but (as of 2015) appear to have an old version of `notebook`,
+so you should follow the instructions above for installing `miniconda`
+and the required `python` packages within your home space.
