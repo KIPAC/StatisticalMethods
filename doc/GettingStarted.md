@@ -142,7 +142,8 @@ If neither of these works for `astropy`, please
 see [their website](http://astropy.readthedocs.org/en/stable/install.html)
 for installation help.
 
-## <a name="gitnote"></a>Guidlines for Keeping Notebooks in Git
+
+## <a name="gitnote"></a>Guidelines for Keeping Notebooks in Git
 
 This section is mainly a reminder for us, but might also be useful information for those hoping to avoid conflicts when git pulling and pushing.
 
