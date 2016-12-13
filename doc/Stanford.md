@@ -68,27 +68,28 @@ You should approach these presentations as though you were giving a very short t
 in other words, put a reasonable amount of effort into organizing your solutions and making them presentable.
 
 Like any other class discussion, presenting and discussing homework solutions is part of the "class participation" aspect of the course.
-If your presentation requires some file(s) in addition to the solutions themselves (e.g. a slides), it should be submitted along with your solutions through the same mechanism (see below).
+If your presentation requires some file(s) in addition to the solutions themselves (e.g. slides), it should be submitted along with your solutions through the same mechanism (see below).
 
 ### Collaboration
 
 We encourage students to collaborate on solving the assigned problems, and even on the presentation material if they wish.
 
-Each given presentation is ultimately the responsibility of the single presenting student.
-Collectively, our goal is to produce the best possible solution to every homework problem in the course.
-This means that when it is your turn to present, we encourage you to:
+Each presentation is ultimately the responsibility of a single presenting student.
+However, you are encouraged to:
 
 * discuss the problem with your classmates,
 * work together to solve the problems,
 * survey any other solutions that have been shared in the student forks of the homework repo,
 * make use of all of this in your presentation.
 
-Whenever you make use of any other student's work, _you must acknowledge it, and them, in your presentation_. This is how the scientific community works.
+The idea is that, by working together, we can produce the best possible solution to every homework problem in the course.
+
+Remember that, whenever you make use of any other student's work, _you must acknowledge it, and them, in your presentation_. This is how the scientific community works.
 
 
 ### Mechanics
 
-Homework will be distributed and collected through a [private GitHub repository]((https://github.com/drphilmarshall/PHYS366-Homework-2017)) (separate from this one) which only PHYSICS 366 instructors and students can access.
+Homework will be distributed and collected through a [private GitHub repository](https://github.com/drphilmarshall/PHYS366-Homework-2017) (separate from this one) which only PHYSICS 366 instructors and students can access.
 If you cannot navigate to the link above, that's because you have not been given read access to it yet.
 You will need to create a GitHub account for yourself (if you don't already have one) and provide one of the instructors with your user name so that you can be added.
 Once you have access, you will need to fork the HW repo and then clone the fork to your local machine (see [GettingStarted](GettingStarted.md)).
