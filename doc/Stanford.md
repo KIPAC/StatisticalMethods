@@ -128,7 +128,7 @@ Your solutions themselves obviously need to be in some digital form. The only re
 
 ## <a name="projects"></a>Final Project Guidelines
 
-Projects will be presented during the final class on March 16, and final written reports will be due on March 30. Students are encouraged to work in groups and, unlike homeworks, there will be only one presentation and one report per group. However, we expect the ambition of the project, and consequently the length of the presentation and write-up, to reflect the number of people working on it.
+Projects will be presented during the final class on March 16, and final written reports will be due on March 23 at 6:00 PM. Students are encouraged to work in groups and, unlike homeworks, there will be only one presentation and one report per group. However, we expect the ambition of the project, and consequently the length of the presentation and write-up, to reflect the number of people working on it.
 
 The timeline for projects is
 
@@ -136,7 +136,7 @@ The timeline for projects is
 * Week 6 *at the latest*: arrange to pitch your idea to Phil and/or Adam. We'll give you feedback as to whether the content and scope are appropriate. The homework due this week will include writing a brief abstract describing your project.
 * Weeks 6-10: work on the project with your teammates.
 * March 16: presentations
-* By March 30: turn in written report
+* By March 23: turn in written report by 6PM
 
 The purpose of these projects is to apply what you've learned in the course (or go beyond it) to a real or realistic data analysis problem. The problem may be from your own research, although it need not be.
 
