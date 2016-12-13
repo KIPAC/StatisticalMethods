@@ -48,4 +48,4 @@ See [Getting Started](GettingStarted.md).
 Each chunk is a combination of lecture material, worked examples, demos (using Python) and exercises.
 Their length varies; we expect individual chunks to take between 20 and (at most) 80 minutes of class time.
 Bonus exercises (that we typically don't expect to get to during class) often appear at the end of a notebook.
-There is a logical order to the chunks, reflected in their file names and in the [Schedule](Schedule.md) document.
+There is a logical order to the chunks, reflected in the [Schedule](../chunks/README.md) document.
