@@ -52,19 +52,19 @@ curve(2*dnorm(x), add=T)
 points(c(0, h$mids), c(0.33, h$density), type='l', col=4)
 dev.off()
 
-open.png('mc2_reparam0.png', resolution=200)
+open.png('mc2_reparam0.png', resolution=200, xmin=0.16)
 plot(ellipse(0.9, lev=pchisq(0.25,1)), type='l', col='darkblue', xlab='x', ylab='y', xlim=c(-2,2), ylim=c(-2,2))
 arrows(-1, 0, x1=1, length=0.1, code=3)
 arrows(0, -1, y1=1, length=0.1, code=3)
 dev.off()
 
-open.png('mc2_reparam1.png', resolution=200)
-plot(ellipse(0, lev=pchisq(0.25,1)), type='l', col='darkblue', xlab='x', ylab='y', xlim=c(-2,2), ylim=c(-2,2))
+open.png('mc2_reparam1.png', resolution=200, xmin=0.16)
+plot(ellipse(0, lev=pchisq(0.25,1)), type='l', col='darkblue', xlab=expression(x*minute), ylab=expression(y*minute), xlim=c(-2,2), ylim=c(-2,2))
 arrows(-1, 0, x1=1, length=0.1, code=3)
 arrows(0, -1, y1=1, length=0.1, code=3)
 dev.off()
 
-open.png('mc2_reparam2.png', resolution=200)
+open.png('mc2_reparam2.png', resolution=200, xmin=0.16)
 plot(ellipse(0.9, lev=pchisq(0.25,1)), type='l', col='darkblue', xlab='x', ylab='y', xlim=c(-2,2), ylim=c(-2,2))
 y = 0.96
 arrows(-y, -y*0.99, x1=y, y1=y*0.99, length=0.1, code=3)
