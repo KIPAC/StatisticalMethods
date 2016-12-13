@@ -49,30 +49,53 @@ The final project will contribute 35% of the final grade.
 
 ## <a name="comm"></a>Communication
 
-Outside of class, we will make any important annoucements through the "issues" of the homework GitHub repository (see below). This means that you must "watch" the HW repo by clicking the Watch (eyeball) button on its main GitHub page. Also, double-check your GitHub notification preferences to make sure that you'll get emails or otherwise be notified about repositories you're watching. The issues can also be used to ask us questions or raise issues (!) related to the course.
+Outside of class, we will make any important announcements through the "issues" of the homework GitHub repository (see below). This means that you must "watch" the HW repo by clicking the Watch (eyeball) button on its main GitHub page. Also, double-check your GitHub notification preferences to make sure that you'll get emails or be otherwise  notified about repositories you're watching. The issues can also be used to ask us questions or raise issues (!) related to the course.
 
 We also have a [Slack](http://slack.com) team set up for the course, which you can use use to communicate with other students or with the instructors if you wish. Bug one of us if you haven't been invited to join this team by the second week of class.
 
-## <a name="hw"></a>Homework Guidlines
+## <a name="hw"></a>Homework Guidelines
 
 Each assignment will consist of one relatively short exercise and one more involved problem.
-We discuss solutions in class on the day that homeworks are due.
+We will discuss solutions in class on the day that homework is due.
+
+
+### Presenting Homework Solutions
 
 Each student will be responsible for presenting at least one solution (class size dependent) during the quarter.
-The student presenting a given problem will be determined no later than the actual assignment of the problem, i.e. a week in advance.
-You should approach these presentations as though you were giving a very short talk (probably something like 5-10 minutes) at a conference; in other words, put a reasonable amount of effort into organizing your solutions and making them presentable. Like any other class discussion, presenting and discussing homework solutions is part of the "class participation" aspect of the course.
+The student presenting a given problem will be determined no later than the actual assignment of the problem, i.e. one week in advance.
+
+You should approach these presentations as though you were giving a very short talk (probably something like 5-10 minutes) at a conference;
+in other words, put a reasonable amount of effort into organizing your solutions and making them presentable.
+
+Like any other class discussion, presenting and discussing homework solutions is part of the "class participation" aspect of the course.
 If your presentation requires some file(s) in addition to the solutions themselves (e.g. a slides), it should be submitted along with your solutions through the same mechanism (see below).
 
-We encourage students to collaborate on solving the assigned problems, and even on the presentation material if they wish. A given presentation is, however, ultimately the responsibility of one student.
+### Collaboration
+
+We encourage students to collaborate on solving the assigned problems, and even on the presentation material if they wish.
+
+Each given presentation is ultimately the responsibility of the single presenting student.
+Collectively, our goal is to produce the best possible solution to every homework problem in the course.
+This means that when it is your turn to present, we encourage you to:
+
+* discuss the problem with your classmates,
+* work together to solve the problems,
+* survey any other solutions that have been shared in the student forks of the homework repo,
+* make use of all of this in your presentation.
+
+Whenever you make use of any other student's work, _you must acknowledge it, and them, in your presentation_. This is how the scientific community works.
+
 
 ### Mechanics
 
-Homeworks will be distributed and collected through a [private GitHub repository]((https://github.com/drphilmarshall/PHYS366-Homework-2017)) (separate from this one) which only PHYSICS 366 instructors and students can access.
-If you cannot navigate to the link above, that's because you have not been given read access to it yet. You will need to create a GitHub account for yourself (if you don't already have one) and provide one of the instructors with your user name so that you can be added. Once you have access, you will need to fork the HW repo and then clone the fork to your local machine (see [GettingStarted](GettingStarted.md)).
+Homework will be distributed and collected through a [private GitHub repository]((https://github.com/drphilmarshall/PHYS366-Homework-2017)) (separate from this one) which only PHYSICS 366 instructors and students can access.
+If you cannot navigate to the link above, that's because you have not been given read access to it yet.
+You will need to create a GitHub account for yourself (if you don't already have one) and provide one of the instructors with your user name so that you can be added.
+Once you have access, you will need to fork the HW repo and then clone the fork to your local machine (see [GettingStarted](GettingStarted.md)).
 
 Note that GitHub may set you up to be watching other people's forks of the repo, depending on your settings. If you want to avoid getting notifications related to these, go ahead and unwatch them. **Make sure that you are still watching the base HW repo**, however, as we will use it to make announcements.
 
-#### Getting assignments
+#### <a name="gettingassignments">Getting Assignments
 
 When we assign them, homework problems will appear on the base HW repo.
 To get them, you will need to be able to pull directly from this repository -
@@ -89,17 +112,18 @@ Once you have done this, you should be able to get the latest homework assignmen
 git pull base master
 ```
 
-#### Submitting your solutions
+#### <a name="submission">Submitting your Solutions
 
-Within the folder corresponding to a given problem, create a subfolder called by your name or the names of all students who collaborated on your solutions. Keep all materials related to your solutions in that subfolder. This will greatly reduce confusion.
+Within the folder corresponding to a given problem, create a subfolder called by your name (or the names of all students who collaborated directly on your solutions). Keep all materials related to your solutions in that subfolder. This will greatly reduce confusion.
 
-If you're working in a group, only one copy of the solution needs to be uploaded. Please list the names of your collaborators in some prominent place in the solution itself, in addition to the subfolder name.
+If you're working in a group, only one copy of the solution needs to be uploaded. Please list the names of your collaborators in some prominent place in the solution itself (see the note on accreditation above!), as well as in the subfolder name.
 
 Use `git add yourfolder`, `git commit` and `git push origin master` to upload the solutions to your remote fork (whose name is "origin"), or to update them after an initial upload.
 
 When you're finished, and your fork is up to date, submit a "pull request" from your fork to the base repository. This notifies us that you would like to merge your solutions into the base repository, which we can do after verifying that doing so is safe (e.g. no important files will be overwritten, which should be the case if you've followed these instructions).
 
-Your solutions themselves obviously need to be in some digital form. The only restriction on format is that they need to be in a form that we can see without installing special software - typically something like PDF, Jupyter notebook or plain text (for code). If your solutions involve multiple files, you might want to include a README.md to explain what each one is and where we should be looking.
+Your solutions themselves obviously need to be in some digital form. The only restriction on format is that they need to be in a form that we can see without installing special software - typically something like PDF, Jupyter notebook or plain text (for code). If your solutions involve multiple files, you might want to include a `README.md` to explain what each one is and where we should be looking.
+
 
 ## <a name="projects"></a>Final Project Guidelines
 
