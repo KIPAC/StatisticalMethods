@@ -142,6 +142,7 @@ If neither of these works for `astropy`, please
 see [their website](http://astropy.readthedocs.org/en/stable/install.html)
 for installation help.
 
+Some additional packages that may be useful are listed in [MCMC_packages.md](MCMC_packages.md).
 
 ## <a name="gitnote"></a>Guidelines for Keeping Notebooks in Git
 
