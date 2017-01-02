@@ -4,10 +4,12 @@ An incomplete listing of potentially useful `Python` packages that perform Marko
 
 Code | Algorithm | Bonus link
 ---- | --------- | -----
-[`pymc`](https://github.com/pymc-devs/pymc) | Metropolis-Hastings | 
 [`emcee`](http://dan.iel.fm/emcee/current/) | Goodman-Weare | [paper](http://arxiv.org/abs/1202.3665)
-[`MultiNest`](https://github.com/JohannesBuchner/PyMultiNest) | nested sampling | papers [1](http://arxiv.org/abs/0809.3437) [2](http://arxiv.org/abs/1306.2144)
 [`kombine`](http://home.uchicago.edu/~farr/kombine/index.html) | briefly tempered Metropolis-Hastings | [paper](https://arxiv.org/abs/1309.7709)
+[`lmc`](https://github.com/abmantz/lmc) | Metropolis-Hastings, Goodman-Weare |
+[`MultiNest`](https://github.com/JohannesBuchner/PyMultiNest) | nested sampling | papers [1](http://arxiv.org/abs/0809.3437) [2](http://arxiv.org/abs/1306.2144)
+[`pymc`](https://github.com/pymc-devs/pymc) | Metropolis-Hastings | 
+[`pymc3`](https://github.com/pymc-devs/pymc3) | Metropolis-Hastings, HMC |
 
 For `R` users, there are numerous options on [CRAN](https://cran.r-project.org/), but we list only a couple that we know or have heard of being used:
 
