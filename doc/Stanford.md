@@ -53,16 +53,18 @@ Outside of class, we will make any important announcements through the "issues" 
 
 We also have a [Slack](http://slack.com) team set up for the course, which you can use use to communicate with other students or with the instructors if you wish. Bug one of us if you haven't been invited to join this team by the second week of class.
 
+
 ## <a name="hw"></a>Homework Guidelines
 
 Each assignment will consist of one relatively short exercise and one more involved problem.
-We will discuss solutions in class on the day that homework is due.
+We will discuss solutions in class on the Tuesday that homework is due.
 
+There will be eight homework assignments, with one released on each of the first eight Tuesdays of the course.  You should be able to complete both parts of the week's homework by the end of the Thursday class.
 
 ### Presenting Homework Solutions
 
 Each student will be responsible for presenting at least one solution (class size dependent) during the quarter.
-The student presenting a given problem will be determined no later than the actual assignment of the problem, i.e. one week in advance.
+The student presenting a given problem will be notified one week in advance, when that assignment is released.
 
 You should approach these presentations as though you were giving a very short talk (probably something like 5-10 minutes) at a conference;
 in other words, put a reasonable amount of effort into organizing your solutions and making them presentable.
@@ -86,13 +88,12 @@ The idea is that, by working together, we can produce the best possible solution
 
 Remember that, whenever you make use of any other student's work, _you must acknowledge it, and them, in your presentation_. This is how the scientific community works.
 
-
 ### Mechanics
 
 Homework will be distributed and collected through a [private GitHub repository](https://github.com/drphilmarshall/PHYS366-Homework-2017) (separate from this one) which only PHYSICS 366 instructors and students can access.
 If you cannot navigate to the link above, that's because you have not been given read access to it yet.
 You will need to create a GitHub account for yourself (if you don't already have one) and provide one of the instructors with your user name so that you can be added.
-Once you have access, you will need to fork the HW repo and then clone the fork to your local machine (see [GettingStarted](GettingStarted.md)).
+Once you have access, you will need to fork the HW repo and then clone the fork to your local machine (see [GettingStarted](GettingStarted.md)). Each assignment will appear in the [private base Homework repository](https://github.com/drphilmarshall/PHYS366-Homework-2017), and will be announced via an issue in that repository.
 
 Note that GitHub may set you up to be watching other people's forks of the repo, depending on your settings. If you want to avoid getting notifications related to these, go ahead and unwatch them. **Make sure that you are still watching the base HW repo**, however, as we will use it to make announcements.
 
@@ -115,7 +116,7 @@ git pull base master
 
 #### <a name="submission">Submitting your Solutions
 
-Within the folder corresponding to a given problem, create a subfolder called by your name (or the names of all students who collaborated directly on your solutions). Keep all materials related to your solutions in that subfolder. This will greatly reduce confusion.
+Within the folder corresponding to a given week, create a subfolder called by your GitHub username (or the names of all students who collaborated directly on your solutions), eg `Week0/drphilmarshall`. Keep all materials related to your solutions in that subfolder. This will greatly reduce confusion, and enable us to merge in all your solutions to the base repo for grading.
 
 If you're working in a group, only one copy of the solution needs to be uploaded. Please list the names of your collaborators in some prominent place in the solution itself (see the note on accreditation above!), as well as in the subfolder name.
 

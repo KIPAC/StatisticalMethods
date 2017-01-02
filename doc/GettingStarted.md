@@ -1,6 +1,6 @@
 # <a name="top"></a>Getting Started
 
-We encourage all PHYS366 students, especially first year students, to 
+We encourage all PHYS366 students, especially first year students, to
 attend all or part of the [KIPAC Computing Boot Camp](https://kipac.github.io/BootCamp/), which is held at the beginning of the academic year.
 
 We will be using [Jupyter Notebooks](https://jupyter.org/)
@@ -33,7 +33,7 @@ A fork is a copy (a "clone") of a repository, within GitHub, that belongs to you
 
 While viewing the GitHub repository that you want to fork, make sure you are logged in, and you should see a button in the top righthand corner marked "Fork". Click this button. Ta-daa! You have your own copy of the repository, hosted at GitHub.
 
-In some circumstances, it seems that GitHub will automatically have you "watching" previous forks of the repo by others. Go ahead and unwatch them, if you want to avoid the associated notifications.
+In some circumstances, it seems that GitHub will automatically have you "watching" previous forks of the repo by others. Go ahead and "unwatch" them, if you want to avoid the associated notifications.
 
 ### Cloning a repo
 
