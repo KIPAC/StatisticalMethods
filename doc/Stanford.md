@@ -4,7 +4,7 @@ From the course handbook:
 ```
 PHYSICS 366: Special Topics in Astrophysics: Statistical Methods
 
-Existing and emerging statistical techniques and their application to astronomical surveys and cosmological data analysis. Topics covered will include statistical frameworks (Bayesian inference and frequentist statistics), numerical methods including Markov Chain Monte Carlo, and machine learning applied to classification and regression. Hands on activities based on open-source software in python. Recommended prerequisites: PHYSICS 260 and 261, or equivalent. Familiarity with Python coding and basic statistics at level of STATS 116. This course runs for the first ten weeks of the quarter.
+Existing and emerging statistical techniques and their application to astronomical surveys and cosmological data analysis. Topics covered will include statistical frameworks (Bayesian inference and frequentist statistics), numerical methods including Markov Chain Monte Carlo, and machine learning applied to classification and regression. Hands on activities based on open-source software in python.
 
 Schedule for PHYSICS 366
 2016-2017 Winter
@@ -44,12 +44,12 @@ Homework will contribute a total of 45% of the final grade.
 3. **Final Project:**
 Each student will be required to present a final project.
 Projects will be presented during the final class on March 16,
-and final written reports will be due on March 30.
+and final written reports will be due on March 23.
 The final project will contribute 35% of the final grade.
 
 ## <a name="comm"></a>Communication
 
-Outside of class, we will make any important announcements through the "issues" of the homework GitHub repository (see below). This means that you must "watch" the HW repo by clicking the Watch (eyeball) button on its main GitHub page. Also, double-check your GitHub notification preferences to make sure that you'll get emails or be otherwise  notified about repositories you're watching. The issues can also be used to ask us questions or raise issues (!) related to the course.
+Outside of class, we will make any important announcements through the "issues" of the [2017 homework GitHub repository](https://github.com/drphilmarshall/PHYS366-Homework-2017) (see below). This means that you must "watch" the HW repo by clicking the Watch (eyeball) button on its main GitHub page. Also, double-check your GitHub notification preferences to make sure that you'll get emails or be otherwise  notified about repositories you're watching. The issues can also be used to ask us questions or raise issues (!) related to the course.
 
 We also have a [Slack](http://slack.com) team set up for the course, which you can use use to communicate with other students or with the instructors if you wish. Bug one of us if you haven't been invited to join this team by the second week of class.
 
