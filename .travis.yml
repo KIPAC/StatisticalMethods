@@ -1,6 +1,6 @@
 language: python
-  - "2.7"
-  - "3.5"
+  - TRAVIS_PYTHON_VERSION=2.7
+  - TRAVIS_PYTHON_VERSION=3.5
 
 install:
   - sudo apt-get update
