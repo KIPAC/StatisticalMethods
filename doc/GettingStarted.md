@@ -62,16 +62,14 @@ latest version.
 ### If you have `python` already installed on your machine:
 
 Try the following on the command line:
-
-(Note that even if `python` is already installed, this `pip` method may not work as some packages require additional libraries that your system may not have. In such senarios, use the `conda` method below.)
 ```bash
 pip install ipython jupyter
 ```
 This will install IPython 4.0 from source, so may take a few minutes.
 
-### If you do not have `python`:
+> Note that even if `python` is already installed, this `pip` method may not work as some packages require additional libraries that your system may not have. In such senarios, use the `conda` method below.
 
-Note that these instructions also work if you do have `python` installed already. This method may be preferable in any case, if you lack administrative privileges and want easy control over your `python` environment.
+### If you do not have `python`:
 
 The fastest way to get set up is with
 [`Miniconda`](http://conda.pydata.org/miniconda.html). Download and run
@@ -89,6 +87,8 @@ need to be able to run IPython 4.0 notebooks:
 ```bash
 conda install ipython jupyter
 ```
+
+> Note that the above instructions also work if you do have `python` installed already. This method may be preferable in any case, if you lack administrative privileges and want easy control over your `python` environment.
 
 ### To edit and run a notebook:
 
@@ -115,34 +115,34 @@ If you still can't figure out what's going wrong, send us an [issue](https://git
 
 ## <a name="packages"></a>Python Packages
 
-You'll need a number of python packages available for this course.
-Here's the shopping list:
+You'll need a number of python packages in this course.
+The shopping list is given in the `requirements.txt` file, and can be divided into those packages which _should_ come with your python installation, and those that you will need to install separately. The latter are as follows:
 ```python
-numpy
-scipy
-pandas
-matplotlib
-corner
-astropy
 mechanize
+pandas
 seaborn
-TreeCorr
+sklearn
+astropy
+corner
+daft
+treecorr
 ```
 
-If you have `anaconda` or `miniconda` python, you can install these
-with e.g.:
+If you have `anaconda` or `miniconda` python, you can try installing these with e.g.:
 ```bash
 conda install astropy
 ```
 Otherwise, or for some of these packages that are not in conda, try:
 ```bash
-pip install astropy
+pip install corner
 ```
-If neither of these works for `astropy`, please
+
+If neither of these methods works for `astropy`, please
 see [their website](http://astropy.readthedocs.org/en/stable/install.html)
 for installation help.
 
 Some additional packages that may be useful are listed in [MCMC_packages.md](MCMC_packages.md).
+
 
 ## <a name="gitnote"></a>Guidelines for Keeping Notebooks in Git
 
