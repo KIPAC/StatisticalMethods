@@ -1,4 +1,4 @@
-# Custom packages needed by the notebooks:
+# Python packages needed by the notebooks:
 mechanize
 pandas
 seaborn
@@ -6,21 +6,20 @@ sklearn
 astropy
 corner
 daft
+# Warning: this does not build at mybinder.org:
+treecorr
 
-# Does not build at mybinder.org:
-# treecorr
-
-# Standard packages we don't need to install:
+# Standard packages you probably don't need to install:
 # StringIO
 # copy
-# matplotlib
 # IPython
 # __future__
 # numpy
-# os
-# pylab
 # scipy
+# os
 # urllib
 # yaml
 # random
 # csv
+# matplotlib
+# pylab
