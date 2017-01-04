@@ -38,7 +38,7 @@ Our goal is that students taking this course will:
 Getting the course notebooks online at `binder` can take a few minutes - and if you don't see the content you were expecting, that might be because the `binder` copy of the repo needs updating. You can do that yourself by re-entering `KIPAC/StatisticalMethods` in the form at [mybinder.org](http://mybinder.org), checking `requirements.txt` and then clicking "make my binder." The status of the most recent binder build can be viewed [here](http://mybinder.org/repo/KIPAC/StatisticalMethods/status).
 -->
 
-* [Browse the lessons on GitHub.](chunks/) You can also fork and clone the repository, and run the notebooks locally.
+* [Browse the lessons on GitHub.](chunks/README.md) You can also fork and clone the repository, and run the notebooks locally.
 
 
 ### Contact
