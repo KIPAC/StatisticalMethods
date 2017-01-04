@@ -104,6 +104,11 @@ cd StatisticalMethods
 jupyter notebook &
 ```
 
+### Viewing the notebooks as slides
+
+We use the [RISE jupyter IPython slideshow extension](https://github.com/damianavila/RISE) to display notebook cells as slides. To do likewise, you'll need to install RISE, following the instructions in the [RISE README](https://github.com/damianavila/RISE).
+
+
 ### If you get stuck:
 
 Good Google search queries are "pip install jupyter" and
@@ -146,7 +151,7 @@ Some additional packages that may be useful are listed in [MCMC_packages.md](MCM
 
 ## <a name="gitnote"></a>Guidelines for Keeping Notebooks in Git
 
-This section is mainly a reminder for us, but might also be useful information for those hoping to avoid conflicts when git pulling and pushing.
+This section is mainly a reminder for us, but might also be useful information for those hoping to avoid conflicts when git pulling (eg from the base repo) and pushing (to your fork).
 
 Jupyter notebooks are fundamentally a text-based format, and thus relatively straightforward to difference between versions. This breaks down when graphics are embedded within a notebook, however. In general, cell outputs are more difficult to difference than "clean" notebooks, although purely text outputs shouldn't be too bad.
 
