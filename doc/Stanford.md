@@ -57,9 +57,8 @@ We also have a [Slack](http://slack.com) team set up for the course, which you c
 ## <a name="hw"></a>Homework Guidelines
 
 Each assignment will consist of one relatively short exercise and one more involved problem.
-We will discuss solutions in class on the Tuesday that homework is due.
-
-There will be eight homework assignments, with one released on each of the first eight Tuesdays of the course.  You should be able to complete both parts of the week's homework by the end of the Thursday class.
+There will be approximately eight homework assignments, released weekly and due one week later.
+We will discuss solutions in class on the day that homework is due. 
 
 ### Presenting Homework Solutions
 
