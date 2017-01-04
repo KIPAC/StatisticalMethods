@@ -121,7 +121,7 @@ If you still can't figure out what's going wrong, send us an [issue](https://git
 ## <a name="packages"></a>Python Packages
 
 You'll need a number of python packages in this course.
-The shopping list is given in the `requirements.txt` file, and can be divided into those packages which _should_ come with your python installation, and those that you will need to install separately. The latter are as follows:
+The shopping list is given in the [`requirements.txt`](https://github.com/KIPAC/StatisticalMethods/blob/master/requirements.txt) file, and can be divided into those packages which _should_ come with your python installation, and those that you will need to install separately. The latter are as follows:
 ```python
 mechanize
 pandas
