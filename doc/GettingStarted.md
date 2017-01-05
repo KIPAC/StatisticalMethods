@@ -106,7 +106,7 @@ jupyter notebook &
 
 ### Viewing the notebooks as slides
 
-We use the [RISE jupyter IPython slideshow extension](https://github.com/damianavila/RISE) to display notebook cells as slides. To do likewise, you'll need to install RISE, following the instructions in the [RISE README](https://github.com/damianavila/RISE).
+We use the [RISE jupyter IPython slideshow extension](https://github.com/damianavila/RISE) to display notebook cells as slides. To do likewise (although you don't really need to), you'll need to install RISE, following the instructions in the [RISE README](https://github.com/damianavila/RISE).
 
 
 ### If you get stuck:
@@ -117,6 +117,9 @@ Also many of the KIPAC grad students have been through this before,
 and can help you out if you ask them nicely.
 If you still can't figure out what's going wrong, send us an [issue](https://github.com/KIPAC/StatisticalMethods/issues).
 
+### If you are completely new to Python
+
+We recommend checking out the Python [tutorial](https://docs.python.org/3/tutorial/index.html). You will also appreciate the documentation for the [Python standard library](https://docs.python.org/3/library/index.html), [NumPy](https://docs.scipy.org/doc/numpy/reference/) and [SciPy](https://docs.scipy.org/doc/scipy/reference/).
 
 ## <a name="packages"></a>Python Packages
 
