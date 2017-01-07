@@ -14,5 +14,5 @@ List of chunks, in the intended order (subject to change):
 12. [Even More Monte Carlo Sampling (Sampling III)](montecarlo3.ipynb)
 13. Machine Learning
 14. Detection, Exploration, and Fishing Expeditions
-15. Coping with Missing Information (Model Building IV)
+15. [Missing Information and Selection Effects (Model Building IV)](missingdata.ipynb)
 16. Non-sampling methods
