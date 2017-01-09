@@ -47,4 +47,4 @@ Getting the course notebooks online at `binder` can take a few minutes - and if 
 * [Phil Marshall](https://github.com/KIPAC/StatisticalMethods/issues/new?body=@drphilmarshall)
 
 
-All materials Copyright 2015, 2017 Adam Mantz and Phil Marshall, and distributed for copying and extension under the GPLv2 License. If you have any feedback for us, please [write us an issue](https://github.com/KIPAC/StatisticalMethods/issues). If you would like to help us improve this course, please do fork this repo and submit a pull request.
+All materials Copyright 2015, 2017 Adam Mantz and Phil Marshall, and distributed for copying and extension under the GPLv2 License, unless otherwise noted. If you have any feedback for us, please [write us an issue](https://github.com/KIPAC/StatisticalMethods/issues). If you would like to help us improve this course, please do fork this repo and submit a pull request.

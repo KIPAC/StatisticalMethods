@@ -15,4 +15,4 @@ List of chunks, in the intended order (subject to change):
 13. Machine Learning
 14. Detection, Exploration, and Fishing Expeditions
 15. Coping with Missing Information (Model Building IV)
-16. Non-sampling methods
+16. Approximate methods
