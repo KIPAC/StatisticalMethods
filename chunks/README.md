@@ -3,7 +3,7 @@ List of chunks, in the intended order (subject to change):
 1. [Introduction to the Course](about.ipynb)
 2. [A Short Tour of an Inference Problem](tour.ipynb)
 3. [Review of Probability Theory](probability.ipynb)
-4. Generative Models (Model Building I)
+4. [Generative Models (Model Building I)](generative_models.ipynb)
 5. [Bayes Theorem](bayes_theorem.ipynb)
 6. Approaches to Inference, or Fitting a Straight Line
 7. [Basic Monte Carlo Sampling (Sampling I)](montecarlo1.ipynb)
