@@ -1,5 +1,5 @@
 # Python packages needed by the notebooks:
-mechanize
+astroquery
 pandas
 seaborn
 sklearn
