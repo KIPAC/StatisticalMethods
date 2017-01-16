@@ -33,7 +33,7 @@ def pdf_contour_levels(p):
     sortp = np.sort(p.ravel())
     cump = sortp.cumsum()
     return [sortp[cump > cump.max() * f].min()
-            for f in [0.32, 0.05]]
+            for f in [0.05, 0.32]]
 
 def plot_mcmc_results(chain,mlimits,blimits):
     # Pull m and b arrays out of the Markov chain.
