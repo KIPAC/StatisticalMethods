@@ -61,7 +61,7 @@ target/
 
 # Data files
 #*.FTZ
-phot.dat
+data/
 
 # Homework
 *omework*
