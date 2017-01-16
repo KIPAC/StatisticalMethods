@@ -2,6 +2,10 @@ from __future__ import print_function
 import numpy as np
 import matplotlib.pyplot as plt
 
+# ----------------------------------------------------------------------
+# Data ingest and visualization class
+# ----------------------------------------------------------------------
+
 class Cepheids(object):
     """
     Methods for reading in and visualizing the R11 cepheids dataset.
@@ -25,7 +29,7 @@ class Cepheids(object):
         # Pull out one galaxy's data from the master array:
         index = (self.hosts == str(ID))
         self.mobs = self.data[index, 2]
-        self.merr = self.data[index, 3]
+        self.sigma = self.data[index, 3]
         self.logP = np.log10(self.data[index, 4])
         return
 
@@ -36,7 +40,7 @@ class Cepheids(object):
         plt.rcParams['figure.figsize'] = (15.0, 8.0)
         plt.rc('xtick', labelsize=16)
         plt.rc('ytick', labelsize=16)
-        plt.errorbar(self.logP, self.mobs, yerr=self.merr, fmt='.', ms=7, lw=1, color=self.colors[ID], label='NGC'+ID)
+        plt.errorbar(self.logP, self.mobs, yerr=self.sigma, fmt='.', ms=7, lw=1, color=self.colors[ID], label='NGC'+ID)
         plt.xlabel('$\\log_{10} P / {\\rm days}$', fontsize=20)
         plt.ylabel('${\\rm magnitude (AB)}$', fontsize=20)
         plt.xlim(self.xlimits)
@@ -56,3 +60,81 @@ class Cepheids(object):
     def add_legend(self):
         plt.legend(loc='upper left')
         return
+
+    def save_png(self):
+        plt.savefig('cepheid_data.png', dpi=300)
+        return
+
+# ----------------------------------------------------------------------
+# Data analysis functions
+# ----------------------------------------------------------------------
+
+def plot_1d_marginalized_pdfs(a, b, Pa, Pb):
+    """
+    Plot both 1D marginalized posterior distributions for the straight
+    line modeling of a Cepheid dataset
+
+    Parameters
+    ----------
+    a : float, ndarray
+        slope parameter array
+    b : float, ndarray
+        intercept parameter array
+    Pa : float, ndarray
+        P(slope) PDF array
+    Pb : float, ndarray
+        P(intercept) PDF array
+    """
+    fig, (left, right) = plt.subplots(nrows=1, ncols=2)
+    fig.set_size_inches(15, 6)
+    plt.subplots_adjust(wspace=0.2)
+
+    left.plot(agrid, prob_a_given_data)
+    left.set_title('${\\rm Pr}(a|d)$', fontsize=20)
+    left.set_xlabel('slope $a$', fontsize=20)
+    left.set_ylabel('Posterior probability density', fontsize=20)
+
+    right.plot(bgrid, prob_b_given_data)
+    right.set_title('${\\rm Pr}(b|d)$', fontsize=20)
+    right.set_xlabel('intercept $b$ / AB magnitudes', fontsize=20)
+    right.set_ylabel('Posterior probability density', fontsize=20)
+
+    return
+
+
+def compress_1D_pdf(x, pr ,ci=68.3, dp=1):
+    """
+    Compress a 1D PDF into a median and 68% credible interval
+
+    Parameters
+    ----------
+    x : float, ndarray
+        parameter array
+    pr : float, ndarray
+        pdf array
+    ci : float
+        credible interval width
+    dp : int
+        number of decimal places to report to
+
+    Returns
+    report : string
+        latex formatted parameter statement
+    """
+    # Interpret credible interval request:
+    low  = (1.0 - ci/100.0)/2.0    # 0.16 for ci=68
+    high = 1.0 - low               # 0.84 for ci=68
+
+    # Find cumulative distribution and compute percentiles:
+    cumulant = pr.cumsum()
+    pctlow = x[cumulant>low].min()
+    median = x[cumulant>0.50].min()
+    pcthigh = x[cumulant>high].min()
+
+    # Convert to error bars, and format a string:
+    errplus = np.abs(pcthigh - median)
+    errminus = np.abs(median - pctlow)
+
+    report = "$ "+str(round(median,dp))+"^{+"+str(round(errplus,dp))+"}_{-"+str(round(errminus,dp))+"} $"
+
+    return report
