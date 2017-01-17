@@ -48,11 +48,11 @@ class Cepheids(object):
         plt.title('Cepheid Period-Luminosity (Riess et al 2011)', fontsize=20)
         return
 
-    def overlay_straight_line_with(self, a=0.0, b=24.0):
+    def overlay_straight_line_with(self, a=0.0, b=24.0, label=None):
         # Overlay a straight line with gradient a and intercept b.
         x = self.xlimits
         y = a*x + b
-        plt.plot(x, y, 'k-', alpha=0.5, lw=2)
+        plt.plot(x, y, 'k-', alpha=0.5, lw=2, label=label)
         plt.xlim(self.xlimits)
         plt.ylim(self.ylimits)
         return
@@ -64,6 +64,20 @@ class Cepheids(object):
     def save_png(self):
         plt.savefig('cepheid_data.png', dpi=300)
         return
+
+    def sufficient_statistics(self):
+        x = self.logP
+        y = self.mobs
+        sigma = self.sigma
+        w = 1.0 / sigma**2
+        So = np.sum(w)
+        Sx = np.sum(w * x)
+        Sy = np.sum(w * y)
+        Sxy = np.sum(w * x * y)
+        Sxx = np.sum(w * x * x)
+        Matrix = np.array([[Sxx, Sx], [Sx, So]])
+        vector = np.array([Sxy, Sy])
+        return Matrix, vector
 
 # ----------------------------------------------------------------------
 # Data analysis functions
