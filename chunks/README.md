@@ -8,7 +8,7 @@ List of chunks, in the intended order (subject to change):
 <br> [Dataset: SDSS catalog](sdss.ipynb)
 <br> [Dataset: Cepheids](cepheids.ipynb)
 6. [Fitting a Straight Line](straight_line.ipynb)
-7. Approaches to Inference
+7. [Approaches to Inference](approaches.ipynb)
 8. [Basic Monte Carlo Sampling (Sampling I)](montecarlo1.ipynb)
 <br> [Data: OGLE lightcurve](lightcurve.ipynb)
 9. [Hierarchical Models (Model Building II)](hierarchical.ipynb)
