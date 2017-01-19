@@ -77,3 +77,7 @@ ltcube_6year.fits
 draco_bexmap.fits
 draco_srcmap.fits
 draco_mcube.fits
+
+# Other data files
+SDSSobjects.csv
+phot.dat

@@ -5,9 +5,12 @@ List of chunks, in the intended order (subject to change):
 3. [Review of Probability Theory](probability.ipynb)
 4. [Generative Models (Model Building I)](generative_models.ipynb)
 5. [Bayes Theorem](bayes_theorem.ipynb)
-6. Approaches to Inference, or Fitting a Straight Line
-7. [Basic Monte Carlo Sampling (Sampling I)](montecarlo1.ipynb)
-8. [Data: OGLE lightcurve](lightcurve.ipynb)
+<br> [Dataset: SDSS catalog](sdss.ipynb)
+<br> [Dataset: Cepheids](cepheids.ipynb)
+6. [Fitting a Straight Line](straight_line.ipynb)
+7. Approaches to Inference
+8. [Basic Monte Carlo Sampling (Sampling I)](montecarlo1.ipynb)
+<br> [Data: OGLE lightcurve](lightcurve.ipynb)
 9. [Hierarchical Models (Model Building II)](hierarchical.ipynb)
 10. [Efficient Monte Carlo Sampling (Sampling II)](montecarlo2.ipynb)
 11. Model Evaluation and Comparison

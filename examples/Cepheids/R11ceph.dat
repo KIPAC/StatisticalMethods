@@ -1,16 +1,22 @@
-#id gal m merr P logO_H bias
-#this is a processed version of the R11 cepheid data
-#see Riess et al., 2011, ApJ, 730, 119, Table 2
-#id is the ID of the cepheid
-#gal is the NGC hist number
-#mags m are computed using m = F160W - 0.41*(V_I)
-#mag errs are just those in the F160W mags
-#errors in V-I were not given in R11
-#period P is in days
-#errors in the Period were not given
-#logO_H is actual log[O/H], not 12 + log[O/H] as in R11
-#bias is the crwoding bias *already applied* by R11
-#cepheid with id 102255 was excluded since its magnitude error is 99.0
+# R11ceph.dat
+#
+# This is a processed version of the R11 cepheid data
+# (Riess et al. 2011 [R11], ApJ, 730, 119, Table 2)
+#
+# Columns:
+#     id: the ID of the cepheid
+#    gal: the NGC number of the host galaxy
+#      m: mags m are computed using m = F160W - 0.41*(V_I)
+#   merr: mag errs are just those in the F160W mags
+#         (errors in V-I were not given in R11)
+#      P: period P is in days (errors in the Period were not given)
+# logO_H: this is actually log[O/H], not 12 + log[O/H] as in R11
+#   bias: this is the crowding bias *already applied* by R11
+#
+# Notes:
+# - cepheid with id 102255 was excluded since its mag error is 99.0
+#
+#  id  gal     m       merr       P       logO_H    bias
 27185 4536 24.512300 0.310000 13.000000 -3.460000 0.130000
 42353 4536 25.990700 0.740000 13.070000 -3.030000 0.370000
 50718 4536 24.149200 0.420000 13.730000 -3.360000 0.280000
