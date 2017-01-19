@@ -23,7 +23,7 @@ def select(sql, filename='SDSSobjects.csv'):
     # sdssdata is a Table object that can be saved in a csv file with:
     from astropy.io import ascii
     ascii.write(sdssdata, filename, format='csv', fast_writer=False)
-    print("SDSS data downloaded and written to "+filename)
+    print('SDSS data downloaded and written to '+filename)
     # Return a dataframe to the command line as well.
     return pd.read_csv(filename)
 
