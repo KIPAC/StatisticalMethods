@@ -61,7 +61,6 @@ target/
 
 # Data files
 #*.FTZ
-data/
 
 # Homework
 *omework*
@@ -80,4 +79,3 @@ draco_mcube.fits
 
 # Other data files
 SDSSobjects.csv
-phot.dat
