@@ -79,6 +79,11 @@ class Cepheids(object):
         vector = np.array([Sxy, Sy])
         return Matrix, vector
 
+    def minus_log_likelihood(self, theta):
+        a, b = theta[0], theta[1]
+        chisq = np.sum(((self.mobs - a * self.logP - b) / self.sigma)**2)
+        return 0.5 * chisq
+
 # ----------------------------------------------------------------------
 # Data analysis functions
 # ----------------------------------------------------------------------
