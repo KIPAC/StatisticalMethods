@@ -116,6 +116,3 @@ segments(gibbs[j[-length(j)],1], gibbs[j[-length(j)],2], x1=gibbs[j[-1],1], y1=g
 points(ellipse(-0.75, lev=pchisq(1,1)), type='l', col=1)
 points(ellipse(-0.75, lev=pchisq(4,1)), type='l', col=1)
 dev.off()
-
-##length(unique(metro2[,1]))/nrow(metro2)
-## ~ 2/3
