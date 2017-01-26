@@ -69,3 +69,43 @@ dev.off()
 open.png('mc1_sandbox_acf-b.png', resolution=200, height=2.5, width=5, xmin=0.1, ymin=0.2, xmax=0.98)
 acf(ch[[1]][-(1:2000),2], lag.max=1000, main='', ylab='autocorrelation of b')
 dev.off()
+
+
+
+post = function(x, y, sx=1, sy=1, r=-0.75) -0.5/(1-r^2)*( (x/sx)^2 + (y/sy)^2 -2*r*(x/sx)*(y/sy) ) 
+
+metro = matrix(NA, 1000, 2)
+metro[1,] = c(0,0)#c(-3,-3)
+lnp = post(metro[1,1], metro[1,2])
+for (i in 2:nrow(metro)) {
+    prop = metro[i-1,] + rnorm(ncol(metro), 0, 1) # 0.75)
+    lnp.prop = post(prop[1], prop[2])
+    if (log(runif(1)) <= lnp.prop-lnp) {
+        lnp = lnp.prop
+        metro[i,] = prop
+    } else {
+        metro[i,] = metro[i-1,]
+    }
+}
+
+open.png('mc1_burnin.png', resolution=200, height=2.5, xmin=0.16, ymin=0.19)
+j = 1:101
+plot(metro[j,1], metro[j,2], col=cmap.blue.red(stretch(j)), pch=20, xlim=c(-4,4), ylim=c(-4,4), xlab=expression(theta[1]), ylab=expression(theta[2]))
+segments(metro[j[-length(j)],1], metro[j[-length(j)],2], x1=metro[j[-1],1], y1=metro[j[-1],2], col=cmap.blue.red(stretch(j)))
+points(ellipse(-0.75, lev=pchisq(1,1)), type='l', col=1)
+points(ellipse(-0.75, lev=pchisq(4,1)), type='l', col=1)
+dev.off()
+
+open.png('mc1_postburnin.png', resolution=200, height=2.5, xmin=0.16, ymin=0.19)
+j = 101:202
+plot(metro[j,1], metro[j,2], col=cmap.blue.red(stretch(j)), pch=20, xlim=c(-4,4), ylim=c(-4,4), xlab=expression(theta[1]), ylab=expression(theta[2]))
+segments(metro[j[-length(j)],1], metro[j[-length(j)],2], x1=metro[j[-1],1], y1=metro[j[-1],2], col=cmap.blue.red(stretch(j)))
+points(ellipse(-0.75, lev=pchisq(1,1)), type='l', col=1)
+points(ellipse(-0.75, lev=pchisq(4,1)), type='l', col=1)
+dev.off()
+
+## with different metro realization
+open.png('mc1_randomwalk.png', resolution=200, height=2.5, xmin=0.16, ymin=0.19)
+j = 1:26
+plot(metro[j,1], metro[j,2], pch=20, xlim=c(-4,4), ylim=c(-4,4), xlab=expression(theta[1]), ylab=expression(theta[2]), col='darkblue', type='o')
+dev.off()
