@@ -30,11 +30,12 @@ old notes available [here](http://statweb.stanford.edu/~susan/courses/s116/)) or
 
 This course will be mostly self-contained, but at the beginning of each chunk we list some opportunities for additional reading.
 These are mostly drawn from the following sources:
-* **[MacKay "Information Theory, Inference and Learning Algorithms"](http://www.inference.phy.cam.ac.uk/mackay/itprnn/book.html)** (free download)
-* **[Ivezic et al. "Statistics, Data Mining and Machine Learning in Astronomy"](http://www.astroml.org/)**
-* **[Gelman et al. "Bayesian Data Analysis"](http://www.stat.columbia.edu/~gelman/book/)** (2nd ed.)
-* **Ross "A First Course in Probability"** (7th ed.)
-* **Fishman "A First Course in Monte Carlo"**
+* **[MacKay, "Information Theory, Inference and Learning Algorithms"](http://www.inference.phy.cam.ac.uk/mackay/itprnn/book.html)** (free download)
+* **[Ivezic et al, "Statistics, Data Mining and Machine Learning in Astronomy"](http://www.astroml.org/)**
+* **[Gelman et al, "Bayesian Data Analysis"](http://www.stat.columbia.edu/~gelman/book/)** (2nd ed.)
+* **Ross, "A First Course in Probability"** (7th ed.)
+* **Fishman, "A First Course in Monte Carlo"**
+* **[Bishop, "Pattern Recognition and Machine Learning,"](https://www.amazon.com/Pattern-Recognition-Learning-Information-Statistics/dp/0387310738)"**
 
 ## <a name="org"></a>Organization
 

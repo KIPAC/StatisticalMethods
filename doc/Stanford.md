@@ -58,7 +58,7 @@ We also have a [Slack](http://slack.com) team set up for the course, which you c
 
 Each assignment will consist of one relatively short exercise and one more involved problem.
 There will be approximately eight homework assignments, released weekly and due one week later.
-We will discuss solutions in class on the day that homework is due. 
+We will discuss solutions in class on the day that homework is due.
 
 ### Presenting Homework Solutions
 
@@ -115,7 +115,7 @@ git pull base master
 
 #### <a name="submission">Submitting your Solutions
 
-Within the folder corresponding to a given week, create a subfolder called by your GitHub username (or the names of all students who collaborated directly on your solutions), eg `Week0/drphilmarshall`. Keep all materials related to your solutions in that subfolder. This will greatly reduce confusion, and enable us to merge in all your solutions to the base repo for grading.
+Within the folder corresponding to a given week, create a subfolder called by your GitHub username (or the names of all students who collaborated directly on your solutions), eg `Week1/phil`, `Week2/adam+phil` etc. Keep all materials related to your solutions in that subfolder. This will greatly reduce confusion, and enable us to merge in all your solutions to the base repo for grading.
 
 If you're working in a group, only one copy of the solution needs to be uploaded. Please list the names of your collaborators in some prominent place in the solution itself (see the note on accreditation above!), as well as in the subfolder name.
 
