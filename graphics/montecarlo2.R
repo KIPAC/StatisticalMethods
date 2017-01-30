@@ -71,3 +71,48 @@ arrows(-y, -y*0.99, x1=y, y1=y*0.99, length=0.1, code=3)
 y = 0.217
 arrows(y*0.85, -y*1.05, x1=-y*0.85, y1=y*1.05, length=0.1, code=3)
 dev.off()
+
+
+
+post = function(x, y, sx=1, sy=1, r=-0.75) -0.5/(1-r^2)*( (x/sx)^2 + (y/sy)^2 -2*r*(x/sx)*(y/sy) ) 
+
+metro = matrix(NA, 1000, 2)
+metro[1,] = c(3,3)
+lnp = post(metro[1,1], metro[1,2])
+for (i in 2:nrow(metro)) {
+    prop = metro[i-1,] + rnorm(ncol(metro), 0, 0.5)
+    lnp.prop = post(prop[1], prop[2])
+    if (log(runif(1)) <= lnp.prop-lnp) {
+        lnp = lnp.prop
+        metro[i,] = prop
+    } else {
+        metro[i,] = metro[i-1,]
+    }
+}
+
+gibbs = metro
+r = -0.75; sx=1; sy=1
+for (i in 2:nrow(gibbs)) {
+    if (i %% 2 == 0) {
+        gibbs[i,] = c(rnorm(1, r*sx/sy*gibbs[i-1,2], sx*sqrt(1-r^2)), gibbs[i-1,2])
+    } else {
+        gibbs[i,] = c(gibbs[i-1,1], rnorm(1, r*sy/sx*gibbs[i,1], sy*sqrt(1-r^2)))
+    }
+}
+
+open.png('mc2_metro.png', resolution=200, height=2.5, xmin=0.16, ymin=0.19)
+j = 1:26
+plot(metro[j,1], metro[j,2], col=cmap.blue.red(stretch(j)), pch=20, xlim=c(-4,4), ylim=c(-4,4), xlab=expression(theta[1]), ylab=expression(theta[2]))
+segments(metro[j[-length(j)],1], metro[j[-length(j)],2], x1=metro[j[-1],1], y1=metro[j[-1],2], col=cmap.blue.red(stretch(j)))
+points(ellipse(-0.75, lev=pchisq(1,1)), type='l', col=1)
+points(ellipse(-0.75, lev=pchisq(4,1)), type='l', col=1)
+dev.off()
+
+open.png('mc2_gibbs.png', resolution=200, height=2.5, xmin=0.16, ymin=0.19)
+j = seq(1,51,2)
+plot(gibbs[j,1], gibbs[j,2], col=cmap.blue.red(stretch(j)), pch=20, xlim=c(-4,4), ylim=c(-4,4), xlab=expression(theta[1]), ylab=expression(theta[2]))
+j = 1:51
+segments(gibbs[j[-length(j)],1], gibbs[j[-length(j)],2], x1=gibbs[j[-1],1], y1=gibbs[j[-1],2], col=cmap.blue.red(stretch(j)))
+points(ellipse(-0.75, lev=pchisq(1,1)), type='l', col=1)
+points(ellipse(-0.75, lev=pchisq(4,1)), type='l', col=1)
+dev.off()
