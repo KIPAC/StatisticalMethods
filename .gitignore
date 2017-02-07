@@ -79,3 +79,6 @@ draco_mcube.fits
 
 # Other data files
 SDSSobjects.csv
+
+# Figures made in Straightline example
+examples/StraightLine/modelcheck*png

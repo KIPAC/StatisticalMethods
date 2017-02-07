@@ -42,3 +42,5 @@ script:
   - jupyter nbconvert --ExecutePreprocessor.kernel_name=python --ExecutePreprocessor.timeout=600 --to notebook --execute chunks/hierarchical.ipynb
   - jupyter nbconvert --ExecutePreprocessor.kernel_name=python --ExecutePreprocessor.timeout=600 --to notebook --execute chunks/montecarlo2.ipynb
   - jupyter nbconvert --ExecutePreprocessor.kernel_name=python --ExecutePreprocessor.timeout=600 --to notebook --execute chunks/xray.ipynb
+  - jupyter nbconvert --ExecutePreprocessor.kernel_name=python --ExecutePreprocessor.timeout=600 --to notebook --execute chunks/modelevaluation.ipynb
+  - jupyter nbconvert --ExecutePreprocessor.kernel_name=python --ExecutePreprocessor.timeout=600 --to notebook --execute examples/StraightLine/ModelEvaluation.ipynb

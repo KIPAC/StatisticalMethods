@@ -47,8 +47,8 @@ def plot_mcmc_results(chain,mlimits,blimits):
     plt.show()
 
     # Histograms
-    import triangle
-    triangle.corner(chain, labels=['b','m'], extents=[0.99]*2)
+    import corner
+    corner.corner(chain, labels=['b','m'], extents=[0.99]*2)
     plt.show()
 
     # Traces
@@ -56,17 +56,17 @@ def plot_mcmc_results(chain,mlimits,blimits):
     plt.subplot(2,1,1)
     plt.plot(mm, 'k-')
     plt.ylim(mlimits[0],mlimits[1])
-    plt.ylabel('m')
+    plt.ylabel('m', fontsize=16)
     plt.subplot(2,1,2)
     plt.plot(bb, 'k-')
-    plt.ylabel('b')
+    plt.ylabel('b', fontsize=16)
     plt.ylim(blimits[0],blimits[1])
     plt.show()
 
 
 def plot_mb_setup(mlimits,blimits):
-    plt.xlabel('Intercept $b$')
-    plt.ylabel('Slope $m$')
+    plt.xlabel('Intercept $b$', fontsize=16)
+    plt.ylabel('Slope $m$', fontsize=16)
     plt.axis([blimits[0],blimits[1], mlimits[0],mlimits[1]])
 
 def get_data_no_outliers():
@@ -85,7 +85,7 @@ def get_data_with_outliers():
     sigmay = data1[:,2]
     return x,y,sigmay
 
-def generate_data():
+def generate_data(seed=None):
     '''
     Generate a data set, with x and sigma_y as standard, but with
     y values given by
@@ -99,7 +99,10 @@ def generate_data():
     Ndata = 30
 
     xbar = 0.5*(xlimits[0] + xlimits[1])
-    xstd = 0.15*(xlimits[1] - xlimits[0])
+    xstd = 0.25*(xlimits[1] - xlimits[0])
+
+    if seed is not None:
+        np.random.seed(seed=seed)
 
     x = xbar + xstd * np.random.randn(Ndata)
 
@@ -117,8 +120,8 @@ def plot_yerr(x, y, sigmay):
     # plot data with error bars
     plt.errorbar(x, y, yerr=sigmay, fmt='.', ms=7, lw=1, color='k')
     # if you put '$' in you can make Latex labels
-    plt.xlabel('$x$')
-    plt.ylabel('$y$')
+    plt.xlabel('$x$', fontsize=16)
+    plt.ylabel('$y$', fontsize=16)
     plt.xlim(*xlimits)
     plt.ylim(*ylimits)
     # plt.title(title_prefix)
