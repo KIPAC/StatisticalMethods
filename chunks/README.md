@@ -15,9 +15,9 @@ List of chunks, in the intended order (subject to change):
 10. [Efficient Monte Carlo Sampling (Sampling II)](montecarlo2.ipynb)
 11. [Model Evaluation and Comparison](modelevaluation.ipynb)
 12. ["Model-free" Models (Model Building III)](modelfreemodels.ipynb)
-13. [Even More Monte Carlo Sampling (Sampling III)](montecarlo3.ipynb)
 <br> [Data set: X-ray CCD Observation](xray.ipynb)
-14. Machine Learning
-15. Detection, Exploration, and Fishing Expeditions
-16. [Missing Information and Selection Effects (Model Building IV)](missingdata.ipynb)
+13. [Even More Monte Carlo Sampling (Sampling III)](montecarlo3.ipynb)
+14. [Missing Information and Selection Effects (Model Building IV)](missingdata.ipynb)
+15. Machine Learning
+16. Detection, Exploration, and Fishing Expeditions
 17. Approximate Methods

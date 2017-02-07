@@ -72,6 +72,14 @@ y = 0.217
 arrows(y*0.85, -y*1.05, x1=-y*0.85, y1=y*1.05, length=0.1, code=3)
 dev.off()
 
+open.png('mc2_reparam3.png', resolution=200, xmin=0.16)
+plot(ellipse(0.9, lev=pchisq(0.25,1)), type='l', col='darkblue', xlab='x (fast)', ylab='y (slow)', xlim=c(-2,2), ylim=c(-2,2))
+y = 0.96
+arrows(-y, -y*0.99, x1=y, y1=y*0.99, length=0.1, code=3)
+y = 0.42
+arrows(-y, 0, x1=y, length=0.1, code=3)
+dev.off()
+
 
 
 post = function(x, y, sx=1, sy=1, r=-0.75) -0.5/(1-r^2)*( (x/sx)^2 + (y/sy)^2 -2*r*(x/sx)*(y/sy) ) 
