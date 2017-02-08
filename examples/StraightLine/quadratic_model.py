@@ -40,7 +40,7 @@ def quadratic_log_prior(theta, theta_limits):
     theta : tuple, float
         (m,b,q) parameter vector: m = slope, b = intercept, q = quadratic term coefficient
     theta_limits : tuple of lists, float
-        uniform prior bounds on m and b and q
+        uniform prior bounds on m and b, Gaussian mean and width for q
 
     Returns
     -------
