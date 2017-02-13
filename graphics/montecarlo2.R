@@ -104,7 +104,7 @@ for (i in 2:nrow(gibbs)) {
     if (i %% 2 == 0) {
         gibbs[i,] = c(rnorm(1, r*sx/sy*gibbs[i-1,2], sx*sqrt(1-r^2)), gibbs[i-1,2])
     } else {
-        gibbs[i,] = c(gibbs[i-1,1], rnorm(1, r*sy/sx*gibbs[i,1], sy*sqrt(1-r^2)))
+        gibbs[i,] = c(gibbs[i-1,1], rnorm(1, r*sy/sx*gibbs[i-1,1], sy*sqrt(1-r^2)))
     }
 }
 
