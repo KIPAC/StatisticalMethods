@@ -1,0 +1,23 @@
+Obtained from: http://www.astroml.org/book_figures/chapter8/fig_gp_example.html#book-fig-chapter8-fig-gp-example
+
+Description: An example of Gaussian process regression. The upper-left panel shows three functions drawn from an unconstrained Gaussian process with squared-exponential covari- ance of bandwidth h = 1.0. The upper-right panel adds two constraints, and shows the 2-sigma contours of the constrained function space. The lower-left panel shows the function space constrained by the points with error bars. The lower-right panel shows the function space constrained by 20 noisy points drawn from f(x) = cos(x).
+
+Author: Jake VanderPlas
+
+License: BSD:
+
+Copyright (c) 2012-2013, Jacob Vanderplas All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Permission:
+The figure produced by this code is published in the textbook "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
+For more information, see http://astroML.github.com
+To report a bug or issue, use the following forum:
+https://groups.google.com/forum/#!forum/astroml-general
+
+Reference:
+Introduction to astroML: Machine learning for astrophysics, Vanderplas et al, proc. of CIDU, pp. 47-54, 2012.

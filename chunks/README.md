@@ -18,6 +18,8 @@ List of chunks, in the intended order (subject to change):
 <br> [Data set: X-ray CCD Observation](xray.ipynb)
 13. [Even More Monte Carlo Sampling (Sampling III)](montecarlo3.ipynb)
 14. [Missing Information and Selection Effects (Model Building IV)](missingdata.ipynb)
-15. Machine Learning
-16. Detection, Exploration, and Fishing Expeditions
-17. Approximate Methods
+15. [Introduction to Machine Learning](machinelearning1.ipynb)
+16. [Machine Learning: Linear Regression with `Scikit-Learn`](machinelearning2.ipynb)
+17. [Machine Learning in Astronomy](machinelearning3.ipynb)
+18. Detection, Exploration, and Fishing Expeditions
+19. Approximate Methods
