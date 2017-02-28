@@ -44,3 +44,10 @@ script:
   - jupyter nbconvert --ExecutePreprocessor.kernel_name=python --ExecutePreprocessor.timeout=600 --to notebook --execute chunks/xray.ipynb
   - jupyter nbconvert --ExecutePreprocessor.kernel_name=python --ExecutePreprocessor.timeout=600 --to notebook --execute chunks/modelevaluation.ipynb
   - jupyter nbconvert --ExecutePreprocessor.kernel_name=python --ExecutePreprocessor.timeout=600 --to notebook --execute examples/StraightLine/ModelEvaluation.ipynb
+  - jupyter nbconvert --ExecutePreprocessor.kernel_name=python --ExecutePreprocessor.timeout=600 --to notebook --execute chunks/modelfreemodels.ipynb
+  - jupyter nbconvert --ExecutePreprocessor.kernel_name=python --ExecutePreprocessor.timeout=600 --to notebook --execute chunks/xray.ipynb
+  - jupyter nbconvert --ExecutePreprocessor.kernel_name=python --ExecutePreprocessor.timeout=600 --to notebook --execute chunks/montecarlo3.ipynb
+  - jupyter nbconvert --ExecutePreprocessor.kernel_name=python --ExecutePreprocessor.timeout=600 --to notebook --execute chunks/missingdata.ipynb
+  - jupyter nbconvert --ExecutePreprocessor.kernel_name=python --ExecutePreprocessor.timeout=600 --to notebook --execute chunks/machinelearning1.ipynb
+  - jupyter nbconvert --ExecutePreprocessor.kernel_name=python --ExecutePreprocessor.timeout=600 --to notebook --execute chunks/machinelearning2.ipynb
+  - jupyter nbconvert --ExecutePreprocessor.kernel_name=python --ExecutePreprocessor.timeout=600 --to notebook --execute chunks/machinelearning3.ipynb
