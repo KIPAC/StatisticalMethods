@@ -160,7 +160,7 @@ including conclusions of what worked well, and what did not.
 
 1. A presentation to be delivered in the final class meeting. This should be pitched at a level understandable to your classmates, and cover the required points above. The time available will depend on the class size, but typically we expect about 10 minutes minimum per project, or about 5 minutes per team member (if there are more than two), with 5 minutes for questions afterwards.
 
-2. The written report will be submitted in the same manner as homework assignments, and should comprehensively cover the points above. The report should be written using LaTeX (a markup language used to produce most physics publications). If you've never used LaTeX before, you will soon enough, so this is as good a time as any to learn; we will provide a template to get you started. Your submission should include your LaTeX source and supporting files (e.g. figures) as well as a compiled PDF of your report. We'll use the source files to combine everyone's reports into a single document immortalizing your accomplishments.
+2. The written report will be submitted in the same manner as homework assignments, and should comprehensively cover the points above. The report should be written using LaTeX (a markup language used to produce most physics publications). If you've never used LaTeX before, you will soon enough, so this is as good a time as any to learn; we will provide a template to get you started. Your submission should include your LaTeX source and supporting files (e.g. figures). We'll use the source files to combine everyone's reports into a single document immortalizing your accomplishments.
 
 ## <a name="computing"></a>Computing
 
