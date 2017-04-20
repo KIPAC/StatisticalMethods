@@ -21,5 +21,5 @@ List of chunks, in the intended order (subject to change):
 15. [Introduction to Machine Learning](machinelearning1.ipynb)
 16. [Machine Learning: Linear Regression with `Scikit-Learn`](machinelearning2.ipynb)
 17. [Machine Learning in Astronomy](machinelearning3.ipynb)
-18. Detection, Exploration, and Fishing Expeditions
-19. Approximate Methods
+18. [Detection, Fishing, and Blinding](detection.ipynb)
+19. [Approximate Methods](approximate_methods.ipynb)
