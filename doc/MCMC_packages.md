@@ -30,8 +30,8 @@ Gibbs samplers that analyze models to determine conjugacy relations (some have `
 Gibbs samplers specifically for linear regression:
 
 Code | Language | multiple $x$'s | multiple $y$'s
----- | -------- | -------------- | --------------
+---- | :------: | :------------: | :------------:
 [`linmix_err`](http://idlastro.gsfc.nasa.gov/ftp/pro/math/linmix_err.pro) | IDL | no | no
 [`mlinmix_err`](http://idlastro.gsfc.nasa.gov/ftp/pro/math/mlinmix_err.pro) | IDL | yes | no
 [`linmix`](https://github.com/jmeyers314/linmix) | Python | no | no
-[`lrgs`](https://github.com/abmantz/lrgs) | Python,R | yes | yes
+[`lrgs`](https://github.com/abmantz/lrgs) | R, Python | yes | yes
