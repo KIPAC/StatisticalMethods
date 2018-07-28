@@ -144,3 +144,22 @@ segments(gibbs[j[-length(j)],1], gibbs[j[-length(j)],2], x1=gibbs[j[-1],1], y1=g
 points(ellipse(-0.75, lev=pchisq(1,1)), type='l', col=1)
 points(ellipse(-0.75, lev=pchisq(4,1)), type='l', col=1)
 dev.off()
+
+
+cmap.white.blue = function (xx) {
+  red = approxfun(x = c(0, 1), y = c(1, 0) * 255)
+  green = approxfun(x = c(0, 1), y = c(1, 0) * 255)
+  blue = xx*0+255
+  rgb(red(xx), green(xx), blue, maxColorValue = 255)
+}
+load('multimode.Rdata')
+
+open.png('mc2_multimode_eg2.png', resolution=200, height=2.5, xmin=0.16, ymin=0.19)
+image(h, col=cmap.white.blue(seq(0,1,len=256)), axes=F, xlab=expression(Gamma[1]), ylab=expression(Gamma[2]))
+axis(1)
+axis(2)
+box()
+points(f[[1]], type='l', lwd=1.25)
+points(f[[2]], type='l', lwd=1.25)
+points(f[[3]], type='l', lwd=1.25)
+dev.off()
