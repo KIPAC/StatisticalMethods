@@ -50,26 +50,25 @@ write.table(data.frame(x, y), '../code/mc1_sandbox.dat', row.na=F, col.na=F)
 
 
 ## NB the chain files used here will not be repo'd
-ch = lapply(1:4, function(i) read.table(paste0('../code/mc1_sandbox_', i, '.txt'), head=F))
+ch = lapply(c(1,8,6,3), function(i) read.table(paste0('metro_tutorial_', i, '.txt'), head=F))
 open.png('mc1_sandbox_ab.png', resolution=200, height=2.5, xmin=0.175, ymin=0.19, xmax=0.98)
-plot(1, 1, type='n', xlim=c(-3,5), ylim=c(-3,5), xlab='a', ylab='b')
-for (i in 1:4) points(ch[[i]], type='l', col=i+1)
+plot(1, 1, type='n', xlim=c(-4,5), ylim=c(-4,5), xlab='a', ylab='b')
+for (i in 1:length(ch)) points(ch[[i]], type='l', col=i+1)
 dev.off()
 open.png('mc1_sandbox_a.png', resolution=200, height=2.5, width=5, xmin=0.1, ymin=0.2, xmax=0.98)
 plot(1, 1, type='n', xlim=c(1,10000), ylim=c(-3,5), xlab='step', ylab='a')
-for (i in 1:4) points(ch[[i]][,1], pch='.', col=i+1)
+for (i in 1:length(ch)) points(ch[[i]][,1], pch='.', col=i+1)
 dev.off()
 open.png('mc1_sandbox_b.png', resolution=200, height=2.5, width=5, xmin=0.1, ymin=0.2, xmax=0.98)
 plot(1, 1, type='n', xlim=c(1,10000), ylim=c(-3,5), xlab='step', ylab='b')
-for (i in 1:4) points(ch[[i]][,2], pch='.', col=i+1)
+for (i in 1:length(ch)) points(ch[[i]][,2], pch='.', col=i+1)
 dev.off()
 open.png('mc1_sandbox_acf-a.png', resolution=200, height=2.5, width=5, xmin=0.1, ymin=0.2, xmax=0.98)
-acf(ch[[1]][-(1:2000),1], lag.max=1000, main='', ylab='autocorrelation of a')
+acf(ch[[1]][-(1:500),1], lag.max=500, main='', ylab='autocorrelation of a')
 dev.off()
 open.png('mc1_sandbox_acf-b.png', resolution=200, height=2.5, width=5, xmin=0.1, ymin=0.2, xmax=0.98)
-acf(ch[[1]][-(1:2000),2], lag.max=1000, main='', ylab='autocorrelation of b')
+acf(ch[[1]][-(1:500),2], lag.max=500, main='', ylab='autocorrelation of b')
 dev.off()
-
 
 
 post = function(x, y, sx=1, sy=1, r=-0.75) -0.5/(1-r^2)*( (x/sx)^2 + (y/sy)^2 -2*r*(x/sx)*(y/sy) ) 
