@@ -108,3 +108,35 @@ open.png('mc1_randomwalk.png', resolution=200, height=2.5, xmin=0.16, ymin=0.19)
 j = 1:26
 plot(metro[j,1], metro[j,2], pch=20, xlim=c(-4,4), ylim=c(-4,4), xlab=expression(theta[1]), ylab=expression(theta[2]), col='darkblue', type='o')
 dev.off()
+
+
+
+
+
+xx = 1:100
+ch = lapply(1:4, function(j) c(-1,-0.5,0.5,1)[j]*exp(-xx/exp(runif(1,1,3))) + rnorm(length(xx), 0, 0.05))
+open.png('mc1_convgame_1.png', resolution=200, height=2.5, width=5, xmin=0.1, ymin=0.2, xmax=0.98)
+plot(1, 1, type='n', xlim=range(xx), ylim=c(-1,1), xlab='step', ylab=expression(theta))
+for (i in 1:length(ch)) points(ch[[i]], pch=20, col=i+1)
+dev.off()
+
+xx = 1:100
+ch = lapply(1:4, function(j) c(-1,-0.5,0.5,1)[j]*exp(-xx/exp(runif(1,1,3))) + rnorm(length(xx), 0, 0.03) + runif(1,-1,1)*0.5)
+open.png('mc1_convgame_2.png', resolution=200, height=2.5, width=5, xmin=0.1, ymin=0.2, xmax=0.98)
+plot(1, 1, type='n', xlim=range(xx), ylim=c(-1,1), xlab='step', ylab=expression(theta))
+for (i in 1:length(ch)) points(ch[[i]], pch=20, col=i+1)
+dev.off()
+
+xx = 1:100
+ch = lapply(1:4, function(j) 0.75 * cos(xx/32+runif(1,0,2*pi)) + rnorm(length(xx), 0, 0.1))
+open.png('mc1_convgame_3.png', resolution=200, height=2.5, width=5, xmin=0.1, ymin=0.2, xmax=0.98)
+plot(1, 1, type='n', xlim=range(xx), ylim=c(-1,1), xlab='step', ylab=expression(theta))
+for (i in 1:length(ch)) points(ch[[i]], pch=20, col=i+1)
+dev.off()
+
+xx = 1:100
+ch = lapply(1:4, function(j) runif(1,-1,1)*0.1 + (1-exp(-xx/20))*runif(length(xx),-1,1))
+open.png('mc1_convgame_4.png', resolution=200, height=2.5, width=5, xmin=0.1, ymin=0.2, xmax=0.98)
+plot(1, 1, type='n', xlim=range(xx), ylim=c(-1,1), xlab='step', ylab=expression(theta))
+for (i in 1:length(ch)) points(ch[[i]], pch=20, col=i+1)
+dev.off()
