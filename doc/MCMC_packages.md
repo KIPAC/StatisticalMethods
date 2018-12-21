@@ -24,7 +24,6 @@ Gibbs samplers that analyze models to determine conjugacy relations (some have `
 
 * [BUGS](http://openbugs.net/w/FrontPage)
 * [JAGS](http://mcmc-jags.sourceforge.net/)
-* [STAN](http://mc-stan.org/)
 
 
 Gibbs samplers specifically for linear regression:
