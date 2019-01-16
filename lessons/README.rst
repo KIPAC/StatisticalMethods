@@ -33,13 +33,6 @@ See the index table below for links to the notebooks.
         .. image:: https://github.com/KIPAC/StatisticalMethods/blob/rendered/lessons/log/bayes_theorem.svg
             :target: https://github.com/KIPAC/StatisticalMethods/blob/rendered/lessons/log/bayes_theorem.log
 
-    * - 5.
-      - Basic Monte Carlo
-      - `basic_mc.ipynb <basic_mc.ipynb>`_
-
-        .. image:: https://github.com/KIPAC/StatisticalMethods/blob/rendered/lessons/log/basic_mc.svg
-            :target: https://github.com/KIPAC/StatisticalMethods/blob/rendered/lessons/log/basic_mc.log
-
 
     * - 5.
       - Basic Monte Carlo
