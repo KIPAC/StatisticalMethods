@@ -25,19 +25,24 @@ You are probably reading this file in a browser on the GitHub website.
 By exploring a little you can find all the course materials for
 PHYS366. Much of the material can be browsed this way, but to get everything out of the course, you will need a local copy of the repository. PHYS366 students will also need a copy of the private homework repository (see [Stanford.md](Stanford.md)).
 
-If all this talk of "forks", "clones", "git" etc. below begins to sound scary, you might want to have a read of [this guide to getting started with git and GitHub](https://github.com/KIPAC/GettingStarted#top), and perhaps listen to Phil explaining (hopefully) everything you need to know in [this video](https://www.youtube.com/watch?v=2g9lsbJBPEs).
+If all the talk of "forks", "clones", "git" etc. below begins to sound scary, you might want to have a read of [this guide to getting started with git and GitHub](https://github.com/KIPAC/GettingStarted#top), and perhaps listen to Phil explaining (hopefully) everything you need to know in [this video](https://www.youtube.com/watch?v=2g9lsbJBPEs).
 
 ### Forking a repo
 
-A fork is a copy (a "clone") of a repository, within GitHub, that belongs to you. It is not strictly necessary to fork the main course repo (you could clone it directly; see below), but PHYS366 students need to fork the homework repo before cloning it to their local systems.
+A fork is a copy (a "clone") of a repository, within GitHub, that belongs to you.
+It is not strictly necessary to fork the main course repo: if you don't plan to suggest any changes to the material, you can just clone it directly as described below. But if you want to make a fork, follow these directions.
 
-While viewing the GitHub repository that you want to fork, make sure you are logged in, and you should see a button in the top righthand corner marked "Fork". Click this button. Ta-daa! You have your own copy of the repository, hosted at GitHub.
+While viewing the GitHub repository that you want to fork, make sure you are logged in, and you should see a button in the top righthand corner marked "Fork".
+Click this button.
+Ta-daa!
+You have your own copy of the repository, hosted at GitHub.
 
-In some circumstances, it seems that GitHub will automatically have you "watching" previous forks of the repo by others. Go ahead and "unwatch" them, if you want to avoid the associated notifications.
+In some circumstances, it seems that GitHub will automatically have you `Watching` previous forks of the repo by others.
+Go ahead and `Unwatch` them if you want to avoid the associated notifications.
 
 ### Cloning a repo
 
-To get a repo onto your local system, you need to clone it with the command
+To get a repo onto your local system, you need to clone it with the shell command
 ```bash
 git clone <address>
 ```
@@ -47,17 +52,19 @@ It will likely fail, with one of two errors. If you get a message like this:
 ```
 Permission denied (publickey)
 ```
-it's is because you are not yet authorized to write to files on GitHub's computers. To enable them to let you in, you just have to give them your *public SSH key*. (This is all worth it, I promise: setting this up will allow you to push and pull without typing your GitHub password all the time.) Go to the [SSH settings part of your GitHub profile](https://github.com/settings/ssh) and add a new key, pasting in the contents of your file (do "`more ~/.ssh/id_rsa.pub`". "Title" can be anything - I use "laptop".) If that file doesn't exist, you can make one with the command `ssh-keygen`. Now you should be able to interact with GitHub repositories via the command line.
+it's is because you are not yet authorized to write to files on GitHub's computers. To enable them to let you in, you just have to give them your *public SSH key*. (This is all worth it, I promise: setting this up will allow you to push and pull without typing your GitHub password all the time. However, if you somehow never plan to push anything to GitHub, it's simpler to clone using https rather than SSH; this does not require setting up a key.) Go to the [SSH settings part of your GitHub profile](https://github.com/settings/ssh) and add a new key, pasting in the contents of your file (do "`more ~/.ssh/id_rsa.pub`". "Title" can be anything - I use "laptop".) If that file doesn't exist, you can make one with the command `ssh-keygen`. Now you should be able to interact with GitHub repositories via the command line.
 
 Alternatively, you might get an error message because you don't have `git` installed. There are a number of ways to install `git`, and the best one will depend on your operating system. A good Google search query could be, for example, "install git Mac OS X 10.8.5".
+
+If all else fails, note that you can download a GitHub repository as a `zip` file also.
+However, this is a simple, one-time download, meaning that there is no way to get updates other than to re-download the entire repository - so we recommend cloning the repo, if at all possible.
 
 ## <a name="ipynb"></a>Jupyter Notebooks with IPython
 
 The notebooks provided with this course are
-["Jupyter"](https://jupyter.org/) notebooks,  which run IPython
-version 4.0. You can read more at [the IPython
-website](http://ipython.org/) but the bottom line is: you need the
-latest version.
+["Jupyter"](https://jupyter.org/) notebooks,  which run IPython. You can read more at [the IPython
+website](http://ipython.org/) but the bottom line is: you should get the
+latest version, just to be safe.
 
 ### If you have `python` already installed on your machine:
 
@@ -65,9 +72,11 @@ Try the following on the command line:
 ```bash
 pip install ipython jupyter
 ```
-This will install IPython 4.0 from source, so may take a few minutes.
+This will install the current IPython from source, so may take a few minutes.
 
-> Note that even if `python` is already installed, this `pip` method may not work as some packages require additional libraries that your system may not have. In such senarios, use the `conda` method below.
+Note that even if `python` is already installed, this `pip` method may not work as some packages require additional libraries that your system may not have. In such senarios, use the `conda` method below.
+
+Also note that there are some limitations to the `python` that comes pre-installed on OS X systems. It is almost certainly worth it (and safe!) to install and use Miniconda instead.
 
 ### If you do not have `python`:
 
@@ -83,12 +92,12 @@ conda update conda
 ```
 `conda` is the package manager command, and can be used to install a
 number of things you will need for this course. First of all, you'll
-need to be able to run IPython 4.0 notebooks:
+need to be able to run Jupyter notebooks:
 ```bash
 conda install ipython jupyter
 ```
 
-> Note that the above instructions also work if you do have `python` installed already. This method may be preferable in any case, if you lack administrative privileges and want easy control over your `python` environment.
+Note that the above instructions also work if you do have `python` installed already. This method may be preferable in any case, if you lack administrative privileges and want easy control over your `python` environment.
 
 ### To edit and run a notebook:
 
@@ -106,7 +115,7 @@ jupyter notebook &
 
 ### Viewing the notebooks as slides
 
-We use the [RISE jupyter IPython slideshow extension](https://github.com/damianavila/RISE) to display notebook cells as slides. To do likewise (although you don't really need to), you'll need to install RISE, following the instructions in the [RISE README](https://github.com/damianavila/RISE).
+We use the [RISE jupyter IPython slideshow extension](https://github.com/damianavila/RISE) to display notebook cells as slides. To do likewise (although you don't really need to), you would need to install RISE, following the instructions in the [RISE README](https://github.com/damianavila/RISE).
 
 
 ### If you get stuck:
@@ -124,17 +133,7 @@ We recommend checking out the Python [tutorial](https://docs.python.org/3/tutori
 ## <a name="packages"></a>Python Packages
 
 You'll need a number of python packages in this course.
-The shopping list is given in the [`requirements.txt`](https://github.com/KIPAC/StatisticalMethods/blob/master/requirements.txt) file, and can be divided into those packages which _should_ come with your python installation, and those that you will need to install separately. The latter are as follows:
-```python
-mechanize
-pandas
-seaborn
-sklearn
-astropy
-corner
-daft
-treecorr
-```
+The shopping list is given in the [`requirements.txt`](https://github.com/KIPAC/StatisticalMethods/blob/master/requirements.txt) file.
 
 If you have `anaconda` or `miniconda` python, you can try installing these with e.g.:
 ```bash
@@ -149,12 +148,12 @@ If neither of these methods works for `astropy`, please
 see [their website](http://astropy.readthedocs.org/en/stable/install.html)
 for installation help.
 
-Some additional packages that may be useful are listed in [MCMC_packages.md](MCMC_packages.md).
+Some additional packages that may be useful at some point are listed in [MCMC_packages.md](MCMC_packages.md). These can be installed if you need them with `pip` or `conda`.
 
 
 ## <a name="gitnote"></a>Guidelines for Keeping Notebooks in Git
 
-This section is mainly a reminder for us, but might also be useful information for those hoping to avoid conflicts when git pulling (eg from the base repo) and pushing (to your fork).
+This section is mainly a reminder for us, but might also be useful information for those hoping to avoid conflicts when git pulling (e.g. from the base repo) and pushing (to your fork).
 
 Jupyter notebooks are fundamentally a text-based format, and thus relatively straightforward to difference between versions. This breaks down when graphics are embedded within a notebook, however. In general, cell outputs are more difficult to difference than "clean" notebooks, although purely text outputs shouldn't be too bad.
 

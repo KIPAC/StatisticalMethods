@@ -11,7 +11,14 @@ Everyone should see the [Getting Started](GettingStarted.md) document to set up 
 
 ## <a name="descrip"></a>Course Description
 
-Existing and emerging statistical techniques and their application to astronomical surveys and cosmological data analysis. Topics covered will include statistical frameworks (Bayesian inference and frequentist statistics), numerical methods including Markov Chain Monte Carlo, and machine learning applied to classification and regression. Hands on activities based on open-source software in python.
+Foundations of principled inference from data, primarily in the Bayesian framework, organized around applications in astrophysics and cosmology.
+Topics include
+probabilistic modeling of data,
+parameter constraints and model comparison,
+numerical methods including Markov Chain Monte Carlo,
+and
+connections to frequentist and machine learning frameworks.
+Hands-on experience with real data through in-class tutorials, problem sets and a final project.
 
 The course is aimed at graduate students intending to do research in astrophysics and cosmology, although the content is broadly applicable to statistical data analysis.
 
@@ -19,34 +26,58 @@ The course is aimed at graduate students intending to do research in astrophysic
 
 The following background is recommended.
 
-1. Basic statistics and probability will be reviewed briefly at the beginning of this course.
-Previous exposure to these subjects at the undergraduate level in statistics (e.g. [STATS 116](https://explorecourses.stanford.edu/search?view=catalog&filter-coursestatus-Active=on&page=0&catalog=&academicYear=&q=STATS+116%3A+Theory+of+Probability&collapse=),
-old notes available [here](http://statweb.stanford.edu/~susan/courses/s116/)) or physics
-(undergraduate statistical mechanics and/or quantum mechanics) courses will be helpful.
+1. Prerequisite: programming in Python or a similar language (at the level of [CS 106A](https://explorecourses.stanford.edu)).
+The first few lessons do not require programming, but this is ultimately a hands-on course in data analysis.
+In principle, one could use a different programming language, but since code provided in the tutorials is in Python, we recommend sticking with it for simplicity.
 
-2. Basic familiarity with writing code in Python, or a burning desire to learn quickly. No Python knowledge is needed for the first few lessons, but, this being a hands-on course, the amount of code and coding increases quickly after that. It's of course possible to do the various exercises using some other language or environment; we will stick with Python for consistency.
+2. Recommended but not required: probability at the level of [STATS 116 or PHYSICS 166/266](https://explorecourses.stanford.edu).
+Exposure to probability through other physics courses (statistical or quantum mechanics) may be sufficient, since we will review the subject *briefly* early in the course.
 
 ## <a name="books"></a>Textbooks
 
-This course will be mostly self-contained, but at the beginning of each chunk we list some opportunities for additional reading.
-These are mostly drawn from the following sources:
+This course is mostly self-contained, but at the beginning of each lesson we list some opportunities for additional reading.
+The most widely useful reference for this course is
+* **[Gelman et al., "Bayesian Data Analysis"](http://www.stat.columbia.edu/~gelman/book/)** (3rd ed.) 
+
+Some additional sources are:
 * **[MacKay, "Information Theory, Inference and Learning Algorithms"](http://www.inference.phy.cam.ac.uk/mackay/itprnn/book.html)** (free download)
 * **[Ivezic et al, "Statistics, Data Mining and Machine Learning in Astronomy"](http://www.astroml.org/)**
-* **[Gelman et al, "Bayesian Data Analysis"](http://www.stat.columbia.edu/~gelman/book/)** (2nd ed.)
 * **Ross, "A First Course in Probability"** (7th ed.)
 * **Fishman, "A First Course in Monte Carlo"**
-* **[Bishop, "Pattern Recognition and Machine Learning,"](https://www.amazon.com/Pattern-Recognition-Learning-Information-Statistics/dp/0387310738)"**
+* **[Bishop, "Pattern Recognition and Machine Learning,"](https://www.amazon.com/Pattern-Recognition-Learning-Information-Statistics/dp/0387310738)**
 
-## <a name="org"></a>Organization
 
-The content of this course is divided thematically into "chunks of stuff", each of which resides in a Jupyter Notebook (`.ipynb`) file in the `chunks` folder of this repository.
-These notebooks serve dual purposes
+## <a name="org"></a>Content
 
-1. In class, we use the RISE extension for Jupyter to display them as slides.
-2. Each notebook can also be read through directly through a web browser (using GitHub's rendering engine) or interacted with on the user's own machine through Jupyter Notebook.
-See [Getting Started](GettingStarted.md).
+This course is divided into lessons, tutorials and problem sets, each of which resides in a Jupyter Notebook (`.ipynb`) file.
+These notebooks can be browsed directly through a web browser (using GitHub's rendering engine) or interacted with on the user's own machine through Jupyter Notebook (see [Getting Started](GettingStarted.md)).
+The quickest way to find a particular notebook is probably through the [schedule](Schedule.md).
 
-Each chunk is a combination of lecture material, worked examples, demos (using Python) and exercises.
-Their length varies; we expect individual chunks to take between 20 and (at most) 80 minutes of class time.
-Bonus exercises (that we typically don't expect to get to during class) often appear at the end of a notebook.
-There is a logical order to the chunks, reflected in the [Schedule](../chunks/README.md) document.
+* **Lessons** are a combination of lecture material, worked examples, demos and exercises, that we will cover in class.
+These very rarely involve writing or running code.
+
+* **Tutorials** are involved, *partially* worked problems that do require coding.
+The intention is for students to work together to solve these problems *in class*, where immediate feedback from the instructors is possible.
+
+* **Problem sets** are similarly involved problems, generally provided with less guidance, to be completed outside of class.
+
+Note that tutorials and problem sets will only appear here when they are set.
+
+See [Stanford.md](Stanford.md) for policies regarding tutorials, problem sets, and class participation generally in this course.
+
+### Technicalities of Tutorials
+
+As noted above, tutorial notebooks contain some working code, and some that you will need to complete. In practice, that means you will see cells like these in the tutorial notebooks:
+
+```python
+try:
+	exec(open(Solution/assign_x.py).read())
+except IOError:
+	x = REPLACE_WITH_YOUR_SOLUTION()
+```
+
+Intuitively, the idea is that you should replace `REPLACE_WITH_YOUR_SOLUTION()` with your own code; you can also delete the `try`-`except` construction if it annoys you. *You do **not** need to put your solution to each such code block in a separate file in a `Solution` folder.*
+
+There is a reason for this slightly inconvenient construction! Namely,
+1. It allows us to verify that the completed notebook will actually work without having to make any changes to the notebook itself before distributing it (possibly of introducing errors in the process).
+2. The code is syntactically correct even though it is incomplete. Attempting to run it as-is will result in an `Exception` pointing out that the solution is incomplete rather than one that might be the result of an actual code error.
