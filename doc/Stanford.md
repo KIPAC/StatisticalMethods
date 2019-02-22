@@ -13,6 +13,10 @@
 See the entry for PHYSICS 366 in [ExploreCourses](https://explorecourses.stanford.edu) for the description, meeting times, and classroom.
 A preliminary schedule for the course is found [here](Schedule.md).
 
+#### Students with Documented Disabilities
+
+Students who may need an academic accommodation based on the impact of a disability must initiate the request with the Office of Accessible Education (OAE).  Professional staff will evaluate the request with required documentation, recommend reasonable accommodations, and prepare an Accommodation Letter for faculty dated in the current quarter in which the request is being made. Students should contact the OAE as soon as possible since timely notice is needed to coordinate accommodations.  The OAE is located at 563 Salvatierra Walk (phone: 723-1066, URL: http://oae.stanford.edu).
+
 ## <a name="comm"></a>Communication
 
 Outside of class, we will make any important announcements through the "issues" of the [2019 homework GitHub repository](https://github.com/abmantz/phys366_2019) (see below). This means that you must "watch" the HW repo by clicking the Watch (eyeball) button on its main GitHub page. Also, double-check your GitHub notification preferences to make sure that you'll get emails or be otherwise  notified about repositories you're watching. The issues can also be used to ask us questions or raise issues (!) related to the course.
