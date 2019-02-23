@@ -1,13 +1,17 @@
 # Python packages needed by the notebooks:
-astroquery
+numpy
+statsmodels
+matplotlib
 pandas
+scipy
+corner
+astroquery
 seaborn
 sklearn
 astropy
-corner
 daft
 # Warning: this does not build at mybinder.org:
-treecorr
+# treecorr
 
 # Standard packages you probably don't need to install:
 # StringIO
