@@ -6,6 +6,8 @@ a `Project Milestones/Pitch/<your names>` folder in the private course repo.
 Activity for the "Paper Outline" and "Paper Writing" milestones happens in `Project Reports/<your project>` folders, and no
 special submissions are necessary - just commits of drafts and final versions of your reports.
 
+Like homeworks, these appear in the [schedule](Schedule.md) in the week they are assigned, and are due the following week.
+
 ### Pitch
 
 This comes just after the "Project Speed Dating" tutorial.
