@@ -62,9 +62,6 @@ target/
 # Data files
 #*.FTZ
 
-# Homework
-*omework*
-
 # Don't look in the attic!
 attic
 
