@@ -79,3 +79,7 @@ SDSSobjects.csv
 
 # Figures made in Straightline example
 examples/StraightLine/modelcheck*png
+
+# Ignore the homework repos, and previous years' stuff
+homework
+2017*
