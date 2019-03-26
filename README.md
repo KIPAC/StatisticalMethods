@@ -39,7 +39,7 @@ Our goal is that students taking this course will:
 
 ## Content
 
-The course content can be browsed on GitHub, or you can clone the repository and run the notebooks locally. The easiest way to navigate the materials is through the links in the [Schedule document](docs/Schedule.md).
+The course content can be browsed on GitHub, or you can clone the repository and run the notebooks locally. The easiest way to navigate the materials is through the links in the [Schedule document](doc/Schedule.md).
 
 
 ## Contact
