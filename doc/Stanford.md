@@ -133,7 +133,7 @@ Projects will be presented during the final week of class, and final written rep
 Students are, as always, encouraged to work in groups.
 However, we expect the ambition of the project, and consequently the length of the presentation and write-up, to reflect the number of people working on it.
 
-There are a few project milestones to be completed and submitted along with (and in the same manner as) the homework assignments. The timeline can be found in our [course schedule](Schedule.md).
+There are a few [project milestones](ProjectMilestones.md) to be completed and submitted along with (and in the same manner as) the homework assignments. The timeline can be found in our [course schedule](Schedule.md).
 
 The purpose of these projects is to apply what you've learned in the course (or go beyond it) to a real or realistic data analysis problem. The problem may be from your own research, although it need not be.
 
