@@ -71,7 +71,7 @@ box()
 dev.off()
 
 open.png('bayes_ci_perc.png', resolution=200, height=2.5, xmin=0.175, ymin=0.19, xmax=0.98)
-zquantile = function(x, p, q) {j = 1; while (sum(p[1:j])/sum(p)<q) j=j+1; x[j]}
+zquantile = function(x, p, q) {j = 1; while (sum(p[1:j])/sum(p)<q) j=j+1; j}
 par(yaxs='i')
 plot(1, 1, type='n', xlim=c(0.5,3), ylim=c(0,1.8), xlab=expression(theta), ylab=expression(P(group("",theta,"|")*data)), axes=F)
 j = zquantile(1:length(ff), ff, 0.023):zquantile(1:length(ff), ff, 0.977)
@@ -118,7 +118,7 @@ dev.off()
 
 open.png('bayes_ci_limit_perc.png', resolution=200, height=2.5, xmin=0.175, ymin=0.19, xmax=0.98)
 par(xaxs='i', yaxs='i')
-zquantile = function(x, p, q) {j = 1; while (sum(p[1:j])/sum(p)<q) j=j+1; x[j]}
+zquantile = function(x, p, q) {j = 1; while (sum(p[1:j])/sum(p)<q) j=j+1; j}
 plot(1, 1, type='n', xlim=c(0,2.1), ylim=c(0,2.499), xlab=expression(theta), ylab=expression(P(group("",theta,"|")*data)), axes=F)
 j = zquantile(1:length(ff), ff, 0.023):zquantile(1:length(ff), ff, 0.977)
 polygon(c(xx[j[1]], xx[j], xx[rev(j)[1]]), c(0, ff[j], 0), col=shading[2], border=NA)
