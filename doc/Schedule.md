@@ -5,7 +5,7 @@ It is subject to change.
 
 |   | Week of | Monday (1) | Monday (2) | Wednesday (1) | Wednesday (2) | Homework | Project
 |:-:|:-------:|:----------:|:----------:|:-------------:|:-------------:|:--------:|:-------:
-| 1 | Apr 1 | [Intro](../lessons/intro.ipynb) | ... | [Probability](../lessons/probability.ipynb) | Tutorial: Workflow | Probability | -
+| 1 | Apr 1 | [Intro](../lessons/intro.ipynb) | ... | [Probability](../lessons/probability.ipynb) | [Tutorial: Workflow](../tutorials/Week1/GithubAndGoals.ipynb) | [Probability](../homework/Week1/ChangeOfVariables.ipynb) | -
 | 2 | Apr 8 | [Generative Models](../lessons/generative_models.ipynb) | [Bayes Theorem](../lessons/bayes_theorem.ipynb) | ... | Tutorial: XMM Photometry | XMM Photometry | -
 | 3 | Apr 15 | ... | [Basic Monte Carlo](../lessons/basic_mc.ipynb) | [MCMC Diagnostics](../lessons/mcmc_diagnostics.ipynb) | Tutorial: Metropolis | OGLE lightcurve | -
 | 4 | Apr 22 | Statistical Frameworks | ... | [Hierarchical Models](../lessons/hierarchical.ipynb) | Project Speed Dating | **TBD?** | [Pitch](ProjectMilestones.md)
