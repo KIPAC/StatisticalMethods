@@ -118,7 +118,7 @@ Each assignment will appear in the [`homework` folder of the public repo](../hom
 
 #### <a name="submission">Submitting your Solutions
 
-In the private repo, within the folder corresponding to a given week's assignment, create a subfolder called by your name (or the names of all students who collaborated directly on your solutions), e.g. `Week1/Phil`, `Week2/Adam+Phil` etc. Keep all materials related to your solutions in that subfolder. This will greatly reduce confusion, and enable us to merge in all your solutions to the base repo for grading.
+In the private repo, within the folder corresponding to a given week's assignment, create a subfolder called by your name (or the names of all students who collaborated directly on your solutions), e.g. `HW_week1/Phil/`, `HW_week2/Adam+Phil/` etc. Keep all materials related to your solutions in that subfolder. This will greatly reduce confusion, and enable us to merge in all your solutions to the base repo for grading.
 
 If you're working in a group, only one copy of the solution needs to be uploaded. Please list the names of your collaborators in some prominent place in the solution itself (see the note on accreditation above!), as well as in the subfolder name.
 
