@@ -140,12 +140,12 @@ def plot_1d_marginalized_pdfs(a, b, Pa, Pb):
     plt.subplots_adjust(wspace=0.2)
 
     left.plot(a, prob_a_given_data)
-    left.set_title('${\\rm Pr}(a|d)$', fontsize=20)
+    left.set_title('$P(a|m^{obs})$', fontsize=20)
     left.set_xlabel('slope $a$', fontsize=20)
     left.set_ylabel('Posterior probability density', fontsize=20)
 
     right.plot(b, prob_b_given_data)
-    right.set_title('${\\rm Pr}(b|d)$', fontsize=20)
+    right.set_title('$P(b|m^{obs})$', fontsize=20)
     right.set_xlabel('intercept $b$ / AB magnitudes', fontsize=20)
     right.set_ylabel('Posterior probability density', fontsize=20)
 
