@@ -11,8 +11,8 @@ It is subject to change.
 | 4 | Apr 22 | [Statistical Frameworks](../lessons/frameworks.ipynb) | ... | ... | Project Speed Dating | [Credible Regions / Confidence Intervals](../homework/Week4/Intervals.ipynb) | [Pitch](ProjectMilestones.md)
 | 5 | Apr 29 | [Hierarchical Models](../lessons/hierarchical.ipynb) | ... | [Efficient Monte Carlo](../lessons/efficient_mc.ipynb) | Tutorial: Gibbs Sampling | Cepheids | [Abstract](ProjectMilestones.md)
 | 6 | May 6 | [Model Evaluation](../lessons/modelevaluation.ipynb) | ... | [Yet More Monte Carlo](../lessons/yet_more_mc.ipynb) |  Tutorial: Model Comparison | Model Comparison | [Plan, PGM](ProjectMilestones.md)
-| 7 | May 13 | [Missing Data](../lessons/missingdata.ipynb) ... | Consistency/blinding | ["Model-free" models](../lessons/modelfreemodels.ipynb) | Tutorial: XMM Image | XMM Image | [Data Visualization](ProjectMilestones.md)
-| 8 | May 20 | Gaussian Processes | Tutorial: Gaussian Processes | Approximate Methods | Machine Learning | - | [Action](ProjectMilestones.md)
+| 7 | May 13 | [Missing Data](../lessons/missingdata.ipynb) | ... | Consistency/blinding | Tutorial: XMM Image | XMM Image | [Data Visualization](ProjectMilestones.md)
+| 8 | May 20 | ["Model-free" models](../lessons/modelfreemodels.ipynb) | Tutorial: Gaussian Processes | Approximate Methods | Machine Learning | - | [Action](ProjectMilestones.md)
 | 9 | May 27 | No class | No class | ... (Machine Learning) | Tutorial: Machine Learning | - | [Paper Outline](ProjectMilestones.md)
 | 10 | Jun 3 | Project Presentations | Project Presentations | Project Presentations | Project Presentations | - | [Paper Writing](ProjectMilestones.md)
 | 11 | Jun 10 | No class | No class | Project Report Due | - | - | Finished
