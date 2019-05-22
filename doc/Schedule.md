@@ -12,7 +12,7 @@ It is subject to change.
 | 5 | Apr 29 | [Hierarchical Models](../lessons/hierarchical.ipynb) | ... | [Efficient Monte Carlo](../lessons/efficient_mc.ipynb) | [Tutorial: Gibbs Sampling](../tutorials/Week5/Cepheids.ipynb) | [Cepheids](../homework/Week5/GibbsCepheids.ipynb) | [Abstract](ProjectMilestones.md)
 | 6 | May 6 | [Model Evaluation](../lessons/modelevaluation.ipynb) | ... | [Yet More Monte Carlo](../lessons/yet_more_mc.ipynb) |  [Tutorial: Model Comparison](../tutorials/Week6/model_comparison_tutorial.ipynb) | [Model Comparison](../homework/Week6/model_comparison_homework.ipynb) | [Plan, PGM](ProjectMilestones.md)
 | 7 | May 13 | Cepheids Q/A | ... | [Missing Data](../lessons/missingdata.ipynb) | [Tutorial: XMM cluster](../tutorials/Week7/XrayCluster.ipynb) | [XMM cluster](../homework/Week7/BetaModelCluster.ipynb) | [Data Visualization](ProjectMilestones.md)
-| 8 | May 20 | [Fishing, Blinding, etc.]() | ["Model-free" models](../lessons/modelfreemodels.ipynb) | Approximate Methods| Tutorial: Gaussian Processes | - | [Action](ProjectMilestones.md)
+| 8 | May 20 | [Fishing, Blinding, etc.](../lessons/blinding.ipynb) | [Approximate Methods](approximate_methods.ipynb)| ["Model-free" models](../lessons/modelfreemodels.ipynb) | [Tutorial: Gaussian Processes](../tutorials/Week8/GPRegression.ipynb) | - | [Action](ProjectMilestones.md)
 | 9 | May 27 | No class | No class | Machine Learning | Tutorial: Machine Learning | - | [Paper Outline](ProjectMilestones.md)
 | 10 | Jun 3 | Project Presentations | Project Presentations | Project Presentations | Project Presentations | - | [Paper Writing](ProjectMilestones.md)
 | 11 | Jun 10 | No class | No class | Project Report Due | - | - | Finished
