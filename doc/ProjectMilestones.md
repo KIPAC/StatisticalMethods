@@ -48,4 +48,4 @@ If you are already committing paper drafts to the repository, there's no need to
 
 ### Paper Writing
 
-A finished report, committed in the `Project Reports` folder of the repo.
+A finished report, committed in the `Project Reports` folder of the repo. **Your project report pull requests are due 1700 PDT on Weds June 12**
