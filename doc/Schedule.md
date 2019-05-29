@@ -15,4 +15,4 @@ It is subject to change.
 | 8 | May 20 | [Fishing, Blinding, etc.](../lessons/blinding.ipynb) | [Approximate Methods](../lessons/approximate_methods.ipynb)| ["Model-free" models](../lessons/modelfreemodels.ipynb) | [Tutorial: Gaussian Processes](../tutorials/Week8/GPRegression.ipynb) | - | [Action](ProjectMilestones.md)
 | 9 | May 27 | No class | No class | [Machine Learning](../lessons/machine_learning.ipynb) | [Tutorial: Machine Learning](../tutorials/Week9/ml_demo.ipynb) | - | [Paper Outline](ProjectMilestones.md)
 | 10 | Jun 3 | Project Presentations | Project Presentations | Project Presentations | Project Presentations | - | [Paper Writing](ProjectMilestones.md)
-| 11 | Jun 10 | No class | No class | Project Report Due | - | - | Finished
+| 11 | Jun 10 | No class | No class | Project Report Due (1700 PDT)| - | - | Finished
