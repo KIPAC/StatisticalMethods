@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>gaussians</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14259,74 +14259,387 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="PHYSICS-366:-Statistical-Methods-in-Astrophysics">PHYSICS 366: Statistical Methods in Astrophysics<a class="anchor-link" href="#PHYSICS-366:-Statistical-Methods-in-Astrophysics">&#182;</a></h1><p>Course notes and resources for Stanford University graduate course Physics 366.</p>
-<h2 id="Course-Description">Course Description<a class="anchor-link" href="#Course-Description">&#182;</a></h2><p>This course is intended to provide an introduction to modern
-statistical methodology, and its applications to problems in
-astrophysics and cosmology, and is aimed at graduate students
-intending to do research in this area. We
-strongly encourage most first and second year students working in
-KIPAC to take the course.  Our goal is to provide a background that
-will be directly relevant to the kind of problems that typical KIPAC
-students will encounter in their research.</p>
-<h2 id="Course-Objectives">Course Objectives<a class="anchor-link" href="#Course-Objectives">&#182;</a></h2><p>Our goal is that students taking this course will:</p>
+<h1 id="Tutorial:-Gaussians-and-Least-Squares">Tutorial: Gaussians and Least Squares<a class="anchor-link" href="#Tutorial:-Gaussians-and-Least-Squares">&#182;</a></h1><p>So far in the notes and problems, we've mostly avoided one of the most commonly used probability distributions, the Gaussian or normal distribution:</p>
+<p>$\mathrm{Normal}(x|\mu,\sigma) \equiv p_\mathrm{Normal}(x|\mu,\sigma) = \frac{1}{\sqrt{2\pi\sigma}}\exp \left[-\frac{(x-\mu)^2}{2\sigma^2}\right]$. [Endnote 1]</p>
+<p>There are two reasons for this:</p>
+<ol>
+<li>The symmetry between $x$ and $\mu$ makes it easy to miss the distinction between the sampling distribution and the likelihood function, and to conflate the model parameter $\sigma$ with an "error bar" associated strictly with the data (which it may or may not be).</li>
+<li>The assumption of Gaussian PDFs is baked into various classical statistics methods to the extent that it isn't always obvious to the user. As always, it's important to think about whether an assumption or approximation is justified, and thus to see examples of when it is not.</li>
+</ol>
+<p>That said, it is certainly common to use Gaussian distributions in practice, particularly in cases where</p>
+<ol>
+<li>the approximation is well justified, as in the large-count limit of the Poisson distribution (typical of optical astronomy and longer wavelengths); or</li>
+<li>we are effectively handed a table of data with "error bars" and have no better alternative than to assume a Gaussian sampling distribution.</li>
+</ol>
+<p>Gaussians have lots of nice mathematical features that make them convenient to work with when we can. For example, see a list of identities for the multivariate Gaussian <a href="https://ipvs.informatik.uni-stuttgart.de/mlr/marc/notes/gaussians.pdf">here</a> or <a href="https://cs.nyu.edu/~roweis/notes/gaussid.pdf">here</a>.</p>
+<p>There are a couple of cases that it's useful to work through if you haven't before, to build intuition. We'll do that here, with:</p>
 <ul>
-<li>develop familiarity in working with various types of astronomical data.</li>
-<li>understand the role of modeling in data analysis.</li>
-<li>develop facility with various types of inference from data.</li>
-<li>be able to critically evaluate and apply commonly used statistical methodologies.</li>
-<li>be able to apply advanced statistical reasoning to problems they are likely to encounter in their research.</li>
+<li>the product of two Gaussians</li>
+<li>showing conjugacy</li>
+<li>linear transformations</li>
+<li>extending classical weighted least squares </li>
 </ul>
-<h2 id="Content">Content<a class="anchor-link" href="#Content">&#182;</a></h2><p><strong>Start by looking at the <a href="notes/overview.html">Overview</a> to understand how this course works, and <a href="notes/getting_started.html">Getting Started</a> to get up and running with Python and Jupyter, if needed.</strong>
-Enrolled students should also read the <a href="notes/assignments.html">Assignments</a> page to see what is expected.</p>
-<p>The course content can be browsed here in static HTML format. This is sufficient for the notes, but to do the tutorials you will need to download them in Jupyter notebook format from the <a href="https://github.com/KIPAC/StatisticalMethods/tree/master/tutorials">GitHub repository</a>.</p>
-<p>Notes and tutorials are listed in reasonable order below, but a better way to navigate the course may be through this nifty <a href="dependency_graph.html">dependency graph</a> (via <a href="https://mermaid-js.github.io/mermaid/">Mermaid</a>).</p>
-<h3 id="Notes">Notes<a class="anchor-link" href="#Notes">&#182;</a></h3><ul>
-<li><a href="notes/overview.html">Overview</a></li>
-<li><a href="notes/assignments.html">Assignments</a></li>
-<li><a href="notes/getting_started.html">Getting Started</a></li>
-<li><a href="notes/generative_models.html">Generative Models</a></li>
-<li><a href="notes/essential_probability.html">Essential Probability</a></li>
-<li><a href="notes/bayes_law.html">Bayes' Law</a></li>
-<li><a href="notes/credible_regions.html">Credible Regions</a></li>
-<li><a href="notes/errorbars.html">"Error bars"</a></li>
-<li><a href="notes/statistical_isms.html">Bayesianism and Other "isms"</a></li>
-<li><a href="notes/montecarlo.html">Monte Carlo Sampling</a></li>
-<li><a href="notes/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="notes/more_samplers.html">More Sampling Methods</a></li>
-<li><a href="notes/hierarchical.html">Hierarchical Models</a></li>
-<li><a href="notes/model_evaluation.html">Model Evaluation and Comparison</a></li>
-<li><a href="notes/missingdata.html">Missing Data and Selection Effects</a></li>
-<li><a href="notes/modelfreemodels.html">"Model-free" Models</a></li>
-<li><a href="notes/approximate_methods.html">Approximate Methods</a></li>
-<li><a href="notes/fishing.html">Fishing, Blinding and More</a></li>
-</ul>
-<h3 id="Tutorials">Tutorials<a class="anchor-link" href="#Tutorials">&#182;</a></h3><ul>
-<li><a href="tutorials/demo.html">Demo</a></li>
-<li><a href="tutorials/generative_models.html">Generative Models</a></li>
-<li><a href="tutorials/probability_essentials.html">Essential Probability</a></li>
-<li><a href="tutorials/probability_transformations.html">Probability Transformations</a></li>
-<li><a href="tutorials/bayes_law.html">Bayes' Law</a></li>
-<li><a href="tutorials/working_with_samples.html">Working With Samples</a></li>
-<li><a href="tutorials/credible_interals.html">Credible Regions</a></li>
-<li><a href="tutorials/gaussians.html">Gaussians and Least Squares</a></li>
-<li><a href="tutorials/xmm_image.html">XMM Image</a></li>
-<li><a href="tutorials/agn_photometry_grid.html">AGN Photometry: grid</a></li>
-<li><a href="tutorials/agn_photometry_gibbs.html">AGN Photometry: Gibbs sampling</a></li>
-<li><a href="tutorials/agn_photometry_metro.html">AGN Photometry: Metropolis sampling</a></li>
-<li><a href="tutorials/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="tutorials/ogle_lightcurve.html">OGLE Lightcurve</a></li>
-<li><a href="tutorials/microlensing.html">Microlensing</a></li>
-<li><a href="tutorials/cepheids.html">Cepheid Period-Luminosity Relation</a></li>
-<li><a href="tutorials/cepheids_one_galaxy.html">Cepheid P-L I: one galaxy</a></li>
-<li><a href="tutorials/cepheids_all_galaxies.html">Cepheid P-L II: multiple galaxies</a></li>
-<li><a href="tutorials/model_evaluation.html">Galaxy Cluster Mis-centering: model evaluation</a></li>
-<li><a href="tutorials/model_selection.html">Galaxy Cluster Mis-centering: model comparison</a></li>
-<li><a href="tutorials/missing_data.html">Shuttle O-ring Failures: missing data</a></li>
-</ul>
-<h2 id="Contact">Contact<a class="anchor-link" href="#Contact">&#182;</a></h2><ul>
-<li><a href="https://github.com/KIPAC/StatisticalMethods/issues/new?body=@abmantz">Adam Mantz</a></li>
-</ul>
-<p>All materials Copyright 2015, 2017, 2019, 2021 Adam Mantz and Phil Marshall, and distributed for copying and extension under the GPLv2 License, unless otherwise noted. If you have any feedback for us, please <a href="https://github.com/KIPAC/StatisticalMethods/issues">write us an issue</a>.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">exec</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;tbc.py&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span> <span class="c1"># define TBC and TBC_above</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;TkAgg&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="1.-Multiplication">1. Multiplication<a class="anchor-link" href="#1.-Multiplication">&#182;</a></h2><p>The product of Gaussians comes up, for example, when the sampling distributions for different data points are independent Gaussians, or when the sampling distribution and prior are both Gaussian (this is a conjugate pair).</p>
+<p>So, consider</p>
+<p>$\mathrm{Normal}(x|\mu_1,\sigma_1) \, \mathrm{Normal}(x|\mu_2,\sigma_2)$.</p>
+<p>This can be manipulated into a different product of two Gaussians, with $x$ appearing in only one of them. Do so. (Note that this is a proportionality, not an equality - the coefficient in front will not perfectly normalize things when you're done.)</p>
+<p>$\mathrm{Normal}(x|\mu_1,\sigma_1) \, \mathrm{Normal}(x|\mu_2,\sigma_2) \propto \mathrm{Normal}(x|\mu_a,\sigma_a) \, \mathrm{Normal}(0|\mu_b,\sigma_b)$.</p>
+<p>If $x$ were a model parameter, and $\mu_i$ and $\sigma_i$ were independent measurements of $x$ with error bars, how do you interpret each term of this factorization?</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<blockquote><p>math, math, math, math,</p>
+</blockquote>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Check your solution by plugging in some values for $x$, $\mu_i$ and $\sigma_i$. The function below returns the $\frac{(x-\mu)^2}{\sigma^2}$ part of the PDF, which is what we care about here (since it's where $x$ appears).</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TBC</span><span class="p">()</span>
+
+<span class="c1"># pick some values (where m is mu, s sigma)</span>
+<span class="c1"># x = </span>
+<span class="c1"># m1 = </span>
+<span class="c1"># s1 = </span>
+<span class="c1"># m2 = </span>
+<span class="c1"># s2 = </span>
+
+<span class="c1"># compute things</span>
+<span class="c1"># sa = </span>
+<span class="c1"># ma = </span>
+<span class="c1"># mb = </span>
+<span class="c1"># sb = </span>
+
+<span class="k">def</span> <span class="nf">exp_part</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="n">m</span><span class="p">)</span> <span class="o">/</span> <span class="n">s</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;This should be a pretty small number:&#39;</span><span class="p">,</span> 
+      <span class="n">exp_part</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">m1</span><span class="p">,</span><span class="n">s1</span><span class="p">)</span> <span class="o">+</span> <span class="n">exp_part</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">m2</span><span class="p">,</span><span class="n">s2</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span> <span class="n">exp_part</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">ma</span><span class="p">,</span><span class="n">sa</span><span class="p">)</span> <span class="o">+</span> <span class="n">exp_part</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">mb</span><span class="p">,</span><span class="n">sb</span><span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="2.-Conjugacy">2. Conjugacy<a class="anchor-link" href="#2.-Conjugacy">&#182;</a></h2><p>When the sampling distribution is normal with a fixed variance, the conjugate prior for the mean is also normal. Show this for the case of a single data point, $y$; that is,</p>
+<p>$p(\mu|y,\sigma) \propto \mathrm{Normal}(y|\mu,\sigma)\,\mathrm{Normal}(\mu|m_0,s_0) \propto \mathrm{Normal}(\mu|m_1,s_1)$</p>
+<p>and find $m_1$ and $s_1$ in terms of $y$, $\sigma$, $m_0$ and $s_0$.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<blockquote><p>math, math, math, math</p>
+</blockquote>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Again, check your work by choosing some fiducial values and 
+looking at the ratio $\mathrm{Normal}(y|\mu,\sigma)\,\mathrm{Normal}(\mu|m_0,s_0) / \mathrm{Normal}(\mu|m_1,s_1)$ over a range of $\mu$. It should be constant.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TBC</span><span class="p">()</span>
+
+<span class="c1"># pick some values</span>
+<span class="c1"># y = </span>
+<span class="c1"># sigma = </span>
+<span class="c1"># m0 = </span>
+<span class="c1"># s0 = </span>
+
+<span class="c1"># compute things</span>
+<span class="c1"># s1 = </span>
+<span class="c1"># m1 = </span>
+
+<span class="c1"># plot</span>
+<span class="n">mugrid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="c1"># we&#39;ll compare the log-probabilities, since that&#39;s a good habit to be in</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">logpdf</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">mugrid</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span><span class="o">+</span><span class="n">st</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">logpdf</span><span class="p">(</span><span class="n">mugrid</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">m0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">s0</span><span class="p">)</span> <span class="o">-</span> <span class="n">st</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">logpdf</span><span class="p">(</span><span class="n">mugrid</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">m1</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">s1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;This should be a pretty small number, and constant:&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">7.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mugrid</span><span class="p">,</span> <span class="n">diff</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\mu$&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;log-posterior difference&#39;</span><span class="p">);</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="3.-Linear-transformation">3. Linear transformation<a class="anchor-link" href="#3.-Linear-transformation">&#182;</a></h2><p>Consider the distribution</p>
+<p>$\mathrm{Normal}\left[y\,\big|\,\mu_y(x;a,b),\sigma_y\right]$,</p>
+<p>where $\mu_y(x;a,b)=a+bx$. Re-express this in terms of a distribution over $x$, i.e.</p>
+<p>$\mathrm{Normal}\left[x|\mu_x(y;a,b),\sigma_x(y;a,b)\right]$.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<blockquote><p>math, math, math, math</p>
+</blockquote>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="4.-Classical-weighted-least-squares">4. Classical weighted least squares<a class="anchor-link" href="#4.-Classical-weighted-least-squares">&#182;</a></h2><p>Classical WLS is a simple method for fitting a line to data that you've almost certainly seen before. Consider data consisting of $n$ triplets $(x_i,y_i,\sigma_i)$, where $x_i$ are assumed to be known perfectly and $\sigma_i$ is interpreted as a "measurement error" for $y_i$. WLS maximizes the likelihood function</p>
+<p>$\mathcal{L}(a,b;x,y,\sigma) = \prod_{i=1}^n \mathrm{Normal}(y_i|a+bx_i,\sigma_i)$.</p>
+<p>In fact, we can get away with being more general and allowing for the possibility that the different measurements are not independent, with their measurement errors jointly characterized by a known covariance matrix, $\Sigma$, rather than the individual $\sigma_i$:</p>
+<p>$\mathcal{L}(a,b;x,y,\Sigma) = \mathrm{Normal}(y|X\beta,\Sigma) = \frac{1}{\sqrt{(2\pi)^n|\Sigma|}}\exp \left[-\frac{1}{2}(y-X\beta)^\mathrm{T}\Sigma^{-1}(y-X\beta)\right]$,</p>
+<p>where $X$ is called the <em>design matrix</em>, with each row equal to $(1, x_i)$, and $\beta = \left(\begin{array}{c}a\\b\end{array}\right)$.</p>
+<p>With a certain amount of algebra, it can be shown that $\mathcal{L}$ is proportional to a bivariate Gaussian over $\beta$,</p>
+<p>$\mathcal{L} \propto \mathrm{Normal}(\beta | \mu_\beta, \Sigma_\beta)$,</p>
+<p>with</p>
+<p>$\Sigma_\beta = (X^\mathrm{T}\Sigma^{-1}X)^{-1}$;</p>
+<p>$\mu_\beta = \Sigma_\beta X^\mathrm{T}\Sigma^{-1} y$.</p>
+<p>In classical WLS, $\mu_\beta$ is the "best fit" estimate of $a$ and $b$, and $\Sigma_\beta$ is the covariance of the standard errors on those parameters.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The relative simplicity of the computations above, not to mention the fact that they are efficiently implemented in numerous packages, can be useful even in situations beyond the assumption-heavy scenario where WLS is derived. As a simple example, consider a case where the sampling distribution corresponds to the likelihood function above, but we wish to use an informative prior on $a$ and $b$.</p>
+<p>Taking advantage of the results you derived above (all of which have straightforward multivariate analogs),</p>
+<ol>
+<li>What is the form of prior, $p(a,b|\alpha)$, that makes this problem conjugate? (Here $\alpha$ is a stand-in for whatever parameters determine the prior.)</li>
+<li>What are the form and parameters of the posterior, $p(a,b|x,y,\Sigma,\alpha)$?</li>
+<li>Verify that you recover the WLS solution in the limit of the prior being uniform over the $(a,b)$ plane.</li>
+</ol>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<blockquote><p>1.</p>
+</blockquote>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<blockquote><p>2.</p>
+</blockquote>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<blockquote><p>3.</p>
+</blockquote>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Below, we will explicitly show the correspondance in (3) for a WLS fit of some mock data.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># generate some fake data</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">uniform</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">7.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;bo&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">);</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The next cell uses the <code>statsmodels</code> package to perform the WLS calculations. You are encouraged to implement the matrix algebra above to verify the results. What we get at the end are $\mu_\beta$ and $\Sigma_\beta$, as defined above.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">WLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">weights</span><span class="o">=</span><span class="n">sigma</span><span class="o">**-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">wls</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">mu_beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">wls</span><span class="o">.</span><span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">T</span> <span class="c1"># cast as a column vector</span>
+<span class="n">Sigma_beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">(</span><span class="n">wls</span><span class="o">.</span><span class="n">normalized_cov_params</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Now, compute the parameters of the posterior for $\beta$ based on $\mu_\beta$ and $\Sigma_\beta$ (parameters that appear in the sampling distribution) and the parameters of the conjugate prior. Set the prior parameters to be equivalent to the uniform distribution for the check below (you can put in something different to see how it looks later).</p>
+<p>Transform <code>post_mean</code> to a shape (3,) numpy array for convenience (as opposed to, say, a 3x1 matrix).</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TBC</span><span class="p">()</span>
+
+<span class="c1"># define prior parameters</span>
+
+<span class="c1"># do some calculations, possibly</span>
+
+<span class="c1"># parameters of the posterior:</span>
+<span class="c1"># post_cov = ...</span>
+<span class="c1"># post_mean = ...</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Compare the WLS and posterior parameters (they should be identical for a uniform prior):</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;WLS mean and covariance:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mu_beta</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Sigma_beta</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Posterior mean and covariance:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">post_mean</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">post_cov</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Below, we can compare your analytic solution to a brute-force calculation of the posterior:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">log_post_brute</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">like</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span> <span class="n">st</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">logpdf</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span> <span class="p">)</span>
+    <span class="n">prior</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="o">.</span><span class="n">logpdf</span><span class="p">([</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">],</span> <span class="n">mean</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">prior_mean</span><span class="p">)[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">cov</span><span class="o">=</span><span class="n">prior_cov</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">prior</span> <span class="o">+</span> <span class="n">like</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Difference between elegant and brute-force log posteriors for some random parameter values:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(The third column should be basically constant, though non-zero.)</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">*</span> <span class="mf">10.0</span> <span class="o">-</span> <span class="mf">5.0</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">*</span> <span class="mf">10.0</span> <span class="o">-</span> <span class="mf">5.0</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="o">.</span><span class="n">logpdf</span><span class="p">([</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">],</span> <span class="n">mean</span><span class="o">=</span><span class="n">post_mean</span><span class="p">,</span> <span class="n">cov</span><span class="o">=</span><span class="n">post_cov</span><span class="p">)</span> <span class="o">-</span> <span class="n">log_post_brute</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">diff</span><span class="p">])</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Endnotes">Endnotes<a class="anchor-link" href="#Endnotes">&#182;</a></h4><ol>
+<li>In statistics literature, a more common convention is $p(x|\mu,\sigma^2)$, with the second parameter being the variance rather than the standard deviation; this is then consistent with the multivariate Gaussian notation in which the second parameter is the covariance matrix. However, most code implementations of the univariate normal distribution take the standard deviation as an argument rather than the variance, so we'll stick with that notation.</li>
+</ol>
 
 </div>
 </div>

@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>credible_regions</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14259,74 +14259,121 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="PHYSICS-366:-Statistical-Methods-in-Astrophysics">PHYSICS 366: Statistical Methods in Astrophysics<a class="anchor-link" href="#PHYSICS-366:-Statistical-Methods-in-Astrophysics">&#182;</a></h1><p>Course notes and resources for Stanford University graduate course Physics 366.</p>
-<h2 id="Course-Description">Course Description<a class="anchor-link" href="#Course-Description">&#182;</a></h2><p>This course is intended to provide an introduction to modern
-statistical methodology, and its applications to problems in
-astrophysics and cosmology, and is aimed at graduate students
-intending to do research in this area. We
-strongly encourage most first and second year students working in
-KIPAC to take the course.  Our goal is to provide a background that
-will be directly relevant to the kind of problems that typical KIPAC
-students will encounter in their research.</p>
-<h2 id="Course-Objectives">Course Objectives<a class="anchor-link" href="#Course-Objectives">&#182;</a></h2><p>Our goal is that students taking this course will:</p>
+<h1 id="Notes:-Credible-Intervals-and-Regions">Notes: Credible Intervals and Regions<a class="anchor-link" href="#Notes:-Credible-Intervals-and-Regions">&#182;</a></h1><p>Containing:</p>
 <ul>
-<li>develop familiarity in working with various types of astronomical data.</li>
-<li>understand the role of modeling in data analysis.</li>
-<li>develop facility with various types of inference from data.</li>
-<li>be able to critically evaluate and apply commonly used statistical methodologies.</li>
-<li>be able to apply advanced statistical reasoning to problems they are likely to encounter in their research.</li>
+<li>An explanation of and opinions about various conventions for summarizing posterior PDFs</li>
 </ul>
-<h2 id="Content">Content<a class="anchor-link" href="#Content">&#182;</a></h2><p><strong>Start by looking at the <a href="notes/overview.html">Overview</a> to understand how this course works, and <a href="notes/getting_started.html">Getting Started</a> to get up and running with Python and Jupyter, if needed.</strong>
-Enrolled students should also read the <a href="notes/assignments.html">Assignments</a> page to see what is expected.</p>
-<p>The course content can be browsed here in static HTML format. This is sufficient for the notes, but to do the tutorials you will need to download them in Jupyter notebook format from the <a href="https://github.com/KIPAC/StatisticalMethods/tree/master/tutorials">GitHub repository</a>.</p>
-<p>Notes and tutorials are listed in reasonable order below, but a better way to navigate the course may be through this nifty <a href="dependency_graph.html">dependency graph</a> (via <a href="https://mermaid-js.github.io/mermaid/">Mermaid</a>).</p>
-<h3 id="Notes">Notes<a class="anchor-link" href="#Notes">&#182;</a></h3><ul>
-<li><a href="notes/overview.html">Overview</a></li>
-<li><a href="notes/assignments.html">Assignments</a></li>
-<li><a href="notes/getting_started.html">Getting Started</a></li>
-<li><a href="notes/generative_models.html">Generative Models</a></li>
-<li><a href="notes/essential_probability.html">Essential Probability</a></li>
-<li><a href="notes/bayes_law.html">Bayes' Law</a></li>
-<li><a href="notes/credible_regions.html">Credible Regions</a></li>
-<li><a href="notes/errorbars.html">"Error bars"</a></li>
-<li><a href="notes/statistical_isms.html">Bayesianism and Other "isms"</a></li>
-<li><a href="notes/montecarlo.html">Monte Carlo Sampling</a></li>
-<li><a href="notes/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="notes/more_samplers.html">More Sampling Methods</a></li>
-<li><a href="notes/hierarchical.html">Hierarchical Models</a></li>
-<li><a href="notes/model_evaluation.html">Model Evaluation and Comparison</a></li>
-<li><a href="notes/missingdata.html">Missing Data and Selection Effects</a></li>
-<li><a href="notes/modelfreemodels.html">"Model-free" Models</a></li>
-<li><a href="notes/approximate_methods.html">Approximate Methods</a></li>
-<li><a href="notes/fishing.html">Fishing, Blinding and More</a></li>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Summarizing-1D-posterior-distributions">Summarizing 1D posterior distributions<a class="anchor-link" href="#Summarizing-1D-posterior-distributions">&#182;</a></h2><p>The posterior distribution is The Answer to an inference problem, but a PDF over potentially many dimensions is a cumbersome beast. Often, what we want to do is summarize the constraints on one or more parameters with a statement like $\theta = \theta_0 \pm \Delta\theta$ or $\theta_0{}_{-\Delta\theta_m}^{+\Delta\theta_p}$. These should be interpreted as statements about the <em>marginal</em> posterior of $\theta$, namely that $\theta$ is in the given <strong>credible interval</strong> (CI) with some specified probability. To be explicit, if $\theta$ is the parameter of immediate interest, and $\phi$ are all the other parameters, the marginal posterior distribution of $\theta$ is</p>
+<p>$p(\theta|\mathrm{data}) = \int d\phi \, p(\theta,\phi|\mathrm{data})$,</p>
+<p>and a credible interval for $\theta$ containing probability $q$ satisfies</p>
+<p>$\int_\mathrm{CI} d\theta \, p(\theta|\mathrm{data}) = q$.</p>
+<p>Note that credible intervals/regions are technically different from the confidence intervals/regions that appear in non-Bayesian statistics, which we'll touch on in later notes. Unfortunately, in practice, the terms are often used interchangeably. Appologies in advance if that happens in this course.</p>
+<p>Saying that a 68% CI contains a probability of 0.68 doesn't uniquely tell us <em>how</em> to define the interval, nor what "best" value we should report as $\theta_0$, and in practice there are multiple conventions. Let's look at a few of them.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Most-probable-value-and-interval">Most probable value and interval<a class="anchor-link" href="#Most-probable-value-and-interval">&#182;</a></h3><p>This is also sometimes known as "highest posterior density" (HPD).</p>
+<p>Quite simply, this convention would report as $\theta_0$ the mode of the marginal posterior. The credible interval is the (possibly multiply connected, i.e. consisting of multiple, disjoint intervals) interval <em>of largest posterior density</em> that contains the specified probability. Consequently, it is also the smallest possible interval containing the target probability.</p>
+<p>The mode and 68.3% and 95.4% CI's are shown below for a somewhat funky PDF (left) and an "upper-limit" type measurement (right). Dark and light shading show the extent of the two intervals, while the horizontal, dashed lines show the corresponding thresholds in probability density. That is, the 68.3% CI consists of all those values of $\theta$ for which $p(\theta|\mathrm{data})$ exceeds the higher dashed line.</p>
+<table>
+    <tr>
+        <td><img src="graphics/bayes_ci_maxp.png" width=70%></td>
+        <td><img src="graphics/bayes_ci_limit_maxp.png" width=70%></td>
+    </tr>
+</table><p>Note that, in Bayesian terms, there is no fundamental difference between a CI and an upper or lower limit, as there is in classical statistics. We may say "limit" in the case where one endpoint of the CI is entirely dictated by the extent of the prior, as in the case above-right where the prior is zero for $\theta&lt;0$.</p>
+<p><strong>Advantages:</strong> I would argue that this definition is by far the most intuitive. The nominal value we report is actually the "best" in the sense of most probable, and similarly the interval contains the most probable values. Faced with the statement $\theta = \theta_0 \pm \Delta\theta$, what else would you possibly think?</p>
+<p><strong>Disadvantages:</strong> When the CI is multiply connected (highly unusual in my limited experience), it's more annoying to describe. When we use Monte Carlo methods to characterize the posterior, we will need to use kernel density estimation (a fancy way to say "smoothing a histogram") to get a smooth function from a finite number of samples; this means that a human needs to at least look at the distribution to verify that the results are ok (horrors!). I know of exactly one Python package that computes this style of CI correctly, including the multiply connected case, and it's the one I wrote (so, you know, tech support is questionable).</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Median-value-and-symmetric-interval-in-probability-(percentile)-space">Median value and symmetric interval in probability (percentile) space<a class="anchor-link" href="#Median-value-and-symmetric-interval-in-probability-(percentile)-space">&#182;</a></h3><p>In this convention, $\theta_0$ is the median of the marginal posterior, and the endpoints of the CI containing probability $q$ are the quantiles corresponding to probabilities $(1-q)/2$ and $(1+q)/2$. So, for example, the 68.3% CI spans the quantiles of 0.1585 and 0.8415. Note that the CI is not necessarily symmetric about $\theta_0$. Here is how it looks for the same two PDFs.</p>
+<table>
+    <tr>
+        <td><img src="graphics/bayes_ci_perc.png" width=70%></td>
+        <td><img src="graphics/bayes_ci_limit_perc.png" width=70%></td>
+    </tr>
+</table><p><strong>Advantages:</strong> Straightforward to automatically compute from monte carlo samples or evaluations on a grid without human intervention or thought. This is the method I would recommend when the result being reported is not <em>the</em> result of the work, and the more eyes-on method above isn't feasible (e.g. when you need to plot many measurements in a figure).</p>
+<p><strong>Disadvantages:</strong> The nominal value and CI reported are not the most probable! Especially when the PDF is asymmetric and/or multimodal, as in this example, the CI can be... non-intuitive. Since there is no unique definition of the CDF or quantile in multiple dimensions, this method has no multivariate analog.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Mean-value-and-symmetric-interval">Mean value and symmetric interval<a class="anchor-link" href="#Mean-value-and-symmetric-interval">&#182;</a></h3><p>Here we would (if we were silly) report the mean of the PDF as $\theta_0$, and build a CI by extending symmetrically (in $\theta$) in both directions until we contain the right probability.</p>
+<table>
+    <tr>
+        <td><img src="graphics/bayes_ci_mean.png" width=70%></td>
+        <td><img src="graphics/bayes_ci_limit_mean.png" width=70%></td>
+    </tr>
+</table><p><strong>Advantages:</strong> None that I know of. It's not any easier than the second method.</p>
+<p><strong>Disadvantages:</strong> Even odder behavior for asymmetric/multimodal distributions. If the PDF has a sharp cutoff (e.g. due to the prior going to zero), the CI can easily extend into this forbidden region.</p>
+<p>Needless to say, this option is not recommended, but you might see it occasionally.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Other-conventions">Other conventions<a class="anchor-link" href="#Other-conventions">&#182;</a></h3><p>For completeness, two more methods are worth mentioning. Each of these is only valid (in the sense of even delivering the advertised contained probability) in certain limits, namely as (and if) the central limit theorem makes the posterior approximately Gaussian.</p>
+<ul>
+<li>CI's defined from differences in the log-likelihood or log-posterior, following the Maximum Likelihood tradition. This can be quite accurate in central limit theorem satisfying situations, even if the posterior isn't quite Guassian, but doesn't present any particular advantages.</li>
+<li>Reporting the mean and standard deviation of the PDF. Please don't do this. It's hardly any computationally easier than finding the percentiles of a distribution, but only valid for a Gaussian.</li>
 </ul>
-<h3 id="Tutorials">Tutorials<a class="anchor-link" href="#Tutorials">&#182;</a></h3><ul>
-<li><a href="tutorials/demo.html">Demo</a></li>
-<li><a href="tutorials/generative_models.html">Generative Models</a></li>
-<li><a href="tutorials/probability_essentials.html">Essential Probability</a></li>
-<li><a href="tutorials/probability_transformations.html">Probability Transformations</a></li>
-<li><a href="tutorials/bayes_law.html">Bayes' Law</a></li>
-<li><a href="tutorials/working_with_samples.html">Working With Samples</a></li>
-<li><a href="tutorials/credible_interals.html">Credible Regions</a></li>
-<li><a href="tutorials/gaussians.html">Gaussians and Least Squares</a></li>
-<li><a href="tutorials/xmm_image.html">XMM Image</a></li>
-<li><a href="tutorials/agn_photometry_grid.html">AGN Photometry: grid</a></li>
-<li><a href="tutorials/agn_photometry_gibbs.html">AGN Photometry: Gibbs sampling</a></li>
-<li><a href="tutorials/agn_photometry_metro.html">AGN Photometry: Metropolis sampling</a></li>
-<li><a href="tutorials/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="tutorials/ogle_lightcurve.html">OGLE Lightcurve</a></li>
-<li><a href="tutorials/microlensing.html">Microlensing</a></li>
-<li><a href="tutorials/cepheids.html">Cepheid Period-Luminosity Relation</a></li>
-<li><a href="tutorials/cepheids_one_galaxy.html">Cepheid P-L I: one galaxy</a></li>
-<li><a href="tutorials/cepheids_all_galaxies.html">Cepheid P-L II: multiple galaxies</a></li>
-<li><a href="tutorials/model_evaluation.html">Galaxy Cluster Mis-centering: model evaluation</a></li>
-<li><a href="tutorials/model_selection.html">Galaxy Cluster Mis-centering: model comparison</a></li>
-<li><a href="tutorials/missing_data.html">Shuttle O-ring Failures: missing data</a></li>
-</ul>
-<h2 id="Contact">Contact<a class="anchor-link" href="#Contact">&#182;</a></h2><ul>
-<li><a href="https://github.com/KIPAC/StatisticalMethods/issues/new?body=@abmantz">Adam Mantz</a></li>
-</ul>
-<p>All materials Copyright 2015, 2017, 2019, 2021 Adam Mantz and Phil Marshall, and distributed for copying and extension under the GPLv2 License, unless otherwise noted. If you have any feedback for us, please <a href="https://github.com/KIPAC/StatisticalMethods/issues">write us an issue</a>.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Summarizing-multi-dimensional-posterior-distributions">Summarizing multi-dimensional posterior distributions<a class="anchor-link" href="#Summarizing-multi-dimensional-posterior-distributions">&#182;</a></h2>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>It's also common to visualize 2D marginalized posteriors (over 2 parameters),</p>
+<p>$p(\theta_1,\theta_2|\mathrm{data}) = \int d\phi \, p(\theta_1,\theta_2,\phi|\mathrm{data})$.</p>
+<p>Most often, we don't try to show the PDF itself, but just the contours delineating the 2-dimensional credible regions. These are defined analogously to the 1D case as regions (CR's) that contain a specified amount of probability of the 2D marginalized posterior. As far as I know, the only convention in wide use for how to uniquely define the regions is the "most probable" one. (You might occasionally see the analog of the "mean and standard deviation" method, in which the covariance matrix translates to a 2D ellipse, but this is not suddenly a better idea in multiple dimensions.)</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>One reason to look at 2D posteriors is that they reveal <em>degeneracies</em> between parameters, i.e. particular directions in parameter space in which the posterior is constant or slowly changing. In the example below, you can see that the posterior for each analysis shown has a degeneracy between the parameters $\sigma_8$ and $\gamma$, but the direction and the degree to which the degeneracy is broken vary. Here we can see that jointly analyzing all 3 data sets could result in much tighter constraints, something that might not be obvious from the 1D posterior distributions alone.</p>
+<table>
+    <tr>
+        <td><img src="graphics/degeneracies.png" width=60%></td>
+    </tr>
+</table><p>Generally, a 1D CI will have a smaller extent in a given parameter than the 2D CR for the same contained probaility. This is not a bug, but follows from the fact that the 1D marginalized posterior is integrated over an additional degree of freedom compared with the 2D one, which can result in the 1D PDF being more sharply peaked. In the case above, if we looked at only the 1D posteriors, we might be led to believe that the "Galaxies" and "CMB" posteriors were inconsistent with each other, while in 2D we can see that they overlap nicely.</p>
+<p>Naturally, features like degeneracies can exist in more than 2 dimensions, but there isn't a widely used method for visualizing CR's in more than 2D. You may encounter color being used to show the most probable value of a third parameter at different points in the $\theta_1$-$\theta_2$ plane, but that's about it.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Where-did-68.3%-and-95.4%-come-from?">Where did 68.3% and 95.4% come from?<a class="anchor-link" href="#Where-did-68.3%-and-95.4%-come-from?">&#182;</a></h2><p>These numbers are a legacy of the centrality of the Gaussian distribution in statistics. You might recognize them as approximately the integral of a Gaussian from $-1\sigma$ to $+1\sigma$ (68.3%) and $-2\sigma$ to $+2\sigma$ (95.4%), where $\sigma$ is the standard deviation. Consequently, they are often referred to as "$1\sigma$ confidence" and "$2\sigma$ confidence". (This is another bit of terminology that we will almost certainly slip into, despite it not being technically meaningful.) If you ever need to, the probability associated with "$N\sigma$" can be computed in 1 line as the CDF of the $\chi^2_1$ distribution evaluated at $N^2$ (this is equivalent to the more obvious difference of two Gaussian CDFs, based on the definition above):</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="k">def</span> <span class="nf">probLevel</span><span class="p">(</span><span class="n">Nsigma</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">st</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">Nsigma</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Regardless of the origin, these are conventional probability levels in our field. It's not so bad. Roughly speaking, you can just think of 68.3% as $2/3$ and 95.4% as $19/20$; conversely, there's a 1 in 3 chance that the 68.3% CR doesn't include the truth, but only a 1 in 20 chance that the 95.4% CR does not.</p>
+<p>Most often, you will see 68.3% and 95.4% CR's shown in 2D contour plots, and 68.3% CI's reported in text (though often 95.4% is used when quoting a limit). Note that the difference between 95.0% and 95.4% is not necessarily trivial; we aren't just being pedantic by including the third significant digit here. In practice, we don't often see higher probability values because (a) we don't normally care, and (b) robustly determining the CI's/CR's becomes increasingly computationally expensive for higher probabilities.</p>
 
 </div>
 </div>

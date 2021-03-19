@@ -1,0 +1,12 @@
+astropy
+corner
+dynesty
+emcee
+incredible
+lrgs
+matplotlib
+numpy
+pandas
+pygtc
+scipy
+statsmodels

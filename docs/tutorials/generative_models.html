@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>generative_models</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14259,76 +14259,167 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="PHYSICS-366:-Statistical-Methods-in-Astrophysics">PHYSICS 366: Statistical Methods in Astrophysics<a class="anchor-link" href="#PHYSICS-366:-Statistical-Methods-in-Astrophysics">&#182;</a></h1><p>Course notes and resources for Stanford University graduate course Physics 366.</p>
-<h2 id="Course-Description">Course Description<a class="anchor-link" href="#Course-Description">&#182;</a></h2><p>This course is intended to provide an introduction to modern
-statistical methodology, and its applications to problems in
-astrophysics and cosmology, and is aimed at graduate students
-intending to do research in this area. We
-strongly encourage most first and second year students working in
-KIPAC to take the course.  Our goal is to provide a background that
-will be directly relevant to the kind of problems that typical KIPAC
-students will encounter in their research.</p>
-<h2 id="Course-Objectives">Course Objectives<a class="anchor-link" href="#Course-Objectives">&#182;</a></h2><p>Our goal is that students taking this course will:</p>
+<h1 id="Tutorial:-Generative-Models">Tutorial: Generative Models<a class="anchor-link" href="#Tutorial:-Generative-Models">&#182;</a></h1><p>This exercise is mostly to practice going from a real-world(ish) problem described in words to an actionable model. By model, we mean</p>
+<ol>
+<li>a list of quantities comprising your data and parameters from which predicted data can be produced;</li>
+<li>a PGM representing the conditional dependences of the parameters and data;</li>
+<li>a list of expressions containing the same information as the PGM, with the added specification of what probability distributions are involved.</li>
+</ol>
+<p>"Expressions" in this context are of the form you saw in the reading, and need not be fully spelled-out equations, for example:</p>
 <ul>
-<li>develop familiarity in working with various types of astronomical data.</li>
-<li>understand the role of modeling in data analysis.</li>
-<li>develop facility with various types of inference from data.</li>
-<li>be able to critically evaluate and apply commonly used statistical methodologies.</li>
-<li>be able to apply advanced statistical reasoning to problems they are likely to encounter in their research.</li>
+<li>$a \Leftarrow b,c$ </li>
+<li>$x \sim \mathrm{Normal}(\mu, \sigma)$</li>
+<li>$\mu \sim \mathrm{some~prior}$</li>
 </ul>
-<h2 id="Content">Content<a class="anchor-link" href="#Content">&#182;</a></h2><p><strong>Start by looking at the <a href="notes/overview.html">Overview</a> to understand how this course works, and <a href="notes/getting_started.html">Getting Started</a> to get up and running with Python and Jupyter, if needed.</strong>
-Enrolled students should also read the <a href="notes/assignments.html">Assignments</a> page to see what is expected.</p>
-<p>The course content can be browsed here in static HTML format. This is sufficient for the notes, but to do the tutorials you will need to download them in Jupyter notebook format from the <a href="https://github.com/KIPAC/StatisticalMethods/tree/master/tutorials">GitHub repository</a>.</p>
-<p>Notes and tutorials are listed in reasonable order below, but a better way to navigate the course may be through this nifty <a href="dependency_graph.html">dependency graph</a> (via <a href="https://mermaid-js.github.io/mermaid/">Mermaid</a>).</p>
-<h3 id="Notes">Notes<a class="anchor-link" href="#Notes">&#182;</a></h3><ul>
-<li><a href="notes/overview.html">Overview</a></li>
-<li><a href="notes/assignments.html">Assignments</a></li>
-<li><a href="notes/getting_started.html">Getting Started</a></li>
-<li><a href="notes/generative_models.html">Generative Models</a></li>
-<li><a href="notes/essential_probability.html">Essential Probability</a></li>
-<li><a href="notes/bayes_law.html">Bayes' Law</a></li>
-<li><a href="notes/credible_regions.html">Credible Regions</a></li>
-<li><a href="notes/errorbars.html">"Error bars"</a></li>
-<li><a href="notes/statistical_isms.html">Bayesianism and Other "isms"</a></li>
-<li><a href="notes/montecarlo.html">Monte Carlo Sampling</a></li>
-<li><a href="notes/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="notes/more_samplers.html">More Sampling Methods</a></li>
-<li><a href="notes/hierarchical.html">Hierarchical Models</a></li>
-<li><a href="notes/model_evaluation.html">Model Evaluation and Comparison</a></li>
-<li><a href="notes/missingdata.html">Missing Data and Selection Effects</a></li>
-<li><a href="notes/modelfreemodels.html">"Model-free" Models</a></li>
-<li><a href="notes/approximate_methods.html">Approximate Methods</a></li>
-<li><a href="notes/fishing.html">Fishing, Blinding and More</a></li>
+<p>Translates to</p>
+<ul>
+<li>$a$ is a deterministic function of $b$ and $c$</li>
+<li>$x$ is normally distributed with mean $\mu$ and standard deviation $\sigma$</li>
+<li>$\mu$ is distributed according to some prior that I would need to specify in practice, but don't necessarily have to bother with for this exercise. Here "prior" implies no dependence on other listed parameters.</li>
 </ul>
-<h3 id="Tutorials">Tutorials<a class="anchor-link" href="#Tutorials">&#182;</a></h3><ul>
-<li><a href="tutorials/demo.html">Demo</a></li>
-<li><a href="tutorials/generative_models.html">Generative Models</a></li>
-<li><a href="tutorials/probability_essentials.html">Essential Probability</a></li>
-<li><a href="tutorials/probability_transformations.html">Probability Transformations</a></li>
-<li><a href="tutorials/bayes_law.html">Bayes' Law</a></li>
-<li><a href="tutorials/working_with_samples.html">Working With Samples</a></li>
-<li><a href="tutorials/credible_interals.html">Credible Regions</a></li>
-<li><a href="tutorials/gaussians.html">Gaussians and Least Squares</a></li>
-<li><a href="tutorials/xmm_image.html">XMM Image</a></li>
-<li><a href="tutorials/agn_photometry_grid.html">AGN Photometry: grid</a></li>
-<li><a href="tutorials/agn_photometry_gibbs.html">AGN Photometry: Gibbs sampling</a></li>
-<li><a href="tutorials/agn_photometry_metro.html">AGN Photometry: Metropolis sampling</a></li>
-<li><a href="tutorials/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="tutorials/ogle_lightcurve.html">OGLE Lightcurve</a></li>
-<li><a href="tutorials/microlensing.html">Microlensing</a></li>
-<li><a href="tutorials/cepheids.html">Cepheid Period-Luminosity Relation</a></li>
-<li><a href="tutorials/cepheids_one_galaxy.html">Cepheid P-L I: one galaxy</a></li>
-<li><a href="tutorials/cepheids_all_galaxies.html">Cepheid P-L II: multiple galaxies</a></li>
-<li><a href="tutorials/model_evaluation.html">Galaxy Cluster Mis-centering: model evaluation</a></li>
-<li><a href="tutorials/model_selection.html">Galaxy Cluster Mis-centering: model comparison</a></li>
-<li><a href="tutorials/missing_data.html">Shuttle O-ring Failures: missing data</a></li>
+<p><em>Every</em> parameter and datum in the model must have such a rule for how it depends on other quantities (or priors). The result is a recipe for generating mock data, and also contains all the information needed to do inference given real data that we've collected.</p>
+<p>There is no set rule saying that it's better to draw the PGM first and write the expressions second, or vice versa; different people find each approach more or less natural.</p>
+<p>To turn in a PGM, you could for e.g.</p>
+<ul>
+<li>draw on paper and include a photo in the notebook</li>
+<li>do the digital equivalent with a tablet and stylus</li>
+<li>use some other simple drawing tool and include that graphic in the notebook</li>
+<li>use the <code>daft</code> package to produce a PGM graphic directly in Python</li>
 </ul>
-<h2 id="Contact">Contact<a class="anchor-link" href="#Contact">&#182;</a></h2><ul>
-<li><a href="https://github.com/KIPAC/StatisticalMethods/issues/new?body=@abmantz">Adam Mantz</a></li>
-</ul>
-<p>All materials Copyright 2015, 2017, 2019, 2021 Adam Mantz and Phil Marshall, and distributed for copying and extension under the GPLv2 License, unless otherwise noted. If you have any feedback for us, please <a href="https://github.com/KIPAC/StatisticalMethods/issues">write us an issue</a>.</p>
+<p>Personally, I find the current version of <code>daft</code> extremely ugly and have taken to using Google Drawings or old-fashioned scribbling, but whatever works.</p>
+<p>Finally, note that <strong>some of the situations described below are intentionally ambiguous</strong>. Expect to have to make some assumptions in order to fully specify the model, and note what they are.</p>
 
 </div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="1.-Relaxed-cluster-fraction">1. Relaxed cluster fraction<a class="anchor-link" href="#1.-Relaxed-cluster-fraction">&#182;</a></h2><p>X-ray imaging data for 361 galaxy clusters were analyzed, and 57 of them were found to be morphologically "relaxed" according to some metric. We want to constrain the fraction of relaxed clusters in the Universe (the probability that a randomly chosen cluster is relaxed), $f$, assuming that the data set is representative.</p>
+<h3 id="1a.-Model-specification">1a. Model specification<a class="anchor-link" href="#1a.-Model-specification">&#182;</a></h3><p>Enumerate the model parameters, draw a PGM and write down the corresponding probability expressions for this problem. Be explicit about the form of the sampling distribution (see <a href="../notes/essential_probability.html">Essential Probability</a>), and arbitrarily choose some prior distribution for $f$ for the second part, below.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="1b.-Generate-data">1b. Generate data<a class="anchor-link" href="#1b.-Generate-data">&#182;</a></h3><p>Go through the process of generating mock data from the model. Produce a visualization that compares an ensemble of mock data sets (say 1000) for</p>
+<ol>
+<li>model parameters fixed at some fiducial value(s)</li>
+<li>model parameters varying according to the PGM/expressions you write down above</li>
+</ol>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;TkAgg&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="2.-Linear-regression">2. Linear regression<a class="anchor-link" href="#2.-Linear-regression">&#182;</a></h2><p>Your data is a list of $\{x_k,y_k,\sigma_k\}$ triplets, where $\sigma_k$ is some estimate of the "error" on $y_k$. You think a linear model, $y(x)=a+bx$, might explain these data.</p>
+<p>In the absence of any better information, assume that $\vec{x}$ and $\vec{\sigma}$ are (somehow) known precisely, and that the "error" on $y_k$ is Gaussian (mean of $a+bx_k$ and standard deviation $\sigma_k$).</p>
+<p>Enumerate the model parameters, draw a PGM and write down the corresponding probability expressions. Optionally, generate and visualize mock data for this problem.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="3.--Exoplanet-transit-photometry">3.  Exoplanet transit photometry<a class="anchor-link" href="#3.--Exoplanet-transit-photometry">&#182;</a></h2><p>You've taken several images of a particular field, in order to record the transit of an exoplanet in front of a star (resulting in a temporary decrease in its brightness). Some kind of model, parametrized by $\theta$, describes the time series of the resulting flux. Before we get to measure a number of counts, however, each image is affected by time-specific variables, e.g. related to changing weather. To account for these, you've also measured 10 other stars in the same field in every exposure. The assumption is that the average intrinsic flux of these stars should be constant in time, so that they can be used to correct for photometric variations, putting the multiple measurements of the target star on the same scale.</p>
+<p>Enumerate the model parameters, draw a PGM and write down the corresponding probability expressions. Optionally, generate and visualize mock data for this problem.</p>
+<p>Thanks to Anja von der Linden for inspiring (and then correcting) the above problem.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="4.-Galaxy-cluster-center-offsets">4. Galaxy cluster center offsets<a class="anchor-link" href="#4.-Galaxy-cluster-center-offsets">&#182;</a></h2><p>You've measured the centers of a sample of galaxy clusters in two ways: by choosing a brightest cluster galaxy (BCG) and by finding the centroid of each cluster's X-ray emission. The difference between the two should say something about the fidelity of the BCG selection method, among other things. The BCG positions are determined essentially perfectly, but the X-ray centroids come with a Gaussian statistical uncertainty of typically $\sim30$ kpc (standard deviation) in both the $x$ and $y$ directions.</p>
+<p>The underlying model is assumed to be that the BCG and true X-ray centroid coincide perfectly in a fraction $f$ of clusters. In the remaining clusters, the true X-ray centroid and BCG are displaced according to a 2D Gaussian whose width in either direction is $\sigma$.</p>
+<p>Enumerate the model parameters, draw a PGM and write down the corresponding probability expressions. Optionally, generate and visualize mock data for this problem.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 </div>
 </body>
 
