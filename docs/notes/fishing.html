@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>fishing</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14259,74 +14259,160 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="PHYSICS-366:-Statistical-Methods-in-Astrophysics">PHYSICS 366: Statistical Methods in Astrophysics<a class="anchor-link" href="#PHYSICS-366:-Statistical-Methods-in-Astrophysics">&#182;</a></h1><p>Course notes and resources for Stanford University graduate course Physics 366.</p>
-<h2 id="Course-Description">Course Description<a class="anchor-link" href="#Course-Description">&#182;</a></h2><p>This course is intended to provide an introduction to modern
-statistical methodology, and its applications to problems in
-astrophysics and cosmology, and is aimed at graduate students
-intending to do research in this area. We
-strongly encourage most first and second year students working in
-KIPAC to take the course.  Our goal is to provide a background that
-will be directly relevant to the kind of problems that typical KIPAC
-students will encounter in their research.</p>
-<h2 id="Course-Objectives">Course Objectives<a class="anchor-link" href="#Course-Objectives">&#182;</a></h2><p>Our goal is that students taking this course will:</p>
+<h1 id="Notes:-How-to-Avoiding-Fooling-Ourselves">Notes: How to Avoiding Fooling Ourselves<a class="anchor-link" href="#Notes:-How-to-Avoiding-Fooling-Ourselves">&#182;</a></h1><h2 id="Detection,-Fishing,-Experimenter-Bias,-and-Consistency">Detection, Fishing, Experimenter Bias, and Consistency<a class="anchor-link" href="#Detection,-Fishing,-Experimenter-Bias,-and-Consistency">&#182;</a></h2><p>Goals:</p>
 <ul>
-<li>develop familiarity in working with various types of astronomical data.</li>
-<li>understand the role of modeling in data analysis.</li>
-<li>develop facility with various types of inference from data.</li>
-<li>be able to critically evaluate and apply commonly used statistical methodologies.</li>
-<li>be able to apply advanced statistical reasoning to problems they are likely to encounter in their research.</li>
+<li><p>See how discoveries can be assessed in both the Bayesian and Frequentist frameworks</p>
+</li>
+<li><p>Understand the dangers of fishing expeditions</p>
+</li>
+<li><p>Understand unconscious experimenter bias, and how blinding can mitigate it</p>
+</li>
+<li><p>See how to quantify dataset consistency, when bringing multiple observations together</p>
+</li>
 </ul>
-<h2 id="Content">Content<a class="anchor-link" href="#Content">&#182;</a></h2><p><strong>Start by looking at the <a href="notes/overview.html">Overview</a> to understand how this course works, and <a href="notes/getting_started.html">Getting Started</a> to get up and running with Python and Jupyter, if needed.</strong>
-Enrolled students should also read the <a href="notes/assignments.html">Assignments</a> page to see what is expected.</p>
-<p>The course content can be browsed here in static HTML format. This is sufficient for the notes, but to do the tutorials you will need to download them in Jupyter notebook format from the <a href="https://github.com/KIPAC/StatisticalMethods/tree/master/tutorials">GitHub repository</a>.</p>
-<p>Notes and tutorials are listed in reasonable order below, but a better way to navigate the course may be through this nifty <a href="dependency_graph.html">dependency graph</a> (via <a href="https://mermaid-js.github.io/mermaid/">Mermaid</a>).</p>
-<h3 id="Notes">Notes<a class="anchor-link" href="#Notes">&#182;</a></h3><ul>
-<li><a href="notes/overview.html">Overview</a></li>
-<li><a href="notes/assignments.html">Assignments</a></li>
-<li><a href="notes/getting_started.html">Getting Started</a></li>
-<li><a href="notes/generative_models.html">Generative Models</a></li>
-<li><a href="notes/essential_probability.html">Essential Probability</a></li>
-<li><a href="notes/bayes_law.html">Bayes' Law</a></li>
-<li><a href="notes/credible_regions.html">Credible Regions</a></li>
-<li><a href="notes/errorbars.html">"Error bars"</a></li>
-<li><a href="notes/statistical_isms.html">Bayesianism and Other "isms"</a></li>
-<li><a href="notes/montecarlo.html">Monte Carlo Sampling</a></li>
-<li><a href="notes/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="notes/more_samplers.html">More Sampling Methods</a></li>
-<li><a href="notes/hierarchical.html">Hierarchical Models</a></li>
-<li><a href="notes/model_evaluation.html">Model Evaluation and Comparison</a></li>
-<li><a href="notes/missingdata.html">Missing Data and Selection Effects</a></li>
-<li><a href="notes/modelfreemodels.html">"Model-free" Models</a></li>
-<li><a href="notes/approximate_methods.html">Approximate Methods</a></li>
-<li><a href="notes/fishing.html">Fishing, Blinding and More</a></li>
+<p><em>The first principle [of science] is that you must not fool yourself — and you are the easiest person to fool.”</em> - Richard Feynman</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Detection">Detection<a class="anchor-link" href="#Detection">&#182;</a></h2><p>Source detection is different in character from parameter estimation. Initially, we are less interested in the properties of a new source than we are in its existence. Detection is therefore a model comparison or hypothesis testing problem:</p>
+<ul>
+<li><p>$H_0$: the "Null Hypothesis," that there is no source present</p>
+</li>
+<li><p>$H_1$: the "Alternative Hypothesis," that there is a source present, e.g. with flux $f$ and position $(x,y)$</p>
+</li>
 </ul>
-<h3 id="Tutorials">Tutorials<a class="anchor-link" href="#Tutorials">&#182;</a></h3><ul>
-<li><a href="tutorials/demo.html">Demo</a></li>
-<li><a href="tutorials/generative_models.html">Generative Models</a></li>
-<li><a href="tutorials/probability_essentials.html">Essential Probability</a></li>
-<li><a href="tutorials/probability_transformations.html">Probability Transformations</a></li>
-<li><a href="tutorials/bayes_law.html">Bayes' Law</a></li>
-<li><a href="tutorials/working_with_samples.html">Working With Samples</a></li>
-<li><a href="tutorials/credible_interals.html">Credible Regions</a></li>
-<li><a href="tutorials/gaussians.html">Gaussians and Least Squares</a></li>
-<li><a href="tutorials/xmm_image.html">XMM Image</a></li>
-<li><a href="tutorials/agn_photometry_grid.html">AGN Photometry: grid</a></li>
-<li><a href="tutorials/agn_photometry_gibbs.html">AGN Photometry: Gibbs sampling</a></li>
-<li><a href="tutorials/agn_photometry_metro.html">AGN Photometry: Metropolis sampling</a></li>
-<li><a href="tutorials/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="tutorials/ogle_lightcurve.html">OGLE Lightcurve</a></li>
-<li><a href="tutorials/microlensing.html">Microlensing</a></li>
-<li><a href="tutorials/cepheids.html">Cepheid Period-Luminosity Relation</a></li>
-<li><a href="tutorials/cepheids_one_galaxy.html">Cepheid P-L I: one galaxy</a></li>
-<li><a href="tutorials/cepheids_all_galaxies.html">Cepheid P-L II: multiple galaxies</a></li>
-<li><a href="tutorials/model_evaluation.html">Galaxy Cluster Mis-centering: model evaluation</a></li>
-<li><a href="tutorials/model_selection.html">Galaxy Cluster Mis-centering: model comparison</a></li>
-<li><a href="tutorials/missing_data.html">Shuttle O-ring Failures: missing data</a></li>
+<h3 id="Bayesian-Detection">Bayesian Detection<a class="anchor-link" href="#Bayesian-Detection">&#182;</a></h3><p>Within Bayesian analysis, we calculate and compare the evidence for each model, $P(d|H_0)$ and $P(d|H_1)$. Their ratio gives the relative probability of getting the data under the alternative and null hypotheses (and is equal to the relative probabilities of the hypotheses being true, up to a model prior ratio).</p>
+<p>Calculating the evidence ratio involves marginalizing over the alternative hypothesis' model parameters, given the prior PDFs that we assigned when defining $H_1$. Weakening the prior on the source position and flux (by, for example, expanding their ranges) makes any given point in parameter space less probable a priori. So, as we've seen, weaker priors decrease the evidence for $H_1$, making the detection less significant (but only linearly in the prior volume, remember).</p>
+<h3 id="Frequentist-Detection">Frequentist Detection<a class="anchor-link" href="#Frequentist-Detection">&#182;</a></h3><p>Instead of working towards the relative probabilities of two hypotheses, the frequentist approach is to attempt to reject the null hypothesis by showing that it would be too improbable for the data to have been generated by it. It turns out that the most powerful statistic to use in this hypothesis test is the likelihood ratio. ("Power" is defined to be the probability that the null hypothesis test is rejected when the alternative hypothesis is true.)</p>
+<p>To find the likelihood ratio, one would maximize the likelihood for the parameters of each hypothesis, and form the test statistic</p>
+<p>$T_d = 2 \log \frac{L(\hat{\theta},H_1)}{L(H_0)}$,</p>
+<p>where $\theta$ are the parameters describing the source. We then inspect the distribution of test statistics $T$ over an ensemble of hypothetical datasets generated from a model with no source (the null hypothesis), and compute the $p$-value $P(T_d &gt; T)$. If $p &lt; \alpha$ we then say that "we can reject the null hypothesis at the $100\,\alpha$ percent confidence level." We could find the distribution of $T$ by simulation or by approximating it as $\chi^2$, as we did in when looking at <a href="modelevaluation.html">model evaluation</a>.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Fishing-expeditions">Fishing expeditions<a class="anchor-link" href="#Fishing-expeditions">&#182;</a></h4><p>The test statistic depends only on the estimated values of the source parameters, and reports the likelihood ratio between two <em>discrete</em> hypotheses. We need to account for the fact that we "went fishing" (ie, we searched for the source throughout parameter space).</p>
+<p>One way to do this in general is the classical <em>Bonferroni correction</em>. If we carry out $m$ independent "trials", and are aiming to detect at the $\alpha$ confidence level, we would expect to get a positive result by chance in a fraction $\alpha' = 1 - (1-\alpha)^m \lesssim m \alpha$ of cases. Even if the trials are not independent, this last inequality holds: the Bonferroni correction involves comparing $p$-values to a threshold $\alpha / m$, in order to test (and report) at the $\alpha$ confidence level. This $1/m$ is sometimes referred to as the "trials factor," and the issue described here is known in the statistics literature as the "multiple comparisons" problem, and in (astro)particle physics as the "look elsewhere effect." The correction is analogous to the decrease in evidence that we suffer from using wide priors in the Bayesian approach.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Post-Hoc-Analysis">Post-Hoc Analysis<a class="anchor-link" href="#Post-Hoc-Analysis">&#182;</a></h2><p>The issues inherent in fishing are not limited to detection problems. Consider the following scenario:</p>
+<blockquote><p>You take some data with the aim of fitting a linear relation. However, when you look at the data, it seems like a linear model won't be a good description, so you also fit a quadratic, and the posterior for the second-order coefficient is not consistent with zero. The paper, naturally, notes that you have detected a departure from the simple linear model expected.</p>
+</blockquote>
+<p>The issue here is that the data are used more than once: both for defining the model to be fit and also for fitting the parameters of the model. This is not necessarily forbidden. But we need to consider the possibility that the features that motivated using a higher-order model were only a random fluctuation, with the true model actually being just linear. We can't take the constraint on the second-order coefficient at face value because we only included it in the model to begin with because the data appeared to prefer it.</p>
+<p>Note that this consideration would be moot if we had planned to test linear vs quadratic models from the beginning, before ever looking at the data. But, more generally, we need to be cautious of cases where many additional hypotheses are introduced (even when when they are not motivated by examining the data), simply because the chances of one of them randomly appearing significant increases. This, too, is known as fishing, and we would need to account for the number of tests done, as above.</p>
+<p>Post-hoc analysis is unavoidably common in astronomy, since our science is so often driven by noticing something unexpected in new observations. This doesn't mean we shouldn't report new discoveries, just that we should recognize the possibility that we are being fooled. The most robust way to test new models is with new data.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Experimenter-Bias">Experimenter Bias<a class="anchor-link" href="#Experimenter-Bias">&#182;</a></h2><p>A particularly insidious post-hoc analysis problem is "unconscious experimenter bias". It might look like this:</p>
+<blockquote><p>After producing some intermediate or final result, a researcher compares their findings with those of others or with prior expectations. If there is disagreement, the researcher is more likely to investigate potential problems before publishing, whereas if everything looks in agreement with expectations they might immediately publish.</p>
+</blockquote>
+<p>In the worst case (short of actual fudging), a researcher might continue finding more and more bugs to fix, until the results come into line with expectations. (As Bayesians, we might ask: if your prior is so strong, why bother doing the experiment?) In the alternative hypothetical, the analysis might have just as many bugs, and the results might be completely wrong, yet it isn't checked as diligently. The same dynamic can be at play when one's work is being weighed by others; papers that confirm previous work and/or readers' biases are accepted with minimal scrutiny, while those that do not are looked at with suspicion. The net result is that there is a natural tendency towards "concordance" in the literature.</p>
+<p>A practical solution to mitigate unconscious experimenter bias is this:</p>
+<ul>
+<li>The analysis team is prevented from completing their inference and viewing the results (including any intermediate results that can be used to predict the final result) until they deem their model complete (or, at least, adequate).</li>
+<li>The final inference is done once.</li>
+<li>Post-hoc analysis is then enabled, but with the understanding that it must be clearly identified as such, since experimenter bias is now potentially in play again.</li>
 </ul>
-<h2 id="Contact">Contact<a class="anchor-link" href="#Contact">&#182;</a></h2><ul>
-<li><a href="https://github.com/KIPAC/StatisticalMethods/issues/new?body=@abmantz">Adam Mantz</a></li>
+<p>The terms "blinding" and "blinded/unblinded" are frequently used in this context. [Endnote 1]</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Before "opening the box" for the final inference run, one might use a method like:</p>
+<ul>
+<li><p><strong>Hidden signal box</strong>: the subset of data believed most likely to contain the signal is removed</p>
+</li>
+<li><p><strong>Hidden answer</strong>: the numerical values of the parameters being measured are hidden</p>
+</li>
+<li><p><strong>Adding/removing data (aka "salting")</strong>: so that the team don't know whether they have detected a real signal or not</p>
+</li>
+<li><p>Training on a <strong>"pre-scaling" subset</strong>: as in cross-validation</p>
+</li>
 </ul>
-<p>All materials Copyright 2015, 2017, 2019, 2021 Adam Mantz, Phil Marshall and Claire Hébert, and distributed for copying and extension under the GPLv2 License, unless otherwise noted. If you have any feedback for us, please <a href="https://github.com/KIPAC/StatisticalMethods/issues">write us an issue</a>.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>You might be wondering what the point of all this is, since the overall workflow hasn't changed: set up and perform an analysis, look at results, and (possibly) do something post-hoc. It's true that none of these methods is a panacea against experimenter bias. They have value to the extent that they force us to be skeptical of our own analysis, and therefore check everything carefully, to a greater extent then we might if everything came out as we expected immediately. This involves doing some qualitatively different things from what we might be used to:</p>
+<ul>
+<li>Organizing analyses in teams, and agreeing to abide by rules</li>
+<li>Temporarily censoring or adjusting datasets while inferences are developed</li>
+<li>Thinking <em>really, really</em> hard about what diagnostics we might be able to look at without informing ourselves as to the results of interest</li>
+</ul>
+<p>The perceived finality of opening the box is also beneficial. No one wants to have to admit that they went to all this trouble only to find a major bug after the box was open, so we usually end up checking everything as thoroughly as possible beforehand.</p>
+<p>The process may be a pain, but it does seem to increase confidence in the results, both inside and outside the team.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Consistency-of-independent-contraints">Consistency of independent contraints<a class="anchor-link" href="#Consistency-of-independent-contraints">&#182;</a></h2><p>When the same model can be constrained by independent data sets, those constraints might be perfectly consistent with one another. Hooray! We can jointly analyze the data, and get even tighter constraints.</p>
+<p>On the other hand, the two sets of constraints could be inconsistent, or in tension with one another. We might conclude that there is a "systematic" error in the modeling of one or both data sets, or an error in the physical model.</p>
+<p>How can we quantify the level of consistency between two sets of constraints (posterior PDFs)?</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The most common (quick and dirty) quantification of tension between two datasets is the distance between the central values of their likelihoods (or posterior PDFs), in units of "sigma". Here "sigma" is usually taken to be the sum of the two posterior widths, in quadrature, assuming everything is Gaussian (quick/dirty, remember). This would normally be done with 1D or 2D marginalized posteriors, for a subset of paramters where we particularly care about consistency.</p>
+<p><img src="graphics/consistency.png"></img></p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>A more mathematically principled approach, which works in any number of dimensions, is to use the Bayesian evidence to quantify the overlap between likelihoods. Consider the following two models:</p>
+<blockquote><p>$H_1$: Both datasets, $d_A$ and $d_B$, were generated from the same global model, with parameters $\theta$.</p>
+</blockquote>
+<p>The evidence for $H_1$ is</p>
+<p>$P(\{d_A,d_B\}|H_1) = \int P(d_A|\theta,H_1)P(d_B|\theta,H_1)p(\theta|H_1)\,d\theta$.</p>
+<p>This would be computed during a joint fit of both data sets.</p>
+<blockquote><p>$H_2$: Each dataset, $d_A$ and $d_B$, was generated from its own local model, with parameters $\theta_A$ and $\theta_B$.</p>
+</blockquote>
+<p>The evidence for $H_2$ is</p>
+<p>$P(\{d_A,d_B\}|H_2) = \int P(d_A|\theta_A,H_2)P(d_B|\theta_B,H_2)p(\theta_A|H_2)p(\theta_B|H_2)\,d\theta_A d\theta_B = P(d_A|H_2)P(d_B|H_2)$.</p>
+<p>For $H_2$, the evidence is just the product of the evidences computed during the two separate fits.</p>
+<p>The Bayes factor is therefore</p>
+<p>$\frac{P(\{d_A,d_B\}|H_2)}{P(\{d_A,d_B\}|H_1)} = \frac{P(d_A|H_2)P(d_B|H_2)}{P(\{d_A,d_B\}|H_1)}$.</p>
+<p>If the inferences of $\theta_A$ and $\theta_B$ under $H_2$ are very different, we would see a large Bayes factor (the combined goodness of fit under $H_2$ would be greater than under $H_1$).</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Optional-further-reading">Optional further reading<a class="anchor-link" href="#Optional-further-reading">&#182;</a></h4><ul>
+<li><p>James Berger, <a href="https://indico.cern.ch/event/107747/contributions/32678/attachments/24371/35060/berger.pdf">"The Bayesian Approach to Discovery"</a> (PHYSTAT 2011)</p>
+</li>
+<li><p>Kyle Cranmer, <a href="https://arxiv.org/pdf/1503.07622.pdf">"Practical Statistics for the LHC"</a></p>
+</li>
+<li><p>Gross &amp; Vitells (2010), <a href="https://arxiv.org/pdf/1005.1891.pdf">"Trial factors for the look elsewhere effect in high energy physics"</a></p>
+</li>
+<li><p>MacCoun &amp; Perlmutter (2015), <a href="http://www.nature.com/polopoly_fs/1.18510!/menu/main/topColumns/topLeftColumn/pdf/526187a.pdf">"Hide Results to Seek the Truth"</a></p>
+</li>
+<li><p>Klein &amp; Roodman (2005) <a href="https://www.pp.rhul.ac.uk/~cowan/stat/annurev.nucl.55.090704.pdf">"Blind Analysis in Nuclear and Particle Physics"</a></p>
+</li>
+<li><p>Talks given at the 2017 KIPAC Workshop, "Blind Analysis in High-Stakes Survey Science: When, Why, and How?": <a href="http://kipac.github.io/Blinding/">http://kipac.github.io/Blinding/</a></p>
+</li>
+</ul>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Endnotes">Endnotes<a class="anchor-link" href="#Endnotes">&#182;</a></h4><ol>
+<li>The term "blinding" is somewhat problematic (personal opinion) and one that I am trying to avoid these days. First, there are some in the disabled community who, reasonably, object to the use of "blind" in the context of <em>voluntarily or intentionally</em> not looking at something, as opposed to being fundamentally unable to do so. (Though I'm not aware of any particular outrage about the specific usage we're discussing here.) Second, the term is terribly imprecise. Saying you've done a blind analysis doesn't tell me <em>how</em> experimenter bias was mitigated, and the details do matter. This imprecision also makes it easier for people to misuse the term as a buzzword, presenting work as superior when it may (and I've seen this done) be the complete <em>opposite</em> of "blinded". Having said all that, I do not have an equally succinct replacement, and "blind" is the term you'll hear in the real world.</li>
+</ol>
 
 </div>
 </div>

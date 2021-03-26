@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>more_samplers</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14259,74 +14259,155 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="PHYSICS-366:-Statistical-Methods-in-Astrophysics">PHYSICS 366: Statistical Methods in Astrophysics<a class="anchor-link" href="#PHYSICS-366:-Statistical-Methods-in-Astrophysics">&#182;</a></h1><p>Course notes and resources for Stanford University graduate course Physics 366.</p>
-<h2 id="Course-Description">Course Description<a class="anchor-link" href="#Course-Description">&#182;</a></h2><p>This course is intended to provide an introduction to modern
-statistical methodology, and its applications to problems in
-astrophysics and cosmology, and is aimed at graduate students
-intending to do research in this area. We
-strongly encourage most first and second year students working in
-KIPAC to take the course.  Our goal is to provide a background that
-will be directly relevant to the kind of problems that typical KIPAC
-students will encounter in their research.</p>
-<h2 id="Course-Objectives">Course Objectives<a class="anchor-link" href="#Course-Objectives">&#182;</a></h2><p>Our goal is that students taking this course will:</p>
+<h1 id="Notes:-More-Sampling-Methods">Notes: More Sampling Methods<a class="anchor-link" href="#Notes:-More-Sampling-Methods">&#182;</a></h1><p>Containing an incomplete overview of additional methods for generating samples from a posterior PDF.</p>
+<h4 id="Optional-extra-reading-material">Optional extra reading material<a class="anchor-link" href="#Optional-extra-reading-material">&#182;</a></h4><ul>
+<li>Handbook of MCMC (Brooks, Gelman, Jones and Meng, eds.), parts of which are <a href="http://www.mcmchandbook.net/HandbookTableofContents.html">on the web</a></li>
+<li><a href="http://arxiv.org/abs/1304.4473">Recent</a> and <a href="http://cosmologist.info/notes/MCMC.ppt">less recent</a> notes on <code>CosmoMC</code> by Antony Lewis</li>
+<li>Method-specific links below</li>
+</ul>
+<p>See also our <a href="MC_packages.html">incomplete list of sampling packages</a>.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Overview">Overview<a class="anchor-link" href="#Overview">&#182;</a></h2><p>The Metropolis-Hastings algorithm has historically been <em>the</em> workhorse MCMC method, in that it is widely applicable, its inner workings and shortcomings are relatively simple to understand, and it's straightforward to assess how well it's working. But that doesn't mean it's the only or best solution for any particular problem.</p>
+<p>I would caution against thinking of the methods below as more "advanced", in the sense of being automatically preferable, compared with those we have already seen. For example, several of them are "better" in the sense that the sequences they produce tend to be less correlated than Metropolis would yield. Yet, we've seen that correlated chains are not a bug, as such. In practice, what we care about is accumulating a certain number of effectively independent samples in a reasonable amount of human time, with the run time determined by the number of times the posterior needs to be evaluated. An algorithm that produces completely independent samples, but requires 10 posterior evaluations for each one, is no better according to this metric than a Metropolis kernel with a correlation length of 10.</p>
+<p>All of which is to say that, in my limited experience, this is one of those cases where there just isn't a free lunch to be had. Compared to Metropolis with the most straightforward and common-sense proposal adaptation (see below), other methods that I've tried (which, admittedly, does not include everything below) haven't been any faster. Since many of those methods don't admit the same simple <a href="mcmc_diagnostics.html">diagnostics that we saw previously</a>, I tend to stubbornly stick with Metropolis (or conjugate Gibbs, when possible) in my own work. But that doesn't mean you shouldn't learn about and try other things. And there are certain tasks that MCMC methods simply don't do well, like calculation of the Bayesian evidence, for which we'll want to use other approaches.</p>
+<p>One thing to keep in mind, when faced with a very computationally expensive problem, is that we're allowed to use different samplers for different subsets of parameters (thanks, Gibbs!), just as long as every parameter gets updated somehow.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Accelerating-Metropolis">Accelerating Metropolis<a class="anchor-link" href="#Accelerating-Metropolis">&#182;</a></h2><p>Our first method is not actually a novel one, just our old friend Metropolis with extra bells and whistles. Recall the basic algorithm:</p>
+
+<pre><code>choose a starting point and a proposal scale
+while we want more samples
+    propose a new point from a scaled distribution, centered on our current position
+    accept/reject the new point</code></pre>
+<p>To speed things up in human time, we can also take advantage of the <em>embarrassingly parallel</em> nature of the algorithm. That is, nothing prevents us from running multiple, independent chains using as many CPUs as we have available, and pooling the chains at the end. In fact, we've seen that we'll want multiple chains in any case, to test for convergence.</p>
+<p>In the algorithm itself, we mainly have freedom to play with the proposal distribution. We've already discussed using a proposal distribution that discourages <em>very</em> small steps (in scaled units).  What else can we do? The better we can tune the proposal distribution to match the overall shape of the posterior, the more efficiently the chain will be able to move around in parameter space. Hence, the goal is to cleverly and automatically tune the proposal distribution.</p>
+<p>Strictly speaking, tuning the proposal distribution on the fly breaks the rules of MCMC (specifically, detailed balance). Technically, we stop tuning after some time, once things appear to be working well, and throw away all steps before that point. In practice, if we've actually managed to converge to the target distribution, subsequent updates to the proposal distribution will <em>usually</em> be negligible anyway, making this less of a concern.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Adapting-the-proposal-distribution">Adapting the proposal distribution<a class="anchor-link" href="#Adapting-the-proposal-distribution">&#182;</a></h3><p>One way of making the proposal distribution more efficient would be to customize the proposal scale for each parameter. If we believe the chain has begun (laboriously) to sample from the posterior, we could periodically compute the standard deviation of the samples so far in each direction, and use that as a guess of the appropriate proposal scale. More generally, we could look at the multidimensional covariance of the samples so far, and adjust the shape of our proposal distribution to match; this would let us learn about and compensate for parameter degeneracies. This change is equivalent to using a rotated coordinate basis, with appropriate scales in each new basis direction, for our proposal distribution. We could visualize it like this:</p>
+<table>
+    <tr>
+        <td><H2>Original</H2><br><img src="graphics/mc2_reparam0.png" width=100%></td>
+        <td><H2>Proposal basis change</H2><br><img src="graphics/mc2_reparam2.png" width=100%></td>
+        <td><H2>Parameter basis change</H2><br><img src="graphics/mc2_reparam1.png" width=100%></td>
+    </tr>
+</table><p>In each panel, the ellipse shows the shape of the posterior distribution, and the vectors show the coordinate basis with respect to which the proposal distribution is defined. (We are not confined to proposing along these directions, but are imagining that we want the proposal distribution to be simple with respect to this basis, and have a proposal scale associated with each basis direction.) On the left, the basis is Cartesian, with the scales set to the standard deviation of the (marginal) posterior in each direction; we can see that this results in proposals that are too large on average to be accepted often. In the center, we have rotated the basis for proposals to align with the major and minor axes of the iso-probability surfaces, and tuned the associated scales appropriately. This can equivalently be accomplished by re-defining the parameters to reduce the correlation of the PDF, as illustrated on the right. (Note that, being a rotation and scaling, this parameter transformation is <em>linear</em>, meaning that the priors are invariant under it. If we had used a <em>nonlinear</em> reparametrization, we'd need to worry about transforming the prior density accordingly.) For a nice, elliptical PDF like the one shown, a basis that diagonalizes the covariance matrix is optimal.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Fast-slow-decompositions">Fast-slow decompositions<a class="anchor-link" href="#Fast-slow-decompositions">&#182;</a></h3><p>If changes to some parameters require much more costly calculations than others, straightforward diagonalization of the covariance may not be optimal in practice. In this case, we might want to propose changes to fast parameters more often than slow parameters. More generally, given a hierarchy of speeds, we can also <em>triangularize</em> the proposal basis, such that the fastest parameter appears in every basis vector, the second-fastest appears in all but one, etc., with the slowest parameter being changed only in tandem with all other parameters. This is illustrated in the right panel, below. We might also consider sampling in faster directions more often than in slower directions.</p>
+<table>
+    <tr>
+        <td><h2>Original</h2><br><img src="graphics/mc2_reparam0.png" width=100%></td>
+        <td><h2>Diagonalized covariance</h2><br><img src="graphics/mc2_reparam2.png" width=100%></td>
+        <td><h2>Triangular fast-slow</h2><br><img src="graphics/mc2_reparam3.png" width=100%></td>
+    </tr>
+</table>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Communicating-parallel-chains">Communicating parallel chains<a class="anchor-link" href="#Communicating-parallel-chains">&#182;</a></h3><p>We've already discussed running independent chains in parallel, and using information gathered so far in a chain to adapt the proposal distribution. Combining these ideas turns out to be extremely powerful. If we start multiple chains in different parts of parameter space as usual, and their proposal distributions are not great out of the box, then chances are they will make their way to different parts of the region where the posterior is non-tiny and then struggle to move around. Pooling the information about where multiple chains are sampling can thus tell us much more about the global shape of the posterior than looking only at one chain. With some imagination, we can see this in the example below, where the most degenerate direction becomes evident within a few steps of each chain.</p>
+<table>
+    <tr>
+        <td><img src="graphics/mc1_sandbox_ab.png" width=70%></td>
+    </tr>
+</table><p>Pooling information in this way can <strong>vastly</strong> decrease the time to convergence compared with running separate chains, much more so than the speedup from embarrassingly simple parallelization alone. Consider the comparison of independent-adaptive and communicating-adaptive chains below, where the starting positions and adaptation strategy (diagonalizing the covariance) are the same in each case.</p>
+<table>
+    <tr>
+        <td><img src="graphics/mc2_parallel_xy1.png" width=70%></td>
+        <td><img src="graphics/mc2_parallel_xy2.png" width=70%></td>
+    </tr>
+</table><p>Looking at their traces, we see that the communicating chains provide more useful information more quickly than the alternative.</p>
+<table>
+    <tr>
+        <td><h2>Independent adaptation</h2><br><img src="graphics/mc2_parallel_trace1.png" width=100%></td>
+        <td><h2>Pooled adaptation</h2><br><img src="graphics/mc2_parallel_trace2.png" width=100%></td>
+    </tr>
+</table><p>As with doing on-the-fly adaptation to begin with, we are breaking a rule here - the chains are no longer independent, so we should think about the consequences for our ability to test for convergence by comparing them. Strictly speaking, we should use a procedure like this strictly to find a good proposal distribution, then throw away those chains and run new ones with the proposal distribution fixed. On the other hand, the argument that the proposal distribution will eventually stop changing still holds (normally), so comparisons of the post-convergence chains are still arguably reasonable. In addition, we still have the sanity check that chains with dispersed starting points found their way to the same part of parameter space, regardless of the adaptation method.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Parallel-tempering">Parallel tempering<a class="anchor-link" href="#Parallel-tempering">&#182;</a></h2><p>Consider the function $[p(x)]^{1/T}$, where $p(x)$ is the target PDF. We say a chain sampling this function, instead of $p(x)$ itself, has temperature $T$. For $T&gt;1$, $p^{1/T}$ is smoothed out compared with $p$. This smoothed out distribution will be easier to move around than the original, especially when there are strong/complex degeneracies, and in particular it should be more likely for a chain to move between well separated peaks of the PDF. Of course, we're only actually interested in samples obtained for $T=1$, ultimately.</p>
+<p>With parallel tempering, we run one chain with $T=1$ and several more chains with $T&gt;1$. A modified Metropolis-Hastings update occasionally allows the chains to exchange positions, giving the $T=1$ chain a mechanism for sampling regions of parameter space it might otherwise have low probability of proposing. Samples from the $T=1$ chain can be used for inference.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Hamiltonian-Monte-Carlo-(HMC)">Hamiltonian Monte Carlo (HMC)<a class="anchor-link" href="#Hamiltonian-Monte-Carlo-(HMC)">&#182;</a></h2><p>(Also sometimes called Hybrid Monte Carlo)</p>
+<p>While standard MCMC is analogous to the evolution of a thermodynamic system, HMC is (almost) analogous to the dynamical evolution of a single particle. Consider our free parameters as coordinates of a position, $\theta$, and minus the log-posterior as a potential energy, $U(\theta)$.</p>
+<p>HMC introduces momentum parameters, $\phi$, corresponding to each position parameter, and an associated "kinetic energy",</p>
+<p>$K(\phi) = \sum_i \frac{\phi_i^2}{2m_i}$,</p>
+<p>where we are free to choose the "masses", $m_i$. Looking at the analogy the other way, the probability associated with $K(\phi)$,</p>
+<p>$p(\phi) \propto e^{-K(\phi)}$,</p>
+<p>is a multivariate Gaussian with mean zero and a diagonal covariance given by the masses.</p>
+<p>The HMC algorithm alternates direct sampling of $\phi$ from this Gaussian with joint updates of $\phi$ <em>and</em> $\theta$, as follows:</p>
+<ol>
+<li>Generate a sample of $\phi$ from the distribution defined by $K(\phi)$.</li>
+<li>Evolve $(\theta,\phi)$ for some time as a dynamical system, according to $K(\phi)$ and $U(\theta)$.</li>
+<li>The state at the end of this process is the proposal. Apply the standard Metropolis acceptance test to the initial and proposed probabilities $e^{-(K+U)}$. (This is trivial if we conserve energy in the "evolution" phase, but in practice the evolution is often done more approximately to save cycles.)</li>
+</ol>
+<p>There's a lot more literature on HMC and its optimization than we can cover - see e.g. <a href="http://www.mcmchandbook.net/HandbookChapter5.pdf">this chapter</a>. In a nutshell, the introduction of "momentum" into the evolution of the chain is supposed to reduce the random-walk behavior (autocorrelation) of traditional MCMC.</p>
+<p>The catch is that, to evolve the $(\theta,\phi)$ state, we need to compute the gradient of the log-posterior (the "force"). If this can be computed analytically, we're in business. If we need to do it numerically, it isn't obvious that HMC will be more efficient than standard MCMC.</p>
+<p>These days, there are HMC packages that can perform symbolic differentiation, provided you can express your model as equations in their own language. For complex models, doing this translation such that the resulting, automatically generated code is <em>efficient</em> can be something of an art. And sadly, those of us using complex, legacy likelihood codes that we'd rather not reinvent, or that involve fundamentally non-analytic components like ugly look-up tables, are not likely to move to HMC any time soon.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Goodman-Weare-sampling">Goodman-Weare sampling<a class="anchor-link" href="#Goodman-Weare-sampling">&#182;</a></h2><p>Moving beyond Markov chain methods, the method of <a href="http://msp.org/camcos/2010/5-1/camcos-v5-n1-p04-p.pdf">Goodman and Weare (2010)</a> works by evolving an ensemble of points in parameter space. After convergence, the ensemble can be regarded as a set of samples from the target distribution. This approach provides some of the benefits of running multiple chains, although we cannot interpret the evolution of the points as <em>independent</em> chains in any sense.</p>
+<p>The procedure for moving each point (aka walker) in the ensemble is:</p>
+<ol>
+<li>Randomly pick a <em>different</em> point from the ensemble (total size $N$).</li>
+<li>Propose a move in the direction of that point, by the distance between them multiplied by a random number from this distribution:
+$g(z) \propto \frac{1}{\sqrt z}; ~ \frac{1}{2}\leq z \leq 2$.</li>
+<li>Accept or reject the move based on the ratio of posterior densities multiplied by $z^{N-1}$.</li>
+</ol>
+<p>Note that there is some magic in the density $g$. We are not free to choose just any function.</p>
+<p>This algorithm is relatively easy to use - there is no tuning required and it's straightforward to parallelize. For this reason, we lean on a Python implementation called <code>emcee</code> (feel free to groan) in some of the later tutorials. There are some important cautions to keep in mind, however.</p>
 <ul>
-<li>develop familiarity in working with various types of astronomical data.</li>
-<li>understand the role of modeling in data analysis.</li>
-<li>develop facility with various types of inference from data.</li>
-<li>be able to critically evaluate and apply commonly used statistical methodologies.</li>
-<li>be able to apply advanced statistical reasoning to problems they are likely to encounter in their research.</li>
+<li>This method can be <strong>extremely</strong> slow to finding the region where the posterior is large if it is not started there to begin with. Seriously. At least once a year, I get a question like "Everything looked good and converged, until all of a sudden the distribution of walkers blew up and they went everywhere. What's broken?" Nothing's broken. That potentially long early run that looks "perfect" is just walkers swapping with one another because they can't find a better move, perpetuating the original distribution of the ensemble. <em>Eventually</em> they figure it out, at which point they will disperse throughout the (possibly much wider) posterior.</li>
+<li>As the walkers are not independent in any sense, our usual methods for assessing convergence cannot necessarily be trusted (see the story above). Running two independent fits with ensembles started in different places is one possible solution, but that runs into the issue of slow convergece when not starting near the peak probability.</li>
 </ul>
-<h2 id="Content">Content<a class="anchor-link" href="#Content">&#182;</a></h2><p><strong>Start by looking at the <a href="notes/overview.html">Overview</a> to understand how this course works, and <a href="notes/getting_started.html">Getting Started</a> to get up and running with Python and Jupyter, if needed.</strong>
-Enrolled students should also read the <a href="notes/assignments.html">Assignments</a> page to see what is expected.</p>
-<p>The course content can be browsed here in static HTML format. This is sufficient for the notes, but to do the tutorials you will need to download them in Jupyter notebook format from the <a href="https://github.com/KIPAC/StatisticalMethods/tree/master/tutorials">GitHub repository</a>.</p>
-<p>Notes and tutorials are listed in reasonable order below, but a better way to navigate the course may be through this nifty <a href="dependency_graph.html">dependency graph</a> (via <a href="https://mermaid-js.github.io/mermaid/">Mermaid</a>).</p>
-<h3 id="Notes">Notes<a class="anchor-link" href="#Notes">&#182;</a></h3><ul>
-<li><a href="notes/overview.html">Overview</a></li>
-<li><a href="notes/assignments.html">Assignments</a></li>
-<li><a href="notes/getting_started.html">Getting Started</a></li>
-<li><a href="notes/generative_models.html">Generative Models</a></li>
-<li><a href="notes/essential_probability.html">Essential Probability</a></li>
-<li><a href="notes/bayes_law.html">Bayes' Law</a></li>
-<li><a href="notes/credible_regions.html">Credible Regions</a></li>
-<li><a href="notes/errorbars.html">"Error bars"</a></li>
-<li><a href="notes/statistical_isms.html">Bayesianism and Other "isms"</a></li>
-<li><a href="notes/montecarlo.html">Monte Carlo Sampling</a></li>
-<li><a href="notes/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="notes/more_samplers.html">More Sampling Methods</a></li>
-<li><a href="notes/hierarchical.html">Hierarchical Models</a></li>
-<li><a href="notes/model_evaluation.html">Model Evaluation and Comparison</a></li>
-<li><a href="notes/missingdata.html">Missing Data and Selection Effects</a></li>
-<li><a href="notes/modelfreemodels.html">"Model-free" Models</a></li>
-<li><a href="notes/approximate_methods.html">Approximate Methods</a></li>
-<li><a href="notes/fishing.html">Fishing, Blinding and More</a></li>
-</ul>
-<h3 id="Tutorials">Tutorials<a class="anchor-link" href="#Tutorials">&#182;</a></h3><ul>
-<li><a href="tutorials/demo.html">Demo</a></li>
-<li><a href="tutorials/generative_models.html">Generative Models</a></li>
-<li><a href="tutorials/probability_essentials.html">Essential Probability</a></li>
-<li><a href="tutorials/probability_transformations.html">Probability Transformations</a></li>
-<li><a href="tutorials/bayes_law.html">Bayes' Law</a></li>
-<li><a href="tutorials/working_with_samples.html">Working With Samples</a></li>
-<li><a href="tutorials/credible_interals.html">Credible Regions</a></li>
-<li><a href="tutorials/gaussians.html">Gaussians and Least Squares</a></li>
-<li><a href="tutorials/xmm_image.html">XMM Image</a></li>
-<li><a href="tutorials/agn_photometry_grid.html">AGN Photometry: grid</a></li>
-<li><a href="tutorials/agn_photometry_gibbs.html">AGN Photometry: Gibbs sampling</a></li>
-<li><a href="tutorials/agn_photometry_metro.html">AGN Photometry: Metropolis sampling</a></li>
-<li><a href="tutorials/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="tutorials/ogle_lightcurve.html">OGLE Lightcurve</a></li>
-<li><a href="tutorials/microlensing.html">Microlensing</a></li>
-<li><a href="tutorials/cepheids.html">Cepheid Period-Luminosity Relation</a></li>
-<li><a href="tutorials/cepheids_one_galaxy.html">Cepheid P-L I: one galaxy</a></li>
-<li><a href="tutorials/cepheids_all_galaxies.html">Cepheid P-L II: multiple galaxies</a></li>
-<li><a href="tutorials/model_evaluation.html">Galaxy Cluster Mis-centering: model evaluation</a></li>
-<li><a href="tutorials/model_selection.html">Galaxy Cluster Mis-centering: model comparison</a></li>
-<li><a href="tutorials/missing_data.html">Shuttle O-ring Failures: missing data</a></li>
-</ul>
-<h2 id="Contact">Contact<a class="anchor-link" href="#Contact">&#182;</a></h2><ul>
-<li><a href="https://github.com/KIPAC/StatisticalMethods/issues/new?body=@abmantz">Adam Mantz</a></li>
-</ul>
-<p>All materials Copyright 2015, 2017, 2019, 2021 Adam Mantz, Phil Marshall and Claire Hébert, and distributed for copying and extension under the GPLv2 License, unless otherwise noted. If you have any feedback for us, please <a href="https://github.com/KIPAC/StatisticalMethods/issues">write us an issue</a>.</p>
+<p>In short, we'll use this method when we're already pretty sure that the the posterior is simple (unimodal), that we can guess a decent starting point, and that we'll therefore be able to recognize convergence unambiguously.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Population-Monte-Carlo-(PMC)">Population Monte Carlo (PMC)<a class="anchor-link" href="#Population-Monte-Carlo-(PMC)">&#182;</a></h3><p>Now we get to some fundamentally different approaches. Recall the essence of MC integration,</p>
+<p>$\int f(x) \, dx = \int w(x) \, p(x) \, dx \approx \frac{1}{n}\sum_i w(x_i)$.</p>
+<p>We used this (way back) to set up Simple Monte Carlo, where $p$ is the prior and $w$ is the likelihood. The key feature that enabled SMC is that <em>any</em> set of points can provide an unbiased estimate of an integral, as long as the weighting is correct.</p>
+<p>PMC is a more refined version of this - instead of sampling from the prior, we iteratively build up an approximation to the posterior distribution, called the generating distribution, along with a number of samples and associated weights. Each iteration consists of</p>
+<ol>
+<li>selecting the generating distribution, $q$,</li>
+<li>sampling a number of points from the generating distribution, and</li>
+<li>computing the corresponding posterior densities, $\pi$.</li>
+</ol>
+<p>These points can then be weighted by the ratio $\pi/q$ and treated as samples of the posterior. <em>All</em> of these points, that is; no matter which iteration they came from and how uninformed the generating distribution was at that point, they still come with the correct weight. Still, getting accuracy from this method on human timescales requires a clever way to refine $q$. With a suitably intelligent implementation (e.g. see <a href="http://www.jstor.org/stable/27594084">this</a>), the generating distribution can be evolved towards the posterior distribution, providing samples for a posteriori analysis as well as an estimate for the evidence.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Nested-sampling">Nested sampling<a class="anchor-link" href="#Nested-sampling">&#182;</a></h2><p>This is a particular form of PMC that is primarily aimed at calculating the Bayesian evidence. We'll look at it more closely later on, in the notes on model comparison. In brief, we begin with a large number of points sampled from the prior, and gradually evolve them towards higher-likelihood positions, keeping track of how the volume filled changes (marvel at the complicated math <a href="http://arxiv.org/abs/0809.3437">here</a>). Like PMC generally, every time we evaluate the likelihood we get a sample and a weight that we can use to derive parameter constraints, regardless of whether we even care about the evidence.</p>
+<p>By virtue of spamming the parameter space with points at the start, nested sampling is likely (though never guaranteed) to find multiple modes, if they exist. The same can be said of PMC, given a wide initial generating distribution. Since these methods maintain something like a global view of the parameter space, rather building up information by tracing a sequence through the space, they are probably the best option in the situation that confounds MCMC, when there are widely separated peaks in the posterior distribution.</p>
+<p>If nested sampling is so much more foolproof than MCMC, why wouldn't we always use it instead? In short, exactly those features that make it more robust to multimodal distributions make it less efficient than MCMC for unimodal distributions - if our goal is simply to find the peak and the usual credible intervals/regions, we're better off looking around the region of parameter space where the posterior is large, rather than carefully mapping out the tails.</p>
 
 </div>
 </div>

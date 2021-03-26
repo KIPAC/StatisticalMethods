@@ -1,0 +1,18 @@
+# R11redsh.dat
+#
+# Redshifts to the Cepheid hosts in R11ceph.dat
+#
+# Columns:
+#    gal: the NGC number of the host galaxy
+#      z: redshift
+#
+#  gal z
+1309   0.007125
+3021   0.005140
+3370   0.004266
+3982   0.003699
+4038   0.005477
+4258   0.001494
+4536   0.006031
+4639   0.003395
+5584   0.005464

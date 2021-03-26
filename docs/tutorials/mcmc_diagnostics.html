@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>mcmc_diagnostics</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14259,74 +14259,503 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="PHYSICS-366:-Statistical-Methods-in-Astrophysics">PHYSICS 366: Statistical Methods in Astrophysics<a class="anchor-link" href="#PHYSICS-366:-Statistical-Methods-in-Astrophysics">&#182;</a></h1><p>Course notes and resources for Stanford University graduate course Physics 366.</p>
-<h2 id="Course-Description">Course Description<a class="anchor-link" href="#Course-Description">&#182;</a></h2><p>This course is intended to provide an introduction to modern
-statistical methodology, and its applications to problems in
-astrophysics and cosmology, and is aimed at graduate students
-intending to do research in this area. We
-strongly encourage most first and second year students working in
-KIPAC to take the course.  Our goal is to provide a background that
-will be directly relevant to the kind of problems that typical KIPAC
-students will encounter in their research.</p>
-<h2 id="Course-Objectives">Course Objectives<a class="anchor-link" href="#Course-Objectives">&#182;</a></h2><p>Our goal is that students taking this course will:</p>
-<ul>
-<li>develop familiarity in working with various types of astronomical data.</li>
-<li>understand the role of modeling in data analysis.</li>
-<li>develop facility with various types of inference from data.</li>
-<li>be able to critically evaluate and apply commonly used statistical methodologies.</li>
-<li>be able to apply advanced statistical reasoning to problems they are likely to encounter in their research.</li>
-</ul>
-<h2 id="Content">Content<a class="anchor-link" href="#Content">&#182;</a></h2><p><strong>Start by looking at the <a href="notes/overview.html">Overview</a> to understand how this course works, and <a href="notes/getting_started.html">Getting Started</a> to get up and running with Python and Jupyter, if needed.</strong>
-Enrolled students should also read the <a href="notes/assignments.html">Assignments</a> page to see what is expected.</p>
-<p>The course content can be browsed here in static HTML format. This is sufficient for the notes, but to do the tutorials you will need to download them in Jupyter notebook format from the <a href="https://github.com/KIPAC/StatisticalMethods/tree/master/tutorials">GitHub repository</a>.</p>
-<p>Notes and tutorials are listed in reasonable order below, but a better way to navigate the course may be through this nifty <a href="dependency_graph.html">dependency graph</a> (via <a href="https://mermaid-js.github.io/mermaid/">Mermaid</a>).</p>
-<h3 id="Notes">Notes<a class="anchor-link" href="#Notes">&#182;</a></h3><ul>
-<li><a href="notes/overview.html">Overview</a></li>
-<li><a href="notes/assignments.html">Assignments</a></li>
-<li><a href="notes/getting_started.html">Getting Started</a></li>
-<li><a href="notes/generative_models.html">Generative Models</a></li>
-<li><a href="notes/essential_probability.html">Essential Probability</a></li>
-<li><a href="notes/bayes_law.html">Bayes' Law</a></li>
-<li><a href="notes/credible_regions.html">Credible Regions</a></li>
-<li><a href="notes/errorbars.html">"Error bars"</a></li>
-<li><a href="notes/statistical_isms.html">Bayesianism and Other "isms"</a></li>
-<li><a href="notes/montecarlo.html">Monte Carlo Sampling</a></li>
-<li><a href="notes/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="notes/more_samplers.html">More Sampling Methods</a></li>
-<li><a href="notes/hierarchical.html">Hierarchical Models</a></li>
-<li><a href="notes/model_evaluation.html">Model Evaluation and Comparison</a></li>
-<li><a href="notes/missingdata.html">Missing Data and Selection Effects</a></li>
-<li><a href="notes/modelfreemodels.html">"Model-free" Models</a></li>
-<li><a href="notes/approximate_methods.html">Approximate Methods</a></li>
-<li><a href="notes/fishing.html">Fishing, Blinding and More</a></li>
-</ul>
-<h3 id="Tutorials">Tutorials<a class="anchor-link" href="#Tutorials">&#182;</a></h3><ul>
-<li><a href="tutorials/demo.html">Demo</a></li>
-<li><a href="tutorials/generative_models.html">Generative Models</a></li>
-<li><a href="tutorials/probability_essentials.html">Essential Probability</a></li>
-<li><a href="tutorials/probability_transformations.html">Probability Transformations</a></li>
-<li><a href="tutorials/bayes_law.html">Bayes' Law</a></li>
-<li><a href="tutorials/working_with_samples.html">Working With Samples</a></li>
-<li><a href="tutorials/credible_interals.html">Credible Regions</a></li>
-<li><a href="tutorials/gaussians.html">Gaussians and Least Squares</a></li>
-<li><a href="tutorials/xmm_image.html">XMM Image</a></li>
-<li><a href="tutorials/agn_photometry_grid.html">AGN Photometry: grid</a></li>
-<li><a href="tutorials/agn_photometry_gibbs.html">AGN Photometry: Gibbs sampling</a></li>
-<li><a href="tutorials/agn_photometry_metro.html">AGN Photometry: Metropolis sampling</a></li>
-<li><a href="tutorials/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="tutorials/ogle_lightcurve.html">OGLE Lightcurve</a></li>
-<li><a href="tutorials/microlensing.html">Microlensing</a></li>
-<li><a href="tutorials/cepheids.html">Cepheid Period-Luminosity Relation</a></li>
-<li><a href="tutorials/cepheids_one_galaxy.html">Cepheid P-L I: one galaxy</a></li>
-<li><a href="tutorials/cepheids_all_galaxies.html">Cepheid P-L II: multiple galaxies</a></li>
-<li><a href="tutorials/model_evaluation.html">Galaxy Cluster Mis-centering: model evaluation</a></li>
-<li><a href="tutorials/model_selection.html">Galaxy Cluster Mis-centering: model comparison</a></li>
-<li><a href="tutorials/missing_data.html">Shuttle O-ring Failures: missing data</a></li>
-</ul>
-<h2 id="Contact">Contact<a class="anchor-link" href="#Contact">&#182;</a></h2><ul>
-<li><a href="https://github.com/KIPAC/StatisticalMethods/issues/new?body=@abmantz">Adam Mantz</a></li>
-</ul>
-<p>All materials Copyright 2015, 2017, 2019, 2021 Adam Mantz, Phil Marshall and Claire Hébert, and distributed for copying and extension under the GPLv2 License, unless otherwise noted. If you have any feedback for us, please <a href="https://github.com/KIPAC/StatisticalMethods/issues">write us an issue</a>.</p>
+<h1 id="Tutorial:-MCMC-Diagnostics">Tutorial: MCMC Diagnostics<a class="anchor-link" href="#Tutorial:-MCMC-Diagnostics">&#182;</a></h1><p>You should already have run two different MCMC algorithms to generate chains for the AGN photometry problem (or an approximation thereof). Let's work through the process of diagnosing whether these Markov chains are usefully sampling the posterior distribution.</p>
+<p>The diagnostics discussed below include both qualitative and quantitative checks. We don't particularly think it's all that instructive to write the code that does the quatitative calculations - though there is surely room for improvement or expansion if you're interested - so intead we will demonstrate how to use functions provided by the <code>incredible</code> and <code>pandas</code> packages.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">exec</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;tbc.py&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span> <span class="c1"># define TBC and TBC_above</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+<span class="kn">import</span> <span class="nn">incredible</span> <span class="k">as</span> <span class="nn">cr</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Gibbs-samples">Gibbs samples<a class="anchor-link" href="#Gibbs-samples">&#182;</a></h2><p>It's nice to start with the Gibbs sampled chains, since they almost certainly look nicer. First, read them in.
+Read in your conjugate Gibbs chains.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TBC</span><span class="p">()</span> <span class="c1"># change path if need be</span>
+<span class="c1"># chains = [np.loadtxt(f) for f in glob(&#39;../ignore/agn_gibbs_chain_*.txt&#39;)]</span>
+
+<span class="n">param_labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;$\mu$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\sigma$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$x_0$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$y_0$&#39;</span><span class="p">]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Visual-inspection">Visual inspection<a class="anchor-link" href="#Visual-inspection">&#182;</a></h3><p>You've already used the most important method of vetting chains: visual inspection. The key questions are:</p>
+<ol>
+<li>Do multiple, independent chains appear to be sampling the same distribution (have they <em>converged</em> to the same distribution)?</li>
+<li>Is there a clear "burn-in" period before convergence that should be eliminated?</li>
+<li>Are the chains highly autocorrelated (taking small steps compared with the width of the posterior)? This is not an issue per se, if the chains are long enough, although it means the sampler is not moving as efficiently as one might hope.</li>
+</ol>
+<p>Plot the parameter traces below, and answer these questions (qualitatively) for the conjugate Gibbs sampling chains.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">16.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">param_labels</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">cr</span><span class="o">.</span><span class="n">plot_traces</span><span class="p">(</span><span class="n">chains</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">param_labels</span><span class="p">,</span> <span class="n">Line2D_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;markersize&#39;</span><span class="p">:</span><span class="mf">1.0</span><span class="p">})</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<ol>
+<li><em>TBC</em></li>
+<li><em>TBC</em></li>
+<li><em>TBC</em></li>
+</ol>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>If you thought some burn-in should be removed, do so here by changing the lower limit of <code>burn</code>.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">burn</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">chains</span><span class="p">)):</span>
+    <span class="n">chains</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">chains</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="nb">range</span><span class="p">(</span><span class="n">burn</span><span class="p">,</span> <span class="n">chains</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),:]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Gelman-Rubin-statistic">Gelman-Rubin statistic<a class="anchor-link" href="#Gelman-Rubin-statistic">&#182;</a></h3><p>Recall from the <a href="../notes/mcmc_diagnostics.html">notes</a> that the Gelman-Rubin convergence statistic, $R$, quantitatively tests the similarlity of independent chains intended to sample the same PDF. To be meaningful, they should start from different locations and burn-in should be removed.</p>
+<p>For a given parameter, $\theta$, the $R$ statistic compares the variance across chains with the variance within a chain. Intuitively, if the chains are random-walking in very different places, i.e. not sampling the same distribution, $R$ will be large.</p>
+<p>We'd like to see $R\approx 1$; for example, $R&lt;1.1$ is often used.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cr</span><span class="o">.</span><span class="n">GelmanRubinR</span><span class="p">(</span><span class="n">chains</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><strong>Checkpoint:</strong> If your Gibbs sampler works properly, $R$ for the chains we ran should be <em>very</em> close to 1 (we have differences of order 0.00001).</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Autocorrelation">Autocorrelation<a class="anchor-link" href="#Autocorrelation">&#182;</a></h3><p>Similarly, the autocorrelation of a sequence, as a function of lag, $k$, can be quantified:</p>
+<p>$\rho_k = \frac{\mathrm{Cov}_i\left(\theta_i,\theta_{i+k}\right)}{\mathrm{Var}(\theta)}$</p>
+<p>The larger lag one needs to get a small autocorrelation, the less informative individual samples are.</p>
+<p>The <code>pandas</code> function <code>plotting.autocorrelation_plot()</code> is useful for this. Note that seemingly random oscillations basically tell us the level of noise due to the fininte chain length. A coherent drop as a function of lag indicates a genuine autocorrelation, and the lag at which it drops to within the noise is an approximate autocorrelation length. If we needed to thin the chains to conserve disk space, this would be a reasonable factor to thin by.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">16.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">param_labels</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+<span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">lab</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">param_labels</span><span class="p">):</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">autocorrelation_plot</span><span class="p">(</span><span class="n">chains</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span><span class="n">j</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">lab</span><span class="o">+</span><span class="s1">&#39; autocorrelation&#39;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><strong>Checkpoint:</strong> Again, for this problem, the Gibbs chains should be very well behaved. Our autocorrelation plots basically look like noise (almost all points within the horizontal, dashed lines that <code>pandas</code> provides as an estimate of the noise).</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Effective-number-of-independent-samples">Effective number of independent samples<a class="anchor-link" href="#Effective-number-of-independent-samples">&#182;</a></h3><p>From $m$ chains of length $n$, we can also estimate the "effective number of independent samples" as</p>
+<p>$n_\mathrm{eff} = \frac{mn}{1+2\sum_{t=1}^\infty \hat{\rho}_t}$, with</p>
+<p>$\hat{\rho}_t = 1 - \frac{V_t}{2V}$ ($V$ as in the Gelman-Rubin calculation), and</p>
+<p>$V_t = \frac{1}{m(n-t)} \sum_{j=0}^m \sum_{i=t+1}^n (\theta_{i,j} - \theta_{i-t,j})^2$.</p>
+<p>In practice, the sum in $n_\mathrm{eff}$ is cut off when the estimates $\hat{\rho}_t$ become "too noisy", e.g. when the sum of two successive values $\hat{\rho}_t$ and $\hat{\rho}_{t+1}$ is negative. Roughly speaking, this should occur when the lag is of the order of the autocorrelation length.</p>
+<p>The <code>effective_samples</code> function allows you to pass a guess at this maximum lag, since doing the calculation to arbitrarily long lags becomes very expensive. It will issue a warning if it thinks this maximum lag is too small, according to the criterion above.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cr</span><span class="o">.</span><span class="n">effective_samples</span><span class="p">(</span><span class="n">chains</span><span class="p">,</span> <span class="n">maxlag</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span> <span class="c1"># `maxlag&#39; might be something you need to play with, in practice</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>As with the Gelman-Rubin statistic, this is a case where one might be interested in seeing the effective number of samples for the most degenerate linear combinations of parameters, rather than the parameters themselves.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Something-to-do">Something to do<a class="anchor-link" href="#Something-to-do">&#182;</a></h3><p>By now you are probably bored. Don't worry. Here is some work for you to do.</p>
+<p>Let's get a sense of how many samples are <em>really</em> needed to, e.g., determine 1D credible intervals (as opposed to making the whole posterior look nice). Remember that the effective number of samples is less than the total, obviously.</p>
+<p>At this point, we're done comparing the individual chains, so we can lump them all together into one massive list of MCMC samples.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">chain</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">chains</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Let's have a look at the credible interval calculation for the first parameter. If you followed the notebooks as given, and didn't remove any burn-in, the full chain should be of length 40,000.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">chain</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;samples&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">14.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="n">h40k</span> <span class="o">=</span> <span class="n">cr</span><span class="o">.</span><span class="n">whist</span><span class="p">(</span><span class="n">chain</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">plot</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">ci40k</span> <span class="o">=</span> <span class="n">cr</span><span class="o">.</span><span class="n">whist_ci</span><span class="p">(</span><span class="n">h40k</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\mu$&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\mu$&#39;</span><span class="p">);</span>
+<span class="n">ci40k</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The PDF estimate should look pretty reliable with so many samples. The question is, if we're going to reduce this to a statement like $\mu=X^{+Y}_{-Z}$, keeping only up to the leading significant figure of $Y$ and $Z$, how many did we actually need to keep?</p>
+<p>Thin the chain by factors of 4, 40, and 400 (to produce chains of length about 10000, 1000 and 100), and see how the <em>endpoints</em> of the 68.3% credible intervals compare. We're looking at the endpoints rather than the values of $Y$ and $Z$ above because the latter are more volatile (depending also on the estimate of $X$).</p>
+<p>Remember that thinning by a factor of 4 means that we keep only every 4th entry in the chain, not that we simply select the first 25% of samples. So we're not answering how long we needed to bother <em>running</em> the chain to begin with - that's a slightly different question. We're finding out how redundant our samples are, not just in the "effective independence" sense, but for the specific purpose of quantifying this credible interval.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TBC</span><span class="p">()</span>
+<span class="c1"># No clues here, but it&#39;s pretty much cut and paste.</span>
+<span class="c1"># Analogous to the cell above, save the output of `whist` in h10k, h1k, h100, and the output of</span>
+<span class="c1"># whist_ci in ci10k, ci1k and ci100. This is so we can plot them all togther later.</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><strong>Checkpoint:</strong> Your mileage may vary, of course. But we got a difference of unity in one endpoint in the 100-sample case, and otherwise everything was identical.</p>
+<p>... which is a little surprising, honestly, even though we knew the autocorrelation was quite low in this case. But here's a slightly different question: which of the possible results would you be confident enough to put in a paper? The cell below compares them visually.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">14.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">h40k</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">h40k</span><span class="p">[</span><span class="s1">&#39;density&#39;</span><span class="p">],</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;40k&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">h10k</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">h10k</span><span class="p">[</span><span class="s1">&#39;density&#39;</span><span class="p">],</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;10k&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">h1k</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">h1k</span><span class="p">[</span><span class="s1">&#39;density&#39;</span><span class="p">],</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;1k&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">h100</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">h100</span><span class="p">[</span><span class="s1">&#39;density&#39;</span><span class="p">],</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;100&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\mu$&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">ci40k</span><span class="p">[</span><span class="s1">&#39;mode&#39;</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;40k&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">0.0</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="n">ci40k</span><span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="n">ci40k</span><span class="p">[</span><span class="s1">&#39;max&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]],</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">0.0</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="n">ci40k</span><span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span><span class="n">ci40k</span><span class="p">[</span><span class="s1">&#39;max&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]],</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">ci10k</span><span class="p">[</span><span class="s1">&#39;mode&#39;</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;10k&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">1.0</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="n">ci10k</span><span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="n">ci10k</span><span class="p">[</span><span class="s1">&#39;max&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]],</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">1.0</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="n">ci10k</span><span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span><span class="n">ci10k</span><span class="p">[</span><span class="s1">&#39;max&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]],</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">ci1k</span><span class="p">[</span><span class="s1">&#39;mode&#39;</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C2&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;1k&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">2.0</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="n">ci1k</span><span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="n">ci1k</span><span class="p">[</span><span class="s1">&#39;max&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]],</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C2&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">2.0</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="n">ci1k</span><span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span><span class="n">ci1k</span><span class="p">[</span><span class="s1">&#39;max&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]],</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C2&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">ci100</span><span class="p">[</span><span class="s1">&#39;mode&#39;</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C3&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;100&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">3.0</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="n">ci100</span><span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="n">ci100</span><span class="p">[</span><span class="s1">&#39;max&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]],</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C3&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">3.0</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="n">ci100</span><span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span><span class="n">ci100</span><span class="p">[</span><span class="s1">&#39;max&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]],</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C3&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\mu$&#39;</span><span class="p">);</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Metropolis-samples">Metropolis samples<a class="anchor-link" href="#Metropolis-samples">&#182;</a></h2><p>Now, read in the Metropolis chains and perform the same checks.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TBC</span><span class="p">()</span> <span class="c1"># change path if necessary</span>
+<span class="c1"># chains = [np.loadtxt(f) for f in glob(&#39;../ignore/agn_metro_chain_*.txt&#39;)]</span>
+
+<span class="n">param_labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;$x_0$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$y_0$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\ln F_0$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$b$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\sigma$&#39;</span><span class="p">]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Below we plot the traces. Address the same 3 questions posed for the Gibbs samples.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">16.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">param_labels</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">cr</span><span class="o">.</span><span class="n">plot_traces</span><span class="p">(</span><span class="n">chains</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">param_labels</span><span class="p">,</span> <span class="n">Line2D_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;markersize&#39;</span><span class="p">:</span><span class="mf">1.0</span><span class="p">})</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<ol>
+<li><em>TBC</em></li>
+<li><em>TBC</em></li>
+<li><em>TBC</em></li>
+</ol>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Compare the two methods in these terms. (Though keep in mind that we solved slightly different problems in the two notebooks, making this comparison less than entirely fair. Or, go back and run Metropolis sampling on a background-free simulation if you really want to. We'll wait.)</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<blockquote><p><em>Commentary TBC</em></p>
+</blockquote>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>On the basis of the traces above, choose a burn-in length to remove from the beginning of each chain.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TBC</span><span class="p">()</span>
+<span class="c1"># burn = </span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">chains</span><span class="p">)):</span>
+    <span class="n">chains</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">chains</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="nb">range</span><span class="p">(</span><span class="n">burn</span><span class="p">,</span> <span class="n">chains</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),:]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Here we compute the G-R criterion. Do the values make sense in light of your visual inspection?</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cr</span><span class="o">.</span><span class="n">GelmanRubinR</span><span class="p">(</span><span class="n">chains</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<blockquote><p><em>Commentary TBC</em></p>
+</blockquote>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Next, we'll look at the autocorrelation plot. If you had to guess an autocorrelation length, what would it be?</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">16.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">param_labels</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+<span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">lab</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">param_labels</span><span class="p">):</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">autocorrelation_plot</span><span class="p">(</span><span class="n">chains</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span><span class="n">j</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">lab</span><span class="o">+</span><span class="s1">&#39; autocorrelation&#39;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<blockquote><p><em>Commentary TBC</em></p>
+</blockquote>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Next, the effective number of samples. How does it compare to the Gibbs case?</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cr</span><span class="o">.</span><span class="n">effective_samples</span><span class="p">(</span><span class="n">chains</span><span class="p">,</span> <span class="n">maxlag</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<blockquote><p><em>Commentary TBC</em></p>
+</blockquote>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>We could continue and look at how the results change as we thin more and more, like we did above. But, to be honest, our Metropolis chains look suspect enough (except for $x_0$ and $y_0$) that it isn't clear that even the full chain will provide a useful result. (We ended up with $n_\mathrm{eff}&lt;100$ for the last 3 parameters.)</p>
+<p>However, we should rush to say that this does <em>not</em> mean that Metropolis is terrible and we should never use it. Yes, our implementation of it is pretty terrible for this particular problem. We think it's critical for you to see examples of samplers <em>not</em> working as they should, so you'll know what to look out for. In practice, there are simple modifications of Metropolis that can make it perform far better than we just saw (we'll cover these in <a href="../notes/more_samplers.html">later notes</a>). Combined with the fact that it can be used with any likelihood and prior, Metropolis sampling is an essential tool.</p>
 
 </div>
 </div>

@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>model_selection</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14259,74 +14259,661 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="PHYSICS-366:-Statistical-Methods-in-Astrophysics">PHYSICS 366: Statistical Methods in Astrophysics<a class="anchor-link" href="#PHYSICS-366:-Statistical-Methods-in-Astrophysics">&#182;</a></h1><p>Course notes and resources for Stanford University graduate course Physics 366.</p>
-<h2 id="Course-Description">Course Description<a class="anchor-link" href="#Course-Description">&#182;</a></h2><p>This course is intended to provide an introduction to modern
-statistical methodology, and its applications to problems in
-astrophysics and cosmology, and is aimed at graduate students
-intending to do research in this area. We
-strongly encourage most first and second year students working in
-KIPAC to take the course.  Our goal is to provide a background that
-will be directly relevant to the kind of problems that typical KIPAC
-students will encounter in their research.</p>
-<h2 id="Course-Objectives">Course Objectives<a class="anchor-link" href="#Course-Objectives">&#182;</a></h2><p>Our goal is that students taking this course will:</p>
-<ul>
-<li>develop familiarity in working with various types of astronomical data.</li>
-<li>understand the role of modeling in data analysis.</li>
-<li>develop facility with various types of inference from data.</li>
-<li>be able to critically evaluate and apply commonly used statistical methodologies.</li>
-<li>be able to apply advanced statistical reasoning to problems they are likely to encounter in their research.</li>
-</ul>
-<h2 id="Content">Content<a class="anchor-link" href="#Content">&#182;</a></h2><p><strong>Start by looking at the <a href="notes/overview.html">Overview</a> to understand how this course works, and <a href="notes/getting_started.html">Getting Started</a> to get up and running with Python and Jupyter, if needed.</strong>
-Enrolled students should also read the <a href="notes/assignments.html">Assignments</a> page to see what is expected.</p>
-<p>The course content can be browsed here in static HTML format. This is sufficient for the notes, but to do the tutorials you will need to download them in Jupyter notebook format from the <a href="https://github.com/KIPAC/StatisticalMethods/tree/master/tutorials">GitHub repository</a>.</p>
-<p>Notes and tutorials are listed in reasonable order below, but a better way to navigate the course may be through this nifty <a href="dependency_graph.html">dependency graph</a> (via <a href="https://mermaid-js.github.io/mermaid/">Mermaid</a>).</p>
-<h3 id="Notes">Notes<a class="anchor-link" href="#Notes">&#182;</a></h3><ul>
-<li><a href="notes/overview.html">Overview</a></li>
-<li><a href="notes/assignments.html">Assignments</a></li>
-<li><a href="notes/getting_started.html">Getting Started</a></li>
-<li><a href="notes/generative_models.html">Generative Models</a></li>
-<li><a href="notes/essential_probability.html">Essential Probability</a></li>
-<li><a href="notes/bayes_law.html">Bayes' Law</a></li>
-<li><a href="notes/credible_regions.html">Credible Regions</a></li>
-<li><a href="notes/errorbars.html">"Error bars"</a></li>
-<li><a href="notes/statistical_isms.html">Bayesianism and Other "isms"</a></li>
-<li><a href="notes/montecarlo.html">Monte Carlo Sampling</a></li>
-<li><a href="notes/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="notes/more_samplers.html">More Sampling Methods</a></li>
-<li><a href="notes/hierarchical.html">Hierarchical Models</a></li>
-<li><a href="notes/model_evaluation.html">Model Evaluation and Comparison</a></li>
-<li><a href="notes/missingdata.html">Missing Data and Selection Effects</a></li>
-<li><a href="notes/modelfreemodels.html">"Model-free" Models</a></li>
-<li><a href="notes/approximate_methods.html">Approximate Methods</a></li>
-<li><a href="notes/fishing.html">Fishing, Blinding and More</a></li>
-</ul>
-<h3 id="Tutorials">Tutorials<a class="anchor-link" href="#Tutorials">&#182;</a></h3><ul>
-<li><a href="tutorials/demo.html">Demo</a></li>
-<li><a href="tutorials/generative_models.html">Generative Models</a></li>
-<li><a href="tutorials/probability_essentials.html">Essential Probability</a></li>
-<li><a href="tutorials/probability_transformations.html">Probability Transformations</a></li>
-<li><a href="tutorials/bayes_law.html">Bayes' Law</a></li>
-<li><a href="tutorials/working_with_samples.html">Working With Samples</a></li>
-<li><a href="tutorials/credible_interals.html">Credible Regions</a></li>
-<li><a href="tutorials/gaussians.html">Gaussians and Least Squares</a></li>
-<li><a href="tutorials/xmm_image.html">XMM Image</a></li>
-<li><a href="tutorials/agn_photometry_grid.html">AGN Photometry: grid</a></li>
-<li><a href="tutorials/agn_photometry_gibbs.html">AGN Photometry: Gibbs sampling</a></li>
-<li><a href="tutorials/agn_photometry_metro.html">AGN Photometry: Metropolis sampling</a></li>
-<li><a href="tutorials/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="tutorials/ogle_lightcurve.html">OGLE Lightcurve</a></li>
-<li><a href="tutorials/microlensing.html">Microlensing</a></li>
-<li><a href="tutorials/cepheids.html">Cepheid Period-Luminosity Relation</a></li>
-<li><a href="tutorials/cepheids_one_galaxy.html">Cepheid P-L I: one galaxy</a></li>
-<li><a href="tutorials/cepheids_all_galaxies.html">Cepheid P-L II: multiple galaxies</a></li>
-<li><a href="tutorials/model_evaluation.html">Galaxy Cluster Mis-centering: model evaluation</a></li>
-<li><a href="tutorials/model_selection.html">Galaxy Cluster Mis-centering: model comparison</a></li>
-<li><a href="tutorials/missing_data.html">Shuttle O-ring Failures: missing data</a></li>
-</ul>
-<h2 id="Contact">Contact<a class="anchor-link" href="#Contact">&#182;</a></h2><ul>
-<li><a href="https://github.com/KIPAC/StatisticalMethods/issues/new?body=@abmantz">Adam Mantz</a></li>
-</ul>
-<p>All materials Copyright 2015, 2017, 2019, 2021 Adam Mantz, Phil Marshall and Claire Hébert, and distributed for copying and extension under the GPLv2 License, unless otherwise noted. If you have any feedback for us, please <a href="https://github.com/KIPAC/StatisticalMethods/issues">write us an issue</a>.</p>
+<h1 id="Tutorial:-Model-Selection">Tutorial: Model Selection<a class="anchor-link" href="#Tutorial:-Model-Selection">&#182;</a></h1><p>In the <a href="model_evaluation.html">previous tutorial</a>, we evaluated the "goodness of fit" of two different models on a data set representing the distribution of centering offsets in a galaxy cluster sample. Here we will continue by doing two styles of quantitative test to compare the two models, with the goal of deciding whether the improved goodness of fit actually justifies the additional complexity of the second model. Specifically, we will compute:</p>
+<ol>
+<li>The Deviance Information Criterion, one of several possible information criteria, which has the advantages of being relatively simple and having a straightforward Bayesian interpretation.</li>
+<li>The Bayesian Evidence, a more principled but more complex approach fully in the Bayesian framework.</li>
+</ol>
+<p>First, we'll restore everything from the last notebook, including the model class definitions and instances, and the Markov chains they hold.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">exec</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;tbc.py&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span> <span class="c1"># define TBC and TBC_above</span>
+<span class="kn">import</span> <span class="nn">dill</span>
+
+<span class="c1"># may need to change the load path</span>
+<span class="n">TBC</span><span class="p">()</span> <span class="c1"># dill.load_session(&#39;../ignore/model_evaluation.db&#39;)</span>
+
+<span class="n">exec</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;tbc.py&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span> <span class="c1"># (re-)define TBC and TBC_above</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># additional imports go here</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">logsumexp</span>
+<span class="kn">import</span> <span class="nn">dynesty</span>
+<span class="kn">from</span> <span class="nn">dynesty</span> <span class="kn">import</span> <span class="n">plotting</span> <span class="k">as</span> <span class="n">dyplot</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="1.-Calculate-the-DIC-for-each-model">1. Calculate the DIC for each model<a class="anchor-link" href="#1.-Calculate-the-DIC-for-each-model">&#182;</a></h2><p>Recall that the Deviance Information Criterion is given by:</p>
+<p>$\mathrm{DIC} = \langle D(\theta) \rangle + p_D; \quad p_D = \langle D(\theta) \rangle - D(\langle\theta\rangle)$</p>
+<p>where $\theta$ are the parameters of a model, the deviance $D(\theta)=-2\log P(\mathrm{data}|\theta)$, and averages $\langle\rangle$ are over the posterior distribution of $\theta$.</p>
+<p>Write this function, and execute it for the simple model.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">DIC</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the Deviance Information Criterion for the given model.</span>
+<span class="sd">    (In a less pedagogical world, this would logically be a method of the base Model class.)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Compute the deviance D for each sample</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="n">Model</span><span class="o">.</span><span class="n">log_likelihood</span><span class="p">(</span><span class="o">*</span><span class="n">params</span><span class="p">)</span> <span class="k">for</span> <span class="n">params</span> <span class="ow">in</span> <span class="n">Model</span><span class="o">.</span><span class="n">samples</span> <span class="p">])</span>
+    <span class="c1">#pD = </span>
+    <span class="c1">#DIC = </span>
+    <span class="c1">#return DIC, pD</span>
+
+<span class="n">TBC_above</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Compute the DIC for each model.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">DIC1</span><span class="p">,</span> <span class="n">pD1</span> <span class="o">=</span> <span class="n">DIC</span><span class="p">(</span><span class="n">Model1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Model 1:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Effective number of fitted parameters =&quot;</span><span class="p">,</span> <span class="n">pD1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DIC =&quot;</span><span class="p">,</span> <span class="n">DIC1</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><strong>Self-check:</strong> For Model 1 (the exponential), I get $p_D \approx 0.9$ and DIC $\approx 1668$. As with anything else computed from chains, there will be some stochasticity to the values you compute.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">DIC2</span><span class="p">,</span> <span class="n">pD2</span> <span class="o">=</span> <span class="n">DIC</span><span class="p">(</span><span class="n">Model2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Model 2:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Effective number of fitted parameters =&quot;</span><span class="p">,</span> <span class="n">pD2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DIC =&quot;</span><span class="p">,</span> <span class="n">DIC2</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Do your values of $p_D$ make intuitive sense?</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<blockquote><p><em>TBC</em></p>
+</blockquote>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Now, to interpret this, we compare the reduction (hopefully) in the DIC of Model 2 compared with Model 1 to the Jeffreys scale (see the notes). By this metric, is your second model better at explaining the data than the exponential model?</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">DIC1</span> <span class="o">-</span> <span class="n">DIC2</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<blockquote><p><em>TBC: your answer</em></p>
+</blockquote>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="2.-Compute-the-evidence-by-Monte-Carlo-integration">2. Compute the evidence by Monte Carlo integration<a class="anchor-link" href="#2.-Compute-the-evidence-by-Monte-Carlo-integration">&#182;</a></h2><p>To do this, note that</p>
+<p>$p(\mathrm{data}|H)=\int d\theta \, p(\mathrm{data}|\theta,H) \, p(\theta|H)$</p>
+<p>can be approximated by an average over samples from the prior:</p>
+<p>$p(\mathrm{data}|H) \approx \frac{1}{m}\sum_{k=1}^m p(\mathrm{data}|\theta_k,H)$, with $\theta_k\sim p(\theta|H)$.</p>
+<p>This estimate is better than trying to use samples from the posterior to calculate the evidence, if only because it's unbiased. But in general, and especially for large-dimensional parameter spaces, it is very inefficient (because the likelihood typically is large in only a small fraction of the prior volume). Still, let's give it a try.</p>
+<p>Write a function to draw a large number of samples from the prior and use them to calculate the evidence. To avoid numerical over/underflows, use the special <code>scipy</code> function <code>logsumexp</code> (which we imported directly, way at the top of the notebook) to do the sum. As the name implies, this function is equivalent to <code>log(sum(exp(...)))</code>, but is more numerically stable.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">log_evidence</span><span class="p">(</span><span class="n">Model</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the log evidence for the model using N samples from the prior</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">TBC</span><span class="p">()</span>
+    
+<span class="n">TBC_above</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Do a quick test to check for NaNs:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">log_evidence</span><span class="p">(</span><span class="n">Model1</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">log_evidence</span><span class="p">(</span><span class="n">Model2</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Roughly how precisely do we need to know the log Evidence, to be able to compare models? Run <code>log_evidence</code> with different values of <code>N</code> (the number of prior samples in the average) to until you're satisfied that you're getting a usefully accurate result for each model.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Model 1:&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">Nevidence</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">]:</span> <span class="c1"># Do you need even more than this?</span>
+    <span class="o">%</span><span class="k">time</span> logE1 = log_evidence(Model1, N=Nevidence)
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;From&quot;</span><span class="p">,</span> <span class="n">Nevidence</span><span class="p">,</span> <span class="s2">&quot;samples, the log-evidence is&quot;</span><span class="p">,</span> <span class="n">logE1</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><strong>Self-check:</strong> For the exponential model, I converge to a log-evidence of $\approx -837$.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Model 2:&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">Nevidence</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">]:</span> <span class="c1"># Do you need even more than this?</span>
+    <span class="o">%</span><span class="k">time</span> logE2 = log_evidence(Model2, N=Nevidence)
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;From&quot;</span><span class="p">,</span> <span class="n">Nevidence</span><span class="p">,</span> <span class="s2">&quot;samples, the log-evidence is&quot;</span><span class="p">,</span> <span class="n">logE2</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>So, we have log evidences computed for each model. Now what? We just compare their difference to the Jeffreys scale again:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">logE2</span> <span class="o">-</span> <span class="n">logE1</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Note that we might end up with a different conclusion as to the strength of any preference of Model 2, compared with the DIC! The reason is that the evidence explicitly accounts for the information in the prior (which, recall, counts as part of the model definition), while the DIC does this much less directly.</p>
+<p>We could also be good Bayesians and admit that there should be a prior distribution in model space. For example, maybe I have a very compelling theoretical reason why the offset distribution should be exponential (I don't, but just for example). Then, I might need some extra convincing that an alternative model is required.</p>
+<p>We would then compute the ratio of the posterior probabilities of the models as follows:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">prior_H1</span> <span class="o">=</span> <span class="mf">0.9</span> <span class="c1"># or your choice</span>
+<span class="n">prior_H2</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">prior_H1</span> <span class="c1"># assuming only these two options</span>
+
+<span class="n">log_post_H1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">prior_H1</span><span class="p">)</span> <span class="o">+</span> <span class="n">logE1</span>
+<span class="n">log_post_H2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">prior_H2</span><span class="p">)</span> <span class="o">+</span> <span class="n">logE2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Difference of log posteriors (H2-H1):&#39;</span><span class="p">,</span> <span class="n">log_post_H2</span><span class="o">-</span><span class="n">log_post_H1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ratio of posteriors (H2/H1):&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">log_post_H2</span><span class="o">-</span><span class="n">log_post_H1</span><span class="p">))</span> <span class="c1"># NB this one might over/underflow</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Depending on the fitness of the alternative model you chose, you may find that only an extremely lopsided prior in model space would influence your conclusion.</p>
+<p>Comment on what you find from the evidence, compared with the DIC.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<blockquote><p>TBC: <em>your answer</em></p>
+</blockquote>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="3.-Compute-the-evidence-with-dynesty">3. Compute the evidence with <code>dynesty</code><a class="anchor-link" href="#3.-Compute-the-evidence-with-dynesty">&#182;</a></h2><p>To get some experience with a package that uses nested sampling to compute the evidence, let's repeat Section 2 using <code>dynesty</code>.</p>
+<p>Looking at <a href="https://dynesty.readthedocs.io/en/latest/crashcourse.html">the docs</a>, we first need a function that maps the unit cube onto our prior. For a uniform prior, this is a simple translation and rescaling, but for other priors it involves going through the prior distribution's quantile function. Fortunately, we assumed uniform priors for Model 1! However, if you followed the advice in the previous notebook to keep a dictionary of univariate priors in the <code>Model</code> object, and those priors are <code>scipy.stats</code> distributions, it's relatively easy to handle this slightly more general case. However you choose to do it, implement a function that performs this transformation for the 1-parameter Exponential model (and priors) below.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">ptform</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Input: a vector in the unit cube, 0 &lt;= u[i] &lt;= 1, that conforms to the prior volume.</span>
+<span class="sd">    Output: a vector in our parameter space.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">TBC</span><span class="p">()</span>
+    
+<span class="n">TBC_above</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Do a sanity check - the cell below should return the quartiles of the uniform prior.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ptform</span><span class="p">([</span><span class="mf">0.25</span><span class="p">]),</span> <span class="n">ptform</span><span class="p">([</span><span class="mf">0.5</span><span class="p">]),</span> <span class="n">ptform</span><span class="p">([</span><span class="mf">0.75</span><span class="p">]))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>We'll also need a log-likelihood function that takes a vector of parameters as input, in contrast to how it's written in the Model class. This could be solved similarly to what's done in the <code>Model.log_posterior</code> method, or we could just define:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">dyn_log_like</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Model1</span><span class="o">.</span><span class="n">log_likelihood</span><span class="p">(</span><span class="o">*</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Then we can just go ahead and run.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="n">sampler</span> <span class="o">=</span> <span class="n">dynesty</span><span class="o">.</span><span class="n">NestedSampler</span><span class="p">(</span><span class="n">dyn_log_like</span><span class="p">,</span> <span class="n">ptform</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">Model1</span><span class="o">.</span><span class="n">param_names</span><span class="p">))</span>
+<span class="n">sampler</span><span class="o">.</span><span class="n">run_nested</span><span class="p">()</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">results</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>And look at some stuff (see the Dynesty documentation for an explanation of what all this is):</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot a summary of the run.</span>
+<span class="n">rfig</span><span class="p">,</span> <span class="n">raxes</span> <span class="o">=</span> <span class="n">dynesty</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">runplot</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The Evidence panel appears to be utterly unhelpful in this case (at least when I ran it), so below is a plot of the log-evidence as a function of iteration, discarding the beginning when the accumulated evidence is truly tiny. It should show us converging to a value similar to what we found earlier.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">12.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">)</span>
+<span class="n">Ndiscard</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;logz&#39;</span><span class="p">][</span><span class="n">Ndiscard</span><span class="p">:]);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Iteration - &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">Ndiscard</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Log Evidence&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>This extracts the log-evidence at the last iteration, which may or not be the approved method.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;logz&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Let's compare with what we got from simple monte carlo:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">logE1</span> <span class="o">-</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;logz&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>That was so easy, let's go ahead and do the same for Model 2. Implement the transformation from the unit cube to your model's parameter space:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">ptform2</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Input: a vector in the unit cube, 0 &lt;= u[i] &lt;= 1, that conforms to the prior volume.</span>
+<span class="sd">    Output: a vector in our parameter space.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">TBC</span><span class="p">()</span>
+    
+<span class="n">TBC_above</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>And run this elegant definition:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">dyn_log_like2</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Model2</span><span class="o">.</span><span class="n">log_likelihood</span><span class="p">(</span><span class="o">*</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Now we can go ahead and run the sample.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="n">sampler</span> <span class="o">=</span> <span class="n">dynesty</span><span class="o">.</span><span class="n">NestedSampler</span><span class="p">(</span><span class="n">dyn_log_like2</span><span class="p">,</span> <span class="n">ptform2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">Model2</span><span class="o">.</span><span class="n">param_names</span><span class="p">))</span>
+<span class="n">sampler</span><span class="o">.</span><span class="n">run_nested</span><span class="p">()</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">results</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>... and produce the same set of plots.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rfig</span><span class="p">,</span> <span class="n">raxes</span> <span class="o">=</span> <span class="n">dynesty</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">runplot</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">12.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">)</span>
+<span class="n">Ndiscard</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;logz&#39;</span><span class="p">][</span><span class="n">Ndiscard</span><span class="p">:]);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Iteration - &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">Ndiscard</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Log Evidence&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Finally, extract the final evidence,</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;logz&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>... and compare it to the SMC result.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">logE2</span> <span class="o">-</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;logz&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Given the work you'd already done, that was (I hope) staggeringly easy to set up, even if it did take longer to compute the same answer (I find) in this case. In larger-dimensional parameter spaces, it's easy to imagine this method being far preferable to blindly sampling from the prior. Note that we run <code>dynesty</code> out of the box here - there are many options (and some potential failure modes) that you should read about before using it in the real world.</p>
 
 </div>
 </div>

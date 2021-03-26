@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>statistical_isms</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14259,74 +14259,82 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="PHYSICS-366:-Statistical-Methods-in-Astrophysics">PHYSICS 366: Statistical Methods in Astrophysics<a class="anchor-link" href="#PHYSICS-366:-Statistical-Methods-in-Astrophysics">&#182;</a></h1><p>Course notes and resources for Stanford University graduate course Physics 366.</p>
-<h2 id="Course-Description">Course Description<a class="anchor-link" href="#Course-Description">&#182;</a></h2><p>This course is intended to provide an introduction to modern
-statistical methodology, and its applications to problems in
-astrophysics and cosmology, and is aimed at graduate students
-intending to do research in this area. We
-strongly encourage most first and second year students working in
-KIPAC to take the course.  Our goal is to provide a background that
-will be directly relevant to the kind of problems that typical KIPAC
-students will encounter in their research.</p>
-<h2 id="Course-Objectives">Course Objectives<a class="anchor-link" href="#Course-Objectives">&#182;</a></h2><p>Our goal is that students taking this course will:</p>
+<h1 id="Notes:-Bayesianism,-Frequentism,-and-other-isms">Notes: Bayesianism, Frequentism, and other isms<a class="anchor-link" href="#Notes:-Bayesianism,-Frequentism,-and-other-isms">&#182;</a></h1><p>Containing:</p>
 <ul>
-<li>develop familiarity in working with various types of astronomical data.</li>
-<li>understand the role of modeling in data analysis.</li>
-<li>develop facility with various types of inference from data.</li>
-<li>be able to critically evaluate and apply commonly used statistical methodologies.</li>
-<li>be able to apply advanced statistical reasoning to problems they are likely to encounter in their research.</li>
+<li>A brief and not at all unbiased look at Bayesian inference, other flavors of statistical analysis, and why one might use them.</li>
 </ul>
-<h2 id="Content">Content<a class="anchor-link" href="#Content">&#182;</a></h2><p><strong>Start by looking at the <a href="notes/overview.html">Overview</a> to understand how this course works, and <a href="notes/getting_started.html">Getting Started</a> to get up and running with Python and Jupyter, if needed.</strong>
-Enrolled students should also read the <a href="notes/assignments.html">Assignments</a> page to see what is expected.</p>
-<p>The course content can be browsed here in static HTML format. This is sufficient for the notes, but to do the tutorials you will need to download them in Jupyter notebook format from the <a href="https://github.com/KIPAC/StatisticalMethods/tree/master/tutorials">GitHub repository</a>.</p>
-<p>Notes and tutorials are listed in reasonable order below, but a better way to navigate the course may be through this nifty <a href="dependency_graph.html">dependency graph</a> (via <a href="https://mermaid-js.github.io/mermaid/">Mermaid</a>).</p>
-<h3 id="Notes">Notes<a class="anchor-link" href="#Notes">&#182;</a></h3><ul>
-<li><a href="notes/overview.html">Overview</a></li>
-<li><a href="notes/assignments.html">Assignments</a></li>
-<li><a href="notes/getting_started.html">Getting Started</a></li>
-<li><a href="notes/generative_models.html">Generative Models</a></li>
-<li><a href="notes/essential_probability.html">Essential Probability</a></li>
-<li><a href="notes/bayes_law.html">Bayes' Law</a></li>
-<li><a href="notes/credible_regions.html">Credible Regions</a></li>
-<li><a href="notes/errorbars.html">"Error bars"</a></li>
-<li><a href="notes/statistical_isms.html">Bayesianism and Other "isms"</a></li>
-<li><a href="notes/montecarlo.html">Monte Carlo Sampling</a></li>
-<li><a href="notes/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="notes/more_samplers.html">More Sampling Methods</a></li>
-<li><a href="notes/hierarchical.html">Hierarchical Models</a></li>
-<li><a href="notes/model_evaluation.html">Model Evaluation and Comparison</a></li>
-<li><a href="notes/missingdata.html">Missing Data and Selection Effects</a></li>
-<li><a href="notes/modelfreemodels.html">"Model-free" Models</a></li>
-<li><a href="notes/approximate_methods.html">Approximate Methods</a></li>
-<li><a href="notes/fishing.html">Fishing, Blinding and More</a></li>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>You've seen how Bayes' Law follows simply from the insight that probability distributions are the natural mathematical tool for describing quantities that are uncertain. Yet it's extremely likely that you've done some kind of data analysis before, and even taken multiple statistics courses, without ever having heard of it. Why is that?</p>
+<p>I am not a historian of science or mathematics, nor, frankly, am I particularly invested in philosophical arguments about the nature of probability. So please do not take any of the arguments in this set of notes as carefully researched fact. Let me also acknowledge that there is a great deal of opinion in what follows.</p>
+<p>That said, I suspect the answer to "Why?" is (a) Bayesian analysis was, for most purposes, infeasible before the advent of modern computing; (b) in the meantime, a lot of effort was invested in alternatives, because people had to do <em>something</em>; and (c) human beings have a lot of mental inertia.</p>
+<p>Regardless, the fact is that the majority of physical scientists do not use Bayesian analysis, either because they were never taught it, have never heard of it, lack the intellectual curiosity to learn, or object to it on grounds that generally don't pass the laugh test. (However, in some subfields, for example cosmology, it has been widely adopted.)</p>
+<p>It is, therefore, worth taking a break to learn a bit about what is <em>not</em> contained in this course. Partly, this is so you can understand what others have done in the literature. Sometimes, the alternative frameworks that have been developed can provide useful numerical methods that can be put to work in Bayesian inference. And, sometimes, we're faced with a task that isn't (or doesn't need to be) a carefully worked inference problems, and it's good to know what other tools there are.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Gaussian-statistics">Gaussian statistics<a class="anchor-link" href="#Gaussian-statistics">&#182;</a></h2><p>This is probably not what it's normally called, but is meant to encompass what statistitians refer to as the Generalized Linear Model (GLM), Analysis of Variance (ANOVA) and related techniques.</p>
+<p>Essentially, these all revolve around fitting models whose predictions are linear in the model parameters. That includes the slope and intercept of a line, but also the coefficients of an arbitrarily high-order polynomial, for example.</p>
+<p>If we think about the basic task of "fitting the data", meaning getting a model curve to pass near/through some points in the $x$-$y$ plane, then minimizing the distance in $y$ between those points and the model predictions at the same $x$ coordinates is a reasonable goal (though not the only one that could be chosen). Finding the model that minimizes the sum of absolute distances is not such an easy thing to do, it turns out. But, if we instead minimize the sum of squares of those distances, then finding the minimum suddenly corresponds to solving a quadratic equation, which can be done algebraically. Thus were interesting things discovered about celestial dynamics in the pre-digital age.</p>
+<p>From a modeling standpoint, the assumptions above are quite restrictive: we need to believe that the $x$ values of our data are known precisely (and than an $x$-$y$ representation of the data makes sense to begin with), that the average model prediction as a function of $x$ is linear in the parameters, and that departures from that average are Gaussian with known standard deviations (this corresponds to the key "sum of squares" part). It's tough to think of circumstances where all of this is actually true, but on the other hand these are assumptions that we might be able to justify, or be forced to make, on occasion. And, when we do, GLM/ANOVA tools provide an extremely computationally efficient alternative to the more general methods we'll cover later in this class. [Endnote 1]</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Frequentism-and-Maximum-Likelihood">Frequentism and Maximum Likelihood<a class="anchor-link" href="#Frequentism-and-Maximum-Likelihood">&#182;</a></h2><p>Frequentism seems to have grown out of a conceptualization of mathematical probability that rejects the idea of assigning probabilities to things that are uncertain but which have a true value. That is, a frequentist would say that it isn't valid to describe the value of a model parameter with a probability distribution, but they would be fine assigning a probability distribution to the outcome of a repeatable measurement. Consequently, frequentism is built around manipulations of the sampling distribution/likelihood function alone.</p>
+<p>Instead of deriving the relative probability of different values of model parameters conditioned on the data, frequentists compute <em>estimators</em> of the parameters that are functions of the data, and then try to prove things about the distribution of those estimators over possible data sets (because the estimators are functions of data, it's permitted to speak of them probabilistically).</p>
+<p>Maximum Likelihood methods are a subset of frequentism methods, in which the estimators are taken to be the parameter values that maximize the likelihood function. Among other nice properties, maximum likelihood estimators are asymptotically normally distributed about the truth, and the standard methods for estimating confidence intervals lean heavily on the assumption of normality. (Reviewed <a href="https://github.com/KIPAC/StatisticsCookbook/blob/master/basic_model_fitting">here</a>, if you'd like.)</p>
+<p>Since it's forbidden to discuss the probability of parameter values, frequentism cannot characterize model uncertainties as such. Instead, <em>confidence intervals</em> (not credible intervals) are defined such that</p>
+<blockquote><p>If it were somehow possible to independently repeat the experiment arbitrarily many times, and we computed an $X\%$ confidence interval according to the frequentist recipe for each experiment, then $X\%$ of those intervals would contain the true value of the parameter.</p>
+</blockquote>
+<p>This is, of course and by construction, not the same as saying that the true value of the parameter is within the single confidence interval that we have in practice with $X\%$ probability.</p>
+<p>(Please note that there is no shame in having to re-read the above passages several times.)</p>
+<p>In practical terms, if we are in the situation of using wide, uniform priors on all parameters, and we have enough data to get into the "asymptotically normal" regime, then there isn't much difference between a Bayesian analysis and Maximum Likelihood. As with Gaussian statistics, the computational tools of frequentist analysis can provide helpful approximations and shortcuts in such circumstances.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Frequentism-vs-Bayes">Frequentism vs Bayes<a class="anchor-link" href="#Frequentism-vs-Bayes">&#182;</a></h3><p>It probably wouldn't be accurate to say that there's a healthy debate between frequentist and Bayesian adherents in physics or astrophysics. There may well be a healthy debate among mathematical statistitians who deeply understand the possible axiomatic foundations of probability. Among scientists, the "debate" you're most likely to encounter is between Bayesian analysts who are trying to get some science done, and others who casually dismiss them for a variety of poorly thought out reasons.</p>
+<p>At the risk of providing oxygen to an argument that you may not have any interest in, here is my personal take on why we do Bayes.</p>
+<ul>
+<li>The use of probability to describe uncertainty, central to Bayesian analysis, is how humans intuitively make sense of uncertainty. We discuss odds. We talk about the chance of rain tomorrow as if it were random rather than deterministic, because it <em>is</em> random <em>as far as we are concerned</em>. There's nothing wrong with applying this reasoning to science, given a robust mathematical framework for doing so.</li>
+<li>The point of science is to answer questions. Notably, the question answered by a confidence interval (relying on the counterfactual infinite repetition of independent experiments) is not one that anyone has ever wanted to know the answer to. We care about questions like "What is $x$?", or the more reasonable "What possibilities for $x$ are most likely?" The only way to answer questions like this is to go through Bayes' Law.</li>
+<li>The need to chose a prior is sometimes (ok, often) brought up as a disadvantage of Bayesian analysis. It isn't. It's just a requirement for answering the questions that are worth answering. Either pick a prior you can defend and use it, or go home. Yes, your results will depend on that choice - just like anyone's results depend on the assumptions they make in analyzing data.</li>
+<li>The need to make assumptions such as priors is not somehow unique to Bayes. Any method that tries to learn something about a model must build on assumptions; just because they're built into the "standard" way of doing a given analysis doesn't mean the assumptions aren't there. The flexibility to make those assumptions <em>appropriate</em> and the expectation that they will be <em>explicit</em> are features, not bugs.</li>
+<li>On a more immediately practical level, the ability to include nuisance parameters in a model, with appropriate PDFs, provides a perfectly straightforward and interpretable way to propagate systematic uncertainties to our results.</li>
 </ul>
-<h3 id="Tutorials">Tutorials<a class="anchor-link" href="#Tutorials">&#182;</a></h3><ul>
-<li><a href="tutorials/demo.html">Demo</a></li>
-<li><a href="tutorials/generative_models.html">Generative Models</a></li>
-<li><a href="tutorials/probability_essentials.html">Essential Probability</a></li>
-<li><a href="tutorials/probability_transformations.html">Probability Transformations</a></li>
-<li><a href="tutorials/bayes_law.html">Bayes' Law</a></li>
-<li><a href="tutorials/working_with_samples.html">Working With Samples</a></li>
-<li><a href="tutorials/credible_interals.html">Credible Regions</a></li>
-<li><a href="tutorials/gaussians.html">Gaussians and Least Squares</a></li>
-<li><a href="tutorials/xmm_image.html">XMM Image</a></li>
-<li><a href="tutorials/agn_photometry_grid.html">AGN Photometry: grid</a></li>
-<li><a href="tutorials/agn_photometry_gibbs.html">AGN Photometry: Gibbs sampling</a></li>
-<li><a href="tutorials/agn_photometry_metro.html">AGN Photometry: Metropolis sampling</a></li>
-<li><a href="tutorials/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="tutorials/ogle_lightcurve.html">OGLE Lightcurve</a></li>
-<li><a href="tutorials/microlensing.html">Microlensing</a></li>
-<li><a href="tutorials/cepheids.html">Cepheid Period-Luminosity Relation</a></li>
-<li><a href="tutorials/cepheids_one_galaxy.html">Cepheid P-L I: one galaxy</a></li>
-<li><a href="tutorials/cepheids_all_galaxies.html">Cepheid P-L II: multiple galaxies</a></li>
-<li><a href="tutorials/model_evaluation.html">Galaxy Cluster Mis-centering: model evaluation</a></li>
-<li><a href="tutorials/model_selection.html">Galaxy Cluster Mis-centering: model comparison</a></li>
-<li><a href="tutorials/missing_data.html">Shuttle O-ring Failures: missing data</a></li>
+<p>If you'd like to read something on this subject by much more knowledgeable people, see these <a href="https://statmodeling.stat.columbia.edu/2008/07/31/responses_to_my/">pro- and anti-Bayes arguments</a> by Gelman and a <a href="https://statmodeling.stat.columbia.edu/2008/09/02/more_bayes_rant/">response</a> by Skilling. (Warning: Gelman is a social scientist, so his writing contains some jargon and some particular concerns that are not so relevant to us.)</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Machine-Learning-and-the-&quot;engineering&quot;-approach">Machine Learning and the "engineering" approach<a class="anchor-link" href="#Machine-Learning-and-the-&quot;engineering&quot;-approach">&#182;</a></h2><p>In principle, any conclusion we might hope to draw from data can be cast as an inference problem. But, to be honest, we don't always care enough to do that. Sometimes we just need a curve that more or less goes through some data points so that we can move on with our lives; we don't always need to carefully determine what type of curve best fits the data nor what the posterior distributions of its parameters are. Sometimes there's no hope of building a generative model for some data, or it would just be more trouble than it's worth. And so we do something else. We just do <em>something</em> to get a particular result (or summary, or prediction, ...) and accept that we won't be able to make principled statements about the probability of those results being true, as we could if we had solved the inference problem.</p>
+<p>And that's ok.</p>
+<p>That's what we mean by the "engineering" approach. Just do something that lets us make a decision about where to point the telescope next (for example) without worrying about whether the probability of that decision being right is perfectly predicted. Granted, we would probably do our best to empirically determine accuracy after the fact, but not as a matter of first principles.</p>
+<p>The exact boundaries of what is known these days as "Machine Learning" are hard to know, but methods involving artificial neural networks, decision trees and the like generally fall into this category. Yes, they do have models of a sort under the hood, and could therefore fit into our inference framework in that limiting sense, but they generally aren't anything that would naturally show up in a generative model. From our point of view in this course, machine learning methods would be best understood as interpolation algorithms, which makes them potentially useful, e.g., for approximate Bayesian methods.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Endnotes">Endnotes<a class="anchor-link" href="#Endnotes">&#182;</a></h4><p>1) I can't resist sharing some stories from my grad school (i.e., once upon a time), when I took a few statistics courses (in the actual Statistics department). In the first or second lecture of a Ph.D level course on the GLM, having just finished the theoretical overview of the generalized linear model, the professor made remarks along the lines of the following (paraphrased from memory):</p>
+<blockquote><p>So we have this very elegent framework that works for a particular model - we need a model which is linear in the parameters, where the covariates are fixed, and where the responses are normally distributed about the curve. But that's a model that comes up a lot and can be applied in many situations. That's not to say that there aren't other approaches; some people would say that we should put all this aside and do Bayesian analysis all the time. But then we'd have to make lots of assumptions.</p>
+</blockquote>
+<p>He was not intentionally being ironic.</p>
+<p>Not for nothing did a T-shirt worn by a different statistics professor (teaching a course on ANOVA, no less) read as follows:</p>
+<ul>
+<li>Lies</li>
+<li>Damned lies</li>
+<li>$y = a + bx + \varepsilon; \, \varepsilon \sim \mathrm{N}(0, \sigma^2)$</li>
 </ul>
-<h2 id="Contact">Contact<a class="anchor-link" href="#Contact">&#182;</a></h2><ul>
-<li><a href="https://github.com/KIPAC/StatisticalMethods/issues/new?body=@abmantz">Adam Mantz</a></li>
-</ul>
-<p>All materials Copyright 2015, 2017, 2019, 2021 Adam Mantz, Phil Marshall and Claire Hébert, and distributed for copying and extension under the GPLv2 License, unless otherwise noted. If you have any feedback for us, please <a href="https://github.com/KIPAC/StatisticalMethods/issues">write us an issue</a>.</p>
 
 </div>
 </div>

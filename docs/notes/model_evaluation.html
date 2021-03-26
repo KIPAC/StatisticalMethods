@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>model_evaluation</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14259,76 +14259,399 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="PHYSICS-366:-Statistical-Methods-in-Astrophysics">PHYSICS 366: Statistical Methods in Astrophysics<a class="anchor-link" href="#PHYSICS-366:-Statistical-Methods-in-Astrophysics">&#182;</a></h1><p>Course notes and resources for Stanford University graduate course Physics 366.</p>
-<h2 id="Course-Description">Course Description<a class="anchor-link" href="#Course-Description">&#182;</a></h2><p>This course is intended to provide an introduction to modern
-statistical methodology, and its applications to problems in
-astrophysics and cosmology, and is aimed at graduate students
-intending to do research in this area. We
-strongly encourage most first and second year students working in
-KIPAC to take the course.  Our goal is to provide a background that
-will be directly relevant to the kind of problems that typical KIPAC
-students will encounter in their research.</p>
-<h2 id="Course-Objectives">Course Objectives<a class="anchor-link" href="#Course-Objectives">&#182;</a></h2><p>Our goal is that students taking this course will:</p>
+<h1 id="Notes:-Evaluating-and-Comparing-Models">Notes: Evaluating and Comparing Models<a class="anchor-link" href="#Notes:-Evaluating-and-Comparing-Models">&#182;</a></h1><p>In which we will</p>
 <ul>
-<li>develop familiarity in working with various types of astronomical data.</li>
-<li>understand the role of modeling in data analysis.</li>
-<li>develop facility with various types of inference from data.</li>
-<li>be able to critically evaluate and apply commonly used statistical methodologies.</li>
-<li>be able to apply advanced statistical reasoning to problems they are likely to encounter in their research.</li>
+<li>Look at tests of model adequacy (goodness of fit), and methods of comparing model fitness</li>
+<li>Understand the use of Bayesian Evidence in this context</li>
 </ul>
-<h2 id="Content">Content<a class="anchor-link" href="#Content">&#182;</a></h2><p><strong>Start by looking at the <a href="notes/overview.html">Overview</a> to understand how this course works, and <a href="notes/getting_started.html">Getting Started</a> to get up and running with Python and Jupyter, if needed.</strong>
-Enrolled students should also read the <a href="notes/assignments.html">Assignments</a> page to see what is expected.</p>
-<p>The course content can be browsed here in static HTML format. This is sufficient for the notes, but to do the tutorials you will need to download them in Jupyter notebook format from the <a href="https://github.com/KIPAC/StatisticalMethods/tree/master/tutorials">GitHub repository</a>.</p>
-<p>Notes and tutorials are listed in reasonable order below, but a better way to navigate the course may be through this nifty <a href="dependency_graph.html">dependency graph</a> (via <a href="https://mermaid-js.github.io/mermaid/">Mermaid</a>).</p>
-<h3 id="Notes">Notes<a class="anchor-link" href="#Notes">&#182;</a></h3><ul>
-<li><a href="notes/overview.html">Overview</a></li>
-<li><a href="notes/assignments.html">Assignments</a></li>
-<li><a href="notes/getting_started.html">Getting Started</a></li>
-<li><a href="notes/generative_models.html">Generative Models</a></li>
-<li><a href="notes/essential_probability.html">Essential Probability</a></li>
-<li><a href="notes/bayes_law.html">Bayes' Law</a></li>
-<li><a href="notes/credible_regions.html">Credible Regions</a></li>
-<li><a href="notes/errorbars.html">"Error bars"</a></li>
-<li><a href="notes/statistical_isms.html">Bayesianism and Other "isms"</a></li>
-<li><a href="notes/montecarlo.html">Monte Carlo Sampling</a></li>
-<li><a href="notes/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="notes/more_samplers.html">More Sampling Methods</a></li>
-<li><a href="notes/hierarchical.html">Hierarchical Models</a></li>
-<li><a href="notes/model_evaluation.html">Model Evaluation and Comparison</a></li>
-<li><a href="notes/missingdata.html">Missing Data and Selection Effects</a></li>
-<li><a href="notes/modelfreemodels.html">"Model-free" Models</a></li>
-<li><a href="notes/approximate_methods.html">Approximate Methods</a></li>
-<li><a href="notes/fishing.html">Fishing, Blinding and More</a></li>
-</ul>
-<h3 id="Tutorials">Tutorials<a class="anchor-link" href="#Tutorials">&#182;</a></h3><ul>
-<li><a href="tutorials/demo.html">Demo</a></li>
-<li><a href="tutorials/generative_models.html">Generative Models</a></li>
-<li><a href="tutorials/probability_essentials.html">Essential Probability</a></li>
-<li><a href="tutorials/probability_transformations.html">Probability Transformations</a></li>
-<li><a href="tutorials/bayes_law.html">Bayes' Law</a></li>
-<li><a href="tutorials/working_with_samples.html">Working With Samples</a></li>
-<li><a href="tutorials/credible_interals.html">Credible Regions</a></li>
-<li><a href="tutorials/gaussians.html">Gaussians and Least Squares</a></li>
-<li><a href="tutorials/xmm_image.html">XMM Image</a></li>
-<li><a href="tutorials/agn_photometry_grid.html">AGN Photometry: grid</a></li>
-<li><a href="tutorials/agn_photometry_gibbs.html">AGN Photometry: Gibbs sampling</a></li>
-<li><a href="tutorials/agn_photometry_metro.html">AGN Photometry: Metropolis sampling</a></li>
-<li><a href="tutorials/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="tutorials/ogle_lightcurve.html">OGLE Lightcurve</a></li>
-<li><a href="tutorials/microlensing.html">Microlensing</a></li>
-<li><a href="tutorials/cepheids.html">Cepheid Period-Luminosity Relation</a></li>
-<li><a href="tutorials/cepheids_one_galaxy.html">Cepheid P-L I: one galaxy</a></li>
-<li><a href="tutorials/cepheids_all_galaxies.html">Cepheid P-L II: multiple galaxies</a></li>
-<li><a href="tutorials/model_evaluation.html">Galaxy Cluster Mis-centering: model evaluation</a></li>
-<li><a href="tutorials/model_selection.html">Galaxy Cluster Mis-centering: model comparison</a></li>
-<li><a href="tutorials/missing_data.html">Shuttle O-ring Failures: missing data</a></li>
-</ul>
-<h2 id="Contact">Contact<a class="anchor-link" href="#Contact">&#182;</a></h2><ul>
-<li><a href="https://github.com/KIPAC/StatisticalMethods/issues/new?body=@abmantz">Adam Mantz</a></li>
-</ul>
-<p>All materials Copyright 2015, 2017, 2019, 2021 Adam Mantz, Phil Marshall and Claire Hébert, and distributed for copying and extension under the GPLv2 License, unless otherwise noted. If you have any feedback for us, please <a href="https://github.com/KIPAC/StatisticalMethods/issues">write us an issue</a>.</p>
 
 </div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>So far we have focused on the business of building a probabilistic model and using data to infer its parameters. However, model building inevitably requires making assumptions of some kind. No inference problem is really complete until we have assessed whether the data are consistent with those assumptions.</p>
+<p>Three related but distinct questions thus come under the heading of <strong>model evaluation</strong>.</p>
+<ol>
+<li>Does a model explain (fit) the data well?</li>
+<li>Does a model make accurate predictions about new data?</li>
+<li>How probable are our competing models in light of the data?</li>
+</ol>
+<p>Often (2) and (3) are directly related to <strong>model comparison</strong> or <strong>selection</strong>.</p>
+<p>Throughout this discussion, as always, "model" means a complete generative model. That is, a model's definition <em>includes the specification of a prior on its parameters</em>.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>In order to make transparent comparisons between Bayesian and non-Bayesian approaches to these questions, we'll work with an example that fits in the classical least-squares paradigm. So, imagine we have a data set like this:</p>
+<p><img src="graphics/modelcheck-data.png" width=40%></p>
+<p>Specifically, we'll assume that</p>
+<ul>
+<li>we have precisely known $x$ values,</li>
+<li>we have precisely known, Gaussian uncertainties on $y$ given $x$,</li>
+<li>we're (at first) fitting a linear model, $\bar{y}(x)=b+mx$, and</li>
+<li>priors on $b$ and $m$ will be Uniform over the real line.</li>
+</ul>
+<p>In the language we've been using,</p>
+<ul>
+<li>$x_i$ and $\sigma_i$ (the Gaussian uncertainty on $y_i$) are known perfectly; $i=1,2,\ldots,n$ data points</li>
+<li>$m \sim \mathrm{Uniform}(-\infty,\infty)$</li>
+<li>$b \sim \mathrm{Uniform}(-\infty,\infty)$</li>
+<li>$\eta_i = b+mx_i$</li>
+<li>$y_i \sim \mathrm{Normal}(\eta_i, \sigma_i)$</li>
+</ul>
+<p>To be explicit, the likelihood and posterior here are (up to a constant)</p>
+<p>$p(\{y_i\}|m,b) \propto p(m,b|\{y_i\}) \propto e^{-\chi^2(m,b)/2}$,</p>
+<p>with $\chi^2(m,b) = \sum_i \frac{(b+mx_i - y_i)^2}{\sigma_i^2}$ the classical $\chi^2$ statistic.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>We've already used one qualitative test, visually comparing models drawn from the posterior with the data, e.g.</p>
+<p><table>
+    <tr>
+        <td><img src="graphics/modelcheck-linear.png" width=60%></td>
+    </tr>
+</table>
+Below, we'll look at more quantitative approaches.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Classical-Hypothesis-Testing">Classical Hypothesis Testing<a class="anchor-link" href="#Classical-Hypothesis-Testing">&#182;</a></h2><p>Let $\hat{\chi}^2$ be the minimum $\chi^2$ achievable for a given data set, and $\hat{m}$ and $\hat{b}$ be the corresponding (best-fitting) parameter values, i.e those that maximize the likelihood and posterior.</p>
+<p>The classical approach is to test whether the data are consistent with predictions of this model, with parameters $\hat{m}$ and $\hat{b}$ (and all of the hidden assumptions about fixed/known $x_i$ and $\sigma_i$). Due to all of the liner/Gaussian assumptions in the model, this can be done in a relatively simple way. Namely, the predicted distribution over data sets of the minimum possible $\chi^2(m,b)$ follows a $\chi^2_\nu$ distribution, where $\nu=N_\mathrm{data}-N_\mathrm{parameters}=N_\mathrm{data}-2$ is called the number of degrees of freedom. (We use $\chi^2$ to refer to far too many things here, as does everyone.)</p>
+<p>Hence, the classical $\chi^2$ test looks at whether $\hat{\chi}^2$ is consistent with the distribution predicted by the best-fitting parameters. If not, it's unlikely that our data came from the assumed model with those parameter values, and since they were the best option, it's unlikley that the data came from the assumed model at all.</p>
+<p>In our example, the value of $\hat{\chi}^2$ turns out to be $\approx104$, which doesn't look good in light of the expectation. (You might already have guessed just by looking at the data that a linear model wouldn't do a great job.)
+<img src="graphics/modelcheck-chisq.png" width=40%></p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>We refer to the integrated $\chi^2_\nu$ probability to the right of our measured $\hat{\chi}^2$, $P(\chi^2\geq\hat{\chi}^2|\nu)$, as the <strong>$p$-value</strong> or <strong>significance</strong>. In this case, it is $\sim10^{-10}$. In other words, the probability of a random data set produced by our assumed model with its <em>best</em> parameter values (called the "null hypothesis") resulting in a $\hat{\chi}^2$ value at least as extreme as the one we got is staggeringly small.</p>
+<p>The $p$-value is <em>not</em> the probability of the model $(m,b)$ being true (remember, this is a non-Bayesian approach). Like the sampling distribution from which it is derived, it characterizes the probability of getting the data given the assumed model and its estimated parameters.</p>
+<p>The result of a classical hypothesis test is of the following form:</p>
+<p><em>"We reject the null hypothesis at the $p$ significance level"</em></p>
+<p>(on the grounds that it inadequately explains the data).</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Practical-$\chi^2$-Testing">Practical $\chi^2$ Testing<a class="anchor-link" href="#Practical-$\chi^2$-Testing">&#182;</a></h3><p>We can compute the p-value assuming a $\chi^2_\nu$ distribution using <code>scipy.stats</code> easily:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.stats</span>
+<span class="n">chisq</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">chi2</span><span class="p">(</span><span class="n">Ndof</span><span class="p">)</span>
+<span class="n">pvalue</span> <span class="o">=</span> <span class="n">chisq</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">chisq_min</span><span class="p">)</span>
+</pre></div>
+<p>Here the <code>sf</code> function is shorthand for 1 minus the CDF, which is the integral we want.</p>
+<p>The "reduced chi-squared", $\hat{\chi}^2_{R} = \hat{\chi}^2 / \nu$, is often used as a quick and dirty assessment of the goodness of fit. The logic is that, since the $\chi^2_\nu$ distribution becomes relatively skinny for large $\nu$, and since its mean is $\nu$, $\hat{\chi}^2_{R}$ should be "close to 1". This is clearly a less robust statement than one based on a $p$-value.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Bayesian-Hypothesis-Testing">Bayesian Hypothesis Testing<a class="anchor-link" href="#Bayesian-Hypothesis-Testing">&#182;</a></h2><p>As usual, the classical approach is beautifully elegant and computationally efficient, but limited to situations where a number of assumptions are satisfied (e.g. this linear regression example). In general, our models don't have such convenient analytic properties. In addition, the classical test was entirely based on predictions from the best-fitting parameters, while we might want to account for uncertainty in the a posteriori model when evaluating its fitness.</p>
+<p>Nevertheless, the motivation behind the classical test was sound. In general, we can construct analogous hypothesis tests by simulating many "replica" data sets from the posterior distribution of our model, and comparing the observed data with the replica data in some way. most often, a direct comparison of real and replica data would be too complex to be useful, so we will instead define a suitable summary "test statistic", and compare its value as computed from the real data with the <strong>posterior predictive distribution</strong>. We are free to design our test statistic to focus on the aspect of the data that we want the model to fit well.</p>
+<p>The logic behind posterior predictive model checking is</p>
+<ul>
+<li>If our model is the true one, then replica data generated by it should "look like" the one dataset we have. </li>
+<li>This means that any summary, $T(\mathrm{data})$, of both the real dataset should follow the same distribution over noise realizations <em>and</em> model parameters.</li>
+<li>If the real dataset was not generated with our model, then its summary may be an outlier from the distribution of summaries computed from replica datasets.</li>
+</ul>
+<p>Note the similarity to the classical hypothesis test. The difference is that the Bayesian replica datasets are generated with plausible values of the parameters drawn from the posterior PDF, while all the hypothetical datasets in frequentism (each with their own $\hat{\chi}^2$) are drawn using the same set of estimated model parameters.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>For our example, we might adopt the Pearson Correlation, $r_{12}$, as a test statistic.</p>
+<p>$T(x,y) = r_{12} = \frac{\sum_i (x_i - \bar{x})(y_i - \bar{y})}{\left[ \sum_i (x_i - \bar{x})^2 \sum_i (y_i - \bar{y})^2 \right]^{1/2}}$</p>
+<p>For each one of many posterior samples, we draw a replica dataset from the sampling distribution, and compute $T(x,y)$, building up a histogram of $T$. Compared with this distribution, the value of $T$ computed from the real data, $\hat{T}$ is a clear outlier, with $P(T&gt;\hat{T}) \approx 99.4\%$.</p>
+<p><img src="graphics/modelcheck-linear-TS.png" width=40%></p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Unlike the classical $\chi^2$ test, the posterior predictive probability distribution for the test statistic generated by sampling in this way is marginalized over both parameters and potential datasets. It thus takes into account both the uncertainty in the data (captured by the sampling distribution) <em>and</em> the uncertainty in the parameters (propagated from our one dataset and our prior knowledge during posterior sampling).</p>
+<p>Both this posterior predictive check and the classical hypothesis test are tests of model <em>adequacy</em>. We can't use them to prove that a given model is correct, but they can show that a model is insufficient to explain the data. Note that we did not have to make any approximations in order to use a standard distribution for our summary, $T$; we just used the posterior PDF that we already had.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The test statistic used above was a function of the data alone. Test statistics can instead be functions of both the data and the parameters, in which case they are called <strong>discrepancy measures</strong>. The maximum log-likelihood is a common example, which in our example would reduce to the classical test, since the log-likelihood is $-\chi^2/2$. Using the log-likelihood, our predicted distribution looks like this, with zero simulated values of $T$ exceeding the discrepancy computed from the real data (recall that the analytic $p$-value was of order $10^{-10}$).</p>
+<p><img src="graphics/modelcheck-linear-discrepancy.png" width=40%></p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Generalized-Predictive-Accuracy-and-&quot;Information-Criteria&quot;">Generalized Predictive Accuracy and "Information Criteria"<a class="anchor-link" href="#Generalized-Predictive-Accuracy-and-&quot;Information-Criteria&quot;">&#182;</a></h2><p>Any way we look at it, it's unlikely that we'd conclude the linear model explains the example data adequately. How do we choose an alternative? One way to compare the fitness of models is to look at the second of our model evaluation questions: How accurately do they predict new data?</p>
+<p>The idea behind generalized predictive accuracy is that we typically want a fit that works well with any <em>potential</em> data set, rather than just reproducing the one we have. In general, this means an "Occam's Razor"-like penalty for complexity should be involved, to avoid focusing on models that "over-fit" the data.</p>
+<p>In our example, we might add a quadratic term to the model: $y = b + m x + q x^2$, which results in posterior model draws like those on the left below, and the predicted distribution of maximum log-likelihoods shown on the right.</p>
+<table><tr>
+<td><img src="graphics/modelcheck-quadratic.png" width=70%></td>
+<td><img src="graphics/modelcheck-quadratic-discrepancy.png" width=70%></td>
+</tr></table><p>Now the test statistic computed from the real data is comfortably within the predicted distribution, so the new model is adequate in a way that the linear model was not. But how do we quantify the improvement?</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The gold standard for testing predictive accuracy is to get more data, and compare them with the predictions. Short of that, the best option is <strong>cross-validation</strong>: fitting a model on many random subsets of the data and seeing how well it describes the complementary "out of sample" subsets. (This method is ubiquitous in machine learning, where accurate out-of-sample prediction is usually the goal.)</p>
+<p>Short of exhaustive cross-validation, a number of <strong>information criteria</strong> exist that (asymptotically) relate to generalized predictive accuracy. These have the advantage of being relatively quick to calculate from the results of a fit - either a maximum likelihood estimate or a set of posterior samples - and include a penalty for models with greater freedom. Information criteria that you might come across include the</p>
+<ul>
+<li>Akaike information criterion (AIC)</li>
+<li>Deviance information criterion (DIC)</li>
+<li>Watanabe-Akaike information criterion (WAIC)</li>
+</ul>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Of these, the DIC has the advantage of being compatible with Bayesian analysis (unlike AIC), and not requiring the data to be cleanly separable into conditionally independent subsets (unlike WAIC). It's defined as</p>
+<p>$\mathrm{DIC} = \langle D(\theta) \rangle + 2p_D; \quad p_D = \langle D(\theta) \rangle - D(\langle\theta\rangle)$</p>
+<p>where $D(\theta)=-2\log P(\mathrm{data}|\mathrm{params})$ and averages $\langle\rangle$ are over the posterior distribution.Here, $p_D$ is called the <em>effective number of free parameters</em>, and approximates the number of parameters that are primarily constrained by the data rather than by their priors. (This may not be obvious from the definition above, but it works out surprisingly well.) Thus, while other information criteria include a term proportional to the total number of model parameters in order to penalize more complex models, the DIC doesn't necessarily count unconstrained nuisance parameters that exist only to marginalize out systematic uncertainty towards this penalty.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Note that for all of these information criteria, a <strong>lower</strong> value is preferable (larger likelihood and/or less model complexity). A somewhat motivated scale for interpreting differences in IC exists (named for Jeffreys):</p>
+<table style='font-size:100%'>
+    <thead><td>$$e^{(\mathrm{IC}_1-\mathrm{IC}_2)/2}$$</td><td>Strength of evidence for model 2</td></thead>
+    <tr><td> $<1$ </td><td> Negative </td></tr>
+    <tr><td> $1$-$3$ </td><td> Barely worth mentioning </td></tr>
+    <tr><td> $3$-$10$ </td><td> Substantial </td></tr>
+    <tr><td> $10$-$30$ </td><td> Strong </td></tr>
+    <tr><td> $30$-$100$ </td><td> Very strong </td></tr>
+    <tr><td> $>100$ </td><td> Decisive </td></tr>
+</table>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Exercise:-Priors-and-the-DIC">Exercise: Priors and the DIC<a class="anchor-link" href="#Exercise:-Priors-and-the-DIC">&#182;</a></h3><p>Say our model has 1 parameter, $\theta$, and the likelihood is a unit width Gaussian centered on $\theta=0$ with peak value $L_{\rm max}$.</p>
+<p>For each of the priors on $\theta$ below, (a) sketch the likelihood and prior as a function of theta, (b) roughly approximate the DIC and $p_D$ for that model (just well enough for a qualitative comparison between the models).</p>
+<ol>
+<li>$p(\theta|H_1)$ uniform on $[-1,+1]$</li>
+<li>$p(\theta|H_2)$ uniform on $[-100,+100]$</li>
+<li>$p(\theta|H_3)$ uniform on $[+3,+5]$</li>
+</ol>
+<p>Recall: $\mathrm{DIC} = \langle D(\theta) \rangle + 2p_D; \quad p_D = \langle D(\theta) \rangle - D(\langle\theta\rangle)$</p>
+<p>Solutions at the end of the notebook.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><strong>DIC exercise: comments</strong></p>
+<ol>
+<li><p>Models that are less prescriptive (in terms of their priors) are penalized in the DIC (models 1 vs 2).</p>
+</li>
+<li><p>However, there is a limit to this penalty. As the prior becomes less prescriptive, we get the penalty associated with "one more free parameter", and that's all.</p>
+</li>
+<li><p>Sufficiently large improvements to the likelihood will overcome penalty (models 3 vs 2).</p>
+</li>
+</ol>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Bayesian-Model-Comparison">Bayesian Model Comparison<a class="anchor-link" href="#Bayesian-Model-Comparison">&#182;</a></h2><p>What about the third model evaluation question: How probable are our competing models in the light of the data? This question cannot be asked in classical statistics, where only data have probability distributions. However, Bayes theorem gives us a framework for assessing relative model probabilities that naturally includes Occam's razor.</p>
+<p>Recall that we can write Bayes' Law for inference on parameters $\theta$ given a model $H$ and data $D$ as</p>
+<p>$P(\theta|D,H)=\frac{P(D|\theta,H)P(\theta|H)}{P(D|H)}$.</p>
+<p>Analogously, we can do inference on models within some space of possible models, $\Omega$;</p>
+<p>$P(H|D,\Omega)=\frac{P(D|H,\Omega)P(H|\Omega)}{P(D|\Omega)}$.</p>
+<p>Again, remember that $H$ includes all aspects of specifying the model, including our prior PDF assignments. Everything here has a straightforward analogy to the parameter inference that you're familiar with, so</p>
+<ul>
+<li>$P(H)$ is a prior probability over models;</li>
+<li>$P(D|H)=\int P(D|\theta,H) \, p(\theta|H) \, d\theta$ is the evidence, which previously appeared in the denominator for parameter inference but now takes on the role that the sampling distribution had; and</li>
+<li>$P(D|\Omega)$ is a new normalizing factor, which we will normally ignore (just as we didn't worry about the evidence when doing only parameter inference).</li>
+</ul>
+<p>To compare models within the space $\Omega$, we would look at the ratio of their posterior probabilities,</p>
+<p>$\frac{P(H_2|D)}{P(H_1|D)}=\frac{P(D|H_2)\,P(H_2)}{P(D|H_1)\,P(H_1)}$.</p>
+<p>which simply requires us to</p>
+<ul>
+<li>assign meaningful priors to models,</li>
+<li>assign meaningful priors to parameters, and</li>
+<li>calculate the evidence integral.</li>
+</ul>
+<p>The Bayesian approach is qualitatively different from other model assessments discussed above. While they focused primarily on prediction accuracy, here we simply apply Bayes' Law at the level of the model as a whole, with the evidence updating our prior knowledge into a posterior probability. There are no inherent mathematical limitations to this procedure, in contrast to various other hypothesis tests that are only valid under certain assumptions (such as the models being nested, e.g. the classical $F$ test for comparing $\chi^2$ values). Any two models, no matter how fundamentally different, can be compared with this technique.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Exercise:-Priors-and-the-evidence">Exercise: Priors and the evidence<a class="anchor-link" href="#Exercise:-Priors-and-the-evidence">&#182;</a></h3><p>Again, consider a model with 1 parameter, $\theta$, and a likelihood that works out to be a unit width Gaussian centered on $\theta=0$ with peak value $L_{\rm max}$.</p>
+<p>For each of the priors on $\theta$ below, (a) sketch the likelihood and prior as a function of theta, (b) roughly approximate the evidence for that model (just well enough for a qualitative comparison between the models).</p>
+<ol>
+<li>$p(\theta|H_1)$ uniform on $[-1,+1]$</li>
+<li>$p(\theta|H_2)$ uniform on $[-100,+100]$</li>
+<li>$p(\theta|H_3)$ uniform on $[+3,+5]$</li>
+</ol>
+<p>Recall: $P(D|H)=\int P(D|\theta,H) \, p(\theta|H) \, d\theta$.</p>
+<p>Solutions at the end of the notebook.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><strong>Evidence exercise: comments</strong></p>
+<ol>
+<li><p>Models that are less prescriptive (in terms of their priors on parameters) are penalized in the evidence. This is a feature, although it means we need to put real thought into those priors, instead of mindlessly choosing something wide and uniform.</p>
+</li>
+<li><p>The evidence can be made arbitrarily small by increasing the prior volume; comparing evidences is therefore more conservative than focusing on the best achievable likelihood ($L_{\rm max}$) alone.</p>
+</li>
+<li><p>Still, the evidence is only linearly sensitive to prior volume. For typical models where the liklihood is exponentially sensitive to how closely the model reproduces the data (e.g. $e^{-\chi^2/2}$), achieving a better fit will make a big difference</p>
+</li>
+</ol>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Bayes-factors">Bayes factors<a class="anchor-link" href="#Bayes-factors">&#182;</a></h3><p>A form of Bayesian hypothesis testing that you might encounter is model comparison with the "evidence ratio" or "odds ratio" or "Bayes Factor",</p>
+<p>$R = \frac{P(D|H_2)}{P(D|H_1)}$.</p>
+<p>Notice that this is simply the ratio of posterior probabilities if the prior probabilities of $H_1$ and $H_2$ are equal. This assumption is often not particularly easy to justify, tempting though it might be. A more practical way to interpret the Bayes factor is to note that it updates the model prior ratio into the posterior ratio,</p>
+<p>$\frac{P(H_2|D)}{P(H_1|D)}=\frac{P(H_2)}{P(H_1)} R$.</p>
+<p>The same Jeffreys scale used to interpret the information criteria can be used to interpret evidence ratios:</p>
+<table style='font-size:100%'>
+    <thead><td>$R$</td><td>Strength of evidence for model 2</td></thead>
+    <tr><td> $<1$ </td><td> Negative </td></tr>
+    <tr><td> 1-3 </td><td> Barely worth mentioning </td></tr>
+    <tr><td> 3-10 </td><td> Substantial </td></tr>
+    <tr><td> 10-30 </td><td> Strong </td></tr>
+    <tr><td> 30-100 </td><td> Very strong </td></tr>
+    <tr><td> $>100$ </td><td> Decisive </td></tr>
+</table>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Returning to our example data set and models, we can compute the evidence for the linear and quadratic models, and form the odds ratio, $R$. (The specific uniform priors used in these calculations have been lost to time, but see comment 3 on the exercise above.)</p>
+
+<pre><code>log Evidence for Straight Line Model: -157.2
+log Evidence for Quadratic Model: -120.7
+Evidence ratio in favour of the Quadratic Model:
+  7e15 to 1</code></pre>
+<p>The 26 unit difference in log evidence between the two models translates to a <em>huge</em> odds ratio in favour of the quadratic model. So, whatever method we choose in this case, it seems that we would be justified in discarding the linear model in favor of the quadratic one. Of course, this doesn't prove that the data did come from a quadratic model (they didn't), just that they are more consistent with that hypothesis than a linear one.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Calculating-the-evidence">Calculating the evidence<a class="anchor-link" href="#Calculating-the-evidence">&#182;</a></h3><p>Estimates of the evidence directly calculated from Markov chains produced for parameter inference are generally not reliable, since they don't cover the parameter space efficiently. An quick and dirty alternative is the Bayesian Information Criterion (BIC), which is an approximation of the evidence in the limit that that the data points greatly outnumber the parameters, and the priors are uninformative. However, there are also non-MCMC Bayesian methods such as nested sampling that can both estimate the evidence and produce samples suitable for our usual parameter inference.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Exercise-solution---DIC">Exercise solution - DIC<a class="anchor-link" href="#Exercise-solution---DIC">&#182;</a></h4><p>It should be possible to reason through a qualitative comparison of the 3 proposed models, but, for completeness, the following code does an actual quantitative comparison.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="k">def</span> <span class="nf">DIC_thingy</span><span class="p">(</span><span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">truncnorm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
+    <span class="n">av_of_D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="o">*</span><span class="n">st</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">logpdf</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+    <span class="n">D_of_av</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.0</span><span class="o">*</span><span class="n">st</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">logpdf</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="p">)</span>
+    <span class="n">pD</span> <span class="o">=</span> <span class="n">av_of_D</span> <span class="o">-</span> <span class="n">D_of_av</span>
+    <span class="n">DIC</span> <span class="o">=</span> <span class="n">D_of_av</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">pD</span>
+    <span class="k">return</span> <span class="n">pD</span><span class="p">,</span> <span class="n">DIC</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">DIC_thingy</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">DIC_thingy</span><span class="p">(</span><span class="o">-</span><span class="mf">100.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">DIC_thingy</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>(0.2901423370384124, 2.4181654088958684)
+(1.0010701327774563, 3.840025409239593)
+(0.06932977216936465, 12.749096759119098)
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Exercise-solution---evidence">Exercise solution - evidence<a class="anchor-link" href="#Exercise-solution---evidence">&#182;</a></h4><p>Once again, one can reason out a qualitative comparison without doing the calculations (more easily than with the DIC, in fact). But the code below will also do it.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">Evidence_thingy</span><span class="p">(</span><span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">upper</span><span class="p">)</span> <span class="o">-</span> <span class="n">st</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">lower</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">upper</span> <span class="o">-</span> <span class="n">lower</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Evidence_thingy</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Evidence_thingy</span><span class="p">(</span><span class="o">-</span><span class="mf">100.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Evidence_thingy</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>0.3413447460685429
+0.005
+0.00067480569002909
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div>
 </body>
 

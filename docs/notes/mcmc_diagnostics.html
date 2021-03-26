@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>mcmc_diagnostics</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14259,74 +14259,182 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="PHYSICS-366:-Statistical-Methods-in-Astrophysics">PHYSICS 366: Statistical Methods in Astrophysics<a class="anchor-link" href="#PHYSICS-366:-Statistical-Methods-in-Astrophysics">&#182;</a></h1><p>Course notes and resources for Stanford University graduate course Physics 366.</p>
-<h2 id="Course-Description">Course Description<a class="anchor-link" href="#Course-Description">&#182;</a></h2><p>This course is intended to provide an introduction to modern
-statistical methodology, and its applications to problems in
-astrophysics and cosmology, and is aimed at graduate students
-intending to do research in this area. We
-strongly encourage most first and second year students working in
-KIPAC to take the course.  Our goal is to provide a background that
-will be directly relevant to the kind of problems that typical KIPAC
-students will encounter in their research.</p>
-<h2 id="Course-Objectives">Course Objectives<a class="anchor-link" href="#Course-Objectives">&#182;</a></h2><p>Our goal is that students taking this course will:</p>
+<h1 id="Notes:-MCMC-Diagnostics">Notes: MCMC Diagnostics<a class="anchor-link" href="#Notes:-MCMC-Diagnostics">&#182;</a></h1><p>In which we will</p>
 <ul>
-<li>develop familiarity in working with various types of astronomical data.</li>
-<li>understand the role of modeling in data analysis.</li>
-<li>develop facility with various types of inference from data.</li>
-<li>be able to critically evaluate and apply commonly used statistical methodologies.</li>
-<li>be able to apply advanced statistical reasoning to problems they are likely to encounter in their research.</li>
+<li>Learn sanity checks to confirm whether a Markov chain can be used for inference</li>
 </ul>
-<h2 id="Content">Content<a class="anchor-link" href="#Content">&#182;</a></h2><p><strong>Start by looking at the <a href="notes/overview.html">Overview</a> to understand how this course works, and <a href="notes/getting_started.html">Getting Started</a> to get up and running with Python and Jupyter, if needed.</strong>
-Enrolled students should also read the <a href="notes/assignments.html">Assignments</a> page to see what is expected.</p>
-<p>The course content can be browsed here in static HTML format. This is sufficient for the notes, but to do the tutorials you will need to download them in Jupyter notebook format from the <a href="https://github.com/KIPAC/StatisticalMethods/tree/master/tutorials">GitHub repository</a>.</p>
-<p>Notes and tutorials are listed in reasonable order below, but a better way to navigate the course may be through this nifty <a href="dependency_graph.html">dependency graph</a> (via <a href="https://mermaid-js.github.io/mermaid/">Mermaid</a>).</p>
-<h3 id="Notes">Notes<a class="anchor-link" href="#Notes">&#182;</a></h3><ul>
-<li><a href="notes/overview.html">Overview</a></li>
-<li><a href="notes/assignments.html">Assignments</a></li>
-<li><a href="notes/getting_started.html">Getting Started</a></li>
-<li><a href="notes/generative_models.html">Generative Models</a></li>
-<li><a href="notes/essential_probability.html">Essential Probability</a></li>
-<li><a href="notes/bayes_law.html">Bayes' Law</a></li>
-<li><a href="notes/credible_regions.html">Credible Regions</a></li>
-<li><a href="notes/errorbars.html">"Error bars"</a></li>
-<li><a href="notes/statistical_isms.html">Bayesianism and Other "isms"</a></li>
-<li><a href="notes/montecarlo.html">Monte Carlo Sampling</a></li>
-<li><a href="notes/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="notes/more_samplers.html">More Sampling Methods</a></li>
-<li><a href="notes/hierarchical.html">Hierarchical Models</a></li>
-<li><a href="notes/model_evaluation.html">Model Evaluation and Comparison</a></li>
-<li><a href="notes/missingdata.html">Missing Data and Selection Effects</a></li>
-<li><a href="notes/modelfreemodels.html">"Model-free" Models</a></li>
-<li><a href="notes/approximate_methods.html">Approximate Methods</a></li>
-<li><a href="notes/fishing.html">Fishing, Blinding and More</a></li>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Intuition">Intuition<a class="anchor-link" href="#Intuition">&#182;</a></h2><p>To be useful to us, a chain must</p>
+<ol>
+<li>have converged to (that is, be sampling from) the posterior distribution</li>
+<li>provide enough effectively independent samples to characterize it</li>
+</ol>
+<p>What would make us confident of convergence?</p>
+<ul>
+<li>Is the chain stationary - is it (in an intuitive, average sense) staying put, as opposed to coherently moving somewhere in parameter space?</li>
+<li>Do independent chains started from overdispersed positions end up in the same place?</li>
 </ul>
-<h3 id="Tutorials">Tutorials<a class="anchor-link" href="#Tutorials">&#182;</a></h3><ul>
-<li><a href="tutorials/demo.html">Demo</a></li>
-<li><a href="tutorials/generative_models.html">Generative Models</a></li>
-<li><a href="tutorials/probability_essentials.html">Essential Probability</a></li>
-<li><a href="tutorials/probability_transformations.html">Probability Transformations</a></li>
-<li><a href="tutorials/bayes_law.html">Bayes' Law</a></li>
-<li><a href="tutorials/working_with_samples.html">Working With Samples</a></li>
-<li><a href="tutorials/credible_interals.html">Credible Regions</a></li>
-<li><a href="tutorials/gaussians.html">Gaussians and Least Squares</a></li>
-<li><a href="tutorials/xmm_image.html">XMM Image</a></li>
-<li><a href="tutorials/agn_photometry_grid.html">AGN Photometry: grid</a></li>
-<li><a href="tutorials/agn_photometry_gibbs.html">AGN Photometry: Gibbs sampling</a></li>
-<li><a href="tutorials/agn_photometry_metro.html">AGN Photometry: Metropolis sampling</a></li>
-<li><a href="tutorials/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="tutorials/ogle_lightcurve.html">OGLE Lightcurve</a></li>
-<li><a href="tutorials/microlensing.html">Microlensing</a></li>
-<li><a href="tutorials/cepheids.html">Cepheid Period-Luminosity Relation</a></li>
-<li><a href="tutorials/cepheids_one_galaxy.html">Cepheid P-L I: one galaxy</a></li>
-<li><a href="tutorials/cepheids_all_galaxies.html">Cepheid P-L II: multiple galaxies</a></li>
-<li><a href="tutorials/model_evaluation.html">Galaxy Cluster Mis-centering: model evaluation</a></li>
-<li><a href="tutorials/model_selection.html">Galaxy Cluster Mis-centering: model comparison</a></li>
-<li><a href="tutorials/missing_data.html">Shuttle O-ring Failures: missing data</a></li>
+<p>How do we guess the number of independent samples?</p>
+<ul>
+<li>Check how well the chain appears to exploring the distribution.</li>
+<li>Compare the autocorrelation length scale with the chain length.</li>
 </ul>
-<h2 id="Contact">Contact<a class="anchor-link" href="#Contact">&#182;</a></h2><ul>
-<li><a href="https://github.com/KIPAC/StatisticalMethods/issues/new?body=@abmantz">Adam Mantz</a></li>
+<p>There are numerical estimates that can help with this, but <strong>they are not a substitute for human visual inspection</strong>.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Common-misuses-of/misconceptions-about-convergence">Common misuses of/misconceptions about convergence<a class="anchor-link" href="#Common-misuses-of/misconceptions-about-convergence">&#182;</a></h3><p>Convergence does <strong>not</strong> mean</p>
+<ul>
+<li>that parameters are "well constrained" by the data. If you're not satisfied with the constraints you're getting, that's a function of the data and the model, not necessarily a failing of the MCMC sampler.</li>
+<li>that the autocorrelation length is small. A chain can be converged <em>and</em> still highly correlated (though this is not desirable.</li>
+<li>that there are not occasional excursions beyond a locus in parameter space. If the PDF has tails, the chain will need to occasionally find its way to them; otherwise it isn't doing its job.</li>
 </ul>
-<p>All materials Copyright 2015, 2017, 2019, 2021 Adam Mantz, Phil Marshall and Claire Hébert, and distributed for copying and extension under the GPLv2 License, unless otherwise noted. If you have any feedback for us, please <a href="https://github.com/KIPAC/StatisticalMethods/issues">write us an issue</a>.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Convergence-tests">Convergence tests<a class="anchor-link" href="#Convergence-tests">&#182;</a></h2><p>Note that both of the checks below rely on having multiple, independently run chains, ideally started in very different parts of parameter space. This is a good idea in any case, and multiple chains that check out can be merged (after removing the burn-in phase; see below) before we draw conclusions from them.</p>
+<h3 id="Visual-inspection">Visual inspection<a class="anchor-link" href="#Visual-inspection">&#182;</a></h3><p>Below, we can see 4 Metropolis chains (different colors) with different starting points exploring a 2-dimensional parameter space.</p>
+<table>
+    <tr>
+        <td><img src="graphics/mc1_sandbox_ab.png" width=70%></td>
+    </tr>
+</table><p>A 2D figure like this can be useful for verifying that the chains all end up in the same place, but in many dimensions it isn't really practical. More often, we would look at <strong>trace plots</strong> of each parameter, showing its value as a function of step number.</p>
+<table>
+    <tr>
+        <td><img src="graphics/mc1_sandbox_a.png" width=100%></td>
+        <td><img src="graphics/mc1_sandbox_b.png" width=100%></td>
+    </tr>
+</table><p>The questions to ask ourselves, based on these traces, are</p>
+<ul>
+<li>How stationary does each sequence appear? </li>
+<li>Do all chains look like they're sampling the same PDF?</li>
+</ul>
+<p>In this case, things look pretty good, apart from the early behavior corresponding to the period just after each chain is started when it's finding its way to the region where the target PDF is non-tiny. This early behavior is called <strong>burn-in</strong>, and standard practice is to remove it from the chains before computing summaries like credible intervals. In this case, we might conservatively through away the first $\sim500$ steps from each chain. After this period, the chains are <em>mixing</em> well (all jumbled up). This "confetti projectile vomit" appearance is what we're looking for. [Endnote 1]</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Gelman-Rubin-statistic">Gelman-Rubin statistic<a class="anchor-link" href="#Gelman-Rubin-statistic">&#182;</a></h3><p>The Gelman-Rubin convergence statistic, $R$, quantitatively tests the similarlity of independent chains intended to sample the same PDF. To be meaningful, they should start from different locations and burn-in should be removed.</p>
+<p>For a given parameter, $\theta$, the $R$ statistic compares the variance across chains with the variance within a chain. Intuitively, if the chains are random-walking in very different places, i.e. not sampling the same distribution, $R$ will be large.</p>
+<p>We'd like to see $R\approx 1$; for example, $R&lt;1.1$ is often used as a requirement.</p>
+<p>In detail, given chains $J=1,\ldots,m$, each of length $n$,</p>
+<ul>
+<li><p>Let $B=\frac{n}{m-1} \sum_j \left(\bar{\theta}_j - \bar{\theta}\right)^2$, where $\bar{\theta_j}$ is the average $\theta$ for chain $j$ and $\bar{\theta}$ is the global average. This is proportional to the variance of the individual-chain averages for $\theta$.</p>
+</li>
+<li><p>Let $W=\frac{1}{m}\sum_j s_j^2$, where $s_j^2$ is the estimated variance of $\theta$ within chain $j$. This is the average of the individual-chain variances for $\theta$.</p>
+</li>
+<li><p>Let $V=\frac{n-1}{n}W + \frac{1}{n}B$. This is an estimate for the overall variance of $\theta$.</p>
+</li>
+</ul>
+<p>Finally, $R=\sqrt{\frac{V}{W}}$.</p>
+<p>Note that this calculation can also be used to track convergence of combinations of parameters, or anything else derived from them. One useful approach is to track the convergence of the eigenvectors of the covariance of the chains, capturing the main parameter degeneracies.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Correlation">Correlation<a class="anchor-link" href="#Correlation">&#182;</a></h2><p>The more correlated our chains are, the less useful information they contain per step. This is not actually a problem per se, since we could overcome it by just running the chain for longer. If we're in a situation where that would be unacceptably time consuming, the solution would be to step back and figure out a way to improve the proposal distribution. Regardless, it can be useful to have some idea how many "effectively independent" samples a chain contains.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Visual-inspection">Visual inspection<a class="anchor-link" href="#Visual-inspection">&#182;</a></h3><p>Once again, there is no substitute for the human eyeball. In these trace plots we can clearly see correlation within each chain, either repeated values or values that vary very little for many steps, before making a bigger jump. You can probably estimate by eye how many of these distinct loci each chain occupies in each parameter, post burn-in.</p>
+<table>
+    <tr>
+        <td><img src="graphics/mc1_sandbox_a.png" width=100%></td>
+        <td><img src="graphics/mc1_sandbox_b.png" width=100%></td>
+    </tr>
+</table><p>The degree of correlation evident in these chains is not ideal, but I would characterize it as "good enough" to work with. (However, I would probably want to run these chains for longer before calling it a day.)</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Autocorrelation-and-the-effective-number-of-independent-samples">Autocorrelation and the effective number of independent samples<a class="anchor-link" href="#Autocorrelation-and-the-effective-number-of-independent-samples">&#182;</a></h3><p>The autocorrelation of a sequence, as a function of lag, $k$, can be quantified:</p>
+<p>$\rho_k = \frac{\sum_{i=1}^{n-k}\left(\theta_{i} - \bar{\theta}\right)\left(\theta_{i+k} - \bar{\theta}\right)}{\sum_{i=1}^{n-k}\left(\theta_{i} - \bar{\theta}\right)^2} = \frac{\mathrm{Cov}_i\left(\theta_i,\theta_{i+k}\right)}{\mathrm{Var}(\theta)}$</p>
+<p>This calculation should be done <em>after</em> removing the burn-in phase. The larger lag one needs to get a small autocorrelation, the less informative individual samples are. Here are plots of the autocorrelation for each parameter, corresponding to one of the chains above.</p>
+<table>
+    <tr>
+        <td><img src="graphics/mc1_sandbox_acf-a.png" width=100%></td>
+        <td><img src="graphics/mc1_sandbox_acf-b.png" width=100%></td>
+    </tr>
+</table><p>The seemingly random oscillations roughly tell us the level of noise due to the fininte chain length; the function used to produce these plots estimates this and indicates it with the dashed lines. A coherent drop as a function of lag, as both figures have at small lags, indicates a genuine autocorrelation, and the lag at which it drops to within the noise is an approximate autocorrelation length.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>One could divide the chain length by this autocorrelation length to estimate the effective number of independent samples, but there is a more theoretically beautiful way.</p>
+<p>From $m$ chains of (post burn-in) length $n$, we compute</p>
+<p>$n_\mathrm{eff} = \frac{mn}{1+2\sum_{t=1}^\infty \hat{\rho}_t}$, with</p>
+<p>$\hat{\rho}_t = 1 - \frac{V_t}{2V}$,</p>
+<p>$V_t = \frac{1}{m(n-t)} \sum_{j=0}^m \sum_{i=t+1}^n (\theta_{i,j} - \theta_{i-t,j})^2$,</p>
+<p>and $V$ (without  subscript) as in the Gelman-Rubin calculation.</p>
+<p>In practice, the sum in the denominator of $n_\mathrm{eff}$ is cut off when the estimates $\hat{\rho}_t$ become "too noisy". A practical definition of "too noisy" is, e.g., when the sum of two successive values $\hat{\rho}_t$ and $\hat{\rho}_{t+1}$ is negative.</p>
+<p>If we wanted to, we would be reasonably justified in <em>thinning</em> our chains (that is selecting only a subset of samples, interspersed throughout the chain, and throwing the rest out) down to a total length of about $n_\mathrm{eff}$. However, there's no particular need to do so, unless the full chains are so long that computer memory is becoming an issue. The statistical properties of the unthinned chains are still as valid as those of the thinned chains would be (slightly more so, strictly speaking, since correlated samples still contain <em>some</em> new information).</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Exercise:-visually-inspect-some-chains">Exercise: visually inspect some chains<a class="anchor-link" href="#Exercise:-visually-inspect-some-chains">&#182;</a></h2><p>In each of the following trace plots, different colors show independent chains. For each decide by inspection whether the following are plausible claims:</p>
+<ol>
+<li>The chains have converged.</li>
+<li>The chains are highly correlated (qualitatively).</li>
+</ol>
+<p>Answers at the end of the notebook.</p>
+<table>
+    <tr>
+        <td><img src="graphics/mc1_convgame_1.png" width=100%></td>
+        <td><img src="graphics/mc1_convgame_2.png" width=100%></td>
+    </tr><tr>
+        <td><img src="graphics/mc1_convgame_3.png" width=100%></td>
+        <td><img src="graphics/mc1_convgame_4.png" width=100%></td>
+    </tr>
+</table>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="How-long-is-long-enough?">How long is long enough?<a class="anchor-link" href="#How-long-is-long-enough?">&#182;</a></h2><p>How many of these "effectively independent" samples do we need?</p>
+<p>The short and entirely unsatisfying answer is: enough that it looks good.</p>
+<p>The longer answer is: it depends what we're going to do with the samples. If we're sampling the posterior distribution, most of the samples will (naturally) be in the region where the posterior is large. This means that it takes fewer samples to characterize the peak of the PDF well than it does to capture the tails. Statistics like means and medians converge to the correct value surprisingly quickly, 68% credible intervals take more samples (but not vastly more), 95% intervals take many more samples, and going farther into the tails generally isn't worth the effort (which is to say, we would use a different algorithmic approach if that were the goal).</p>
+<p>More formally, the Monte Carlo error (due to the finite number of samples) of any estimate scales as $1/\sqrt{N}$, where $N$ is the number of samples, but the coefficient of this scaling depends on the estimate in question. For esimtation of the PDF itself, the expected fractional error on the density scales as $\sqrt{(1-q)/qN}$, with $q$ being the true value, so that probing the tails ($q\ll 1$) does indeed become very expensive.</p>
+<p>It takes a bit of experience to develop intuition for this, and you'll get to play around in the associated tutorial notebook.</p>
+<p>But the bottom line is, if you're planning on showing your result graphically as a 1D posterior or 2D credible regions, the number of samples it takes to make that figure look good (smooth) will almost always be <em>many</em> more than it takes to robustly determine the summaries like $\theta_0\pm\Delta\theta$ that report your results quantitatively. Strange but true.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Optional-extra-reading">Optional extra reading<a class="anchor-link" href="#Optional-extra-reading">&#182;</a></h4><p><a href="https://www.jstor.org/stable/2685466">This short discussion</a> provides some interesting context regarding how experts in the field (including the inventors of said metrics) approach the practical side of MCMC. Please do not cite these opinions as an excuse to not do visual inspection of your chains. While you are in this class, you will look at trace plots. After that, it's your funeral.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Endnotes">Endnotes<a class="anchor-link" href="#Endnotes">&#182;</a></h4><ol>
+<li>An officemate of mine in grad school once declared that my thesis project must be the study of colored dots. He wasn't wrong.</li>
+</ol>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Exercise-answers">Exercise answers<a class="anchor-link" href="#Exercise-answers">&#182;</a></h4><p>Top-left: converged and clearly correlated, but less so than some other examples.</p>
+<p>Top-right: not converged, highly correlated.</p>
+<p>Bottom-left: highly correlated; <em>plausibly</em> converged, though it's impossible to be certain without more steps.</p>
+<p>Bottom-right: the least correlated; quite possibly converged, though one suspects that the data were not very constraining and we've essentially converged to a prior bounded by [-1,1]. (The starting points were chosen to be relatively close together to make this "expanding" behavior clear, in this case.)</p>
 
 </div>
 </div>

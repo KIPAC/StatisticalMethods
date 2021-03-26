@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>cepheids_one_galaxy</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14259,76 +14259,924 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="PHYSICS-366:-Statistical-Methods-in-Astrophysics">PHYSICS 366: Statistical Methods in Astrophysics<a class="anchor-link" href="#PHYSICS-366:-Statistical-Methods-in-Astrophysics">&#182;</a></h1><p>Course notes and resources for Stanford University graduate course Physics 366.</p>
-<h2 id="Course-Description">Course Description<a class="anchor-link" href="#Course-Description">&#182;</a></h2><p>This course is intended to provide an introduction to modern
-statistical methodology, and its applications to problems in
-astrophysics and cosmology, and is aimed at graduate students
-intending to do research in this area. We
-strongly encourage most first and second year students working in
-KIPAC to take the course.  Our goal is to provide a background that
-will be directly relevant to the kind of problems that typical KIPAC
-students will encounter in their research.</p>
-<h2 id="Course-Objectives">Course Objectives<a class="anchor-link" href="#Course-Objectives">&#182;</a></h2><p>Our goal is that students taking this course will:</p>
-<ul>
-<li>develop familiarity in working with various types of astronomical data.</li>
-<li>understand the role of modeling in data analysis.</li>
-<li>develop facility with various types of inference from data.</li>
-<li>be able to critically evaluate and apply commonly used statistical methodologies.</li>
-<li>be able to apply advanced statistical reasoning to problems they are likely to encounter in their research.</li>
-</ul>
-<h2 id="Content">Content<a class="anchor-link" href="#Content">&#182;</a></h2><p><strong>Start by looking at the <a href="notes/overview.html">Overview</a> to understand how this course works, and <a href="notes/getting_started.html">Getting Started</a> to get up and running with Python and Jupyter, if needed.</strong>
-Enrolled students should also read the <a href="notes/assignments.html">Assignments</a> page to see what is expected.</p>
-<p>The course content can be browsed here in static HTML format. This is sufficient for the notes, but to do the tutorials you will need to download them in Jupyter notebook format from the <a href="https://github.com/KIPAC/StatisticalMethods/tree/master/tutorials">GitHub repository</a>.</p>
-<p>Notes and tutorials are listed in reasonable order below, but a better way to navigate the course may be through this nifty <a href="dependency_graph.html">dependency graph</a> (via <a href="https://mermaid-js.github.io/mermaid/">Mermaid</a>).</p>
-<h3 id="Notes">Notes<a class="anchor-link" href="#Notes">&#182;</a></h3><ul>
-<li><a href="notes/overview.html">Overview</a></li>
-<li><a href="notes/assignments.html">Assignments</a></li>
-<li><a href="notes/getting_started.html">Getting Started</a></li>
-<li><a href="notes/generative_models.html">Generative Models</a></li>
-<li><a href="notes/essential_probability.html">Essential Probability</a></li>
-<li><a href="notes/bayes_law.html">Bayes' Law</a></li>
-<li><a href="notes/credible_regions.html">Credible Regions</a></li>
-<li><a href="notes/errorbars.html">"Error bars"</a></li>
-<li><a href="notes/statistical_isms.html">Bayesianism and Other "isms"</a></li>
-<li><a href="notes/montecarlo.html">Monte Carlo Sampling</a></li>
-<li><a href="notes/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="notes/more_samplers.html">More Sampling Methods</a></li>
-<li><a href="notes/hierarchical.html">Hierarchical Models</a></li>
-<li><a href="notes/model_evaluation.html">Model Evaluation and Comparison</a></li>
-<li><a href="notes/missingdata.html">Missing Data and Selection Effects</a></li>
-<li><a href="notes/modelfreemodels.html">"Model-free" Models</a></li>
-<li><a href="notes/approximate_methods.html">Approximate Methods</a></li>
-<li><a href="notes/fishing.html">Fishing, Blinding and More</a></li>
-</ul>
-<h3 id="Tutorials">Tutorials<a class="anchor-link" href="#Tutorials">&#182;</a></h3><ul>
-<li><a href="tutorials/demo.html">Demo</a></li>
-<li><a href="tutorials/generative_models.html">Generative Models</a></li>
-<li><a href="tutorials/probability_essentials.html">Essential Probability</a></li>
-<li><a href="tutorials/probability_transformations.html">Probability Transformations</a></li>
-<li><a href="tutorials/bayes_law.html">Bayes' Law</a></li>
-<li><a href="tutorials/working_with_samples.html">Working With Samples</a></li>
-<li><a href="tutorials/credible_interals.html">Credible Regions</a></li>
-<li><a href="tutorials/gaussians.html">Gaussians and Least Squares</a></li>
-<li><a href="tutorials/xmm_image.html">XMM Image</a></li>
-<li><a href="tutorials/agn_photometry_grid.html">AGN Photometry: grid</a></li>
-<li><a href="tutorials/agn_photometry_gibbs.html">AGN Photometry: Gibbs sampling</a></li>
-<li><a href="tutorials/agn_photometry_metro.html">AGN Photometry: Metropolis sampling</a></li>
-<li><a href="tutorials/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="tutorials/ogle_lightcurve.html">OGLE Lightcurve</a></li>
-<li><a href="tutorials/microlensing.html">Microlensing</a></li>
-<li><a href="tutorials/cepheids.html">Cepheid Period-Luminosity Relation</a></li>
-<li><a href="tutorials/cepheids_one_galaxy.html">Cepheid P-L I: one galaxy</a></li>
-<li><a href="tutorials/cepheids_all_galaxies.html">Cepheid P-L II: multiple galaxies</a></li>
-<li><a href="tutorials/model_evaluation.html">Galaxy Cluster Mis-centering: model evaluation</a></li>
-<li><a href="tutorials/model_selection.html">Galaxy Cluster Mis-centering: model comparison</a></li>
-<li><a href="tutorials/missing_data.html">Shuttle O-ring Failures: missing data</a></li>
-</ul>
-<h2 id="Contact">Contact<a class="anchor-link" href="#Contact">&#182;</a></h2><ul>
-<li><a href="https://github.com/KIPAC/StatisticalMethods/issues/new?body=@abmantz">Adam Mantz</a></li>
-</ul>
-<p>All materials Copyright 2015, 2017, 2019, 2021 Adam Mantz, Phil Marshall and Claire Hébert, and distributed for copying and extension under the GPLv2 License, unless otherwise noted. If you have any feedback for us, please <a href="https://github.com/KIPAC/StatisticalMethods/issues">write us an issue</a>.</p>
+<h1 id="Tutorial:-The-Cepheid-Period-Luminosity-Relation-for-a-Single-Galaxy">Tutorial: The Cepheid Period-Luminosity Relation for a Single Galaxy<a class="anchor-link" href="#Tutorial:-The-Cepheid-Period-Luminosity-Relation-for-a-Single-Galaxy">&#182;</a></h1><p>In the <a href="cepheids.html">Cepheids</a> notebook, we loaded in data that should constrain the period-luminosity relation, and sketched out a hierarchical model that will let us determine whether the relation is universal (the same in all galaxies).</p>
+<p>Strictly speaking, even the model for a single galaxy is hierarchical, so we will start with that. Later on we will tackle the more complex challenge of fitting all the galaxies together.</p>
+<p>Start by restoring the previous notebook. This includes all of the <code>import</code>s from that notebook, so we don't need to repeat them.</p>
 
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">exec</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;tbc.py&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span> <span class="c1"># define TBC and TBC_above</span>
+<span class="kn">import</span> <span class="nn">dill</span>
+
+<span class="c1"># may need to change the load path</span>
+<span class="n">TBC</span><span class="p">()</span> <span class="c1"># dill.load_session(&#39;../ignore/cepheids.db&#39;)</span>
+
+<span class="n">exec</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;tbc.py&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span> <span class="c1"># (re-)define TBC and TBC_above</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>These are additional imports we imagine you might like.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="kn">import</span> <span class="nn">emcee</span>
+<span class="kn">import</span> <span class="nn">incredible</span> <span class="k">as</span> <span class="nn">cr</span>
+<span class="kn">from</span> <span class="nn">pygtc</span> <span class="kn">import</span> <span class="n">plotGTC</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="1.-Data">1. Data<a class="anchor-link" href="#1.-Data">&#182;</a></h2><p>Let's arbitarily use the first galaxy for this exercise - it's somewhere in the middle of the pack in terms of how many measured cepheids it contains.</p>
+<p>Even though we're only looking at one galaxy so far, let's try to write code that can later be re-used to handle any galaxy (so that we can fit all galaxies simultaneously). To that end, most functions will have an argument, <code>g</code>, which is a key into the <code>data</code> dictionary.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">ngc_numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">g</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Print the number of cepheids in this galaxy:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s1">&#39;Ngal&#39;</span><span class="p">]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="2.-Model-specification">2. Model specification<a class="anchor-link" href="#2.-Model-specification">&#182;</a></h2><p>Note: it isn't especially onerous to keep all the galaxies around for the "Model" and "Strategy" sections, but feel free to specialize to the single galaxy case if it helps.</p>
+<p>Before charging forward, let's finish specifying the model. We previously said we would allow an intrinsic scatter about the overall period-luminosity relation - let's take that to be Gaussian such that the linear relation sets the mean of the scatter distribution, and there is an additional parameter for the width (in magnitudes), $\sigma_i$, for the $i$th galaxy. (Note that normal scatter in magnitudes, which are log-luminosity, could also be called log-normal scatter in luminosity; these are completely equivalent.) We'll hold off on specifying hyperpriors for the distributions of intercepts, slopes and intrinsic scatters among galaxies.</p>
+<p>Your previous PGM should need minimal if any modification, but make sure that all of the model parameters are represented:</p>
+<ul>
+<li>The observed apparent magnitude of the $j^{th}$ cepheid in the $i^{th}$ galaxy, $m^{\rm obs}_{ij}$</li>
+<li>The "true" apparent magnitude of the $j^{th}$ cepheid in the $i^{th}$ galaxy, $m_{ij}$</li>
+<li>The known observational uncertainty on the apparent magnitude of the $j^{th}$ cepheid in the $i^{th}$ galaxy, $\varepsilon_{ij}$</li>
+<li>The true absolute magnitude of the $j^{th}$ cepheid in the $i^{th}$ galaxy, $M_{ij}$</li>
+<li><p>The log period for the $j^{th}$ cepheid in the $i^{th}$ galaxy, $\log_{10}P_{ij}$</p>
+</li>
+<li><p>The luminosity distance to the $i^{th}$ galaxy, $d_{L,i}$</p>
+</li>
+<li>The intercept parameter of the period-luminosity relation in the $i^{th}$ galaxy, $a_{i}$</li>
+<li>The slope parameter of the period-luminosity relation in the $i^{th}$ galaxy, $b_{i}$</li>
+<li>The intrinsic scatter parameter about the period-luminosity relation in the $i^{th}$ galaxy, $\sigma_{i}$</li>
+</ul>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<blockquote><p><em>TBC: new PGM</em></p>
+</blockquote>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Also write down the probabilistic expressions represented in the PGM, with the exception of those for $a_i$, $b_i$ and $\sigma_i$, which we still haven't chosen priors.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<blockquote><p><em>TBC: probabilistic relationships</em></p>
+</blockquote>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>For the remainder of this notebook, we will assume wide, uniform priors for $a_i$, $b_i$ and $\sigma_i$, but it's useful (for later) to have the model sketched out above withut those assumptions.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="3.-Strategy">3. Strategy<a class="anchor-link" href="#3.-Strategy">&#182;</a></h2><p>The hierarchical nature of this problem has left us with a large number of nuisance parameters, namely a true absolute magnitude for every one of the cepheids. The question now is: how are we going to deal with it?</p>
+<p>There are a few possibilities:</p>
+<h3 id="Sampling:">Sampling:<a class="anchor-link" href="#Sampling:">&#182;</a></h3><p>We could take a brute force approach - just apply one of the general-purpose algorithms we've looked at and hope it works.</p>
+<p>Alternatively, while it might not be obvious, this problem (a linear model with normal distributions everywhere) is fully conjugate, given the right choice of prior. We could therefore use a conjugate Gibbs sampling code specific to the linear/Gaussian case (it's common enough thay they exist) or a more general code that works out and takes advantage of any conjugate relations, given a model. (You could also work out and code up the conjugacies yourself, if you're into that kind of thing.) These are all still "brute-force" in the sense that they are sampling all the nuisance parameters, but we might hope for faster convergence than a more generic algorithm.</p>
+<h3 id="Direct-integration:">Direct integration:<a class="anchor-link" href="#Direct-integration:">&#182;</a></h3><p>If some parameters truly are nuisance parameters, in the sense that we don't care what their posteriors are, then we'll ultimately marginalize over them anyway. Rather than sampling the full-dimensional parameter space and then looking only at the marginal distributions we care about, we always have the option of sampling only parameters we care about, and, while evaluating <em>their</em> posterior, doing integrals over the nuisance parameters in some other way. In other words, we should remember that obtaining samples of a parameter is only one method of integrating over it.</p>
+<p>Whether it makes sense to go this route depends on the structure of the model (and how sophisticated you care to make your sampler). Somtimes, sampling the nuisance parameters just like the parameters of interest turns out to be the best option. Other times, direct integration is much more efficient. And, of course, "direct integration" could take many forms, depending on the integrand: an integral might be analytic, or it might be best accomplished by quadrature or by monte carlo integration. The dimensionality of the integration (in particular, whether it factors into one- or at least low-dimensional integrals) is something to consider.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>So, for this model, try to write down the posterior for $a_i$, $b_i$ and $\sigma_i$, marginalized over the $M_{ij}$ parameters. If you're persistent, you should find that the integral is analytic, meaning that we can reduce the sampling problem to a computationally efficient posterior distribution over just $a_i$, $b_i$ and $\sigma_i$, at the expense of having to use our brains.</p>
+<p>If you get super stuck, note that working this out is not a requirement for the notebook (see below), but I suspect it provides the most efficient solution overall.</p>
+<p>Hint: the <a href="gaussians.html"><code>gaussians</code></a> notebook is helpful here.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<blockquote><p><em>TBC math</em></p>
+</blockquote>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="4.-Obtain-the-posterior">4. Obtain the posterior<a class="anchor-link" href="#4.-Obtain-the-posterior">&#182;</a></h2><p>Sample the posterior of $a_i$, $b_i$ and $\sigma_i$ for the one galaxy chosen above (i.e. a single $i$), and do the usual sanity checks and visualizations. Use "wide uniform" priors on $a$, $b$ and $\sigma$.</p>
+<p>In the subsections below, you'll get to do this 3 different ways! First you'll apply a generic sampler to the brute-force and analytic integration methods. Then we'll walk through using a Gibbs sampling package.</p>
+<p>Hint: a common trick to reduce the posterior correlation between the intercept and slope parameters of a line is to reparametrize the model as $a+bx \rightarrow a' + b(x-x_0)$, where the "pivot" $x_0$ is roughly the mean of $x$ in the data. You don't <em>have</em> to do this, but smaller correlations usually mean faster convergence. If you do, don't forget about the redefinition when visualizing/interpretting the results!</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># find pivots (nb different for every galaxy, which is not what we&#39;d want in a simultaneous analysis)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ngc_numbers</span><span class="p">:</span>
+    <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;pivot&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;logP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="c1"># to avoid confusion later, reset all pivots to the same value</span>
+<span class="n">global_pivot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;logP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ngc_numbers</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ngc_numbers</span><span class="p">:</span>
+    <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;pivot&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">global_pivot</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Here's a function to evaluate the mean relation, with an extra argument for the pivot point:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">meanfunc</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">xpivot</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    x is log10(period/days)</span>
+<span class="sd">    returns an absolute magnitude</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">xpivot</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="4a.-Brute-force-sampling-of-all-parameters">4a. Brute force sampling of all parameters<a class="anchor-link" href="#4a.-Brute-force-sampling-of-all-parameters">&#182;</a></h3><p>Attempt to simply sample all the parameters of the model. Let's... not include all the individual magnitudes in these lists of named parameters, though.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">param_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;sigma&#39;</span><span class="p">]</span>
+<span class="n">param_labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;$a$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$b$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\sigma$&#39;</span><span class="p">]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>I suggest starting by finding decent guesses of $a$, $b$, $\sigma$ by trial and error/inspection. For extra fun, chose values such that the model goes through the points, but isn't a <em>great</em> fit. This will let us see how well the sampler used below performs when it needs to find its own way to the best fit.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TBC</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># guess = {&#39;a&#39;: ...</span>
+
+<span class="n">guessvec</span> <span class="o">=</span> <span class="p">[</span><span class="n">guess</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">param_names</span><span class="p">]</span> <span class="c1"># it will be useful to have `guess` as a vector also</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">7.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s1">&#39;logP&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s1">&#39;M&#39;</span><span class="p">],</span> <span class="n">yerr</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s1">&#39;merr&#39;</span><span class="p">],</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;log10 period/days&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;absolute magnitude&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
+<span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.25</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">meanfunc</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s1">&#39;pivot&#39;</span><span class="p">],</span> <span class="n">guess</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">],</span> <span class="n">guess</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">();</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>We'll provide the familiar skeleton of function prototypes below, with a couple of small changes. One is that we added an option argument <code>Mtrue</code> to the log-prior - this allows the same prior function to be used in all parts of this exercise, even when the true magnitudes are not being explicitly sampled (the function calls in later sections would simply not pass anything for <code>Mtrue</code>). The log-posterior function is also generic, in the sense that it takes as an argument the log-likelihood function it should use. Another difference is that we provide a function called <code>logpost_vecarg_A</code> ("A" referring to this part of the notebook) that takes a vector of parameters as input, ordered $a$, $b$, $\sigma$, $M_1$, $M_2$, ..., instead of a dictionary. This is for compatibility with the <code>emcee</code> sampler which is used below. (If you would like to use a different but still generic method instead, like HMC, go for it.)</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># prior, likelihood, posterior functions for a SINGLE galaxy</span>
+
+<span class="c1"># generic prior for use in all parts of the notebook</span>
+<span class="k">def</span> <span class="nf">log_prior</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">Mtrue</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">TBC</span><span class="p">()</span>
+    
+<span class="c1"># likelihood specifically for part A</span>
+<span class="k">def</span> <span class="nf">log_likelihood_A</span><span class="p">(</span><span class="n">gal</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">Mtrue</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    `gal` is an entry in the `data` dictionary; `a`, `b`, and `sigma` are scalars; `Mtrue` is an array</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">TBC</span><span class="p">()</span>
+    
+<span class="c1"># generic posterior, again for all parts of the problem</span>
+<span class="k">def</span> <span class="nf">log_posterior</span><span class="p">(</span><span class="n">gal</span><span class="p">,</span> <span class="n">loglike</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+    <span class="n">lnp</span> <span class="o">=</span> <span class="n">log_prior</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">lnp</span> <span class="o">!=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">:</span>
+        <span class="n">lnp</span> <span class="o">+=</span> <span class="n">loglike</span><span class="p">(</span><span class="n">gal</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">lnp</span>
+
+<span class="c1"># posterior for part A, taking a parameter array argument for compatibility with emcee</span>
+<span class="k">def</span> <span class="nf">logpost_vecarg_A</span><span class="p">(</span><span class="n">pvec</span><span class="p">):</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="n">pvec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">param_names</span><span class="p">)}</span>
+    <span class="n">params</span><span class="p">[</span><span class="s1">&#39;Mtrue&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pvec</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">param_names</span><span class="p">):]</span>
+    <span class="k">return</span> <span class="n">log_posterior</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">],</span> <span class="n">log_likelihood_A</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+
+<span class="n">TBC_above</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Here's a quick sanity check, which you can refine if needed:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">guess_A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">guessvec</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s1">&#39;M&#39;</span><span class="p">]))</span>
+<span class="n">logpost_vecarg_A</span><span class="p">(</span><span class="n">guess_A</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The cell below will set up and run <code>emcee</code> using the functions defined above. We've made some generic choices, such as using twice as many "walkers" as free parameters, and starting them distributed according to a Gaussian around <code>guess_A</code> with a width of 1%.</p>
+<h4 id="IMPORTANT">IMPORTANT<a class="anchor-link" href="#IMPORTANT">&#182;</a></h4><p>You do <strong>not</strong> need to run this version long enough to get what we would normally consider acceptable results, in terms of convergence and number of independent samples. Just convince yourself that it's functioning, and get a sense of how it performs. <strong>Please do not turn in a notebook where the sampling cell below takes longer than $\sim30$ seconds to evaluate.</strong></p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+
+<span class="n">nsteps</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># or whatever</span>
+
+<span class="n">npars</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">guess_A</span><span class="p">)</span>
+<span class="n">nwalkers</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">npars</span>
+<span class="n">sampler</span> <span class="o">=</span> <span class="n">emcee</span><span class="o">.</span><span class="n">EnsembleSampler</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">npars</span><span class="p">,</span> <span class="n">logpost_vecarg_A</span><span class="p">)</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">guess_A</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="mf">0.01</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">npars</span><span class="p">))</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">)])</span>
+<span class="n">sampler</span><span class="o">.</span><span class="n">run_mcmc</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">nsteps</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Yay!&#39;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Let's look at the usual trace plots, including only one of the magnitudes since there are so many.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">npars</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">guess</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">16.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="o">*</span><span class="n">npars</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">npars</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">cr</span><span class="o">.</span><span class="n">plot_traces</span><span class="p">(</span><span class="n">sampler</span><span class="o">.</span><span class="n">chain</span><span class="p">[:</span><span class="nb">min</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="n">nwalkers</span><span class="p">),:,:</span><span class="n">npars</span><span class="p">],</span> <span class="n">ax</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">param_labels</span><span class="o">+</span><span class="p">[</span><span class="sa">r</span><span class="s1">&#39;$M_1$&#39;</span><span class="p">]);</span>
+<span class="n">npars</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">guess_A</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Chances are this is not very impressive. But we carry on, to have it as a point of comparison. The cell below will print out the usual quantitiative diagnostics.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TBC</span><span class="p">()</span>
+<span class="c1"># burn = ...</span>
+<span class="c1"># maxlag = ...</span>
+
+<span class="n">tmp_samples</span> <span class="o">=</span> <span class="p">[</span><span class="n">sampler</span><span class="o">.</span><span class="n">chain</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">burn</span><span class="p">:,:</span><span class="mi">4</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;R =&#39;</span><span class="p">,</span> <span class="n">cr</span><span class="o">.</span><span class="n">GelmanRubinR</span><span class="p">(</span><span class="n">tmp_samples</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;neff =&#39;</span><span class="p">,</span> <span class="n">cr</span><span class="o">.</span><span class="n">effective_samples</span><span class="p">(</span><span class="n">tmp_samples</span><span class="p">,</span> <span class="n">maxlag</span><span class="o">=</span><span class="n">maxlag</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;NB: Since walkers are not independent, these will be optimistic!&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Plus, there&#39;s a good chance that the results in this section are garbage...&quot;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Finally, we'll look at a triangle plot.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">samples_A</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">chain</span><span class="p">[:,</span><span class="n">burn</span><span class="p">:,:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">nwalkers</span><span class="o">*</span><span class="p">(</span><span class="n">nsteps</span><span class="o">-</span><span class="n">burn</span><span class="p">),</span> <span class="n">npars</span><span class="p">)</span>
+
+<span class="n">plotGTC</span><span class="p">([</span><span class="n">samples_A</span><span class="p">[:,:</span><span class="mi">4</span><span class="p">]],</span> <span class="n">paramNames</span><span class="o">=</span><span class="n">param_labels</span><span class="o">+</span><span class="p">[</span><span class="sa">r</span><span class="s1">&#39;$M_1$&#39;</span><span class="p">],</span> <span class="n">chainLabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;emcee/brute&#39;</span><span class="p">],</span>
+        <span class="n">figureSize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">customLabelFont</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">},</span> <span class="n">customTickFont</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">},</span> <span class="n">customLegendFont</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">16</span><span class="p">});</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>We should also probably look at how well the fitted model matches the data, qualitatively.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">7.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s1">&#39;logP&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s1">&#39;M&#39;</span><span class="p">],</span> <span class="n">yerr</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s1">&#39;merr&#39;</span><span class="p">],</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;log10 period/days&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;absolute magnitude&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
+<span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.25</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">meanfunc</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s1">&#39;pivot&#39;</span><span class="p">],</span> <span class="n">samples_A</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">samples_A</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;emcee/brute&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">();</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="4b.-Sampling-with-analytic-marginalization">4b. Sampling with analytic marginalization<a class="anchor-link" href="#4b.-Sampling-with-analytic-marginalization">&#182;</a></h3><p>Next, implement sampling of $a$, $b$, $\sigma$ using your analytic marginalization over the true magnitudes. Again, the machinery to do the sampling is below; you only need to provide the log-posterior function.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">log_likelihood_B</span><span class="p">(</span><span class="n">gal</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    `gal` is an entry in the `data` dictionary; `a`, `b`, and `sigma` are scalars</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">TBC</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">logpost_vecarg_B</span><span class="p">(</span><span class="n">pvec</span><span class="p">):</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="n">pvec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">param_names</span><span class="p">)}</span>
+    <span class="k">return</span> <span class="n">log_posterior</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">],</span> <span class="n">log_likelihood_B</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+
+<span class="n">TBC_above</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Check for NaNs:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">logpost_vecarg_B</span><span class="p">(</span><span class="n">guessvec</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Again, we run <code>emcee</code> below. Anticipating an improvment in efficiency, we've increased the default number of steps below. Unlike the last time, you should run long enough to have useful samples in the end.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+
+<span class="n">nsteps</span> <span class="o">=</span> <span class="mi">10000</span>
+
+<span class="n">npars</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">param_names</span><span class="p">)</span>
+<span class="n">nwalkers</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">npars</span>
+<span class="n">sampler</span> <span class="o">=</span> <span class="n">emcee</span><span class="o">.</span><span class="n">EnsembleSampler</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">npars</span><span class="p">,</span> <span class="n">logpost_vecarg_B</span><span class="p">)</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">guessvec</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="mf">0.01</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">npars</span><span class="p">))</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">)])</span>
+<span class="n">sampler</span><span class="o">.</span><span class="n">run_mcmc</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">nsteps</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Yay!&#39;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Again, trace plots. Note that we no longer get a trace of the magnitude parameters. If we really wanted a posterior for them, we would now need to do extra calculations.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">16.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="o">*</span><span class="n">npars</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">npars</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">cr</span><span class="o">.</span><span class="n">plot_traces</span><span class="p">(</span><span class="n">sampler</span><span class="o">.</span><span class="n">chain</span><span class="p">[:</span><span class="nb">min</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="n">nwalkers</span><span class="p">),:,:],</span> <span class="n">ax</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">param_labels</span><span class="p">);</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Again, $R$ and $n_\mathrm{eff}$.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TBC</span><span class="p">()</span>
+<span class="c1"># burn = ...</span>
+<span class="c1"># maxlab = ...</span>
+
+<span class="n">tmp_samples</span> <span class="o">=</span> <span class="p">[</span><span class="n">sampler</span><span class="o">.</span><span class="n">chain</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">burn</span><span class="p">:,:]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;R =&#39;</span><span class="p">,</span> <span class="n">cr</span><span class="o">.</span><span class="n">GelmanRubinR</span><span class="p">(</span><span class="n">tmp_samples</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;neff =&#39;</span><span class="p">,</span> <span class="n">cr</span><span class="o">.</span><span class="n">effective_samples</span><span class="p">(</span><span class="n">tmp_samples</span><span class="p">,</span> <span class="n">maxlag</span><span class="o">=</span><span class="n">maxlag</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;NB: Since walkers are not independent, these will be optimistic!&#39;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Now, let's compare the posterior from this analysis to the one we got before:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">samples_B</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">chain</span><span class="p">[:,</span><span class="n">burn</span><span class="p">:,:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">nwalkers</span><span class="o">*</span><span class="p">(</span><span class="n">nsteps</span><span class="o">-</span><span class="n">burn</span><span class="p">),</span> <span class="n">npars</span><span class="p">)</span>
+
+<span class="n">plotGTC</span><span class="p">([</span><span class="n">samples_A</span><span class="p">[:,:</span><span class="mi">3</span><span class="p">],</span> <span class="n">samples_B</span><span class="p">],</span> <span class="n">paramNames</span><span class="o">=</span><span class="n">param_labels</span><span class="p">,</span> <span class="n">chainLabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;emcee/brute&#39;</span><span class="p">,</span> <span class="s1">&#39;emcee/analytic&#39;</span><span class="p">],</span>
+        <span class="n">figureSize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">customLabelFont</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">},</span> <span class="n">customTickFont</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">},</span> <span class="n">customLegendFont</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">16</span><span class="p">});</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><strong>Checkpoint:</strong> Your posterior is compared with our solution by the cell below. Note that we used the <code>global_pivot</code> defined above. If you did not, your constraints on $a$ will differ due to this difference in definition, even if everything is correct.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sol</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;solutions/ceph1.dat.gz&#39;</span><span class="p">)</span>
+<span class="n">plotGTC</span><span class="p">([</span><span class="n">sol</span><span class="p">,</span> <span class="n">samples_B</span><span class="p">],</span> <span class="n">paramNames</span><span class="o">=</span><span class="n">param_labels</span><span class="p">,</span> <span class="n">chainLabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;solution&#39;</span><span class="p">,</span> <span class="s1">&#39;my emcee/analytic&#39;</span><span class="p">],</span>
+        <span class="n">figureSize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">customLabelFont</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">},</span> <span class="n">customTickFont</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">},</span> <span class="n">customLegendFont</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">16</span><span class="p">});</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Moving on, look at how the two fits you've done compare visually:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">7.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s1">&#39;logP&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s1">&#39;M&#39;</span><span class="p">],</span> <span class="n">yerr</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s1">&#39;merr&#39;</span><span class="p">],</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;log10 period/days&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;absolute magnitude&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
+<span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.25</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">meanfunc</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s1">&#39;pivot&#39;</span><span class="p">],</span> <span class="n">samples_A</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">samples_A</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;emcee/brute&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">meanfunc</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s1">&#39;pivot&#39;</span><span class="p">],</span> <span class="n">samples_B</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">samples_B</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;emcee/analytic&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">();</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Comment on things like the efficiency, accuracy, and/or utility of the two approaches.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<blockquote><p><em>TBC commentary</em></p>
+</blockquote>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="4c.-Conjugate-Gibbs-sampling">4c. Conjugate Gibbs sampling<a class="anchor-link" href="#4c.-Conjugate-Gibbs-sampling">&#182;</a></h3><p>Finally, we'll step through using a specialized Gibbs sampler to solve this problem. We'll use the <code>LRGS</code> package, not because it's the best option (it isn't), but because it's written in pure Python. The industry-standard (and far less specialized) alternative goes by the name JAGS, and requires a separate installation (though one can add a Python interface on top of that).</p>
+<p>Let me stress that LRGS is in no fashion optimized for speed; JAGS is presumably faster, not to mention applicable to more than just fitting lines. Even so, LRGS seems to be comparable in speed with our analytically supercharged <code>emcee</code> in this case, when one considers that the samples it returns are less correlated.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">lrgs</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>LRGS is a "general" linear model fitter, meaning that $x$ and $y$ can be multidimensional. So the input data are formatted as matrices with one row for each data point. In this case, they're column vectors ($n\times1$ matrices).</p>
+<p>Measurement uncertainties are given as a list of covariance matrices. The code handles errors on both $x$ and $y$, so these are $2\times2$ for us. Since our $x$'s are given precisely, we just put in a dummy value here and use a different option to fix the values of $x$ below.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s1">&#39;logP&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s1">&#39;pivot&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s1">&#39;M&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+<span class="n">M</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">([[</span><span class="mf">1e-6</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">err</span><span class="o">**</span><span class="mi">2</span><span class="p">]])</span> <span class="k">for</span> <span class="n">err</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s1">&#39;merr&#39;</span><span class="p">]]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Conjugate Gibbs sampling can be parallelized in the simplest possible way - you just run multiple chains from different starting points or even just with different random seeds in parallel. (<code>emcee</code> is parallelized internally, since walkers need to talk to each other.) Therefore...</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">multiprocessing</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>This function sets things up and does the actual sampling, returning a Numpy array in the usual format. The default priors are equivalent to the ones we chose above, helpfully.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nsteps</span> <span class="o">=</span> <span class="mi">2000</span> <span class="c1"># some arbitrary number of steps to run</span>
+
+<span class="k">def</span> <span class="nf">do_gibbs</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="c1"># every parallel process will have the same random seed if we don&#39;t reset them here</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="c1"># lrgs.Parameters set up a sampler that assumes the x&#39;s are known precisely.</span>
+    <span class="c1"># Other classes would correspond to different possible priors on x.</span>
+    <span class="n">par</span> <span class="o">=</span> <span class="n">lrgs</span><span class="o">.</span><span class="n">Parameters</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
+    <span class="n">chain</span> <span class="o">=</span> <span class="n">lrgs</span><span class="o">.</span><span class="n">Chain</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">nsteps</span><span class="p">)</span>
+    <span class="n">chain</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">fix</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span> <span class="c1"># fix=&#39;x&#39; isn&#39;t necessary here, but it shows how one would fix other parameters if we wanted to</span>
+    <span class="c1"># Extracts the chain as a dictionary. Note that we have the option of hanging onto the samples of the magnitude</span>
+    <span class="c1">#  parameters in addition to the intercept, slope and scatter, though this is not the default.</span>
+    <span class="n">dchain</span> <span class="o">=</span> <span class="n">chain</span><span class="o">.</span><span class="n">to_dict</span><span class="p">([</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;Sigma&quot;</span><span class="p">])</span>
+    <span class="c1"># since $sigma^2$ is sampled rather than $\sigma$, take the square root here</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dchain</span><span class="p">[</span><span class="s1">&#39;B_0_0&#39;</span><span class="p">],</span> <span class="n">dchain</span><span class="p">[</span><span class="s1">&#39;B_1_0&#39;</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dchain</span><span class="p">[</span><span class="s1">&#39;Sigma_0_0&#39;</span><span class="p">])])</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Go!</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="k">with</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Pool</span><span class="p">()</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
+    <span class="n">gibbs_samples</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">do_gibbs</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># 2 parallel processes - change if you want</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Show!</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">16.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="o">*</span><span class="n">npars</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">npars</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">cr</span><span class="o">.</span><span class="n">plot_traces</span><span class="p">(</span><span class="n">gibbs_samples</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">param_labels</span><span class="p">);</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">burn</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">maxlag</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">tmp_samples</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="n">burn</span><span class="p">:,:]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">gibbs_samples</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;R =&#39;</span><span class="p">,</span> <span class="n">cr</span><span class="o">.</span><span class="n">GelmanRubinR</span><span class="p">(</span><span class="n">tmp_samples</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;neff =&#39;</span><span class="p">,</span> <span class="n">cr</span><span class="o">.</span><span class="n">effective_samples</span><span class="p">(</span><span class="n">tmp_samples</span><span class="p">,</span> <span class="n">maxlag</span><span class="o">=</span><span class="n">maxlag</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Here are the posteriors:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">samples_C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">tmp_samples</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">plotGTC</span><span class="p">([</span><span class="n">samples_A</span><span class="p">[:,:</span><span class="mi">3</span><span class="p">],</span> <span class="n">samples_B</span><span class="p">,</span> <span class="n">samples_C</span><span class="p">],</span> <span class="n">paramNames</span><span class="o">=</span><span class="n">param_labels</span><span class="p">,</span>
+        <span class="n">chainLabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;emcee/brute&#39;</span><span class="p">,</span> <span class="s1">&#39;emcee/analytic&#39;</span><span class="p">,</span> <span class="s1">&#39;LRGS/Gibbs&#39;</span><span class="p">],</span>
+        <span class="n">figureSize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">customLabelFont</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">},</span> <span class="n">customTickFont</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">},</span> <span class="n">customLegendFont</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">16</span><span class="p">});</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Again, look at the fit compared with the other methods:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">7.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s1">&#39;logP&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s1">&#39;M&#39;</span><span class="p">],</span> <span class="n">yerr</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s1">&#39;merr&#39;</span><span class="p">],</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;log10 period/days&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;absolute magnitude&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
+<span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.25</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">meanfunc</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s1">&#39;pivot&#39;</span><span class="p">],</span> <span class="n">samples_A</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">samples_A</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;emcee/brute&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">meanfunc</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s1">&#39;pivot&#39;</span><span class="p">],</span> <span class="n">samples_B</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">samples_B</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;emcee/analytic&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">meanfunc</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s1">&#39;pivot&#39;</span><span class="p">],</span> <span class="n">samples_C</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">samples_C</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()),</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;LRGS/Gibbs&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">();</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Finishing-up">Finishing up<a class="anchor-link" href="#Finishing-up">&#182;</a></h2><p>There's yet more fun to be had in the next tutorial, so let's again save the definitions and data from this session.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">del</span> <span class="n">pool</span> <span class="c1"># cannot be pickled</span>
+
+<span class="n">TBC</span><span class="p">()</span> <span class="c1"># change path below if desired</span>
+<span class="c1"># dill.dump_session(&#39;../ignore/cepheids_one.db&#39;)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 </div>
 </body>
 

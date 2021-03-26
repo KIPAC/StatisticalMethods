@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>modelfreemodels</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14259,74 +14259,98 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="PHYSICS-366:-Statistical-Methods-in-Astrophysics">PHYSICS 366: Statistical Methods in Astrophysics<a class="anchor-link" href="#PHYSICS-366:-Statistical-Methods-in-Astrophysics">&#182;</a></h1><p>Course notes and resources for Stanford University graduate course Physics 366.</p>
-<h2 id="Course-Description">Course Description<a class="anchor-link" href="#Course-Description">&#182;</a></h2><p>This course is intended to provide an introduction to modern
-statistical methodology, and its applications to problems in
-astrophysics and cosmology, and is aimed at graduate students
-intending to do research in this area. We
-strongly encourage most first and second year students working in
-KIPAC to take the course.  Our goal is to provide a background that
-will be directly relevant to the kind of problems that typical KIPAC
-students will encounter in their research.</p>
-<h2 id="Course-Objectives">Course Objectives<a class="anchor-link" href="#Course-Objectives">&#182;</a></h2><p>Our goal is that students taking this course will:</p>
+<h1 id="Notes:-&quot;Model-free&quot;-Models">Notes: "Model-free" Models<a class="anchor-link" href="#Notes:-&quot;Model-free&quot;-Models">&#182;</a></h1><p>In which we</p>
 <ul>
-<li>develop familiarity in working with various types of astronomical data.</li>
-<li>understand the role of modeling in data analysis.</li>
-<li>develop facility with various types of inference from data.</li>
-<li>be able to critically evaluate and apply commonly used statistical methodologies.</li>
-<li>be able to apply advanced statistical reasoning to problems they are likely to encounter in their research.</li>
+<li>Introduce and use techniques that purport to be "model independent".</li>
+<li>Lament the egregious inaccuracy of this terminology.</li>
 </ul>
-<h2 id="Content">Content<a class="anchor-link" href="#Content">&#182;</a></h2><p><strong>Start by looking at the <a href="notes/overview.html">Overview</a> to understand how this course works, and <a href="notes/getting_started.html">Getting Started</a> to get up and running with Python and Jupyter, if needed.</strong>
-Enrolled students should also read the <a href="notes/assignments.html">Assignments</a> page to see what is expected.</p>
-<p>The course content can be browsed here in static HTML format. This is sufficient for the notes, but to do the tutorials you will need to download them in Jupyter notebook format from the <a href="https://github.com/KIPAC/StatisticalMethods/tree/master/tutorials">GitHub repository</a>.</p>
-<p>Notes and tutorials are listed in reasonable order below, but a better way to navigate the course may be through this nifty <a href="dependency_graph.html">dependency graph</a> (via <a href="https://mermaid-js.github.io/mermaid/">Mermaid</a>).</p>
-<h3 id="Notes">Notes<a class="anchor-link" href="#Notes">&#182;</a></h3><ul>
-<li><a href="notes/overview.html">Overview</a></li>
-<li><a href="notes/assignments.html">Assignments</a></li>
-<li><a href="notes/getting_started.html">Getting Started</a></li>
-<li><a href="notes/generative_models.html">Generative Models</a></li>
-<li><a href="notes/essential_probability.html">Essential Probability</a></li>
-<li><a href="notes/bayes_law.html">Bayes' Law</a></li>
-<li><a href="notes/credible_regions.html">Credible Regions</a></li>
-<li><a href="notes/errorbars.html">"Error bars"</a></li>
-<li><a href="notes/statistical_isms.html">Bayesianism and Other "isms"</a></li>
-<li><a href="notes/montecarlo.html">Monte Carlo Sampling</a></li>
-<li><a href="notes/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="notes/more_samplers.html">More Sampling Methods</a></li>
-<li><a href="notes/hierarchical.html">Hierarchical Models</a></li>
-<li><a href="notes/model_evaluation.html">Model Evaluation and Comparison</a></li>
-<li><a href="notes/missingdata.html">Missing Data and Selection Effects</a></li>
-<li><a href="notes/modelfreemodels.html">"Model-free" Models</a></li>
-<li><a href="notes/approximate_methods.html">Approximate Methods</a></li>
-<li><a href="notes/fishing.html">Fishing, Blinding and More</a></li>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="What-is-this-all-about?">What is this all about?<a class="anchor-link" href="#What-is-this-all-about?">&#182;</a></h2><p>Sometimes we simply don't have a good first-principles model for what's going on in our data, but we're also confident that making a simple assumption (e.g. Gaussian scatter) is dead wrong. Examples include</p>
+<ul>
+<li>photometric redshifts, which can suffer from "catastrophic errors" (i.e. a very wide and not well understood sampling distribution)</li>
+<li>photometric supernova detections, where the data will include multiple, physically different populations</li>
 </ul>
-<h3 id="Tutorials">Tutorials<a class="anchor-link" href="#Tutorials">&#182;</a></h3><ul>
-<li><a href="tutorials/demo.html">Demo</a></li>
-<li><a href="tutorials/generative_models.html">Generative Models</a></li>
-<li><a href="tutorials/probability_essentials.html">Essential Probability</a></li>
-<li><a href="tutorials/probability_transformations.html">Probability Transformations</a></li>
-<li><a href="tutorials/bayes_law.html">Bayes' Law</a></li>
-<li><a href="tutorials/working_with_samples.html">Working With Samples</a></li>
-<li><a href="tutorials/credible_interals.html">Credible Regions</a></li>
-<li><a href="tutorials/gaussians.html">Gaussians and Least Squares</a></li>
-<li><a href="tutorials/xmm_image.html">XMM Image</a></li>
-<li><a href="tutorials/agn_photometry_grid.html">AGN Photometry: grid</a></li>
-<li><a href="tutorials/agn_photometry_gibbs.html">AGN Photometry: Gibbs sampling</a></li>
-<li><a href="tutorials/agn_photometry_metro.html">AGN Photometry: Metropolis sampling</a></li>
-<li><a href="tutorials/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="tutorials/ogle_lightcurve.html">OGLE Lightcurve</a></li>
-<li><a href="tutorials/microlensing.html">Microlensing</a></li>
-<li><a href="tutorials/cepheids.html">Cepheid Period-Luminosity Relation</a></li>
-<li><a href="tutorials/cepheids_one_galaxy.html">Cepheid P-L I: one galaxy</a></li>
-<li><a href="tutorials/cepheids_all_galaxies.html">Cepheid P-L II: multiple galaxies</a></li>
-<li><a href="tutorials/model_evaluation.html">Galaxy Cluster Mis-centering: model evaluation</a></li>
-<li><a href="tutorials/model_selection.html">Galaxy Cluster Mis-centering: model comparison</a></li>
-<li><a href="tutorials/missing_data.html">Shuttle O-ring Failures: missing data</a></li>
+<p>In these situations, we're motivated to avoid strong modeling assumptions and instead be more empirical. Common adjectives used in this sphere are</p>
+<ul>
+<li>non-parametric,</li>
+<li>model-independent,</li>
+<li>data-driven,</li>
+<li>empirical.</li>
 </ul>
-<h2 id="Contact">Contact<a class="anchor-link" href="#Contact">&#182;</a></h2><ul>
-<li><a href="https://github.com/KIPAC/StatisticalMethods/issues/new?body=@abmantz">Adam Mantz</a></li>
+<p>In reality, several of the approaches discussed below <em>are</em> models, and in fact have <em>loads</em> of parameters. Still, the terminology seems to be with us.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Resampling-methods:-jackknife-and-bootstrap">Resampling methods: jackknife and bootstrap<a class="anchor-link" href="#Resampling-methods:-jackknife-and-bootstrap">&#182;</a></h2><p>These methods try to compensate for "small sample" effects in the data, or otherwise <em>not knowing the sampling distribution.</em> Resampling is usually seen in frequentist estimation rather than Bayesian inference, but there are Bayesian adaptations and interpretations.</p>
+<p>The classic example for resampling is robustifying the estimation of a sample mean, when the sampling distribution appears to have heavy, non-Gaussian tails. But, in general, there is some quantity that we would like to infer from the data - we don't have a proper model to fit, but we can somehow estimate it from the data more directly.</p>
+<h3 id="Jackknife">Jackknife<a class="anchor-link" href="#Jackknife">&#182;</a></h3><p>The jackknife procedure is</p>
+<ol>
+<li>Remove 1 (or more) data points from the data set.</li>
+<li>Calculate the estimate of interest using the reduced data set.</li>
+<li>Repeat this for every possible reduced data set.</li>
+</ol>
+<p>The average (compared to the full-data-set calculation) and scatter of these estimates provides some idea of the small-sample bias and its scatter.</p>
+<h3 id="Bootstrap">Bootstrap<a class="anchor-link" href="#Bootstrap">&#182;</a></h3><p>The bootstrap is a little more sophisticated. The idea is that we have data that sample a distribution (what we normally aptly call the sampling distribution), so they can be used as a direct (if crude) estimate of that distribution without further assumptions. A key requirement is that the measured data are a fair representation of draws from that distribution. The procedure is</p>
+<ol>
+<li>Generate a new data set of the same size as the real data by sampling <em>with replacement</em> from the real data points.</li>
+<li>Calculate whatever statistic or estimate is of interest from the bootstrap data set.</li>
+<li>Do this many times, and interpret the resulting distribution as indicative of the true uncertainty from the sampling distribution, translated to the estimand.</li>
+</ol>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Mixture-models">Mixture models<a class="anchor-link" href="#Mixture-models">&#182;</a></h2><p>This refers to the general practice of building a complicated distribution out of simpler components. Technically, a mixture model is one where a PDF is composed of a sum of simpler PDFs,</p>
+<p>$p(x) = \sum_i \pi_i \, q_i(x)$,</p>
+<p>where the coefficients $\sum_i \pi_i=1$, and the $q_i(x)$ are normalized.</p>
+<p>We could generate from this PDF by drawing from $q_i$ with probability $\pi_i$. Equivalently, we could interpret this as saying that $x$ belongs to one of several populations, each described by $q_i$, with prior probability $\pi_i$. Or we could just use the mixture as a tool to allow significant (but obviously not total) freedom in $p(x)$.</p>
+<p>How would we decide on the number of mixture components? Depending on the application, we might:</p>
+<ol>
+<li>Test how sensitive our inferences are to the number.</li>
+<li>Do formal model comparison (e.g. via an information criterion, or the evidence) to decide.</li>
+<li>Explicitly marginalize over the number of components (requires more sophisticated sampling techniques than we have covered).</li>
+</ol>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="&quot;Non-parametric&quot;-Models">"Non-parametric" Models<a class="anchor-link" href="#&quot;Non-parametric&quot;-Models">&#182;</a></h2><p>The term "non-parametric" is used vaguely (and often inaccurately), so it's best explained by example:</p>
+<blockquote><p>In gravitational lensing, image shear (or stronger distortions) can be measured at the positions of background galaxies in the image plane. Often, the mass distribution of the lens is modeled as the sum of a small number of idealized structures with parametrized mass distributions.</p>
+<p>Alternatively, <a href="http://adsabs.harvard.edu/abs/2005A%26A...437...39B">Bradac et al (2005)</a> model the deflection potential on a regular grid (eg. their Figure 5), interpolating to the position of measured galaxies, avoiding explicit assumptions about the nature of the lens.</p>
+</blockquote>
+<p>In other words, a "non-parametric" model is usually one with many more parameters than a standard, "parametric" model. What's different is that we don't make a global assumption about the form of some function in the model, and instead assume that it's piecewise linear, or piecewise constant, or otherwise simply interpolatable between various values that comprise the parameters of the model.</p>
+<p>A common feature of non-parametric models is that they bypass the usual business of defining a physically motivated model. Instead, they are usually "data-driven":</p>
+<ul>
+<li>They usually attempt to define a "physics-agnostic" model, but with enough flexibility to describe the data.</li>
+<li>This flexibility scales with the size of the dataset, in order that the data continues to be well described.</li>
 </ul>
-<p>All materials Copyright 2015, 2017, 2019, 2021 Adam Mantz, Phil Marshall and Claire Hébert, and distributed for copying and extension under the GPLv2 License, unless otherwise noted. If you have any feedback for us, please <a href="https://github.com/KIPAC/StatisticalMethods/issues">write us an issue</a>.</p>
+<p>Thus, "non-parametric" models are in no sense <em>assumption-free</em> - they just involve <em>different</em> assumptions than more simply parametrized, physics-based models.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Stochastic-Processes">Stochastic Processes<a class="anchor-link" href="#Stochastic-Processes">&#182;</a></h2><p>Stochastic processes are one way to define a non-paramtetric model, with a bit more sophistication and much more complexity than the "piecewise-linear" option. A stochastic process is collection of variables drawn from a probability distribution over functions (as opposed to the familiar probability distributions over real numbers, integers, etc.). In other words, if our function of interest is $y(x)$, a stochastic process assigns probabilities $P\left[y(x)\right]$.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Gaussian-Processes">Gaussian Processes<a class="anchor-link" href="#Gaussian-Processes">&#182;</a></h3><p>A Gaussian process is a particular stochastic process for which</p>
+<p>$P\left[y(x) | y(x_1), y(x_2), \ldots\right]$</p>
+<p>is a Gaussian PDF whose mean and variance depend on the $x_i$ and $y(x_i)$. The process is specified by a "mean function" $\mu(x)$ and a "covariance function" $C(x)$, or "kernel," which determines how quickly $y(x)$ can vary.</p>
+<p>A nice feature of Gaussian processes is that all the calculations involved in the conditioning above are algebraic. In other words, if we know the value of the function at some set of $x_i$, its relatively easy to compute the uncertainty on its value at some other $x$, conditional on that knowledge.</p>
+<p>More technically, a draw from $P[y(x^*)]$ would represent a prior prediction for the function value $y(x^*)$. But, typically, we are more interested in the posterior prediction, drawn from $P[y(x^*)\vert y^{\rm obs}(x_{\rm obs})]$, where $x_{\rm obs}$ are the locations where we know the function and $x^*$ is some other location. This posterior PDF for $y(x^*)$ is a Gaussian, whose mean and standard deviation can be computed algebraically, and which is constrained by <em>all the previously observed $y(x)$</em>. The formalism for all these calculations easily extends to the case where our measurements of $y^{\rm obs}$ come from a Gaussian sampling distribution.</p>
+<p>Gaussian processes provide a natural way to achieve high flexibility (and uncertainty) when interpolating data, provided we're willing to make the appropriate assumptions (e.g. Gaussian measurement errors). For a given kernel, the required computations are quite efficient. Marginalization over hyperparameters such as the width of the kernel is more computationally expensive (involving the determinants of the matrices), but reasonably fast methods have been developed.</p>
+<h4 id="Additional-GP-resources">Additional GP resources<a class="anchor-link" href="#Additional-GP-resources">&#182;</a></h4><p>Rasmussen &amp; Williams <a href="http://www.gaussianprocess.org/gpml/"><em>Gaussian Processes for Machine Learning</em></a></p>
 
 </div>
 </div>

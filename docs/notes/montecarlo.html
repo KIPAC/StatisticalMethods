@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>montecarlo</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14259,74 +14259,425 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="PHYSICS-366:-Statistical-Methods-in-Astrophysics">PHYSICS 366: Statistical Methods in Astrophysics<a class="anchor-link" href="#PHYSICS-366:-Statistical-Methods-in-Astrophysics">&#182;</a></h1><p>Course notes and resources for Stanford University graduate course Physics 366.</p>
-<h2 id="Course-Description">Course Description<a class="anchor-link" href="#Course-Description">&#182;</a></h2><p>This course is intended to provide an introduction to modern
-statistical methodology, and its applications to problems in
-astrophysics and cosmology, and is aimed at graduate students
-intending to do research in this area. We
-strongly encourage most first and second year students working in
-KIPAC to take the course.  Our goal is to provide a background that
-will be directly relevant to the kind of problems that typical KIPAC
-students will encounter in their research.</p>
-<h2 id="Course-Objectives">Course Objectives<a class="anchor-link" href="#Course-Objectives">&#182;</a></h2><p>Our goal is that students taking this course will:</p>
+<h1 id="Notes:-Monte-Carlo-Sampling">Notes: Monte Carlo Sampling<a class="anchor-link" href="#Notes:-Monte-Carlo-Sampling">&#182;</a></h1><p>In which we will</p>
 <ul>
-<li>develop familiarity in working with various types of astronomical data.</li>
-<li>understand the role of modeling in data analysis.</li>
-<li>develop facility with various types of inference from data.</li>
-<li>be able to critically evaluate and apply commonly used statistical methodologies.</li>
-<li>be able to apply advanced statistical reasoning to problems they are likely to encounter in their research.</li>
+<li>Review the motivation for doing MC sampling in inference, and the basic sampling methods.</li>
+<li>Dig into Markov Chain Monte Carlo and two of the workhorse algorithms.</li>
 </ul>
-<h2 id="Content">Content<a class="anchor-link" href="#Content">&#182;</a></h2><p><strong>Start by looking at the <a href="notes/overview.html">Overview</a> to understand how this course works, and <a href="notes/getting_started.html">Getting Started</a> to get up and running with Python and Jupyter, if needed.</strong>
-Enrolled students should also read the <a href="notes/assignments.html">Assignments</a> page to see what is expected.</p>
-<p>The course content can be browsed here in static HTML format. This is sufficient for the notes, but to do the tutorials you will need to download them in Jupyter notebook format from the <a href="https://github.com/KIPAC/StatisticalMethods/tree/master/tutorials">GitHub repository</a>.</p>
-<p>Notes and tutorials are listed in reasonable order below, but a better way to navigate the course may be through this nifty <a href="dependency_graph.html">dependency graph</a> (via <a href="https://mermaid-js.github.io/mermaid/">Mermaid</a>).</p>
-<h3 id="Notes">Notes<a class="anchor-link" href="#Notes">&#182;</a></h3><ul>
-<li><a href="notes/overview.html">Overview</a></li>
-<li><a href="notes/assignments.html">Assignments</a></li>
-<li><a href="notes/getting_started.html">Getting Started</a></li>
-<li><a href="notes/generative_models.html">Generative Models</a></li>
-<li><a href="notes/essential_probability.html">Essential Probability</a></li>
-<li><a href="notes/bayes_law.html">Bayes' Law</a></li>
-<li><a href="notes/credible_regions.html">Credible Regions</a></li>
-<li><a href="notes/errorbars.html">"Error bars"</a></li>
-<li><a href="notes/statistical_isms.html">Bayesianism and Other "isms"</a></li>
-<li><a href="notes/montecarlo.html">Monte Carlo Sampling</a></li>
-<li><a href="notes/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="notes/more_samplers.html">More Sampling Methods</a></li>
-<li><a href="notes/hierarchical.html">Hierarchical Models</a></li>
-<li><a href="notes/model_evaluation.html">Model Evaluation and Comparison</a></li>
-<li><a href="notes/missingdata.html">Missing Data and Selection Effects</a></li>
-<li><a href="notes/modelfreemodels.html">"Model-free" Models</a></li>
-<li><a href="notes/approximate_methods.html">Approximate Methods</a></li>
-<li><a href="notes/fishing.html">Fishing, Blinding and More</a></li>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Motivation:-why-sample?">Motivation: why sample?<a class="anchor-link" href="#Motivation:-why-sample?">&#182;</a></h2><p>In exploring the consqeuences of Bayes' Law so far, we've restricted ourselves to inferences with analytic solutions and low-dimensional parameter spaces. Needless to say, these are not typical use cases.</p>
+<p>In general, we will not have a convenient analytical solution, and evaluating the posterior throughout the entire parameter space will be too costly. We want to focus resources on mapping the posterior where it is non-tiny. Generating samples from the posterior itself, or a similar PDF, accomplishes this.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Sampling-and-numerical-integration">Sampling and numerical integration<a class="anchor-link" href="#Sampling-and-numerical-integration">&#182;</a></h3><p>In principle, given samples from the posterior, we could estimate the density at any point using some form of kernel density estimator. However, as you saw in the notes on <a href="credible_regions.html">credible regions</a>, the results we report are usually based on marginal posteriors over 1 or 2 parameters. In other words, we are ultimately interested in <em>integrals</em> of the posterior. These integrals can also be computed from a set of posterior samples using <strong>Monte Carlo integration</strong>, and in general the number of samples we need to accurately estimate the 1D and/or 2D marginal posteriors is far fewer than we would need to accurately estimate the full-dimensional posterior.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The essence of MC integration is as follows. Given any integrand, $f(x)$, factor $f$ into a product, $p(x)w(x)$, in which one term ($p$) is a PDF that is non-zero over the domain of integration. Then, drawn $n$ samples from $p(x)$, and evaluate $w(x)$ at each of these $x_i$, $i=1,\ldots,n$. The integral can then be approximated as</p>
+<p>$\int f(x) \, dx = \int w(x) \, p(x) \, dx \approx \frac{1}{n}\sum_i w(x_i)$.</p>
+<p>This approximation becomes exact in the limit $n\rightarrow\infty$ <em>no matter what $p$ we choose</em>, provided that it is non-zero everywhere between the limits of integration that $w(x)$ is non-zero. However, how quickly the average converges to the correct integral (what $n$ needs to be) does depend on the choice of $p$.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>How does this help us? Let's imagine we have a clever way of sampling from the posterior distribution, whatever it happens to be. If the posterior is 1D to begin with, we can simply estimate the posterior density based on the density of samples, e.g. by making a histogram, and find our best value and credible interval from there. But if the posterior is multi-dimensional, we will need to integrate it down to get a 1D marginal posterior for the first parameter (say). We can do that by simplemindedly using the approximation above, with $p$ being the posterior itself (which we already have samples from), and $w=1$. That is, if $\theta$ is the parameter we care about and $\phi$ are those we want to integrate out,</p>
+<p>$p(\theta|\mathrm{data}) = \int d\phi \, p(\theta,\phi|\mathrm{data}) = \int d\phi \, p(\theta,\phi|\mathrm{data})\times 1 \approx \frac{1}{n}\sum_i 1$.</p>
+<p>This might look like it will be 1 all the time, but remember that the integral here is at a fixed value of $\theta$. So, the corresponding sum is only over samples with that value of $\theta$, and there are probably fewer than $n$ of them. (If it's still confusing, imagine modifying the above to integrate over both $\phi$ and $\theta$ - that certainly should return 1, since the posterior is normalized. Now, imagine straightforwardly removing the integral over $\theta$.)</p>
+<p>In practical terms, this means the that the correct procedure is the most straightforward thing one could imagine. If we have posterior samples, the way we estimate the 1D marginalized posterior of $\theta$ is to ignore all other parameters and simply make a histogram of the $\theta$ values from our samples, just like in the case where the posterior was 1D to begin with. Similarly, a 2D marginalized posterior would be estimated based on a 2D histogram made from the samples of just 2 parameters, regardless of what the other parameters are doing.</p>
+<p>Note that MC integration will work for us even if we sample from some distribution other than the posterior itself, if we chose $w$ appropriately. There are algorithms tailored to both possibilities.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Simple-Monte-Carlo">Simple Monte Carlo<a class="anchor-link" href="#Simple-Monte-Carlo">&#182;</a></h3><p>We've already seen a natural and non-trivial factorization of the posterior, into a likelihood function and a prior PDF,</p>
+<p>$p(\theta|\mathrm{data}) \propto p(\mathrm{data}|\theta)\,p(\theta)$.</p>
+<p>Applying this in the MC integration context leads to the Simple Monte Carlo algorithm:</p>
+
+<pre><code>while we want more samples
+    draw theta from p(theta)
+    compute weight = p(data|theta)
+    store theta and weight</code></pre>
+<p>Obtaining marginal distribution(s) for $\theta$ then reduces to constructing weighted histograms of the samples. This is hardly different from the case considered above, where the weights happened to be equal.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>SMC is indeed simple (as long as the prior is simple to draw from), but if the priors are not very informative then it can be very inefficient, wasting many likelihood evaluations where the posterior is small. Indeed, if all the priors are uniform, SMC is no more efficient than evaluating the posterior over a grid. However, refinements of this approach lead to some of the advanced algorithms we'll cover later.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Importance-weighting/importance-sampling">Importance weighting/importance sampling<a class="anchor-link" href="#Importance-weighting/importance-sampling">&#182;</a></h3><p>Here is another straightforward application of the basic premise of MC integration. Say we have already done an analysis in which we obtained samples from some $p$ and computed the corresponding weights according to $w$. Now imagine that we want to incorporate a second data set into the inference. We can do this <em>without</em> generating more samples by simply multiplying the weights with the likelihood associated with this second data set, and repeating whatever integrations we wanted to do (i.e., making new weighted histograms). This will work as long as the original samples span the domain over which the second likelihood is significantly non-zero, although it may leave us with "effectively" fewer samples.</p>
+<p>Equivalently, we could leave the weights alone, but re-sample from our original list of samples with probabilities proportional to the second likelihood.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Random-number-generation">Random number generation<a class="anchor-link" href="#Random-number-generation">&#182;</a></h2><p>Before diving any further into the algorithms used for Bayesian analysis, it's worth reviewing the more fundamental approaches to generating psuedorandom numbers from some distribution. We won't normally use these procedures directly, but conceptually they play a role in the algorithms that we will use.</p>
+<p>To begin with, let's get the terminology straight.</p>
+<ul>
+<li><p>Random: not deterministic; predictable only in the sense of following a PDF. Computer algorithms do not produce random numbers.</p>
+</li>
+<li><p>Pseudorandom: not random, but "unpredictable enough" for practical purposes. The usual "random number generator" algorithms that are not standard, e.g. in <code>numpy</code>, actually produce pseudorandom sequences. Generally, these approximate the uniform distribution on the interval [0,1).</p>
+</li>
+<li><p>Quasirandom: not random, and "more predicable" in human terms than pseudorandom. A quasirandom sequence can therefore converge to the target PDF (in the sense of sampling it evenly and having the right mean, standard devaiation, etc.) <em>more quickly</em> than a truly random or pseudorandom. This can make them very useful for MC integration generally, although less so for our purposes. (One classic quasirandom sequence goes: $1/2, 1/4, 3/4, 1/8, 7/8, 3/8, 5/8, \ldots$)</p>
+</li>
 </ul>
-<h3 id="Tutorials">Tutorials<a class="anchor-link" href="#Tutorials">&#182;</a></h3><ul>
-<li><a href="tutorials/demo.html">Demo</a></li>
-<li><a href="tutorials/generative_models.html">Generative Models</a></li>
-<li><a href="tutorials/probability_essentials.html">Essential Probability</a></li>
-<li><a href="tutorials/probability_transformations.html">Probability Transformations</a></li>
-<li><a href="tutorials/bayes_law.html">Bayes' Law</a></li>
-<li><a href="tutorials/working_with_samples.html">Working With Samples</a></li>
-<li><a href="tutorials/credible_interals.html">Credible Regions</a></li>
-<li><a href="tutorials/gaussians.html">Gaussians and Least Squares</a></li>
-<li><a href="tutorials/xmm_image.html">XMM Image</a></li>
-<li><a href="tutorials/agn_photometry_grid.html">AGN Photometry: grid</a></li>
-<li><a href="tutorials/agn_photometry_gibbs.html">AGN Photometry: Gibbs sampling</a></li>
-<li><a href="tutorials/agn_photometry_metro.html">AGN Photometry: Metropolis sampling</a></li>
-<li><a href="tutorials/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="tutorials/ogle_lightcurve.html">OGLE Lightcurve</a></li>
-<li><a href="tutorials/microlensing.html">Microlensing</a></li>
-<li><a href="tutorials/cepheids.html">Cepheid Period-Luminosity Relation</a></li>
-<li><a href="tutorials/cepheids_one_galaxy.html">Cepheid P-L I: one galaxy</a></li>
-<li><a href="tutorials/cepheids_all_galaxies.html">Cepheid P-L II: multiple galaxies</a></li>
-<li><a href="tutorials/model_evaluation.html">Galaxy Cluster Mis-centering: model evaluation</a></li>
-<li><a href="tutorials/model_selection.html">Galaxy Cluster Mis-centering: model comparison</a></li>
-<li><a href="tutorials/missing_data.html">Shuttle O-ring Failures: missing data</a></li>
+<p>In this section, we assume that we have a reliable source of uniform pseudorandom numbers, and need to transform them into samples from some other PDF. (In days past, we would caution you about the fact that these generators eventually repeat themselves, but the standard algorithms in <code>numpy</code> and similar packages have vastly longer periods than those that used to be the default for programmers in C Fortran.)</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Inverse-transform-method">Inverse transform method<a class="anchor-link" href="#Inverse-transform-method">&#182;</a></h3><p>Recall the definition of the CDF (and it's inverse, $F^{-1}$, the quantile function),</p>
+<p>$F(x') = P(x \leq x') = \int_{-\infty}^{x'} p(t)\,dt$.</p>
+<p>The quantiles of $x$ are, by definition, uniformly distributed on [0,1]. If $F^{-1}$ is easy to evaluate, we can use this straightforwardly,</p>
+
+<pre><code>while we want more samples
+    draw u from Uniform(0,1)
+    compute x = F_inverse(u)
+    store x</code></pre>
+<p>and the resulting <code>x</code> will follow the distribution whose quantile function is $F^{-1}$. This is illustrated in the plots below, where the left figure shows some PDF, and the right shows the corresponding CDF, with a uniform draw along the $y$ axis leading to the selection of a quantile along the $x$ axis. Intuitively, our samples of $x$ will cluster most densely where the CDF is steep (i.e., it's derivative, the PDF, is large).</p>
+<table>
+    <tr>
+        <td><img src="graphics/mc1_invtrans0.png" width=70%></td>
+        <td></td>
+        <td><img src="graphics/mc1_invtrans1.png" width=70%></td>
+    </tr>
+</table>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Example:-the-exponential-distribution">Example: the exponential distribution<a class="anchor-link" href="#Example:-the-exponential-distribution">&#182;</a></h4><p>This distribution has $p(x)=\lambda e^{-\lambda x}$ and $F(x)=1-e^{-\lambda x}$ for $x\geq0$.</p>
+<p>The quantile function is, therefore, $F^{-1}(\mathcal{P}) = -\frac{\ln(1-\mathcal{P})}{\lambda}$.</p>
+<p>Let's go ahead and implement an exponential number generator in code.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># import stuff</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;TkAgg&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="n">usetex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;x-large&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;x-large&#39;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">inv_trans_expn</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Generate `number` random draws from an exponential distribution with mean parameter `mean`.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">u</span><span class="p">)</span> <span class="o">/</span> <span class="n">mean</span>
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Here's how a normalized histogram of such numbers compares to the exponential PDF:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lam</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1"># choose a mean</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">inv_trans_expn</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+<span class="n">hist</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="o">/</span><span class="n">lam</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">pdf</span> <span class="o">=</span> <span class="n">lam</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">lam</span><span class="o">*</span><span class="n">xs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">pdf</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;x-large&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$p(x)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;x-large&#39;</span><span class="p">);</span>
+<span class="p">;</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>&#39;&#39;</pre>
+</div>
+
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Rejection-sampling">Rejection sampling<a class="anchor-link" href="#Rejection-sampling">&#182;</a></h3><p>For this method, we need to define an <em>envelope function</em> (it need not be normalized) which everywhere exceeds the target PDF, $p(x)$. Let this be $Ag(x)$ where $A$ is a scaling factor and $g(x)$ is a PDF we can already sample from.</p>
+<p>Then the algorithm is</p>
+
+<pre><code>while we want more samples
+    draw x from g(x)
+    draw u from Uniform(0,1)
+    if u &lt;= p(x)/(A*g(x)), keep the sample x
+    otherwise, reject (do not store) x</code></pre>
+<p>Visually, this corresponds to drawing points that uniformly fill in the area under $Ag(x)$, then throwing away all those that are not under $p(x)$. The $x$ values of the remaining points thus automatically have the right distribution. Note that we will need to traverse the loop more times than the number of samples we want, and that the rejection rate naturally depends on how closely $Ag(x)$ resembles $p(x)$.</p>
+<table>
+    <tr>
+        <td><img src="graphics/mc1_rejection.png" width=70%></td>
+    </tr>
+</table>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Markov-Chain-Monte-Carlo">Markov Chain Monte Carlo<a class="anchor-link" href="#Markov-Chain-Monte-Carlo">&#182;</a></h2><p>Both of the algorithms above generate independent sequences of random numbers. That is, putting aside the essentially deterministic nature of the psuedorandom generators underneath, each sample is independent of the samples before it. This is a nice feature. However, neither algorithm is immediately useful for a <em>general</em> PDF; we would need to laboriously construct a quantile function or an efficient envelope function.</p>
+<p>There are algorithms that work straightforwardly for more general PDFs, but come with the disadvantage that samples are not independent of one another, they are correlated sequences. In the class of algorithms we are concerned with now, each sample has a direct dependence on the immediately preceding one, making the sequence a kind of random walk (technically known as a Markov process). Hence the name Markov Chain Monte Carlo (MCMC).</p>
+<p>Here is an illustration of such a Markov chain in a 2-dimensional space, with just a few samples in it.</p>
+<table>
+    <tr>
+        <td><a href="graphics/montecarlo1.R"><img src="graphics/mc1_randomwalk.png" width=70%></a></td>
+    </tr>
+</table>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>In order for a Markov chain to be interpreted as samples from a PDF, the transition kernel (the probability of moving from one point in the parameter space to another) must satisfiy a few requirements.</p>
+<ul>
+<li>Detailed balance: any transition must be reversible; the probability of being at $x$ and moving to $y$ must equal the probability of being at $y$ and moving to $x$.</li>
+<li>Ergodicity: the process may not be periodic, but it nevertheless must be possible to return to a given point in finite time.</li>
+<li>It must be possible, in principle, to reach any point where the PDF is not zero.</li>
 </ul>
-<h2 id="Contact">Contact<a class="anchor-link" href="#Contact">&#182;</a></h2><ul>
-<li><a href="https://github.com/KIPAC/StatisticalMethods/issues/new?body=@abmantz">Adam Mantz</a></li>
+<p>Why does this work?</p>
+<p>The probability of an arbitrary point from such a chain being located at $y$ is (marginalizing over the possible immediately preceding points, $x$),</p>
+<p>$p(y) = \int dx \, p(x) \, T(y|x)$</p>
+<p>where $T(y|x)$ is the transition probability of a step from $x$ to $y$.</p>
+<p>If we have detailed balance, $p(x)T(y|x) = p(y)T(x|y)$, then</p>
+<p>$p(y) = p(y) \int dx \,  T(x|y) = p(y)$.</p>
+<p>By induction, then, if we start from somewhere where the PDF is non-zero, then the long-term behavior of the chain should be such that the density of its samples converges to $p$.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>There are two features of MCMC that we will be very concerned with a bit later, when we need to decide whether the algorithm is behaving well for us.</p>
+<p>First, a chain will take some number of steps to <em>converge</em> to the target distribution. This is most clear if the chain starts somewhere that the target PDF is small - it will take a while to random-walk to the region where most of the probability is located. The plots below show the 1st 100  and 2nd 100 steps of an example chain, color coded by time/step number (blue$\rightarrow$red); ellipses show iso-probability contours in the usual way.</p>
+<table>
+    <tr>
+        <td><img src="graphics/mc1_burnin.png" width=70%></td>
+        <td></td>
+        <td><img src="graphics/mc1_postburnin.png" width=70%></td>
+    </tr>
+</table><p>The second feature is just the fact, clear in the illustration above, that the samples are correlated with one another. We need to remember that a chain of a given length contains less information about the target PDF than the same number of independent samples would.</p>
+<p>The main practical consequence of this is that using MCMC is not a fully automatic process. We will need to cast our eyes over the resulting chains to verify that they have, indeed, converged to a sensible distribution, and that we have a reasonable number of samples given the degree of correlation. This is a subject we'll return to after discussing how to generate such a chain to begin with.</p>
+<p>In these notes, we'll look at two such MCMC algorithms.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="(Conjugate)-Gibbs-sampling">(Conjugate) Gibbs sampling<a class="anchor-link" href="#(Conjugate)-Gibbs-sampling">&#182;</a></h3><p>Gibbs sampling is less an algorithm than a strategy. In essence, we replace the task of generating samples from a high-dimensional posterior, $p(\theta_1, \theta_2, \ldots, \theta_n|\mathrm{data})$, with the task of sampling in turn from a sequence of lower-dimensional <em>conditional posterior</em> distributions: $p(\theta_1|\theta_2, \ldots, \theta_n, \mathrm{data})$, $p(\theta_2|\theta_1, \theta_3, \ldots, \theta_n, \mathrm{data})$, ..., $p(\theta_n|\theta_1, \theta_2, \ldots, \mathrm{data})$. In pseudocode,</p>
+
+<pre><code>choose starting values for theta1, theta2, theta3, ...
+while we want more samples
+    sample theta1 from p(theta1 | theta2, theta3, ..., data)
+    sample theta2 from p(theta2 | theta1, theta3, ..., data)
+    ...
+    store theta1, theta2, theta3, ...</code></pre>
+<p>Visually, this corresponds to taking steps through parameter space that are always parallel to one of the coordinate axes (though, e.g., updating two parameters at once, with the others fixed, would also be called Gibbs sampling). The order of updates can be either fixed or randomized, provided that every parameter does get updated.</p>
+<table>
+    <tr><td><img src="graphics/mc2_gibbs.png" width=70%></td></tr>
+</table><p>Hopefully, it's intuitive that such a sequence converges to the multidimensional target PDF. By construction, the density of points in any of the conditional distributions will be correct. We just need the parameter <em>not</em> being conditioned on to have a chance to move around, and since we sample each parameter in turn, it has a chance to do so.
+More formally, as long as the individual-parameter updates satisfy detailed balance and the other requirements of MCMC, the sequence as a whole will also.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The decomposition used in Gibbs sampling is, of course, only helpful to the extent that sampling from the conditional posteriors is easier than from the full posterior. In general, this is not obviously the case. However, it can happen that one or more of the conditional posteriors is conjugate (see <a href="bayes_law.html">Bayes' Law notes</a>), even if the full posterior is not. The corresponding update rule(s) then become very easy - we just need to sample from a standard PDF for which methods already exist, after computing the parameters of that distribution from the data and the fixed (conditioned-on) model parameters.</p>
+<p>Granted, physical models, especially those involving nonlinear equations, don't lend themselves to conjugacy. But, often enough, we are dealing with what you might call "descriptive" models, which tend to be built from simple functions and standard PDFs. In those cases, it's not so uncommon to have some conjugacies in the model. Since Gibbs sampling in these cases <em>can</em> be much more efficient than alternatives, it's worth knowing about this method as an option.</p>
+<p>A classic non-trivial case where conjugate Gibbs can be used is for fitting a line to data, where both the $x$ and $y$ variables have some (normal) measurement error, there can be correlation in the $x$-$y$ errors, and there may additionally be (normal) intrinsic scatter in $y$ for a given $x$. Classical least squares has nothing on this, but the features above are hardly unusual in real-world problems.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Metropolis-Hastings-sampling">Metropolis-Hastings sampling<a class="anchor-link" href="#Metropolis-Hastings-sampling">&#182;</a></h3><p>This algorithm can be thought of as an MCMC adaptation of rejection sampling. Unlike conjugate-Gibbs, for which we only need to specify the posterior and a starting point in parameter space, here we need to additionally define a <strong>proposal distribution</strong>, $Q(y|x)$, giving the probability that we attempt to move the chain from $x$ to $y$.</p>
+<p>If $p$ is the PDF we're trying to sample, the algorithm is then</p>
+
+<pre><code>set x to an initial state
+compute p(x)
+while we want more samples
+    draw y from Q(y|x)
+    compute p(y)
+    draw u from Uniform(0,1)
+    if u &lt;= p(y)/p(x) * Q(x|y)/Q(y|x), set x=y
+    otherwise, x stays the same
+    store x as a sample</code></pre>
+<p>Note that <strong>even if a step is rejected, we still keep a sample</strong> (the original state, without moving). The difficulty of finding a temptingly better point is important information!</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>In the algorithm above, the probability of accepting a  step  (once it's proposed) is</p>
+<p>$\alpha(y,x) = \mathrm{min}\left[1, \frac{p(y)Q(x|y)}{p(x)Q(y|x)}\right]$</p>
+<p>Let's look again at the requirement of detailed balance</p>
+<blockquote><p>the probability of being at $x$ and moving to $y$ must equal the probability of being at $y$ and moving to $x$</p>
+</blockquote>
+<p>The probability of being at $x$ and moving to $y$ is $p(x)\,Q(y|x)\,\alpha(y,x)$, where, remember,</p>
+<ul>
+<li>$p(x)$ is the target PDF (probability of <em>being</em> at $x$, if we're sampling properly)</li>
+<li>$Q(y|x)$ is the proposal distribution (probability of attempting a move to $y$ from $x$)</li>
+<li>$\alpha(y,x)$ is the probability of accepting that proposed move</li>
 </ul>
-<p>All materials Copyright 2015, 2017, 2019, 2021 Adam Mantz, Phil Marshall and Claire Hébert, and distributed for copying and extension under the GPLv2 License, unless otherwise noted. If you have any feedback for us, please <a href="https://github.com/KIPAC/StatisticalMethods/issues">write us an issue</a>.</p>
+<p>Plugging in the definition of $\alpha$, we see that detailed balance is automatically satisfied!</p>
+<p>$p(x) \, Q(y|x) \, \alpha(y,x) \equiv p(y) \, Q(x|y) \, \alpha(x,y)$</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>We still haven't said what the proposal distribution, $Q$, should be. In principle, it could be anything, so long as it's eventually possible to propose a move to anywhere the target PDF is non-zero. This makes it possible to use a tailored proposal distribution in cases where the target PDF is so complicated that we need to customize our algorithm to achieve convergence. However, in most cases, we instead use a more generic, translation-invariant proposal, with $Q(y|x)=Q\left(\left|y-x\right|\right)$, in which case the proposal distribution drops out of the expression for the acceptance probability:</p>
+<p>$\alpha(y,x) = \mathrm{min}\left[1, \frac{p(y)}{p(x)}\right]$.</p>
+<p>In this case, we <em>always</em> accept a jump to higher $p$, and <em>sometimes</em> accept one to lower $p$. This simplified version of the algorithm is called <strong>Metropolis</strong> sampling.</p>
+<p>And yet, we <em>still</em> haven't managed to say what sort of function $Q$ should be. Obviously, we want our proposed steps to be large enough that we can traverse the target PDF, but not so big that every proposal is rejected. Arguably the simplest proposal to code is a multivariate Gaussian centered on the current position, but this has the disadvantage that the most likely proposals are very nearby. One can also choose distributions that make very short steps less likely, as in the blue curve below.</p>
+<table>
+    <tr>
+        <td><img src="graphics/mc2_steplength.png" width=70%></td>
+    </tr>
+</table><p>Fairly generically, such distributions will have an overall scale (called $s$ in the figure above) for the distance of the proposed steps (which could be direction dependent). This scale can and should be tuned to give us a decent acceptance rate; this can be done automatically, though note that changing the proposal scale <em>while the chain is running</em> technically violates detailed balance.</p>
+<p>And what acceptance rate would we ideally like? If every proposal is accepted, then we're probably not moving very far in parameter space with each step, and so our samples will be very correlated. But we do need to move! It's been said that an acceptance rate of 25% is somehow ideal, but really anything of this order is fine.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Conjugate-Gibbs-as-a-specialization-of-Metropolis-Hastings">Conjugate Gibbs as a specialization of Metropolis-Hastings<a class="anchor-link" href="#Conjugate-Gibbs-as-a-specialization-of-Metropolis-Hastings">&#182;</a></h4><p>Suppose we were somehow able to propose from the target PDF itself. Then the acceptance probability would be</p>
+<p>$\alpha(y,x) = \mathrm{min}\left[1, \frac{p(y)Q(x|y)}{p(x)Q(y|x)}\right] = \mathrm{min}\left[1, \frac{p(y)p(x)}{p(x)p(y)}\right] = 1$,</p>
+<p>and every step would be automatically accepted! This is essentially what's going on for each of the conditional posteriors in conjugate Gibbs sampling, which is why there is no accept/reject decision in that procedure. The same could be said of the trivial case where we have a target distribution that we can directly produce independent samples from.</p>
+<p>The fact that we don't need to carefully tune a proposal distribution to get a good acceptance rate is one of the nice features of conjugate Gibbs. On the other hand, if there are strong parameter degeneracies, a well tuned (in multiple dimensions) Metropolis sampler can potentially be the more efficient way to explore parameter space.</p>
+<p>Below is a comparison of the first 25 Metropolis iterations (left, reasonably but not ideally tuned) vs. the first 25 Gibbs transitions (right) for chains targeting a particular bivariate normal PDF. It's clear that the Gibbs sampler reaches the region of high probability much more quickly. On the other hand, the perpendicular nature of its steps could conceivably make it less efficient at accumulating samples once there, given the degeneracy of the two parameters shown.</p>
+<table>
+    <tr>
+        <td>
+            <img src="graphics/mc2_metro.png" width=70%>
+        </td>
+        <td></td>
+        <td>
+            <img src="graphics/mc2_gibbs.png" width=70%>
+        </td>
+    </tr>
+</table>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Does-it-always-work?">Does it always work?<a class="anchor-link" href="#Does-it-always-work?">&#182;</a></h2><p>No! I don't know of any numerical procedures in this sphere that can be said to <em>always</em> work, with certainty. But it's easy to contrive a PDF that Gibbs sampling or Metropolis would fail to characterize, namely one with multiple, widely separated peaks that can't plausibly be random walked between. We could tackle this with Metropolis-Hastings if we knew where the peaks were ahead of time and used a custom proposal distribution. But a Gibbs sampler would be dead in the water, unless the peaks were displaced along the Cartesian directions of the parameter space, and a Metropolis kernel with a reasonable proposal size to sample one peak would struggle to find its way to a different peak. (Ok, strictly speaking any of these algorithms would be fine after an infinite number of steps, but who wants to wait that long?)</p>
+<p>So how can we be confident that we've mapped the whole PDF? Ideally, the structure of the model (or experience with similar analyses) would tell you whether multiple peaks are likely to exist. In full generality, we would need to exhaustively search the parameter space to be sure. Short of that, we could run many independent chains with widely separated starting points and see where they end up. (As you may know, this is also a generic issue in numerical optimization, nothing specific to MCMC.) If we do find that our PDF has multiple, widely separated peaks, there are other algorithms that will work better, which we will look at later on.</p>
+<p>And isn't there a non-zero probability that our chain will run off to some low-probability region and stay there for an arbitrarily long time? Yes. Yes, there is. And it is equally arbitrarily unlikely for that to happen. Staggeringly unlikley. Floating point underflow if you try to calculate it unlikley. Spontaneous human combustion unlikley. Solid gold meteor striking the person who asked that question in a conference <em>at the exact moment of the question mark</em> unlikely. You get the idea.</p>
+<p>In the next set of notes, we'll see some useful diagnostics that can help convince us that things are, indeed, working.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Bonus:-Slice-sampling">Bonus: Slice sampling<a class="anchor-link" href="#Bonus:-Slice-sampling">&#182;</a></h4><p>For completeness, here is one more specialization of Metropolis-Hastings that might be worth knowing about. This method reduces the need to manually tune a proposal scale, although it usually involves a rejection step. The procedure is for sampling a 1-dimensional PDF, meaning that it could be used within Gibbs sampling, or more generally after randomly selecting a direction in parameter space.</p>
+<p>Given a starting point, $\theta_0$, we uniformly choose a probability $q\leq p(\theta_0)$. This defines a <em>slice</em> where $p(\theta)\geq q$, and we sample the next $\theta$ uniformly within the slice.</p>
+<table>
+    <tr>
+        <td><img src="graphics/mc2_slice.png" width=70%></td>
+    </tr>
+</table><p>How to do this without actually mapping out the PDF? Here's the procedure <a href="https://dx.doi.org/10.1214%2Faos%2F1056562461">Neal 2003</a>:</p>
+
+<pre><code>start with position x
+evaluate p = P(x)
+guess a width W
+while we want samples
+    draw q from Uniform(0,p)
+    choose L,R: R-L=W and L&lt;=x&lt;=R
+    while P(L) &gt; q, set L = L - W
+    while P(R) &gt; q, set R = R + W
+    loop forever
+        draw y from Uniform(L,R)
+        if P(y) &lt; q,
+            if y &lt; x, set L = x1
+            otherwise, set R = x1
+        otherwise, break
+    set x = x1 and record x</code></pre>
+<table>
+    <tr>
+        <td><img src="graphics/mc2_slice2.png" width=70%></td>
+    </tr>
+</table><p>Slice sampling tends to need fewer evaluations per move than Metropolis with a poorly tuned proposal scale. On the other hand, it tends to need more evaluations per move than Metropolis with a well tuned proposal scale. Hence, slicing can be a nice option for "test chains" intended to explore the parameter space, find the high-posterior region, and roughly probe its covariance, before running a longer chain using Metropolis or some other algorithm.</p>
 
 </div>
 </div>

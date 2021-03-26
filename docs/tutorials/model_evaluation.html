@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>model_evaluation</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14259,76 +14259,1159 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="PHYSICS-366:-Statistical-Methods-in-Astrophysics">PHYSICS 366: Statistical Methods in Astrophysics<a class="anchor-link" href="#PHYSICS-366:-Statistical-Methods-in-Astrophysics">&#182;</a></h1><p>Course notes and resources for Stanford University graduate course Physics 366.</p>
-<h2 id="Course-Description">Course Description<a class="anchor-link" href="#Course-Description">&#182;</a></h2><p>This course is intended to provide an introduction to modern
-statistical methodology, and its applications to problems in
-astrophysics and cosmology, and is aimed at graduate students
-intending to do research in this area. We
-strongly encourage most first and second year students working in
-KIPAC to take the course.  Our goal is to provide a background that
-will be directly relevant to the kind of problems that typical KIPAC
-students will encounter in their research.</p>
-<h2 id="Course-Objectives">Course Objectives<a class="anchor-link" href="#Course-Objectives">&#182;</a></h2><p>Our goal is that students taking this course will:</p>
-<ul>
-<li>develop familiarity in working with various types of astronomical data.</li>
-<li>understand the role of modeling in data analysis.</li>
-<li>develop facility with various types of inference from data.</li>
-<li>be able to critically evaluate and apply commonly used statistical methodologies.</li>
-<li>be able to apply advanced statistical reasoning to problems they are likely to encounter in their research.</li>
-</ul>
-<h2 id="Content">Content<a class="anchor-link" href="#Content">&#182;</a></h2><p><strong>Start by looking at the <a href="notes/overview.html">Overview</a> to understand how this course works, and <a href="notes/getting_started.html">Getting Started</a> to get up and running with Python and Jupyter, if needed.</strong>
-Enrolled students should also read the <a href="notes/assignments.html">Assignments</a> page to see what is expected.</p>
-<p>The course content can be browsed here in static HTML format. This is sufficient for the notes, but to do the tutorials you will need to download them in Jupyter notebook format from the <a href="https://github.com/KIPAC/StatisticalMethods/tree/master/tutorials">GitHub repository</a>.</p>
-<p>Notes and tutorials are listed in reasonable order below, but a better way to navigate the course may be through this nifty <a href="dependency_graph.html">dependency graph</a> (via <a href="https://mermaid-js.github.io/mermaid/">Mermaid</a>).</p>
-<h3 id="Notes">Notes<a class="anchor-link" href="#Notes">&#182;</a></h3><ul>
-<li><a href="notes/overview.html">Overview</a></li>
-<li><a href="notes/assignments.html">Assignments</a></li>
-<li><a href="notes/getting_started.html">Getting Started</a></li>
-<li><a href="notes/generative_models.html">Generative Models</a></li>
-<li><a href="notes/essential_probability.html">Essential Probability</a></li>
-<li><a href="notes/bayes_law.html">Bayes' Law</a></li>
-<li><a href="notes/credible_regions.html">Credible Regions</a></li>
-<li><a href="notes/errorbars.html">"Error bars"</a></li>
-<li><a href="notes/statistical_isms.html">Bayesianism and Other "isms"</a></li>
-<li><a href="notes/montecarlo.html">Monte Carlo Sampling</a></li>
-<li><a href="notes/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="notes/more_samplers.html">More Sampling Methods</a></li>
-<li><a href="notes/hierarchical.html">Hierarchical Models</a></li>
-<li><a href="notes/model_evaluation.html">Model Evaluation and Comparison</a></li>
-<li><a href="notes/missingdata.html">Missing Data and Selection Effects</a></li>
-<li><a href="notes/modelfreemodels.html">"Model-free" Models</a></li>
-<li><a href="notes/approximate_methods.html">Approximate Methods</a></li>
-<li><a href="notes/fishing.html">Fishing, Blinding and More</a></li>
-</ul>
-<h3 id="Tutorials">Tutorials<a class="anchor-link" href="#Tutorials">&#182;</a></h3><ul>
-<li><a href="tutorials/demo.html">Demo</a></li>
-<li><a href="tutorials/generative_models.html">Generative Models</a></li>
-<li><a href="tutorials/probability_essentials.html">Essential Probability</a></li>
-<li><a href="tutorials/probability_transformations.html">Probability Transformations</a></li>
-<li><a href="tutorials/bayes_law.html">Bayes' Law</a></li>
-<li><a href="tutorials/working_with_samples.html">Working With Samples</a></li>
-<li><a href="tutorials/credible_interals.html">Credible Regions</a></li>
-<li><a href="tutorials/gaussians.html">Gaussians and Least Squares</a></li>
-<li><a href="tutorials/xmm_image.html">XMM Image</a></li>
-<li><a href="tutorials/agn_photometry_grid.html">AGN Photometry: grid</a></li>
-<li><a href="tutorials/agn_photometry_gibbs.html">AGN Photometry: Gibbs sampling</a></li>
-<li><a href="tutorials/agn_photometry_metro.html">AGN Photometry: Metropolis sampling</a></li>
-<li><a href="tutorials/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="tutorials/ogle_lightcurve.html">OGLE Lightcurve</a></li>
-<li><a href="tutorials/microlensing.html">Microlensing</a></li>
-<li><a href="tutorials/cepheids.html">Cepheid Period-Luminosity Relation</a></li>
-<li><a href="tutorials/cepheids_one_galaxy.html">Cepheid P-L I: one galaxy</a></li>
-<li><a href="tutorials/cepheids_all_galaxies.html">Cepheid P-L II: multiple galaxies</a></li>
-<li><a href="tutorials/model_evaluation.html">Galaxy Cluster Mis-centering: model evaluation</a></li>
-<li><a href="tutorials/model_selection.html">Galaxy Cluster Mis-centering: model comparison</a></li>
-<li><a href="tutorials/missing_data.html">Shuttle O-ring Failures: missing data</a></li>
-</ul>
-<h2 id="Contact">Contact<a class="anchor-link" href="#Contact">&#182;</a></h2><ul>
-<li><a href="https://github.com/KIPAC/StatisticalMethods/issues/new?body=@abmantz">Adam Mantz</a></li>
-</ul>
-<p>All materials Copyright 2015, 2017, 2019, 2021 Adam Mantz, Phil Marshall and Claire Hébert, and distributed for copying and extension under the GPLv2 License, unless otherwise noted. If you have any feedback for us, please <a href="https://github.com/KIPAC/StatisticalMethods/issues">write us an issue</a>.</p>
+<h1 id="Tutorial:-Model-Evaluation">Tutorial: Model Evaluation<a class="anchor-link" href="#Tutorial:-Model-Evaluation">&#182;</a></h1><p>We've previously done simple, visual comparisons of fitted models with data, usually on the form "does this model curve go through the data points' error bars?" While visual checking is a powerful tool, that particular formulation only really makes sense when the sampling distribution is Gaussian (so that the "error bar" can equally well be associated with the data as with the model).</p>
+<p>More generally, we can say that a model (including specific parameter values) fits the observed data well if it could plausibly have generated the data. That is, in data space, does the observed data lie in a region where the sampling distribution is relatively large? Because the dimensionality of the data space tends to be very large, this is usually not a simple thing to visualize. However, we can simplify by asking the same question about a low-dimensional summary statistic of the data - some quantity or quantities that can be computed from the data.</p>
+<p>In classical statistics, where we do assume a Gaussian sampling distribution, the usual summary to look at is the $\chi^2$ statistic. We ask: is the $\chi^2$ (sum of squared residuals) after fitting our model to the real data consistent with the distribution of $\chi^2$ values we would expect from many data sets randomly generated from the best fit model?</p>
+<p>In Bayesian analysis, we can follow a similar chain of logic, with two differences:</p>
+<ol>
+<li>We are free to use any summary statistic we want. In particular, we could choose something that reflects the feature(s) of the data we most care about the model describing well. Alternatively, a common choice is to use $-2$ times the maximum log posterior (or log likelihood) for a given (mock) data set.</li>
+<li>It makes sense to marginalize over the posterior distribution of the model parameters, rather than looking only at predictions from the best-fitting model.</li>
+</ol>
+<p>Below, we'll introduce a simple, simulated (though realistic) data set and work through this procedure.</p>
 
 </div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="The-Dataset">The Dataset<a class="anchor-link" href="#The-Dataset">&#182;</a></h2><p>Our data is just a list of numbers. Each one represents a measured distance, $y$, between two different estimates of the center of a galaxy cluster: the location of the presumed central galaxy and a centroid of the diffuse, emissive gas. The context here is that automated algorithms sometimes fail to chose the central galaxy correctly (because of image artifacts or other problems), whereas the gas centroid is more reliable but also more expensive to measure. Therefore, we'd like to use this data set to <em>characterize the distribution of mis-centerings</em> so that the galaxy-based centers can be used for large sample, with the resulting errors propagated forward through future processing, e.g., weak lensing estimates.</p>
+<p>Let's load up the data and have a look.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">exec</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;tbc.py&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span> <span class="c1"># define TBC and TBC_above</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="kn">import</span> <span class="nn">emcee</span>
+<span class="kn">import</span> <span class="nn">dill</span>
+<span class="kn">import</span> <span class="nn">incredible</span> <span class="k">as</span> <span class="nn">cr</span>
+<span class="kn">from</span> <span class="nn">pygtc</span> <span class="kn">import</span> <span class="n">plotGTC</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Load data into global variable <code>y</code>. Each entry is an offset in units of kpc. This particular data set is fictional, but intentionally similar to a real one that has actually been used for this purpose.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">39.30917</span><span class="p">,</span><span class="mf">35.13419</span><span class="p">,</span><span class="mf">5.417072</span><span class="p">,</span><span class="mf">59.75137</span><span class="p">,</span><span class="mf">30.69077</span><span class="p">,</span><span class="mf">14.45971</span><span class="p">,</span><span class="mf">27.07368</span><span class="p">,</span><span class="mf">27.48429</span><span class="p">,</span><span class="mf">80.60219</span><span class="p">,</span><span class="mf">483.1432</span><span class="p">,</span><span class="mf">24.65057</span><span class="p">,</span>
+              <span class="mf">22.36524</span><span class="p">,</span><span class="mf">43.39081</span><span class="p">,</span><span class="mf">39.89816</span><span class="p">,</span><span class="mf">30.67409</span><span class="p">,</span><span class="mf">6.905061</span><span class="p">,</span><span class="mf">53.69709</span><span class="p">,</span><span class="mf">9.504133</span><span class="p">,</span><span class="mf">41.07874</span><span class="p">,</span><span class="mf">10.9369</span><span class="p">,</span><span class="mf">48.29861</span><span class="p">,</span><span class="mf">61.34125</span><span class="p">,</span>
+              <span class="mf">68.37279</span><span class="p">,</span><span class="mf">30.51124</span><span class="p">,</span><span class="mf">26.74462</span><span class="p">,</span><span class="mf">13.7165</span><span class="p">,</span><span class="mf">6.043301</span><span class="p">,</span><span class="mf">976.1495</span><span class="p">,</span><span class="mf">27.20097</span><span class="p">,</span><span class="mf">7.818419</span><span class="p">,</span><span class="mf">5.589193</span><span class="p">,</span><span class="mf">3.310114</span><span class="p">,</span><span class="mf">271.8901</span><span class="p">,</span>
+              <span class="mf">126.0384</span><span class="p">,</span><span class="mf">99.51247</span><span class="p">,</span><span class="mf">249.1279</span><span class="p">,</span><span class="mf">403.0484</span><span class="p">,</span><span class="mf">3.071718</span><span class="p">,</span><span class="mf">0.9434036</span><span class="p">,</span><span class="mf">54.94336</span><span class="p">,</span><span class="mf">1.529382</span><span class="p">,</span><span class="mf">8.441071</span><span class="p">,</span><span class="mf">19.59434</span><span class="p">,</span><span class="mf">59.43049</span><span class="p">,</span>
+              <span class="mf">77.21293</span><span class="p">,</span><span class="mf">29.6533</span><span class="p">,</span><span class="mf">286.7116</span><span class="p">,</span><span class="mf">11.2386</span><span class="p">,</span><span class="mf">9.511912</span><span class="p">,</span><span class="mf">29.04711</span><span class="p">,</span><span class="mf">33.77766</span><span class="p">,</span><span class="mf">151.4803</span><span class="p">,</span><span class="mf">223.3557</span><span class="p">,</span><span class="mf">12.33816</span><span class="p">,</span><span class="mf">25.22682</span><span class="p">,</span>
+              <span class="mf">26.86597</span><span class="p">,</span><span class="mf">339.7084</span><span class="p">,</span><span class="mf">405.6737</span><span class="p">,</span><span class="mf">3.809868</span><span class="p">,</span><span class="mf">221.6523</span><span class="p">,</span><span class="mf">307.2994</span><span class="p">,</span><span class="mf">73.36697</span><span class="p">,</span><span class="mf">42.15523</span><span class="p">,</span><span class="mf">36.74785</span><span class="p">,</span><span class="mf">5.415392</span><span class="p">,</span><span class="mf">69.4721</span><span class="p">,</span>
+              <span class="mf">136.8073</span><span class="p">,</span><span class="mf">17.3534</span><span class="p">,</span><span class="mf">4.135966</span><span class="p">,</span><span class="mf">20.19435</span><span class="p">,</span><span class="mf">79.06968</span><span class="p">,</span><span class="mf">8.095599</span><span class="p">,</span><span class="mf">4.474533</span><span class="p">,</span><span class="mf">44.90669</span><span class="p">,</span><span class="mf">85.891</span><span class="p">,</span><span class="mf">1.636425</span><span class="p">,</span><span class="mf">75.39335</span><span class="p">,</span>
+              <span class="mf">15.94149</span><span class="p">,</span><span class="mf">2.828709</span><span class="p">,</span><span class="mf">20.5636</span><span class="p">,</span><span class="mf">41.52905</span><span class="p">,</span><span class="mf">42.51133</span><span class="p">,</span><span class="mf">104.3908</span><span class="p">,</span><span class="mf">67.41335</span><span class="p">,</span><span class="mf">13.80204</span><span class="p">,</span><span class="mf">394.9841</span><span class="p">,</span><span class="mf">33.90415</span><span class="p">,</span><span class="mf">84.78714</span><span class="p">,</span>
+              <span class="mf">36.77924</span><span class="p">,</span><span class="mf">14.48424</span><span class="p">,</span><span class="mf">66.01276</span><span class="p">,</span><span class="mf">2.910331</span><span class="p">,</span><span class="mf">92.79938</span><span class="p">,</span><span class="mf">29.74337</span><span class="p">,</span><span class="mf">42.40971</span><span class="p">,</span><span class="mf">1.692674</span><span class="p">,</span><span class="mf">1.039994</span><span class="p">,</span><span class="mf">120.5902</span><span class="p">,</span><span class="mf">154.7106</span><span class="p">,</span>
+              <span class="mf">14.38967</span><span class="p">,</span><span class="mf">147.8399</span><span class="p">,</span><span class="mf">166.5054</span><span class="p">,</span><span class="mf">87.53685</span><span class="p">,</span><span class="mf">22.63141</span><span class="p">,</span><span class="mf">638.1976</span><span class="p">,</span><span class="mf">273.6167</span><span class="p">,</span><span class="mf">593.4997</span><span class="p">,</span><span class="mf">45.57279</span><span class="p">,</span><span class="mf">87.30421</span><span class="p">,</span><span class="mf">75.03385</span><span class="p">,</span>
+              <span class="mf">18.33932</span><span class="p">,</span><span class="mf">36.05779</span><span class="p">,</span><span class="mf">3.659462</span><span class="p">,</span><span class="mf">263.9074</span><span class="p">,</span><span class="mf">0.2432062</span><span class="p">,</span><span class="mf">8.499095</span><span class="p">,</span><span class="mf">1.160031</span><span class="p">,</span><span class="mf">38.16615</span><span class="p">,</span><span class="mf">41.65371</span><span class="p">,</span><span class="mf">361.5</span><span class="p">,</span><span class="mf">148.9294</span><span class="p">,</span>
+              <span class="mf">10.25777</span><span class="p">,</span><span class="mf">71.29159</span><span class="p">,</span><span class="mf">10.02279</span><span class="p">,</span><span class="mf">16.36062</span><span class="p">,</span><span class="mf">601.1667</span><span class="p">,</span><span class="mf">4.960311</span><span class="p">,</span><span class="mf">12.22526</span><span class="p">,</span><span class="mf">87.54137</span><span class="p">,</span><span class="mf">48.48371</span><span class="p">,</span><span class="mf">78.56777</span><span class="p">,</span><span class="mf">212.8153</span><span class="p">,</span>
+              <span class="mf">77.0353</span><span class="p">,</span><span class="mf">62.7624</span><span class="p">,</span><span class="mf">81.26739</span><span class="p">,</span><span class="mf">34.36881</span><span class="p">,</span><span class="mf">42.63432</span><span class="p">,</span><span class="mf">264.4551</span><span class="p">,</span><span class="mf">15.24863</span><span class="p">,</span><span class="mf">25.94133</span><span class="p">,</span><span class="mf">35.88882</span><span class="p">,</span><span class="mf">34.94669</span><span class="p">,</span><span class="mf">222.5425</span><span class="p">,</span>
+              <span class="mf">304.9676</span><span class="p">,</span><span class="mf">19.68377</span><span class="p">,</span><span class="mf">7.216153</span><span class="p">,</span><span class="mf">17.61534</span><span class="p">,</span><span class="mf">32.25887</span><span class="p">,</span><span class="mf">14.08842</span><span class="p">,</span><span class="mf">773.5914</span><span class="p">])</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Check out a quick histogram of the data.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">7.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;skyblue&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Measured distance $y$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="1.-Choosing-a-Test-Statistic">1. Choosing a Test Statistic<a class="anchor-link" href="#1.-Choosing-a-Test-Statistic">&#182;</a></h2><p>The hypothesis we will test in this tutorial is the model outlined in the next section - but how well that model fits the data is a question we will answer in part using a <em>test statistic.</em></p>
+<p>In this case, a feature we especially want to capture with our model is the fraction of clusters where $y$ is small (in the context of a galaxy cluster) vs not small. For concreteness, I suggest making $T$ the number of clusters where $y&lt;100$ kpc; the provided solutions that you can check your work against will use this statistic. However, you are encouraged to play around with other possibilities to see how the simple model below succeeds or fails to reproduce the corresponding features of the data.</p>
+<p>Note that the test statistic I chose is a function of the data only, although in general it's also possible to use statistics that are functions of both the data and model (the best-fitting log posterior being an example of this).</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">T</span><span class="p">(</span><span class="n">yy</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Argument: a data vector (either the real data or a simulated data set)</span>
+<span class="sd">    Returns: a scalar test statistic computed from the argument</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">TBC</span><span class="p">()</span>
+
+<span class="n">TBC_above</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Compute the test statistic of the real data to verify that it works.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">T_true</span> <span class="o">=</span> <span class="n">T</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The test statistic of the real data is T =&quot;</span><span class="p">,</span> <span class="n">T_true</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><strong>Self-check:</strong> The recommended test statistic evaluates to 118 on the real data.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Setting-up-a-Computational-Framework">Setting up a Computational Framework<a class="anchor-link" href="#Setting-up-a-Computational-Framework">&#182;</a></h2><p>Once we define a model to work with (below), we'll want to fit that model to the data, and then evaluate it using the methods we saw in the <a href="../notes/model_evaluation.html">notes</a>. These include:</p>
+<ul>
+<li>a visual check using replica datasets drawn from the posterior predictive distribution</li>
+<li>a quantitative posterior predictive model check using a suitable test statistic $T(y)$</li>
+</ul>
+<p>In the next notebook, we'll choose and fit a second, alternative model, and compare the two in terms of</p>
+<ul>
+<li>the Deviance Information Criterion (DIC), to assess the models' (relative) generalized predictive accuracy</li>
+<li>the Bayesian Evidence, to provide insight on the (relative) probability of each model given the data</li>
+</ul>
+<p>Notice that each of these bulleted operations can be coded as a <em>function of the model</em>, $H$ (e.g. a visual check of the model, the evidence of the model, and so on). We will therefore be fancy and write a <em>class</em> that completely describes the model, and also contains a set of <em>functions that act on model.</em> Since we anticipate looking at multiple models, we'll use <em>inheritance</em>. While this level of object oriented programming may not be familiar, it's a good thing to learn, and most of the details are filled in for you below.</p>
+<p>We start by defining a <em>base class</em>, which contains the functionality common to any model we care to define later. To make it clear what functionality we expect <em>derived classes</em> to provide, we'll include defintions of non-functional methods that the derived classes will need to <em>override</em>. (This is completely unnecessary in Python, but has the benefit of providing a complete list of functions we'll eventually want to fill in.)</p>
+<p>You should make sure you understand the workings of even the functions that are completely given here.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># This is something we can throw to discourage direct instantiation of the base class</span>
+<span class="k">class</span> <span class="nc">VirtualClassError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="ne">Exception</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="s2">&quot;Do not directly instantiate the base Model class!&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Model</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for inference and model evaluation in a simple cluster mis-centering analysis.</span>
+<span class="sd">    In all these functions, `params&#39; is a dictionary of model parameters.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Note: derived classes should have their own __init__ function which ends by calling this one</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Storage for MCMC samples from fitting the model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">samples</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Nsamples</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># Lines below are meant as a template for derived classes, do not uncomment for the base class</span>
+        <span class="c1">#</span>
+        <span class="c1"># A name for the model!</span>
+        <span class="c1">#self.name = &#39;...&#39;</span>
+        <span class="c1">#</span>
+        <span class="c1"># As part of the model definition, store an ordered list of parameter names (for dictionary keys)</span>
+        <span class="c1"># Named arguments of other functions that correspond to parameters should appear in this order</span>
+        <span class="c1">#self.param_names = [...]</span>
+        <span class="c1">#</span>
+        <span class="c1"># parameter names as display text (for plot labels),</span>
+        <span class="c1">#self.param_labels = [...]</span>
+        <span class="c1">#</span>
+        <span class="c1"># and a dictionary of priors (keys must match param_names)</span>
+        <span class="c1">#self.priors = {...}</span>
+  
+    <span class="k">def</span> <span class="nf">log_prior</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the log prior PDF p(params|H)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="n">VirtualClassError</span> <span class="c1"># to be overriden by child classes</span>
+
+    <span class="k">def</span> <span class="nf">draw_samples_from_prior</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return N samples from the prior PDF p(params|H) as a list of dictionaries</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="n">VirtualClassError</span> <span class="c1"># to be overriden by child classes</span>
+
+    <span class="k">def</span> <span class="nf">log_likelihood</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the log of the likelihood function L(params) = p(y|params,H)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="n">VirtualClassError</span> <span class="c1"># to be overriden by child classes</span>
+    
+    <span class="k">def</span> <span class="nf">sampling_distribution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the sampling distribution p(yy|params,H) at a point in data space yy given parameter(s) args</span>
+<span class="sd">        We expect a vector input yy, and return the corresponding probabilities.</span>
+<span class="sd">            </span>
+<span class="sd">        Note: This is useful for making plots of &quot;the model&quot; overlaid on the histogram of the data</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="n">VirtualClassError</span> <span class="c1"># to be overriden by child classes </span>
+        
+    <span class="k">def</span> <span class="nf">generate_replica_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return a replica dataset y_rep from the sampling distribution p(y_rep|args,H).</span>
+<span class="sd">        (Length N should match the real data)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="n">VirtualClassError</span> <span class="c1"># to be overriden by child classes</span>
+        
+    <span class="k">def</span> <span class="nf">log_posterior</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameterlist</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the log of the (unnormalized) posterior PDF p(params|y,H)</span>
+<span class="sd">        </span>
+<span class="sd">        The parameterlist argument is there for compatibility with emcee.</span>
+<span class="sd">        This will be an infinite loop if you named one of your parameters &quot;parameterlist&quot;, but in that case</span>
+<span class="sd">        you deserve it.</span>
+<span class="sd">        This also means that for even a simple call, we would need to specify the parameter name(s),</span>
+<span class="sd">         i.e. not log_posterior(pval), but log_posterior(param=pval). This doesn&#39;t seem unreasonable.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">parameterlist</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">pdict</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">parameterlist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param_names</span><span class="p">)}</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">log_posterior</span><span class="p">(</span><span class="o">**</span><span class="n">pdict</span><span class="p">)</span>
+        <span class="n">lnp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">log_prior</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">lnp</span> <span class="o">!=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">:</span>
+            <span class="n">lnp</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">log_likelihood</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">lnp</span>
+
+    <span class="k">def</span> <span class="nf">draw_samples_from_posterior</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">starting_params</span><span class="p">,</span> <span class="n">nsteps</span><span class="p">,</span> <span class="n">nwalkers</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">threads</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Use emcee to draw samples from P(params|y,H). Hopefully it Just Works.</span>
+<span class="sd">        You could try using e.g. threads=4 to speed things up with multiprocessing.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+      
+        <span class="c1"># The density to sample is this model&#39;s own posterior PDF</span>
+        <span class="n">npars</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">starting_params</span><span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">sampler</span> <span class="o">=</span> <span class="n">emcee</span><span class="o">.</span><span class="n">EnsembleSampler</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">npars</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">log_posterior</span><span class="p">,</span> <span class="n">threads</span><span class="o">=</span><span class="n">threads</span><span class="p">)</span> 
+        
+        <span class="c1"># Generate an ensemble of walkers within +/-1% of the guess:</span>
+        <span class="n">theta_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">starting_params</span><span class="o">*</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="mf">0.01</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">npars</span><span class="p">))</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">)])</span>
+        <span class="c1"># Note that the initial parameter array theta_0 should have dimensions nwalkers × npars</span>
+        
+        <span class="c1"># Evolve the ensemble:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sampler</span><span class="o">.</span><span class="n">run_mcmc</span><span class="p">(</span><span class="n">theta_0</span><span class="p">,</span> <span class="n">nsteps</span><span class="p">)</span>
+        
+        <span class="c1"># Plot the raw samples:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">12.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="o">*</span><span class="n">npars</span><span class="p">)</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">npars</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="n">cr</span><span class="o">.</span><span class="n">plot_traces</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sampler</span><span class="o">.</span><span class="n">chain</span><span class="p">[:</span><span class="nb">min</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="n">nwalkers</span><span class="p">),:,:],</span> <span class="n">ax</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">param_labels</span><span class="p">);</span>
+
+    <span class="k">def</span> <span class="nf">check_chains</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">burn</span><span class="p">,</span> <span class="n">maxlag</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Ignoring `burn` samples from the front of each chain, compute convergence criteria and</span>
+<span class="sd">        effective number of samples.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">nwalk</span><span class="p">,</span> <span class="n">nsteps</span><span class="p">,</span> <span class="n">npars</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampler</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">shape</span>
+        <span class="k">if</span> <span class="n">burn</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">burn</span> <span class="o">&gt;=</span> <span class="n">nsteps</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">tmp_samples</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">sampler</span><span class="o">.</span><span class="n">chain</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">burn</span><span class="p">:,:]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nwalk</span><span class="p">)]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;R =&#39;</span><span class="p">,</span> <span class="n">cr</span><span class="o">.</span><span class="n">GelmanRubinR</span><span class="p">(</span><span class="n">tmp_samples</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;neff =&#39;</span><span class="p">,</span> <span class="n">cr</span><span class="o">.</span><span class="n">effective_samples</span><span class="p">(</span><span class="n">tmp_samples</span><span class="p">,</span> <span class="n">maxlag</span><span class="o">=</span><span class="n">maxlag</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;NB: Since walkers are not independent, these will be optimistic!&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">remove_burnin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">burn</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Remove `burn` samples from the front of each chain, and concatenate</span>
+<span class="sd">        Plot, and store the result in self.samples</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">nwalk</span><span class="p">,</span> <span class="n">nsteps</span><span class="p">,</span> <span class="n">npars</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampler</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">shape</span>
+        <span class="k">if</span> <span class="n">burn</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">burn</span> <span class="o">&gt;=</span> <span class="n">nsteps</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">samples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampler</span><span class="o">.</span><span class="n">chain</span><span class="p">[:,</span><span class="n">burn</span><span class="p">:,:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">nwalk</span><span class="o">*</span><span class="p">(</span><span class="n">nsteps</span><span class="o">-</span><span class="n">burn</span><span class="p">),</span> <span class="n">npars</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Nsamples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">samples</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">12.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="o">*</span><span class="n">npars</span><span class="p">)</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">npars</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="n">cr</span><span class="o">.</span><span class="n">plot_traces</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">samples</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">param_labels</span><span class="p">);</span>
+        
+    <span class="k">def</span> <span class="nf">posterior_mean</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Helper function for computing the posterior mean of each parameter (from MCMC samples)</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">samples</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param_names</span><span class="p">)}</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="2.-Evaluating-a-Simple-Model">2. Evaluating a Simple Model<a class="anchor-link" href="#2.-Evaluating-a-Simple-Model">&#182;</a></h2><p>First, let's assume the simple model $H_1$, that the sampling distribution is an exponential:</p>
+<p>$p(\{y_i\}|a, H_1) = \prod_i \frac{1}{a}e^{-y_i/a}$; $y_i\geq0$</p>
+<p>Our single parameter is $a$, the mean of the exponential distribution.</p>
+<p>Note that this is the entirety of the sampling distribution. Don't be scared of the simplicity! Our model is that the data are realizations of some distribution, and we want (initially) to find the parameter(s) of that distribution. There's nothing tricky (but also nothing Gaussian) about this.</p>
+<h3 id="2a.-Implementation-in-code">2a. Implementation in code<a class="anchor-link" href="#2a.-Implementation-in-code">&#182;</a></h3><p>Complete the implementation of this model as a derived class of <code>Model</code>, below. Note than an <code>ExponentialModel</code> object still has all the methods defined for <code>Model</code>, in particular the ones that we <em>don't</em> need to redefine here.</p>
+<p>Note that this includes choosing a reasonable prior for $a$. It should be a proper (normalizable) distribution. We don't want to deal with improper distributions when calculating the evidence later on. <em>To compare with the self-check below, use a wide, uniform (but bounded!) prior</em>.</p>
+<p>Again, even when a function is completely give, you should make sure you understand how it works.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">ExponentialModel</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Simple exponential model for mis-centering.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># As part of the model definition, store an ordered list of parameter names (for dictionary keys)</span>
+        <span class="c1"># A name for the model!</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Exponential Model&#39;</span>
+        <span class="c1"># Named arguments of other functions that correspond to parameters should appear in this order</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">param_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span>
+        <span class="c1"># parameter names as display text (for plot labels),</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">param_labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;$a$&#39;</span><span class="p">]</span>
+        <span class="c1"># and a dictionary of priors (keys must match param_names)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">priors</span> <span class="o">=</span> <span class="n">TBC</span><span class="p">()</span> <span class="c1"># {&#39;a&#39;:</span>
+        <span class="c1"># The next line finishes initialization by calling the parent class&#39; __init__</span>
+        <span class="n">Model</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+  
+    <span class="k">def</span> <span class="nf">log_prior</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Return the log prior PDF P(a1|H)</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="n">TBC</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">draw_samples_from_prior</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return N samples of a from the prior PDF p(a|H) as a 2D array</span>
+<span class="sd">        (one column per parameter)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">TBC</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">log_likelihood</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Evaluate the log of the likelihood function L(a) = p(y|a,H)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">expon</span><span class="o">.</span><span class="n">logpdf</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">a</span><span class="p">))</span>
+    
+    <span class="k">def</span> <span class="nf">sampling_distribution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Evaluate the sampling distribution PDF p(yy|a,H) at a point in data space yy given parameter value a</span>
+<span class="sd">        We expect a vector input yy, and return the corresponding probabilities.</span>
+<span class="sd">            </span>
+<span class="sd">        Note: This is useful for making plots of &quot;the model&quot; overlaid on the histogram of the data</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">st</span><span class="o">.</span><span class="n">expon</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">yy</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">a</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">generate_replica_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return a replica data set y_rep from the sampling distribution p(y_rep|a,H).</span>
+<span class="sd">        (Length N should match the real data)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">TBC</span><span class="p">()</span>
+
+<span class="n">TBC_above</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Now try instantiating a model and drawing a dozen samples from its prior as a test:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Model1</span> <span class="o">=</span> <span class="n">ExponentialModel</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;12 sample values drawn from the prior of Model1: &quot;</span><span class="p">,</span> <span class="n">Model1</span><span class="o">.</span><span class="n">draw_samples_from_prior</span><span class="p">(</span><span class="mi">12</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Test out the log-posterior function to make sure it's not obviously buggy.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.14</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Log-posterior for a=&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s1">&#39; = &#39;</span><span class="p">,</span> <span class="n">Model1</span><span class="o">.</span><span class="n">log_posterior</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Similarly the mock-data producing function (with an arbitrary $a$ value).</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">7.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">Model1</span><span class="o">.</span><span class="n">generate_replica_dataset</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="mf">500.</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightgray&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Measured distance $y$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency (replica)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Finally, test the sampling distribution function.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">7.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">Model1</span><span class="o">.</span><span class="n">sampling_distribution</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="mf">500.</span><span class="p">));</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Measured distance $y$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$p(y|a)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="2b.-Fit-the-model-to-the-data">2b. Fit the model to the data<a class="anchor-link" href="#2b.-Fit-the-model-to-the-data">&#182;</a></h3><p>The <code>draw_samples_from_posterior</code> method carries out a parameter inference with <code>emcee</code> and displays its Markov chains. <code>remove_burnin</code> removes burn-in and concatenates the chains. Since these step aren't really the point of this problem, the code is given to you, but you'll still need to experiment with the keyword argument inputs (and read the code to see what they do) in order to get good results. The suggestions in the cell below are pretty terrible.</p>
+<p>The concatenated MCMC samples are stored in the <code>Model.samples</code> array.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="n">TBC</span><span class="p">()</span>
+<span class="c1"># This line will execute out of the box, but will not work well. The arguments should be fiddled with.</span>
+<span class="c1"># Model1.draw_samples_from_posterior(starting_params=[1000.0], nsteps=10, nwalkers=8)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>This will compute the usual convergence criteria and effective number of samples:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TBC</span><span class="p">()</span> <span class="c1"># Model1.check_chains( ...</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Assuming that looks ok, remove the burn-in for good, and plot the concatenation of what's left.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TBC</span><span class="p">()</span> <span class="c1"># Model1.remove_burnin( ...</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>It will be useful for later to know the mean of the posterior:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Posterior mean value of a = &quot;</span><span class="p">,</span> <span class="n">Model1</span><span class="o">.</span><span class="n">posterior_mean</span><span class="p">())</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><strong>Self-check:</strong> With wide, uniform priors, you should find a posterior mean $a$ of around 96.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="2c.-Visually-compare-the-posterior-predictions-with-the-data.">2c. Visually compare the posterior predictions with the data.<a class="anchor-link" href="#2c.-Visually-compare-the-posterior-predictions-with-the-data.">&#182;</a></h3><p>First, let's just plot the posterior-mean model over the data.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">7.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
+
+<span class="c1"># First the histogram of observed data, as backdrop:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;skyblue&quot;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Observed&quot;</span><span class="p">)</span>
+
+<span class="c1"># Now overlay a curve following the sampling distribution conditioned on the posterior mean value of a1: </span>
+<span class="n">pp</span> <span class="o">=</span> <span class="n">Model1</span><span class="o">.</span><span class="n">sampling_distribution</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="o">**</span><span class="n">Model1</span><span class="o">.</span><span class="n">posterior_mean</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">pp</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Posterior mean model&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Measured distance $y$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Normalized Frequency&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>This kind of plot should be familiar: it's often a good idea to evaluate model adequacy in data space. You should already be able to see telling differences between the a well-fitting model's sampling distribution, and the data histogram.</p>
+<p>Now, let's compare a random predicted ("replica") data set, drawn from the <em>posterior predictive distribution,</em> with the data. To do this we first draw a parameter value from the posterior PDF, and then generate a dataset from the sampling distribution conditioned on that value. The result is a sample from $p(y_\mathrm{rep}|y,H_1)$.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">7.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
+
+<span class="c1"># First the histogram of observed data, as backdrop:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;skyblue&quot;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Observed&quot;</span><span class="p">);</span>
+
+<span class="c1"># Choose a posterior sample at random and generate a replica dataset, and show its histogram</span>
+<span class="n">j</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Model1</span><span class="o">.</span><span class="n">Nsamples</span><span class="p">)</span>
+<span class="n">mock</span> <span class="o">=</span> <span class="n">Model1</span><span class="o">.</span><span class="n">generate_replica_dataset</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="o">*</span><span class="n">Model1</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="n">j</span><span class="p">,:])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">mock</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s2">&quot;step&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Sample posterior prediction&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Measured distance $y$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Normalized Frequency&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>This plot is nice because it is comparing apples with apples: do mock datasets drawn from our model sampling distribution with any plausible parameter value "look like" the real data?</p>
+<p>To best evaluate this, we want to visualize the posterior predictive distribution of replica datasets. We can do this by plotting many replica datasets drawn from the posterior predictive PDF, e.g. <em>one for each of our posterior samples</em>. Let's put this plot in a function, so we can re-use it later.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">visual_check</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">Model</span><span class="p">,</span> <span class="n">Nreps</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="c1"># First the histogram of observed data, as backdrop:</span>
+    <span class="n">axes</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;skyblue&quot;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Observed&quot;</span><span class="p">);</span>
+
+    <span class="c1"># Compute the posterior mean parameters</span>
+    <span class="n">pm</span> <span class="o">=</span> <span class="n">Model</span><span class="o">.</span><span class="n">posterior_mean</span><span class="p">()</span>
+
+    <span class="c1"># Make a large number of replica datasets, and overlay histograms of them all </span>
+    <span class="k">if</span> <span class="n">Nreps</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">Nreps</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">Model</span><span class="o">.</span><span class="n">samples</span><span class="p">)</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="mf">5.0</span> <span class="o">/</span> <span class="n">Nreps</span>
+    <span class="k">for</span> <span class="n">jj</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">Model</span><span class="o">.</span><span class="n">samples</span><span class="p">),</span> <span class="n">num</span><span class="o">=</span><span class="n">Nreps</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">)):</span> 
+        <span class="n">j</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">jj</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">j</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>  
+            <span class="c1"># Plot a dataset drawn from the posterior mean, to give a good legend</span>
+            <span class="n">mock</span> <span class="o">=</span> <span class="n">Model</span><span class="o">.</span><span class="n">generate_replica_dataset</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="o">**</span><span class="n">pm</span><span class="p">)</span>
+            <span class="n">axes</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">mock</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s2">&quot;step&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Sample posterior predictions&quot;</span><span class="p">);</span>
+        <span class="k">else</span><span class="p">:</span>     
+            <span class="c1"># Take the next posterior sample a and generate a replica dataset</span>
+            <span class="n">mock</span> <span class="o">=</span> <span class="n">Model</span><span class="o">.</span><span class="n">generate_replica_dataset</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="o">*</span><span class="n">Model</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="n">j</span><span class="p">,:])</span>
+            <span class="n">axes</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">mock</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s2">&quot;step&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+
+    <span class="c1"># Include the posterior mean model for comparison</span>
+    <span class="n">pp</span> <span class="o">=</span> <span class="n">Model</span><span class="o">.</span><span class="n">sampling_distribution</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="o">**</span><span class="n">pm</span><span class="p">)</span>
+    <span class="n">axes</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">pp</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Posterior mean model&quot;</span><span class="p">);</span>
+
+    <span class="n">axes</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">Model</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">axes</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Measured distance $y$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">axes</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Normalized Frequency&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">axes</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">7.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">visual_check</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">Model1</span><span class="p">,</span> <span class="n">Nreps</span><span class="o">=</span><span class="mi">100</span><span class="p">);</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Based on these visual checks, would you say the model does a good job of predicting the observed data?</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<blockquote><p><em>TBC: Your thoughts</em></p>
+</blockquote>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="2c.-Quantitative-posterior-predictive-model-check">2c. Quantitative posterior predictive model check<a class="anchor-link" href="#2c.-Quantitative-posterior-predictive-model-check">&#182;</a></h3><p>Now let's quantify the (in)adequacy of the fit with a quantitative <em>posterior predictive model check</em>, based on the <code>test_statistic</code> function you've already defined.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>To sample the posterior predictive distribution of test statistics $p[T(y_\mathrm{rep})|y,H]$, we need to generate replica datasets from the model:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">distribution_of_T</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute T(yrep) for each yrep drawn from the posterior predictive distribution,</span>
+<span class="sd">    using parameter samples stored in Model.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">T</span><span class="p">(</span><span class="n">Model</span><span class="o">.</span><span class="n">generate_replica_dataset</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="o">*</span><span class="n">p</span><span class="p">))</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">Model</span><span class="o">.</span><span class="n">samples</span><span class="p">])</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>We can now do the following:</p>
+<ul>
+<li>plot a histogram of $T(\mathrm{mock~data})$</li>
+<li>compare that distribution with $T(\mathrm{real~data})$</li>
+<li>compute and report the p-value for $T(\mathrm{real~data})$</li>
+</ul>
+<p>And we want all of that in packaged in functions of the model, so that we can re-use it later (on different models!).</p>
+<p>First write a function to estimate the p-value, $P(T &gt; T(y)|y,H)$, based on posterior predictions from the chains you ran above.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">pvalue</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the posterior predictive p-value, P(T &gt; T(y)|y,H):</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">TBC</span><span class="p">()</span>
+    
+<span class="n">TBC_above</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Here's a function that plots the distribution of T, and reports the p-value:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">posterior_predictive_check</span><span class="p">(</span><span class="n">Model</span><span class="p">,</span> <span class="n">nbins</span><span class="o">=</span><span class="mi">25</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the posterior predictive distribution of the test statistic T(y_rep), and compare with T(y_obs) </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Compute distribution of T(yrep):</span>
+    <span class="n">TT</span> <span class="o">=</span> <span class="n">distribution_of_T</span><span class="p">(</span><span class="n">Model</span><span class="p">)</span>
+    
+    <span class="c1"># Plot:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">7.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">TT</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">nbins</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s2">&quot;step&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$P(T(y_{</span><span class="se">\\</span><span class="s2">rm rep})|y)$&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Overlay T(y_obs):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">T</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$T(y_{</span><span class="se">\\</span><span class="s2">rm observed})$&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Test statistic T(y)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Posterior predictive probability density&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+    
+    <span class="c1"># Compute p-value:</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">pvalue</span><span class="p">(</span><span class="n">Model</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p-value =&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">p</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="n">posterior_predictive_check</span><span class="p">(</span><span class="n">Model1</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Does this result agree with your visual evaluation of the model fitness from the last section? If not, perhaps the test statistic you chose doesn't reflect the agreement you're looking for when inspecting the posterior predictions. If you'd like to re-define your test statistic, do so now and repeat this check.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<blockquote><p><em>TBC: Your thoughts</em></p>
+</blockquote>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><strong>Self-check:</strong> If you implemented the test statistic and priors recommended above, your p-value should be about 0.001. The precise value will vary because of all the randomization involved in estimating it, and the fact that we are out in the tail of the posterior predictive distribution.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="3.-Evaluating-a-more-complex-model">3. Evaluating a more complex model<a class="anchor-link" href="#3.-Evaluating-a-more-complex-model">&#182;</a></h2><p>Next, we'll repeat all of that (it should be much easier this time!) with a second model. The functional form is up to you, but to make things interesting, choose a model with at least two parameters. Since this is a PDF over distances, it should be defined over the non-negative real line. The test statistic will, of course, have to be the same as before.</p>
+<p>Put some thought into the priors for this model. They will be important when we come to comparing the two models quantitatively in the next notebook.</p>
+<p>Copy/paste your implementation of <code>ExponentialModel</code> and edit it to implement some other model (give the class a different name, naturally).</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TBC</span><span class="p">()</span>
+<span class="c1"># class someOtherModel(Model): ...</span>
+
+<span class="c1">## Instantiate it:</span>
+<span class="c1"># Model2 = someOtherModel() # replace with the actual name of your new class</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Test the prior sampling function:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">pars</span> <span class="ow">in</span> <span class="n">Model2</span><span class="o">.</span><span class="n">draw_samples_from_prior</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">pars</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Test the posterior function on a couple of these prior samples:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">pars</span> <span class="ow">in</span> <span class="n">Model2</span><span class="o">.</span><span class="n">draw_samples_from_prior</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Log-posterior for&#39;</span><span class="p">,</span> <span class="n">pars</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">Model2</span><span class="o">.</span><span class="n">log_posterior</span><span class="p">(</span><span class="o">**</span><span class="n">pars</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Test the mock data generator. Here and in the following test, you can replace the call to <code>draw_samples_from_prior</code> with specific parameter values if your prior is so wide that you're unlikely to see anything on the plot.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">7.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">Model2</span><span class="o">.</span><span class="n">generate_replica_dataset</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="o">**</span><span class="n">Model2</span><span class="o">.</span><span class="n">draw_samples_from_prior</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightgray&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Measured distance $y$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency (replica)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Test the sampling distribution.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">7.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">Model2</span><span class="o">.</span><span class="n">sampling_distribution</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="o">**</span><span class="n">Model2</span><span class="o">.</span><span class="n">draw_samples_from_prior</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]));</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Measured distance $y$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$p(y|a)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Fit the model.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="n">TBC</span><span class="p">()</span> <span class="c1"># Model2.draw_samples_from_posterior( ...</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Check the convergence</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TBC</span><span class="p">()</span> <span class="c1"># Model2.check_chains( ...</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Remove burn-in.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TBC</span><span class="p">()</span> <span class="c1"># Model2.remove_burnin( ...</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Since we have multiple parameters, look at their covariances.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plotGTC</span><span class="p">(</span><span class="n">Model2</span><span class="o">.</span><span class="n">samples</span><span class="p">,</span> <span class="n">paramNames</span><span class="o">=</span><span class="n">Model2</span><span class="o">.</span><span class="n">param_labels</span><span class="p">,</span> <span class="n">figureSize</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+        <span class="n">customLabelFont</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">},</span> <span class="n">customTickFont</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">},</span> <span class="n">customLegendFont</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">16</span><span class="p">});</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Print the posterior mean.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Posterior mean parameters = &quot;</span><span class="p">,</span> <span class="n">Model2</span><span class="o">.</span><span class="n">posterior_mean</span><span class="p">())</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Visually compare posterior predictions with the data, alongside those of the exponential model.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">14.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">visual_check</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Model1</span><span class="p">,</span> <span class="n">Nreps</span><span class="o">=</span><span class="mi">100</span><span class="p">);</span>
+<span class="n">visual_check</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">Model2</span><span class="p">,</span> <span class="n">Nreps</span><span class="o">=</span><span class="mi">100</span><span class="p">);</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Finally, compute the p-value.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">p2</span> <span class="o">=</span> <span class="n">posterior_predictive_check</span><span class="p">(</span><span class="n">Model2</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Does your model appear to reproduce the data better than the exponential one? Does it have a more compatible p-value?</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<blockquote><p><em>TBC: Your thoughts</em></p>
+</blockquote>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>So is it a better model, in the sense of being justified by the data? To answer that, we need to keep in mind that a more flexible model (i.e. with more free parameters) will usually be able to fit the data more closely, even if it's only reproducing the particular realization of noise present in our specific data set. In other words, directly comparing the maximum likelihood achieved, or even the p-values, is not enough to say that the more complex model is statistically better at reproducing the features of the observed data. For that, we will need to turn to the model selection methods covered in the next notebook.</p>
+<p>To save ourselves having to re-run the chains in that notebook, let's save them to disk.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TBC</span><span class="p">()</span> <span class="c1"># dill.dump_session(&#39;../ignore/model_evaluation.db&#39;) # change path if you want</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 </div>
 </body>
 

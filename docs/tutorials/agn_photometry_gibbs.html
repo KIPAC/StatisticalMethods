@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>agn_photometry_gibbs</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14259,74 +14259,778 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="PHYSICS-366:-Statistical-Methods-in-Astrophysics">PHYSICS 366: Statistical Methods in Astrophysics<a class="anchor-link" href="#PHYSICS-366:-Statistical-Methods-in-Astrophysics">&#182;</a></h1><p>Course notes and resources for Stanford University graduate course Physics 366.</p>
-<h2 id="Course-Description">Course Description<a class="anchor-link" href="#Course-Description">&#182;</a></h2><p>This course is intended to provide an introduction to modern
-statistical methodology, and its applications to problems in
-astrophysics and cosmology, and is aimed at graduate students
-intending to do research in this area. We
-strongly encourage most first and second year students working in
-KIPAC to take the course.  Our goal is to provide a background that
-will be directly relevant to the kind of problems that typical KIPAC
-students will encounter in their research.</p>
-<h2 id="Course-Objectives">Course Objectives<a class="anchor-link" href="#Course-Objectives">&#182;</a></h2><p>Our goal is that students taking this course will:</p>
+<h2 id="Tutorial:-AGN-Photometry-with-Gibbs-Sampling">Tutorial: AGN Photometry with Gibbs Sampling<a class="anchor-link" href="#Tutorial:-AGN-Photometry-with-Gibbs-Sampling">&#182;</a></h2><p>Note: this tutorial follows <a href="agn_photometry_grid.html">AGN Photometry on a Grid</a>. Along with <a href="agn_photometry_metro.html">AGN Photometry with Metropolis Sampling</a>, it should be done before <a href="mcmc_diagnostics.html">MCMC Diagnostics</a>.</p>
+<p>Having laboriously done Baysian inference on a grid to fit an AGN source to X-ray data, we will now turn to solving the same problem using the Gibbs sampling method of MCMC. A heads up, this is the longest tutorial to date.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">exec</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;tbc.py&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span> <span class="c1"># define TBC and TBC_above</span>
+<span class="kn">import</span> <span class="nn">astropy.io.fits</span> <span class="k">as</span> <span class="nn">pyfits</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>   <span class="c1"># StringIO behaves like a file object</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="kn">from</span> <span class="nn">pygtc</span> <span class="kn">import</span> <span class="n">plotGTC</span>
+<span class="kn">import</span> <span class="nn">incredible</span> <span class="k">as</span> <span class="nn">cr</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Once again, we will read in the X-ray image data, and extract a small image around an AGN that we wish to study.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">xray_image</span> <span class="kn">import</span> <span class="n">Image</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TBC</span><span class="p">()</span> <span class="c1"># datadir = &#39;../ignore/&#39; # or whatever - path to where you put the downloaded files</span>
+
+<span class="n">imagefile</span> <span class="o">=</span> <span class="n">datadir</span> <span class="o">+</span> <span class="s1">&#39;P0098010101M2U009IMAGE_3000.FTZ&#39;</span>
+<span class="n">expmapfile</span> <span class="o">=</span> <span class="n">datadir</span> <span class="o">+</span> <span class="s1">&#39;P0098010101M2U009EXPMAP3000.FTZ&#39;</span>
+
+<span class="n">imfits</span> <span class="o">=</span> <span class="n">pyfits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">imagefile</span><span class="p">)</span>
+<span class="n">exfits</span> <span class="o">=</span> <span class="n">pyfits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">expmapfile</span><span class="p">)</span>
+
+<span class="n">im</span> <span class="o">=</span> <span class="n">imfits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+<span class="n">ex</span> <span class="o">=</span> <span class="n">exfits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+
+<span class="n">orig</span> <span class="o">=</span> <span class="n">Image</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ex</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x0</span> <span class="o">=</span> <span class="mi">417</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="mi">209</span>
+<span class="n">stampwid</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># very small! see below</span>
+<span class="n">stamp</span> <span class="o">=</span> <span class="n">orig</span><span class="o">.</span><span class="n">cutout</span><span class="p">(</span><span class="n">x0</span><span class="o">-</span><span class="n">stampwid</span><span class="p">,</span> <span class="n">x0</span><span class="o">+</span><span class="n">stampwid</span><span class="p">,</span> <span class="n">y0</span><span class="o">-</span><span class="n">stampwid</span><span class="p">,</span> <span class="n">y0</span><span class="o">+</span><span class="n">stampwid</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+<span class="n">stamp</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">log_image</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Fitting-for-2-parameters">Fitting for 2 parameters<a class="anchor-link" href="#Fitting-for-2-parameters">&#182;</a></h2><p>We're going use this AGN photometry example to try out Gibbs sampling, specifically conjugate Gibbs. This doesn't work out beautifully for all the model parameters, but shouldn't be too bad if we</p>
+<ol>
+<li>assume the background is zero. If we narrow the postage stamp down tightly around the AGN, then a very small fraction of counts should be background, and this will not be a terrible assumption. (Note the choice of <code>stampwid</code> above.)</li>
+<li>assume that the exposure map is uniform over the stamp. Again, not bad if it's small enough.</li>
+<li>fit only for the flux and PSF width. (We'll generalize to include the AGN position later.)</li>
+</ol>
+<p>Please note that, even though the assumptions above should not be terrible, they aren't ones we would normally make in real life. Probably we wouldn't use Gibbs sampling in this particular case. Still, it's neat that we can even use this real example to illustrate the method.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="The-likelihood">The likelihood<a class="anchor-link" href="#The-likelihood">&#182;</a></h3><p>Time for some math. (Recall that conjuate Gibbs sampling sometimes lets us design a very efficient sampler at the cost of doing some math ourselves.)</p>
+<p>First, it will be convenient to work with the expected total number of counts instead of the count rate. So, instead of <code>lnF0</code> as a parameter, we'll have $\mu$.</p>
+<p>Recalling that the counts are Poisson distributed, our likelihood is</p>
+<p>$p(\{N_i\}|\mu,\sigma) = \prod_i \frac{e^{-\mu_i}\mu_i^{N_i}}{N_i!}$,</p>
+<p>where $N_i$ is the number of counts in pixel $i$ and $\mu_i$ is the expected number in that pixel ($\sum_i \mu_i=\mu$). Furthermore, our symmetric, Gaussian model of the PSF says that</p>
+<p>$\mu_i = \mu \, F_i(x_0,y_0,\sigma)$,</p>
+<p>where the AGN center is $(x_0,y_0)$, and $F_i$ is the integral of the Gaussian PSF over the area of the $i$th pixel.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>This seems like a little bit of a mess, but we can simplify it to a more intuitive form. Namely, with $N=\sum_i N_i$,</p>
+<p>$p(\{N_i\}|\mu,\sigma) \propto \mathrm{Poisson}(N|\mu) \prod_j F_{i(j)}(x_0,y_0,\sigma)$,</p>
+<p>where the index $j$ only runs over detected counts (i.e. those pixels where $N_i&gt;0$, repeated $N_i$ times in the product), and the notation $i(j)$ clumsily refers to the pixel where the $j$th count landed.</p>
+<p>In other words, we can factor the likelihood into</p>
+<ol>
+<li>a probability for the total number of counts, and</li>
+<li>a probability for the spatial distribution of those counts.</li>
+</ol>
+<p>This is one of those results that may be more intuitive to see than to derive, even if the derivation is not complex. So, please take a minute to check that you can get to this version of the likelihood from the previous one (up to factors of $N$ and $N_i$, which don't depend on model parameters; see Endnote 1), and write down how it works in your own words.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<blockquote><p><em>your own words...</em></p>
+</blockquote>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>We will now be slightly dodgy, and replace $F_{i(j)}(x_0,y_0,\sigma)$ with the PSF (the Gaussian density for two uncorrelated variables) evaluated at the center of pixel $i$, $(x_i,y_i)$. This should not be the worst thing ever if the PSF is much larger than a pixel, which is the case here. The likelihood will no longer be correctly normalized, but as we'll see, this doesn't matter to us.</p>
+<p>$p(\{N_i\}|\mu,\sigma) \propto \mathrm{Poisson}(N|\mu) \prod_j \mathrm{Normal}(x_j|x_0,\sigma) \, \mathrm{Normal}(y_j|y_0,\sigma)$.</p>
+<p>Finally, we can shorten this even more by concatenating $\mathbf{x}-x_0$ and $\mathbf{y}-y_0$ into $\mathbf{z}$, indexed by $k$, writing</p>
+<p>$p(\{N_i\}|\mu,\sigma) \propto \mathrm{Poisson}(N|\mu) \prod_k \mathrm{Normal}(z_k|0,\sigma)$.</p>
+<p>This last step is just a notation trick to emphasize that all the displacements in both $x$ and $y$ from $(x_0,y_0)$ tell us about the PSF width, $\sigma$. The index $k$ would run from 1 to twice the number of detected counts.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Conjugacy">Conjugacy<a class="anchor-link" href="#Conjugacy">&#182;</a></h3><p>The form of the likelihood is now about as simple as we could hope for. Next, we need to work out the conjugate relations for updating each parameter, and decide whether we can live with the form of the prior that this would require.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Relation-for-$\mu$">Relation for $\mu$<a class="anchor-link" href="#Relation-for-$\mu$">&#182;</a></h4><p>The dependence of the likelihood on $\mu$ is all in a Poisson term, and we see from <a href="https://en.wikipedia.org/wiki/Conjugate_prior">the repository of all knowledge</a> that the conjugate prior is the Gamma distribution. Since this conjugacy was worked out <a href="../notes/bayes_law.html">in the notes</a>, we won't make you derive it here. Lucky you!</p>
+<p>Recall that, for conjugate Gibbs sampling, we want to work out the posterior for $\mu$ <em>conditioned on all other parameters</em>. This is much simpler than dealing with marginalization or some other operation. So, using the Poisson-Gamma conjugacy relation, we have that</p>
+<p>$\mathrm{Gamma}(\mu|\alpha_0,\beta_0) \, \mathrm{Poisson}(N|\mu,\ldots) \propto \mathrm{Gamma}(\mu|\alpha_0+N,\beta_0+1) = p(\mu|\{N_i\};\ldots)$,</p>
+<p>where "$\ldots$" stands for all the other parameters: $x_0,y_0,\sigma$.</p>
+<p>(Remember that the posterior <em>must be</em> a normalized PDF. Hence, the RHS <em>is</em> the posterior for $\mu$. If we had carefully kept track of all the normalizing factors and computed the evidence, this is what it would work out to be. Aren't we lucky that we didn't need to do so explicitly?)</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>So we <em>could</em> use conjugate Gibbs sampling for $\mu$, but should we? In other words, can we find a prior we can live with within the <a href="https://en.wikipedia.org/wiki/Gamma_distribution">Gamma</a> family? Probably. Here are some special cases of the distribution, some of which you can verify by inspection of its PDF:</p>
 <ul>
-<li>develop familiarity in working with various types of astronomical data.</li>
-<li>understand the role of modeling in data analysis.</li>
-<li>develop facility with various types of inference from data.</li>
-<li>be able to critically evaluate and apply commonly used statistical methodologies.</li>
-<li>be able to apply advanced statistical reasoning to problems they are likely to encounter in their research.</li>
+<li>$(\alpha_0=1,\beta_0\rightarrow0)$ is uniform on $\mu&gt;0$;</li>
+<li>$(\alpha_0=1/2,\beta_0\rightarrow0)$ turns out to be the Jefferys prior, $p(\mu) \propto \mu^{-1/2}$;</li>
+<li>$(\alpha_0\rightarrow0,\beta_0\rightarrow0)$ is $p(\mu)\propto 1/\mu$, or uniform in $\ln(\mu)$, thus equivalent to the uniform prior on <code>lnF0</code> we used previously. Let's use this one.</li>
 </ul>
-<h2 id="Content">Content<a class="anchor-link" href="#Content">&#182;</a></h2><p><strong>Start by looking at the <a href="notes/overview.html">Overview</a> to understand how this course works, and <a href="notes/getting_started.html">Getting Started</a> to get up and running with Python and Jupyter, if needed.</strong>
-Enrolled students should also read the <a href="notes/assignments.html">Assignments</a> page to see what is expected.</p>
-<p>The course content can be browsed here in static HTML format. This is sufficient for the notes, but to do the tutorials you will need to download them in Jupyter notebook format from the <a href="https://github.com/KIPAC/StatisticalMethods/tree/master/tutorials">GitHub repository</a>.</p>
-<p>Notes and tutorials are listed in reasonable order below, but a better way to navigate the course may be through this nifty <a href="dependency_graph.html">dependency graph</a> (via <a href="https://mermaid-js.github.io/mermaid/">Mermaid</a>).</p>
-<h3 id="Notes">Notes<a class="anchor-link" href="#Notes">&#182;</a></h3><ul>
-<li><a href="notes/overview.html">Overview</a></li>
-<li><a href="notes/assignments.html">Assignments</a></li>
-<li><a href="notes/getting_started.html">Getting Started</a></li>
-<li><a href="notes/generative_models.html">Generative Models</a></li>
-<li><a href="notes/essential_probability.html">Essential Probability</a></li>
-<li><a href="notes/bayes_law.html">Bayes' Law</a></li>
-<li><a href="notes/credible_regions.html">Credible Regions</a></li>
-<li><a href="notes/errorbars.html">"Error bars"</a></li>
-<li><a href="notes/statistical_isms.html">Bayesianism and Other "isms"</a></li>
-<li><a href="notes/montecarlo.html">Monte Carlo Sampling</a></li>
-<li><a href="notes/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="notes/more_samplers.html">More Sampling Methods</a></li>
-<li><a href="notes/hierarchical.html">Hierarchical Models</a></li>
-<li><a href="notes/model_evaluation.html">Model Evaluation and Comparison</a></li>
-<li><a href="notes/missingdata.html">Missing Data and Selection Effects</a></li>
-<li><a href="notes/modelfreemodels.html">"Model-free" Models</a></li>
-<li><a href="notes/approximate_methods.html">Approximate Methods</a></li>
-<li><a href="notes/fishing.html">Fishing, Blinding and More</a></li>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Relation-for-$\sigma$">Relation for $\sigma$<a class="anchor-link" href="#Relation-for-$\sigma$">&#182;</a></h4><p>Specifically, we are looking for a conjugate relation for the standard deviation of a Normal likelihood, with a known mean, since we are conditioning on $x_0$ and $y_0$. This conjugacy relation is much more annoying to work out, but the Wikipedia tells us what the update rule for the <strong>variance</strong> (not the standard deviation, but $\sigma^2$) is, and that the conjugate prior is the "scaled inverse chi-square" distribution:</p>
+<p>$\mathrm{SclInv}\chi^2(\sigma^2|\nu_0,\sigma_0^2) \, \prod_k\mathrm{Normal}(z_k|0,\sigma,\ldots) \propto \mathrm{SclInv}\chi^2\left(\sigma^2\left|\nu_0+n_k, \frac{\nu_0\sigma_0^2 + \sum_k z_k^2}{\nu_0+n_k}\right.\right) = p(\sigma^2|\{N_i\};\ldots)$.</p>
+<p>Here $n_k=2N$ is the number of items in the sum over $k$, i.e. <em>twice</em> the number of counts (since both their $x$ and $y$ positions provide independent information about $\sigma$).</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Scaled_inverse_chi-squared_distribution">scaled inverse $\chi^2$ distribution</a> is a little uglier than we're used to, but not all that hard to deal with due to it's close relationship with the $\chi^2$ distribution. Again we can find values or limits of the parameters that are compatible with some of the "uninformative" choices we might want to make. See if these make sense by inspection of the PDF (all these have non-positive-integer degrees of freedom, which is admittedly bizarre, but the math works out):</p>
+<ul>
+<li>$(\nu_0=-2,\sigma_0^2\rightarrow0)$ is uniform in $\sigma^2$;</li>
+<li>$\nu_0\rightarrow0$ and any $\sigma_0^2$ is the Jeffreys prior, $p(\sigma^2) \propto \sigma^{-2}$;</li>
+<li>$(\nu_0=-1,\sigma_0^2\rightarrow0)$ is uniform in $\sigma$, $p(\sigma^2) \propto \sigma^{-1}$.</li>
 </ul>
-<h3 id="Tutorials">Tutorials<a class="anchor-link" href="#Tutorials">&#182;</a></h3><ul>
-<li><a href="tutorials/demo.html">Demo</a></li>
-<li><a href="tutorials/generative_models.html">Generative Models</a></li>
-<li><a href="tutorials/probability_essentials.html">Essential Probability</a></li>
-<li><a href="tutorials/probability_transformations.html">Probability Transformations</a></li>
-<li><a href="tutorials/bayes_law.html">Bayes' Law</a></li>
-<li><a href="tutorials/working_with_samples.html">Working With Samples</a></li>
-<li><a href="tutorials/credible_interals.html">Credible Regions</a></li>
-<li><a href="tutorials/gaussians.html">Gaussians and Least Squares</a></li>
-<li><a href="tutorials/xmm_image.html">XMM Image</a></li>
-<li><a href="tutorials/agn_photometry_grid.html">AGN Photometry: grid</a></li>
-<li><a href="tutorials/agn_photometry_gibbs.html">AGN Photometry: Gibbs sampling</a></li>
-<li><a href="tutorials/agn_photometry_metro.html">AGN Photometry: Metropolis sampling</a></li>
-<li><a href="tutorials/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="tutorials/ogle_lightcurve.html">OGLE Lightcurve</a></li>
-<li><a href="tutorials/microlensing.html">Microlensing</a></li>
-<li><a href="tutorials/cepheids.html">Cepheid Period-Luminosity Relation</a></li>
-<li><a href="tutorials/cepheids_one_galaxy.html">Cepheid P-L I: one galaxy</a></li>
-<li><a href="tutorials/cepheids_all_galaxies.html">Cepheid P-L II: multiple galaxies</a></li>
-<li><a href="tutorials/model_evaluation.html">Galaxy Cluster Mis-centering: model evaluation</a></li>
-<li><a href="tutorials/model_selection.html">Galaxy Cluster Mis-centering: model comparison</a></li>
-<li><a href="tutorials/missing_data.html">Shuttle O-ring Failures: missing data</a></li>
-</ul>
-<h2 id="Contact">Contact<a class="anchor-link" href="#Contact">&#182;</a></h2><ul>
-<li><a href="https://github.com/KIPAC/StatisticalMethods/issues/new?body=@abmantz">Adam Mantz</a></li>
-</ul>
-<p>All materials Copyright 2015, 2017, 2019, 2021 Adam Mantz, Phil Marshall and Claire Hébert, and distributed for copying and extension under the GPLv2 License, unless otherwise noted. If you have any feedback for us, please <a href="https://github.com/KIPAC/StatisticalMethods/issues">write us an issue</a>.</p>
+<p>Let's use the third one. But remember that we've made a non-linear change of variables here ($\sigma$ to $\sigma^2$) and that in general the prior density is not invariant under such a transformation. Use what you learned way back in <a href="../notes/probability_transformations.html">Probability Tranformations</a> to work out the equivalent prior on $\sigma$, $p(\sigma)$. This will be important to know so that we can use the same prior when comparing to a different method.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<blockquote><p>$p(\sigma) = $ ...</p>
+</blockquote>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Implementation">Implementation<a class="anchor-link" href="#Implementation">&#182;</a></h3><p>So, now we have rules from drawing samples from the posterior distributions of both parameters. In fact, we even have the posterior distribution in closed form, since in this case it factored cleanly into $p(\mu,\sigma|\{N_i\})=p(\mu|\{N_i\})p(\sigma|\{N_i\})$. That is, we won't actually need to generate a Markov chain, we can sample directly from the posterior without correlation between samples! This is called "independence sampling".</p>
+<p>Later, we'll see that this is no longer the case when we introduce the AGN $x$ and $y$ positions as free parameters; then we will need to sample from the <em>fully conditional</em> posterior of each parameter in turn, producing a Markov chain of samples that approximate draws from the full posterior.</p>
+<p>But, before tackling that, let's get some code together to produce samples from the simpler case we're starting with, with just the two free parameters. Note that sampling from the scaled inverse $\chi^2$ distribution is slightly involved, but not too complicated; it just follows from the definition of the distribution, so you ultimately end up drawing from a $\chi^2$ distribution and applying some functions to those random draws.</p>
+<p>The cell below just defines dictionaries for the model parameters and prior hyperparameters as usual. Note that, because we can do independence sampling here, we don't actually need starting guesses for $\mu$ and $\sigma$!</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mu&#39;</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;sigma&#39;</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;x0&#39;</span><span class="p">:</span><span class="n">x0</span><span class="p">,</span> <span class="s1">&#39;y0&#39;</span><span class="p">:</span><span class="n">y0</span><span class="p">}</span>
+<span class="n">hyperparams</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;alpha0&#39;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;beta0&#39;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;nu0&#39;</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;sigmasq0&#39;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">}</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Now for the fun part: write a function that takes the data, model parameters and prior hyperparameters as input, and returns a new sample of $\mu$ and $\sigma$ based on the derivations above. Note that <strong>you should return $\sigma$, not $\sigma^2$</strong>. (There is nothing to this other than taking a square root - post-facto transformations of parameters is simple; the only wrinkle is in chosing the appropriate prior density as we did above.)</p>
+<p>Even though we chose specific hyperparameter values above, you should write your code such that any valid values can be passed.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">independence_sampler</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">par</span><span class="p">,</span> <span class="n">hypar</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    img is of type Image (our postage stamp)</span>
+<span class="sd">    par and hypar are our params and hyperparams dictionaries</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># You will need to do some calculations involving the image data...</span>
+    <span class="c1"># (some of these could be done once instead of repeating every time this function is called, but whatever)</span>
+    <span class="n">TBC</span><span class="p">()</span>
+    <span class="c1"># and then work out parameters of the conditional posterior for mu, and draw a sample from it...</span>
+    <span class="n">TBC</span><span class="p">()</span>
+    <span class="c1"># and then do the same for sigma^2...</span>
+    <span class="n">TBC</span><span class="p">()</span>
+    <span class="c1"># and then return the new samples.</span>
+    <span class="n">TBC</span><span class="p">()</span>
+    
+<span class="n">TBC_above</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Let's see what a few samples generated by this function look like.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">independence_sampler</span><span class="p">(</span><span class="n">stamp</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">hyperparams</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)])</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h3><p>We could generate lots of samples with a python construction like the one above (because, again, this case is independence sampling). But, instead, let's belabor it as though we actually had to create a Markov chain, where each sample is dependent on the previous one. The cell below does this, updating the <code>params</code> dictionary within a loop (compare with the pseudocode in the <a href="../notes/montecarlo.html">notes</a>), and collecting all the samples in an array.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="n">nsamples</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">samples2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nsamples</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">samples2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">independence_sampler</span><span class="p">(</span><span class="n">stamp</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">hyperparams</span><span class="p">)</span>
+    <span class="n">params</span><span class="p">[</span><span class="s1">&#39;mu&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">params</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">samples2</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">p</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>We can use <code>plotGTC</code> to quickly visualize the posterior. This package shows us all the 1D marginalized posteriors and every pair of 2D marginalized posteriors (as a contour plot), after some smoothing, in a triangular grid.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plotGTC</span><span class="p">(</span><span class="n">samples2</span><span class="p">,</span> <span class="n">paramNames</span><span class="o">=</span><span class="p">[</span><span class="sa">r</span><span class="s1">&#39;$\mu$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\sigma$&#39;</span><span class="p">],</span>
+        <span class="n">figureSize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">customLabelFont</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">},</span> <span class="n">customTickFont</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">});</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><strong>Checkpoint:</strong> The cell below will compare your samples with some we have generated. They won't be identical, but should be extremely close if you've used the priors and data specified above.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ours</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;solutions/gibbs.dat&#39;</span><span class="p">)</span>
+<span class="n">plotGTC</span><span class="p">([</span><span class="n">samples2</span><span class="p">,</span> <span class="n">ours</span><span class="p">],</span> <span class="n">paramNames</span><span class="o">=</span><span class="p">[</span><span class="sa">r</span><span class="s1">&#39;$\mu$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\sigma$&#39;</span><span class="p">],</span> <span class="n">chainLabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;yours&#39;</span><span class="p">,</span> <span class="s1">&#39;ours&#39;</span><span class="p">],</span>
+        <span class="n">figureSize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">customLabelFont</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">},</span> <span class="n">customTickFont</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">},</span> <span class="n">customLegendFont</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">16</span><span class="p">});</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>In order to compare to what we get using other methods, we'll also want to transform from $\mu$ back to <code>lnF0</code>. We can do this (roughly) by dividing our the median value of the exposure map (remember that we are assuming a uniform exposure in this notebook).</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">samples2</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">samples2</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">stamp</span><span class="o">.</span><span class="n">ex</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plotGTC</span><span class="p">(</span><span class="n">samples2</span><span class="p">,</span> <span class="n">paramNames</span><span class="o">=</span><span class="p">[</span><span class="sa">r</span><span class="s1">&#39;$\ln F_0$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\sigma$&#39;</span><span class="p">],</span>
+        <span class="n">figureSize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">customLabelFont</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">},</span> <span class="n">customTickFont</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">});</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>How does this compare with what you found from the grid exercise? Keep in mind that we made different assumptions here (including that the background is zero). Do any differences in the posterior make sense in light of that?</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<blockquote><p><em>Your commentary ...</em></p>
+</blockquote>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Fitting-for-4-parameters">Fitting for 4 parameters<a class="anchor-link" href="#Fitting-for-4-parameters">&#182;</a></h2><p>Let's now fit for the source position also ($x_0$ and $y_0$). We'll do this on simulated data (with <em>really</em> no background), so that we can check whether our results are consistent with the input parameters.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Mocking-up-an-image">Mocking up an image<a class="anchor-link" href="#Mocking-up-an-image">&#182;</a></h3><p>First, I declare that these shall be the "true" parameters according to the simulation:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sim_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mu&#39;</span><span class="p">:</span> <span class="mf">35.0</span><span class="p">,</span> <span class="s1">&#39;sigma&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s1">&#39;x0&#39;</span><span class="p">:</span> <span class="mi">417</span><span class="p">,</span> <span class="s1">&#39;y0&#39;</span><span class="p">:</span> <span class="mi">209</span><span class="p">}</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Now, over to you to write a function that produces a mock image for us to work with. Remember that the sampling distribution/likelihood, written down somewhere way above, is a guide to exactly how to do this. Store the result of calling the function in a variable called <code>mock</code>. (You might find it convenient to just overwrite the image data in <code>stamp</code>, in which case you can just run <code>mock = stamp</code> afterward.)</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">mock_image</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Generate a mock image from the model given by x0, y0, mu, sigma.</span>
+<span class="sd">    Either return an Image object containing this image, along with the other metadata help by `data`, or just</span>
+<span class="sd">    overwrite the counts image in `data`.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">TBC</span><span class="p">()</span>
+
+<span class="c1"># mock = mock_image(stamp, ...) ?</span>
+<span class="c1"># or, mock_image(stamp, ...); mock = stamp ?</span>
+<span class="n">TBC_above</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Let's have a look at it.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+<span class="n">mock</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">log_image</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Doing-the-math">Doing the math<a class="anchor-link" href="#Doing-the-math">&#182;</a></h3><p>Let's explicitly write down the fully conditional posteriors for the case where the source position is free.</p>
+<p>Nothing has changed for the total mean number of counts, which remains indepedent of the other parameters:</p>
+<p>$p(\mu|\{N_i\};\ldots) = \mathrm{Gamma}(\mu|\alpha_0+N,\beta_0+1)$.</p>
+<p>The fully conditional posterior for $\sigma^2$ is just as it was before, but we should explicitly admit that we are conditioning on $x_0$ and $y_0$, and show where they enter the expression. Make sure you're happy with this, comparing with our previous equations, before going on.</p>
+<p>$p(\sigma^2|\{N_i\};x_0, y_0,\ldots) = \mathrm{SclInv}\chi^2\left(\sigma^2\left|\nu_0+n_k, \frac{1}{\nu_0+n_k}\left[\nu_0\sigma_0^2 + \sum_j \left\{\frac{(x_0-x_j)^2}{\sigma^2}+\frac{(y_0-y_j)^2}{\sigma^2}\right\}\right]\right.\right)$.</p>
+<p>Finally, we need the fully conditional posteriors for $x_0$ and $y_0$, which are each independently the mean of a normal distribution with standard deviation $\sigma$. Looking it up, we see that the conjugate prior is also normal. This is a little bit fiddly to show, but relatively straightforward using the Gaussian identities you've worked with <a href="gaussians.html">previously</a>. Whether or not you take the time to work this out yourself, it's worth checking that the way the information from the prior and data are combined in the expressions below makes sense.</p>
+<p>Denoting the hyperparameters of the conjugate priors $(m_x,s_x,m_y,s_y)$, we have</p>
+<p>$p(x_0|\sigma, \{N_i\}) = \mathrm{Normal}\left(x_0\left|\left[\frac{1}{s_x^2}+\frac{N}{\sigma^2}\right]^{-1}\left[\frac{m_x}{s_x^2}+\frac{\sum_j x_j}{\sigma^2}\right], \left[\frac{1}{s_x^2}+\frac{N}{\sigma^2}\right]^{-1/2}\right.\right)$,</p>
+<p>$p(y_0|\sigma, \{N_i\}) = \mathrm{Normal}\left(y_0\left|\left[\frac{1}{s_y^2}+\frac{N}{\sigma^2}\right]^{-1}\left[\frac{m_y}{s_y^2}+\frac{\sum_j y_j}{\sigma^2}\right], \left[\frac{1}{s_y^2}+\frac{N}{\sigma^2}\right]^{-1/2}\right.\right)$.</p>
+<p>In practice, let's use uniform priors for $x_0$ and $y_0$, which correspond to the limit $s_x,s_y\rightarrow\infty$ (at which point the values of $m_x$ and $m_y$ cease to be important). However, you should write your code such that any valid hyperparameters can be used. Here we add them to the <code>hyperparameters</code> dictionary:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hyperparams</span><span class="p">[</span><span class="s1">&#39;mx&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">hyperparams</span><span class="p">[</span><span class="s1">&#39;sx&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+<span class="n">hyperparams</span><span class="p">[</span><span class="s1">&#39;my&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">hyperparams</span><span class="p">[</span><span class="s1">&#39;sy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Implementation">Implementation<a class="anchor-link" href="#Implementation">&#182;</a></h3><p>Remember that now each parameter must be updated in turn, meaning the new value of one parameter is used when updating the next, etc. We don't update everything all at once based on the current position, as we could before. So, let's explicitly write separate functions for updating different sets of parameters.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">update_mu</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">par</span><span class="p">,</span> <span class="n">hypar</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    img is of type Image (our mock postage stamp)</span>
+<span class="sd">    par and hypar are our params and hyperparams dictionaries</span>
+<span class="sd">    Instead of returning anything, we UPDATE par in place</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">TBC</span><span class="p">()</span>
+    <span class="c1"># par[&#39;mu&#39;] = ...</span>
+    
+<span class="n">TBC_above</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">update_sigma</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">par</span><span class="p">,</span> <span class="n">hypar</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    img is of type Image (our mock postage stamp)</span>
+<span class="sd">    par and hypar are our params and hyperparams dictionaries</span>
+<span class="sd">    Instead of returning anything, we UPDATE par in place</span>
+<span class="sd">    (Remember to return sigma instead of signa^2!)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">TBC</span><span class="p">()</span>
+    <span class="c1"># par[&#39;sigma&#39;] = ...</span>
+    
+<span class="n">TBC_above</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>We can update $x_0$ and $y_0$ in a single function, since their posteriors do not depend on one another.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">update_x0y0</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">par</span><span class="p">,</span> <span class="n">hypar</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    img is of type Image (our mock postage stamp)</span>
+<span class="sd">    par and hypar are our params and hyperparams dictionaries</span>
+<span class="sd">    Instead of returning anything, we UPDATE par in place</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">TBC</span><span class="p">()</span>
+    <span class="c1"># par[&#39;x0&#39;] = ...</span>
+    <span class="c1"># par[&#39;y0&#39;] = ...</span>
+    
+<span class="n">TBC_above</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Let's test all of that by calling each function and verifying that all the parameters changed (to finite, allowed values).</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+<span class="n">update_mu</span><span class="p">(</span><span class="n">mock</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">hyperparams</span><span class="p">)</span>
+<span class="n">update_sigma</span><span class="p">(</span><span class="n">mock</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">hyperparams</span><span class="p">)</span>
+<span class="n">update_x0y0</span><span class="p">(</span><span class="n">mock</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">hyperparams</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h3><p>As before, we can fill in an array with samples generated with the functions above. Note that, this time, the for loop is necessary, since we can't fill in row $i$ without knowing the contents of row $(i-1)$. The order of the individual parameter updates is arbitrary, and could even be randomized if you particularly wanted to.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="n">samples4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nsamples</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">samples4</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="n">update_mu</span><span class="p">(</span><span class="n">mock</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">hyperparams</span><span class="p">)</span>
+    <span class="n">update_sigma</span><span class="p">(</span><span class="n">mock</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">hyperparams</span><span class="p">)</span>
+    <span class="n">update_x0y0</span><span class="p">(</span><span class="n">mock</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">hyperparams</span><span class="p">)</span>
+    <span class="n">samples4</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">=</span> <span class="p">[</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;mu&#39;</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;x0&#39;</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;y0&#39;</span><span class="p">]]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Let's do the most basic (yet still extremely important) visual check to see how our sampler performed, looking at traces of the Markov chain for each parameter. (It's ok if you haven't read the notes on <a href="../notes/mcmc_diagnostics.html">MCMC Diagnostics</a> yet; we will go more in-depth later.) These trace plots show the value of each parameter as a function of iteration, and we'll add a line showing the value that was used to create the mock data.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">param_labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;$\mu$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\sigma$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$x_0$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$y_0$&#39;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">16.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">cr</span><span class="o">.</span><span class="n">plot_traces</span><span class="p">(</span><span class="n">samples4</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">param_labels</span><span class="p">,</span> 
+            <span class="n">truths</span><span class="o">=</span><span class="p">[</span><span class="n">sim_params</span><span class="p">[</span><span class="s1">&#39;mu&#39;</span><span class="p">],</span> <span class="n">sim_params</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">],</span> <span class="n">sim_params</span><span class="p">[</span><span class="s1">&#39;x0&#39;</span><span class="p">],</span> <span class="n">sim_params</span><span class="p">[</span><span class="s1">&#39;y0&#39;</span><span class="p">]])</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Note, if you started with pretty reasonable parameter values, it's entirely possible that there isn't a clear burn-in phase that needs to be thrown out.</p>
+<p>We can similarly look at the triangle-plot summary of the posterior:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plotGTC</span><span class="p">(</span><span class="n">samples4</span><span class="p">,</span> <span class="n">paramNames</span><span class="o">=</span><span class="n">param_labels</span><span class="p">,</span>
+        <span class="n">truths</span><span class="o">=</span><span class="p">[</span><span class="n">sim_params</span><span class="p">[</span><span class="s1">&#39;mu&#39;</span><span class="p">],</span> <span class="n">sim_params</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">],</span> <span class="n">sim_params</span><span class="p">[</span><span class="s1">&#39;x0&#39;</span><span class="p">],</span> <span class="n">sim_params</span><span class="p">[</span><span class="s1">&#39;y0&#39;</span><span class="p">]],</span>
+        <span class="n">figureSize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">customLabelFont</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">},</span> <span class="n">customTickFont</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">});</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><strong>Checkpoint:</strong> The details of these plots will depend on your random mock data set, but, statistically speaking, your posterior should look by eye to be pretty consistent with most of the input parameters. It's entirely possible for one or perhaps a pair of parameters to look a bit discrepant (again, by eye) by chance.</p>
+<p>We weren't overly concerned with the starting point for the test chain above. But, for later notebooks, we'll want to see how multiple, independent chains with different starting points behave when using this method. The cell below will take care of running 4 chains, started at random positions broadly in the vicinity of the input values.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="n">chains</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">10000</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="n">samples</span> <span class="ow">in</span> <span class="n">chains</span><span class="p">:</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mu&#39;</span><span class="p">:</span><span class="n">st</span><span class="o">.</span><span class="n">uniform</span><span class="o">.</span><span class="n">rvs</span><span class="p">()</span><span class="o">*</span><span class="mf">50.0</span><span class="p">,</span>
+              <span class="s1">&#39;sigma&#39;</span><span class="p">:</span><span class="n">st</span><span class="o">.</span><span class="n">uniform</span><span class="o">.</span><span class="n">rvs</span><span class="p">()</span><span class="o">*</span><span class="mf">4.9</span> <span class="o">+</span> <span class="mf">0.1</span><span class="p">,</span>
+              <span class="s1">&#39;x0&#39;</span><span class="p">:</span><span class="n">st</span><span class="o">.</span><span class="n">uniform</span><span class="o">.</span><span class="n">rvs</span><span class="p">()</span><span class="o">*</span><span class="mf">10.0</span> <span class="o">+</span> <span class="mf">412.0</span><span class="p">,</span>
+              <span class="s1">&#39;y0&#39;</span><span class="p">:</span><span class="n">st</span><span class="o">.</span><span class="n">uniform</span><span class="o">.</span><span class="n">rvs</span><span class="p">()</span><span class="o">*</span><span class="mf">10.0</span> <span class="o">+</span> <span class="mf">204.0</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">samples</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">update_mu</span><span class="p">(</span><span class="n">mock</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">hyperparams</span><span class="p">)</span>
+        <span class="n">update_sigma</span><span class="p">(</span><span class="n">mock</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">hyperparams</span><span class="p">)</span>
+        <span class="n">update_x0y0</span><span class="p">(</span><span class="n">mock</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">hyperparams</span><span class="p">)</span>
+        <span class="n">samples</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">=</span> <span class="p">[</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;mu&#39;</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;x0&#39;</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;y0&#39;</span><span class="p">]]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Now we can look at a more colorful version of the trace plots, showing all of the chains simultaneously:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">16.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">param_labels</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">cr</span><span class="o">.</span><span class="n">plot_traces</span><span class="p">(</span><span class="n">chains</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">param_labels</span><span class="p">,</span> <span class="n">Line2D_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;markersize&#39;</span><span class="p">:</span><span class="mf">1.0</span><span class="p">},</span>
+           <span class="n">truths</span><span class="o">=</span><span class="p">[</span><span class="n">sim_params</span><span class="p">[</span><span class="s1">&#39;mu&#39;</span><span class="p">],</span> <span class="n">sim_params</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">],</span> <span class="n">sim_params</span><span class="p">[</span><span class="s1">&#39;x0&#39;</span><span class="p">],</span> <span class="n">sim_params</span><span class="p">[</span><span class="s1">&#39;y0&#39;</span><span class="p">]])</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Save them for later, and we're done!</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TBC</span><span class="p">()</span> <span class="c1"># change path below, if desired</span>
+<span class="c1">#for i,samples in enumerate(chains):</span>
+<span class="c1">#    np.savetxt(&#39;../ignore/agn_gibbs_chain_&#39;+str(i)+&#39;.txt&#39;, samples, header=&#39;mu sigma x0 y0&#39;)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>There you have it - at the cost of engaing our brains, you've now fit a model with enough free parameters to make a grid-based solution uncomfortably slow.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Endnotes">Endnotes<a class="anchor-link" href="#Endnotes">&#182;</a></h4><ol>
+<li>You might recognize the leftover coefficient in this expression as a multinomial coefficient, enumerating the various ways that $N$ counts can be distributed among pixels such that the final number in each pixel is given by ${N_i}$. This is the kind of detail that we normally don't have to worry about - since model parameters make no appearance, the term has no effect on parameter constraints - but we'll see that such combinatorics are important to keep track of in the context of <a href="../notes/missingdata.html">missing data</a> later on.</li>
+</ol>
 
 </div>
 </div>

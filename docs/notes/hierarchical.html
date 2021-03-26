@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>hierarchical</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14259,74 +14259,162 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="PHYSICS-366:-Statistical-Methods-in-Astrophysics">PHYSICS 366: Statistical Methods in Astrophysics<a class="anchor-link" href="#PHYSICS-366:-Statistical-Methods-in-Astrophysics">&#182;</a></h1><p>Course notes and resources for Stanford University graduate course Physics 366.</p>
-<h2 id="Course-Description">Course Description<a class="anchor-link" href="#Course-Description">&#182;</a></h2><p>This course is intended to provide an introduction to modern
-statistical methodology, and its applications to problems in
-astrophysics and cosmology, and is aimed at graduate students
-intending to do research in this area. We
-strongly encourage most first and second year students working in
-KIPAC to take the course.  Our goal is to provide a background that
-will be directly relevant to the kind of problems that typical KIPAC
-students will encounter in their research.</p>
-<h2 id="Course-Objectives">Course Objectives<a class="anchor-link" href="#Course-Objectives">&#182;</a></h2><p>Our goal is that students taking this course will:</p>
+<h1 id="Notes:-Hierarchical-Models">Notes: Hierarchical Models<a class="anchor-link" href="#Notes:-Hierarchical-Models">&#182;</a></h1><p>In which we will</p>
 <ul>
-<li>develop familiarity in working with various types of astronomical data.</li>
-<li>understand the role of modeling in data analysis.</li>
-<li>develop facility with various types of inference from data.</li>
-<li>be able to critically evaluate and apply commonly used statistical methodologies.</li>
-<li>be able to apply advanced statistical reasoning to problems they are likely to encounter in their research.</li>
+<li>Imagine devising models for more complex situations than we've seen so far.</li>
+<li>Introduce ourselves to the use of nuisance parameters and hierarchical structure in models.</li>
 </ul>
-<h2 id="Content">Content<a class="anchor-link" href="#Content">&#182;</a></h2><p><strong>Start by looking at the <a href="notes/overview.html">Overview</a> to understand how this course works, and <a href="notes/getting_started.html">Getting Started</a> to get up and running with Python and Jupyter, if needed.</strong>
-Enrolled students should also read the <a href="notes/assignments.html">Assignments</a> page to see what is expected.</p>
-<p>The course content can be browsed here in static HTML format. This is sufficient for the notes, but to do the tutorials you will need to download them in Jupyter notebook format from the <a href="https://github.com/KIPAC/StatisticalMethods/tree/master/tutorials">GitHub repository</a>.</p>
-<p>Notes and tutorials are listed in reasonable order below, but a better way to navigate the course may be through this nifty <a href="dependency_graph.html">dependency graph</a> (via <a href="https://mermaid-js.github.io/mermaid/">Mermaid</a>).</p>
-<h3 id="Notes">Notes<a class="anchor-link" href="#Notes">&#182;</a></h3><ul>
-<li><a href="notes/overview.html">Overview</a></li>
-<li><a href="notes/assignments.html">Assignments</a></li>
-<li><a href="notes/getting_started.html">Getting Started</a></li>
-<li><a href="notes/generative_models.html">Generative Models</a></li>
-<li><a href="notes/essential_probability.html">Essential Probability</a></li>
-<li><a href="notes/bayes_law.html">Bayes' Law</a></li>
-<li><a href="notes/credible_regions.html">Credible Regions</a></li>
-<li><a href="notes/errorbars.html">"Error bars"</a></li>
-<li><a href="notes/statistical_isms.html">Bayesianism and Other "isms"</a></li>
-<li><a href="notes/montecarlo.html">Monte Carlo Sampling</a></li>
-<li><a href="notes/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="notes/more_samplers.html">More Sampling Methods</a></li>
-<li><a href="notes/hierarchical.html">Hierarchical Models</a></li>
-<li><a href="notes/model_evaluation.html">Model Evaluation and Comparison</a></li>
-<li><a href="notes/missingdata.html">Missing Data and Selection Effects</a></li>
-<li><a href="notes/modelfreemodels.html">"Model-free" Models</a></li>
-<li><a href="notes/approximate_methods.html">Approximate Methods</a></li>
-<li><a href="notes/fishing.html">Fishing, Blinding and More</a></li>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Now that you've gained some experience carrying our Bayesian inference, it's time to face the fact that real life is often <em>much</em> more complicated than the problems we've worked so far. (The original title of these notes, years ago, was "Coping with Reality".)</p>
+<p>In any case, real data sets tend to be complicated. Some common features:</p>
+<ul>
+<li>Heteroscedastic (different for each data point, whatever that means) measurement uncertainties</li>
+<li>Measurement uncertainty for <em>every</em> measured quantity</li>
+<li>Correlated measurement uncertainties, amongst different quantities and/or data points</li>
+<li>Intrinsic scatter (i.e. real differences that are not just due to measurement error)</li>
+<li>Selection effects and systematially incomplete data</li>
+<li>Presence of unwanted sources in the data set</li>
+<li>Systematic uncertainties every which way</li>
 </ul>
-<h3 id="Tutorials">Tutorials<a class="anchor-link" href="#Tutorials">&#182;</a></h3><ul>
-<li><a href="tutorials/demo.html">Demo</a></li>
-<li><a href="tutorials/generative_models.html">Generative Models</a></li>
-<li><a href="tutorials/probability_essentials.html">Essential Probability</a></li>
-<li><a href="tutorials/probability_transformations.html">Probability Transformations</a></li>
-<li><a href="tutorials/bayes_law.html">Bayes' Law</a></li>
-<li><a href="tutorials/working_with_samples.html">Working With Samples</a></li>
-<li><a href="tutorials/credible_interals.html">Credible Regions</a></li>
-<li><a href="tutorials/gaussians.html">Gaussians and Least Squares</a></li>
-<li><a href="tutorials/xmm_image.html">XMM Image</a></li>
-<li><a href="tutorials/agn_photometry_grid.html">AGN Photometry: grid</a></li>
-<li><a href="tutorials/agn_photometry_gibbs.html">AGN Photometry: Gibbs sampling</a></li>
-<li><a href="tutorials/agn_photometry_metro.html">AGN Photometry: Metropolis sampling</a></li>
-<li><a href="tutorials/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="tutorials/ogle_lightcurve.html">OGLE Lightcurve</a></li>
-<li><a href="tutorials/microlensing.html">Microlensing</a></li>
-<li><a href="tutorials/cepheids.html">Cepheid Period-Luminosity Relation</a></li>
-<li><a href="tutorials/cepheids_one_galaxy.html">Cepheid P-L I: one galaxy</a></li>
-<li><a href="tutorials/cepheids_all_galaxies.html">Cepheid P-L II: multiple galaxies</a></li>
-<li><a href="tutorials/model_evaluation.html">Galaxy Cluster Mis-centering: model evaluation</a></li>
-<li><a href="tutorials/model_selection.html">Galaxy Cluster Mis-centering: model comparison</a></li>
-<li><a href="tutorials/missing_data.html">Shuttle O-ring Failures: missing data</a></li>
+<p>All of these things represent something that the Universe/atmosphere/telescope/etc. has done to the signal we measure before we get our hands on it, carve it in stone, and call it data. (Insert the adjective of your choice before "Universe", if you'd like.) Recalling our notes on <a href="generative_models.html">generative models</a>, that means that any of these effects that apply deserve to be represented in our model. Very often, this involves introducing additional <em>nuisance parameters</em> and/or expanding the model such that it has a <em>hierarchical</em> structure.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Nuisance-parameters">Nuisance parameters<a class="anchor-link" href="#Nuisance-parameters">&#182;</a></h2><p>We've already seen nuisance parameters; they're any model parameter that we are not particularly interested in, at the end of the day. This is an entirely subjective label - nuisance parameters are not formally or functionally treated any differently from other parameters. We come back to them now because adding nuisance parameters to a model provides a way to <em>explicitly account for and marginalize over systematic uncertainties</em>. This can be as simple as assigning a prior distribution to some quantity that would otherwise remain fixed, or it can involve a more explicit expansion of the model. Nuisance parameters often represent <strong>latent variables</strong> - things that are logically or physically part of a model, but which cannot be directly measured.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Example:-measuring-flux-with-a-background">Example: measuring flux with a background<a class="anchor-link" href="#Example:-measuring-flux-with-a-background">&#182;</a></h3><p>Recall our simple measurement of a source's flux based on a number of detected counts from way back in the <a href="bayes_law.html">Bayes' Law notes</a>. Let's explicitly include the constant conversion between flux and counts, so that our model might be described by</p>
+<ul>
+<li>$F \sim \mathrm{Gamma}(\alpha,\beta)$</li>
+<li>$\mu = C\,F$</li>
+<li>$N \sim \mathrm{Poisson}(\mu)$</li>
 </ul>
-<h2 id="Contact">Contact<a class="anchor-link" href="#Contact">&#182;</a></h2><ul>
-<li><a href="https://github.com/KIPAC/StatisticalMethods/issues/new?body=@abmantz">Adam Mantz</a></li>
+<p>The form of the prior on $F$ isn't critical for our purposes here, so we'll stick with the Gamma distribution. The corresponding PGM looks like this:</p>
+<table>
+    <tr>
+        <td><img src="graphics/hier_poissoneg_pgm1.png" width=70%></td>
+    </tr>
+</table>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Now let's expand the model to account for the fact that our measurement actually includes counts from both the source (a galaxy, say) and some background. Being good astronomers, we also remembered to take a second measurement of a source-free (background-only) patch of sky.</p>
+<p>With subscripts $b$ for background, $g$ for galaxy, $s$ for the science observation that includes both, our model might be</p>
+<ul>
+<li>$F_b \sim \mathrm{Gamma}(\alpha_b,\beta_b)$</li>
+<li>$\mu_b = C_b\,F_b$</li>
+<li>$N_b \sim \mathrm{Poisson}(\mu_b)$</li>
+<li>$F_g \sim \mathrm{Gamma}(\alpha_g,\beta_g)$</li>
+<li>$\mu_s = C_s(F_g+F_b)$</li>
+<li>$N_s \sim \mathrm{Poisson}(\mu_s)$</li>
 </ul>
-<p>All materials Copyright 2015, 2017, 2019, 2021 Adam Mantz, Phil Marshall and Claire Hébert, and distributed for copying and extension under the GPLv2 License, unless otherwise noted. If you have any feedback for us, please <a href="https://github.com/KIPAC/StatisticalMethods/issues">write us an issue</a>.</p>
+<table>
+    <tr>
+        <td><img src="graphics/hier_poissoneg_pgm2.png" width=70%></td>
+    </tr>
+</table><p>We'd probably regard $F_b$ and $\mu_b$ as nuisance parameters here - we need to account for our uncertainty in $F_b$, but measuring it isn't the point of the analysis.</p>
+<p>More interestingly, suppose we want to marginalize over systematic uncertainty in the instrument gain, assuming it's the same for both observations. Maybe the instrument team told us it was known to $\sim5\%$. We might introduce a <em>new</em> parameter, $\gamma$, representing the true (unknown) value of the gain relative to its published value (which would be included in $C$ already). Observe how the model changes:</p>
+<ul>
+<li>$\gamma \sim \mathrm{Normal}(1.0, 0.05)$</li>
+<li>$F_b \sim \mathrm{Gamma}(\alpha_b,\beta_b)$</li>
+<li>$\mu_b = \gamma C_b\,F_b$</li>
+<li>$N_b \sim \mathrm{Poisson}(\mu_b)$</li>
+<li>$F_g \sim \mathrm{Gamma}(\alpha_g,\beta_g)$</li>
+<li>$\mu_s = \gamma C_s(F_g+F_b)$</li>
+<li>$N_s \sim \mathrm{Poisson}(\mu_s)$</li>
+</ul>
+<table>
+    <tr>
+        <td><img src="graphics/hier_poissoneg_pgm2a.png" width=70%></td>
+    </tr>
+</table>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Hierarchical-models">Hierarchical models<a class="anchor-link" href="#Hierarchical-models">&#182;</a></h2><p>Often, the model for a data set takes a hierarchical structure. This is naturally the case when we are measuring properties of multiple sources in order to learn about properties of a <em>class</em> of sources to which they belong. It's honestly difficult to think of astrophysical use cases where this doesn't apply, in principle.</p>
+<p>In statistics, the applicability of hierarchical models is related to the concept of <strong>exchangeability</strong> - meaning that, as far as we know, individual sources of a given class are equivalent (until we measure them). In other words, exchangeability means that it's fair to apply a common prior distribution to properties of multiple subjects (be they astronomical sources, people, etc.). This prior parameters describe the statistical properties of the source class, and are often what we're most interested in measuring.</p>
+<p>To be mind-numblingly formal for a moment, the general form for a hierarchical model goes like this:</p>
+<ul>
+<li>$p(\mathrm{data}|\theta)$ describes the measurement process (what we've been calling the sampling distribution),</li>
+<li>$p(\theta)$ decomposes as $p(\theta|\phi_1)\,p(\phi_1)$,</li>
+<li>$p(\phi_1)$ decomposes as $p(\phi_1|\phi_2)\,p(\phi_2)$,</li>
+<li>$\ldots$,</li>
+<li>$p(\phi_n)$, usually taken to be "uninformative"</li>
+</ul>
+<p>In the simplest hierarchical case, $\theta$ would represent the properties of individual sources that we've observed; $\phi_1$ would parametrize the statistical properties of the class of sources, $p(\theta|\phi_1)$; and $\phi_2$ would be the hyperparameters of some prior distribution for $\phi_1$, $p(\phi_1|\phi_2)$. Note that there is now some ambiguity as to what we call "the priors" of the model - $p(\theta|\phi_1)$ is <em>the prior on $\theta$</em>, but it is also an integral part of the model, not representing prior knowledge as such. You might recall earlier comments that it's best to regard the choice of priors as part of the model definition; this is one reason for it.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Example:-galaxy-luminosity-function">Example: galaxy luminosity function<a class="anchor-link" href="#Example:-galaxy-luminosity-function">&#182;</a></h3><p>Let's modify the previous example as follows</p>
+<ul>
+<li>We're interested in luminosity rather than flux - if we know the distance to the target, this just means including another known factor in $C_g$, which now converts counts to $L$.</li>
+<li>We'll measure $m&gt;1$ galaxies, and are interested in constraining the luminosity function, traditionally modelled as</li>
+</ul>
+<p>$n(x) = \phi^\ast x^\alpha e^{-x}; \quad x=\frac{L}{L^\ast}$</p>
+<p>where $n$ is the number density of galaxies.</p>
+<table>
+    <tr>
+        <td><img src="graphics/hier_lumfcn.png" width=70%></td>
+    </tr>
+</table>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>For simplicity, we'll assume that we've measured <em>every</em> galaxy above a given luminosity in some volume. This is not very realistic, but the issues raised by incomplete data sets later on. For simplicity, let's also assume that the same background applies to each galaxy measurement, and that we have a galaxy-free observation of it, as before.</p>
+<p>Compressing the $L\rightarrow N$ and $F\rightarrow N$ conversions, the PGM for our experiment looks like this:</p>
+<table>
+    <tr>
+        <td><img src="graphics/hier_poissoneg_pgm3.png" width=70%></td>
+    </tr>
+</table>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Example:-linear-regression-with-most-of-the-trimmings">Example: linear regression with most of the trimmings<a class="anchor-link" href="#Example:-linear-regression-with-most-of-the-trimmings">&#182;</a></h3><p>Consider the following in the context of fitting a line to $x$ and $y$ data.</p>
+<ul>
+<li>Heteroscedastic (different for each data point, whatever that means) measurement uncertainties</li>
+<li>Measurement uncertainty for <em>every</em> measured quantity</li>
+<li>Correlated measurement uncertainties, amongst different quantities and/or data points</li>
+<li>Intrinsic scatter (i.e. real differences that are not just due to measurement error)</li>
+</ul>
+<p>In the generative sense, this means:</p>
+<ul>
+<li>The Universe has some distribution of the $x$ values of things. Call the true (unknowable) values of $x$ for all the things $\xi$.</li>
+<li>For a given $\xi$, there is some variance in the true $y$ values of things (call these $\eta$). Their mean value as a function of $\xi$ follows a line, parametrized by $(\alpha,\beta)$, with the shape of the PDF given by $\Sigma$.</li>
+<li>We don't know $\xi$ or $\eta$ for any source, but we make measurement of them and call the associated data $x$ and $y$. The measurement uncertainties are corrlated, meaning that $(x,y)$ is drawn from some 2D PDF that depends on the true values $(\xi,\eta)$ and some other parameters, $M$, that we will mercifully assume we know.</li>
+</ul>
+<p>Stare at this long enough and you will see the classic least-squares line fitting scenario in there somewhere - but with a lot more fun added in. Here is a PGM based on those words:</p>
+<table>
+    <tr>
+        <td><img src="graphics/regression_pgm.png" width=90%></td>
+    </tr>
+</table><p>Note that we are still assuming that our set of measured things is not systematically incomplete somehow. We'll deal with that noise later in the course.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Example:-class-membership">Example: class membership<a class="anchor-link" href="#Example:-class-membership">&#182;</a></h3><p>What if our set of observed sources contains members of multiple classes? We could imagine adding a discrete "group label" parameter, $g$, to the model for each source. The prior for $g$ would be multinomial, depending on the (possibly unknown) fractions of sources belonging to each class,</p>
+<p>$p(g_i|\{f_j\}) = \mathrm{Multinomial}(\{f_j\})$,</p>
+<p>with $i$ indexing over sources and $j$ over classes. $g_i$ then determines which class model provides the sampling distribution for the measurements of the $ith$ source.</p>
+<p>Alternatively, we could just implement the sampling distribution as a sum over possible classes, which is equivalent to marginalizing over $g_i$ analytically,</p>
+<p>$p(\mathrm{data}_i|\theta_1, \theta_2, \ldots) = \sum_j f_j\,p_j(\mathrm{data}|\theta_j)$.</p>
+<p>Here $p_j(\mathrm{data}|\theta_j)$ would be the appropriate sampling distribution for the $j$th class.</p>
 
 </div>
 </div>

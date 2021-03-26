@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>approximate_methods</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14259,74 +14259,93 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="PHYSICS-366:-Statistical-Methods-in-Astrophysics">PHYSICS 366: Statistical Methods in Astrophysics<a class="anchor-link" href="#PHYSICS-366:-Statistical-Methods-in-Astrophysics">&#182;</a></h1><p>Course notes and resources for Stanford University graduate course Physics 366.</p>
-<h2 id="Course-Description">Course Description<a class="anchor-link" href="#Course-Description">&#182;</a></h2><p>This course is intended to provide an introduction to modern
-statistical methodology, and its applications to problems in
-astrophysics and cosmology, and is aimed at graduate students
-intending to do research in this area. We
-strongly encourage most first and second year students working in
-KIPAC to take the course.  Our goal is to provide a background that
-will be directly relevant to the kind of problems that typical KIPAC
-students will encounter in their research.</p>
-<h2 id="Course-Objectives">Course Objectives<a class="anchor-link" href="#Course-Objectives">&#182;</a></h2><p>Our goal is that students taking this course will:</p>
+<h1 id="Notes:-Approximate-Methods">Notes: Approximate Methods<a class="anchor-link" href="#Notes:-Approximate-Methods">&#182;</a></h1><p>In which we will</p>
 <ul>
-<li>develop familiarity in working with various types of astronomical data.</li>
-<li>understand the role of modeling in data analysis.</li>
-<li>develop facility with various types of inference from data.</li>
-<li>be able to critically evaluate and apply commonly used statistical methodologies.</li>
-<li>be able to apply advanced statistical reasoning to problems they are likely to encounter in their research.</li>
+<li><p>appreciate the curse of dimensionality, and some of its consequences</p>
+</li>
+<li><p>see how the Laplace approximation can provide an approximate posterior PDF, in very convenient form</p>
+</li>
+<li><p>gain a new appreciation for summary statistics, and see how ABC can provide an approximate posterior PDF, despite the data likelihood never being computed</p>
+</li>
 </ul>
-<h2 id="Content">Content<a class="anchor-link" href="#Content">&#182;</a></h2><p><strong>Start by looking at the <a href="notes/overview.html">Overview</a> to understand how this course works, and <a href="notes/getting_started.html">Getting Started</a> to get up and running with Python and Jupyter, if needed.</strong>
-Enrolled students should also read the <a href="notes/assignments.html">Assignments</a> page to see what is expected.</p>
-<p>The course content can be browsed here in static HTML format. This is sufficient for the notes, but to do the tutorials you will need to download them in Jupyter notebook format from the <a href="https://github.com/KIPAC/StatisticalMethods/tree/master/tutorials">GitHub repository</a>.</p>
-<p>Notes and tutorials are listed in reasonable order below, but a better way to navigate the course may be through this nifty <a href="dependency_graph.html">dependency graph</a> (via <a href="https://mermaid-js.github.io/mermaid/">Mermaid</a>).</p>
-<h3 id="Notes">Notes<a class="anchor-link" href="#Notes">&#182;</a></h3><ul>
-<li><a href="notes/overview.html">Overview</a></li>
-<li><a href="notes/assignments.html">Assignments</a></li>
-<li><a href="notes/getting_started.html">Getting Started</a></li>
-<li><a href="notes/generative_models.html">Generative Models</a></li>
-<li><a href="notes/essential_probability.html">Essential Probability</a></li>
-<li><a href="notes/bayes_law.html">Bayes' Law</a></li>
-<li><a href="notes/credible_regions.html">Credible Regions</a></li>
-<li><a href="notes/errorbars.html">"Error bars"</a></li>
-<li><a href="notes/statistical_isms.html">Bayesianism and Other "isms"</a></li>
-<li><a href="notes/montecarlo.html">Monte Carlo Sampling</a></li>
-<li><a href="notes/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="notes/more_samplers.html">More Sampling Methods</a></li>
-<li><a href="notes/hierarchical.html">Hierarchical Models</a></li>
-<li><a href="notes/model_evaluation.html">Model Evaluation and Comparison</a></li>
-<li><a href="notes/missingdata.html">Missing Data and Selection Effects</a></li>
-<li><a href="notes/modelfreemodels.html">"Model-free" Models</a></li>
-<li><a href="notes/approximate_methods.html">Approximate Methods</a></li>
-<li><a href="notes/fishing.html">Fishing, Blinding and More</a></li>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>When trying to answer interesting questions, we increasingly run into the challenges of "big data" and "big models".</p>
+<p>"Big data" might refers to any data set whose <em>volume</em>, <em>velocity</em> or <em>variety</em> is sufficiently high that we need to fundamentally change the way we approach it. For example: SDSS gave astronomy a big data problem, in that we needed web-based SQL queries to allow us to make initial subsamples that we can work with. In the before time, we would have just downloaded the whole dataset.</p>
+<p>"Big models", with large numbers of parameters, tend to follow big data. This is because larger data sets ought to provide information about more more complex phenomena, as well as because parameters tend to proliferate in hirearchical models.</p>
+<p>The fundamental problem is that posterior characterization gets more computationally difficult when the dimensionality of the model parameter space increases. We saw this when we abandoned simple grids for MCMC samples - but sampling can only get us so far.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Aside:-The-vastness-of-high-dimensionality-space">Aside: The vastness of high-dimensionality space<a class="anchor-link" href="#Aside:-The-vastness-of-high-dimensionality-space">&#182;</a></h3><p>Consider an $N$-dimensional hypersphere of radius $R$. With a little algebra, you can show that the fraction of the sphere's volume contained in a thin shell at the surface approaches 1 for large $N$. More intuitively, thinking about cubes in 1, 2, and 3 dimensions, more and more of the total volume is found in the "corners" of the space.</p>
+<p>A consequence of this is that uniform priors become harder to justify (all that weight in the corners!), and similarly methods like SMC that sample from the prior will become increasingly inefficient in high dimensions (unless those priors are very informtive). MCMC sampling can go a long way to helping, but it inevitably becomes more challenging to move around a high-dimensional space, unless the posterior is very simple.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Beyond this, we often find that evaluating the posterior for really interesting problems is too computationally expensive for our prefered methods to be feasible. We may not be in the position to evaluate it thousands of times. We might even not be able to write the posterior down concretely enough to evaluate it in the first place.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Dimensionality-reduction">Dimensionality reduction<a class="anchor-link" href="#Dimensionality-reduction">&#182;</a></h2><p>"Dimensionality reduction" is an excellent, practical way to avoid the curse. The dimensionality of the data can be reduced by compressing it into a (much) smaller set of <em>"summary statistics"</em>. The resulting compressed dataset may be modelable with a much smaller number of parameters.</p>
+<h3 id="Example:-Cosmic-shear">Example: Cosmic shear<a class="anchor-link" href="#Example:-Cosmic-shear">&#182;</a></h3><p>The "data" are automatically measured galaxy shapes, whose tiny distortions are due to weak gravitational lensing by a complex distribution of matter between the galaxies and us. Rather then hierarchically model all this structure, with cosmological hyper-parameters, we compress the shape data into "correlation function" summary statistics. Importantly, these summary statistics can be directly predicted (on average) from a cosmological model, without having to generate a specific realization of the large scale structure. There is an issue, however: the exact form of the sampling distribution for the correlation function summary data is unknown (and dependent on cosmology).</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Unknown-likelihood-functions">Unknown likelihood functions<a class="anchor-link" href="#Unknown-likelihood-functions">&#182;</a></h2><p>If the sampling distribution of our reduced-dimensionality summary statistics is something we can understand from our model, then we're in good shape. We may have lost some information by reducing the data to summaries, but otherwise our usual approaches will work. On the other hand, if we no longer understand the sampling distribution from first principles, as in the example above, we need a different approach. Options include</p>
+<ol>
+<li>Asserting a simple sampling distribution and hoping for the best (the "everything is basically a Gaussian, right?" method).</li>
+<li>Asserting a very flexible sampling distribution and marginalizing over its parameters (though they would need some kind of prior constraints).</li>
+<li>If the sampling distribution is not straightforward to write down/evaluate, <em>but we are still in a position to generate mock data</em>, we could use a class of methods called Approximate Bayesian Computation (ABC).</li>
+</ol>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Approximate-Bayesian-Computation">Approximate Bayesian Computation<a class="anchor-link" href="#Approximate-Bayesian-Computation">&#182;</a></h3><p>ABC is a family of sampling methods all based on the idea that if we can generate a mock dataset that is similar to the observed data, then the parameters of that model are a plausible draw from the posterior PDF. These methods might be useful when the model is  too complex to enable a likelihood to be evaluated (or even written down).</p>
+<p>When might that be? The cosmic shear example, without dimensional reduction, is one scenario. The only way to construct a PDF over possible sheared skies would be by brute force: realizing intial conditions and simulating the growth of structure and galaxy evolution many times from the same set of cosmological/astrophysical parameters. If we're reduced to doing such forward simulations anyway, ABC provides a better alternative (analogously to the improvement of MCMC over exhaustive grid evaluations).</p>
+<p>Suppose we have a dataset $d$, and a generative model, $H$, with parameters $\theta$. The simplest ABC algorithm is as follows:</p>
+<ul>
+<li>Draw $\theta$ from the prior PDF $p(\theta|H)$.</li>
+<li>Generate a mock dataset $d'$.</li>
+<li>Compute the "distance" between the observed and mock datasets, $\rho(d,d')$.</li>
+<li>If the distance $\rho(d,d') &lt; \epsilon$, store $\theta$ as a sample. Otherwise, reject it.</li>
+<li>Repeat.</li>
 </ul>
-<h3 id="Tutorials">Tutorials<a class="anchor-link" href="#Tutorials">&#182;</a></h3><ul>
-<li><a href="tutorials/demo.html">Demo</a></li>
-<li><a href="tutorials/generative_models.html">Generative Models</a></li>
-<li><a href="tutorials/probability_essentials.html">Essential Probability</a></li>
-<li><a href="tutorials/probability_transformations.html">Probability Transformations</a></li>
-<li><a href="tutorials/bayes_law.html">Bayes' Law</a></li>
-<li><a href="tutorials/working_with_samples.html">Working With Samples</a></li>
-<li><a href="tutorials/credible_interals.html">Credible Regions</a></li>
-<li><a href="tutorials/gaussians.html">Gaussians and Least Squares</a></li>
-<li><a href="tutorials/xmm_image.html">XMM Image</a></li>
-<li><a href="tutorials/agn_photometry_grid.html">AGN Photometry: grid</a></li>
-<li><a href="tutorials/agn_photometry_gibbs.html">AGN Photometry: Gibbs sampling</a></li>
-<li><a href="tutorials/agn_photometry_metro.html">AGN Photometry: Metropolis sampling</a></li>
-<li><a href="tutorials/mcmc_diagnostics.html">MCMC Diagnostics</a></li>
-<li><a href="tutorials/ogle_lightcurve.html">OGLE Lightcurve</a></li>
-<li><a href="tutorials/microlensing.html">Microlensing</a></li>
-<li><a href="tutorials/cepheids.html">Cepheid Period-Luminosity Relation</a></li>
-<li><a href="tutorials/cepheids_one_galaxy.html">Cepheid P-L I: one galaxy</a></li>
-<li><a href="tutorials/cepheids_all_galaxies.html">Cepheid P-L II: multiple galaxies</a></li>
-<li><a href="tutorials/model_evaluation.html">Galaxy Cluster Mis-centering: model evaluation</a></li>
-<li><a href="tutorials/model_selection.html">Galaxy Cluster Mis-centering: model comparison</a></li>
-<li><a href="tutorials/missing_data.html">Shuttle O-ring Failures: missing data</a></li>
-</ul>
-<h2 id="Contact">Contact<a class="anchor-link" href="#Contact">&#182;</a></h2><ul>
-<li><a href="https://github.com/KIPAC/StatisticalMethods/issues/new?body=@abmantz">Adam Mantz</a></li>
-</ul>
-<p>All materials Copyright 2015, 2017, 2019, 2021 Adam Mantz, Phil Marshall and Claire Hébert, and distributed for copying and extension under the GPLv2 License, unless otherwise noted. If you have any feedback for us, please <a href="https://github.com/KIPAC/StatisticalMethods/issues">write us an issue</a>.</p>
+<p>Here the "distance", $\rho$, is a function we can choose. Typically it is not practical to compute the distance between datasets $\rho(d,d')$ directly. Instead, we first reduce the data into a set of summary statistics $S(d)$, and then reject samples if $\rho(S(d),S(d')) = \rho(d,d') &lt; \epsilon$. (Note that the difference in likelihoods would make an excellent distance, if we could compute it!)</p>
+<p>Similarly, we get to choose $\epsilon$, although the goal is for it to be small enough that our approximation is good.</p>
+<p>You may recognize a similarity to rejection sampling (or Metropolis-Hastings) above. What ABC gives us is samples from $p(\theta | \rho(d,d') &lt; \epsilon, H)$. If $\epsilon \rightarrow 0$, this will be exactly the true posterior, $p(\theta | d, H)$. If $\epsilon \rightarrow \infty$, it will instead be the prior, $p(\theta|H)$. In practice, what we get is something in between, and the hope is that with a small enough $\epsilon$ it will be close to the posterior, while still not requiring too many rejected mocks.</p>
+<p>As you might guess, this method requires some care. If the summary statistics are not close to being <em>sufficient statistics</em> for $\theta$, the approximate posterior will be too broad. (A sufficient statistic is one that retains all the information the data have about $\theta$.) If we try to use too many summary statistics, it may be too difficult for mock data sets to match the real data. If $\epsilon$ is not set correctly, sampling can be either too inefficient or not meaningful.</p>
+<p>In the end, we're left with an approximate posterior, and need to decide whether it's adequate for our purposes. Here posterior prediction and cross-validation can help.</p>
+<p>It's worth noting again that the algorithm above is the <em>simplest</em> ABC implementation. As with MCMC, there are a number of modifications that can make it more efficient (in the sense of requiring fewer rejections), potentially allowing us to be more demanding with our choice of $\epsilon$.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Laplace-approximation">Laplace approximation<a class="anchor-link" href="#Laplace-approximation">&#182;</a></h2><p>Suppose that the sampling distribution is calculable, but so expensive that we are <em>highly</em> motivated to minimize the number of times we need to do so.</p>
+<p>What would be the ideal modeling situation, given such an expensive likelihood and a large number of parameters. How about a model that maps onto the linear least squares problem, for which a purely algebraic calculation allows the posterior, which is a Gaussian, to be computed exactly.</p>
+<p>Short of that, we can hope that the central limit theorem makes our real posterior distribution approximately Gaussian. We may not be able to find its mean and covariance algebraically, but finding them numerically would at least involve a limited number of evaluations compared with exploring a more complex PDF. In particular, a Gaussian has a single peak, so numerical optimization (e.g. by gradient descent) might well take us there.</p>
+<p>(There is something of a leap of faith here since, in general, optimization is not more robust or less expensive than sampling. Hence, much rests on us being able to find the actual posterior mode, and not some local maximum, relatively quickly.)</p>
+<p>Once the peak of the posterior, $\hat{\theta}$, has been found, we can approximate it as Gaussian (equivalently, the log-posterior as quadratic) by Taylor expanding around the mode:</p>
+<p>$\log p(\theta|d) \approx \log p(\hat{\theta}|d) - \frac{1}{2} \frac{\partial^2 \log p}{\partial \theta^2} \bigg\rvert_{\theta=\hat{\theta}} (\theta - \hat{\theta})^2 + O[(\theta - \hat{\theta})^3]$.</p>
+<p>Ignoring the higher order terms and exponentiating,</p>
+<p>$p(\theta|d) \approx p(\hat{\theta}|d) \exp \left[ -\frac{1}{2} (\theta - \hat{\theta})^T H (\theta - \hat{\theta}) \right]$,</p>
+<p>where $H$ is the "Hessian" matrix of second derivatives,</p>
+<p>$H_{ij} = \frac{\partial^2 \log p}{\partial \theta_i \partial \theta_j} \bigg\rvert_{\theta=\hat{\theta}}$.</p>
+<p>This is a multivariate Gaussian, with covariance matrix $H^{-1}$. Note that optimizers that use or numerically compute second derivatives will generally return $H^{-1}$ evaluated at the optimum for you.</p>
+<p>Since this method approximates the posterior as a Gaussian, the resulting approximation is automatically normalized. That is, it provides an approximate evidence... if you're willing to believe it.</p>
 
 </div>
 </div>
