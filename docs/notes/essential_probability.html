@@ -14424,7 +14424,7 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Binomial-distribution">Binomial distribution<a class="anchor-link" href="#Binomial-distribution">&#182;</a></h3><p>... whose PMF is $p(k|q,n) = {n \choose k} q^k (1-q)^{n-k}$ for $k$ successes. ${n \choose k}$ is the combinatoric "choose" function, $\frac{n!}{k!(n-k)!}$.</p>
+<h3 id="Binomial-distribution">Binomial distribution<a class="anchor-link" href="#Binomial-distribution">&#182;</a></h3><p>... whose PMF is $P(k|q,n) = {n \choose k} q^k (1-q)^{n-k}$ for $k$ successes. ${n \choose k}$ is the combinatoric "choose" function, $\frac{n!}{k!(n-k)!}$.</p>
 <p>The Binomial distribution is additive, in that the sum of two Binomial random variables with the same $q$, respectively with $n_1$ and $n_2$ trials, also follows the Binomial distribution, with parameters $q$ and $n_1+n_2$.</p>
 <p>This distribution might be useful for inferring the fraction of objects belonging to one of two classes ($q$), based on typing of an unbiased but finite number of them ($n$). (The multinomial generalization would work for more than two classes.)</p>
 <p>Or, consider the case that each Bernoulli trial is whether a photon hits our detector in a given, tiny time interval. For an integration whose total length is much longer than any such time interval we could plausibly distinguish, we might take the limit where $n$ becomes huge, thus reaching the...</p>
@@ -14434,7 +14434,7 @@ a.anchor-link {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Poisson-distribution">Poisson distribution<a class="anchor-link" href="#Poisson-distribution">&#182;</a></h3><p>... which describes the number of successes when the number of trials is in principle infinite, but $q$ is correspondingly vanishingly small. It has a single parameter, $\mu$, which corresponds to the product $qn$ when interpretted as a limit of the Binomial distribution. The PMF is</p>
-<p>$p(k|\mu) = \frac{\mu^k e^{-\mu}}{k!}$.</p>
+<p>$P(k|\mu) = \frac{\mu^k e^{-\mu}}{k!}$.</p>
 <p>Like the Binomial distribution, the Poisson distribution is additive. It also has the following (probably familiar) properties:</p>
 <ul>
 <li>Expectation value (mean) $\langle k\rangle = \mu$,</li>
@@ -14450,7 +14450,7 @@ a.anchor-link {
 <p>$p(x|\mu, \sigma) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp \left[ \frac{(x-\mu)^2}{\sigma^2} \right]$,</p>
 <p>and has mean $\mu$ and variance $\sigma^2$. With $\mu=0$ and $\sigma=1$, this is known as the standard normal distribution.</p>
 <p>Because physicists love Gauss more than normality, you can expect to see "Gaussian" more often in the (astro)physics literature. Statisticians normally say "normal".</p>
-<p>The limiting relationship between the Poisson and Normal distributions is one example of the <strong>central limit theorem</strong>, which says that, under quite general conditions, the average of a large number of random variables tends towards normal, even if the individual variables are not normally distributed. Whether and how well it applies, and just what "large number means", in any given situation is a practical question more than anything else, at least in this course. But the bottom line is that this distribution shows up quite often, and is normally a reasonable guess in those situations where we have to make a choice and have no better ideas.</p>
+<p>The limiting relationship between the Poisson and Normal distributions is one example of the <strong>central limit theorem</strong>, which says that, under quite general conditions, the average of a large number of random variables tends towards normal, even if the individual variables are not normally distributed. Whether and how well it applies, and just what "large number" means, in any given situation is a practical question more than anything else, at least in this course. But the bottom line is that this distribution shows up quite often, and is normally a reasonable guess in those situations where we have to make a choice and have no better ideas.</p>
 <p>Note that intentionally binning up data, when doing so throws out potentially useful information, in the hopes of satisfying the central limit theorem, is generally frowned upon in this class.</p>
 <p>Finally, the sum of squares of $\nu$ standard normal variables follows the...</p>
 
