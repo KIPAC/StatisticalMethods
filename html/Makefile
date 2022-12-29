@@ -7,10 +7,15 @@ NOTEBOOKS2 ?= $(shell cd .. && ls tutorials/*.ipynb)
 HTMLS ?= $(addprefix $(DOCS)/,index.html $(addsuffix .html,$(basename $(NOTEBOOKS1) $(NOTEBOOKS2))))
 MOREHTMLS ?= $(addprefix $(SOLS)/,$(addsuffix .html,$(basename $(NOTEBOOKS2))))
 
-.PHONY: default
+.PHONY: default touch
 
-default: $(HTMLS) $(MOREHTMLS) $(DOCS)/requirements.txt
+TARGETS = $(HTMLS) $(MOREHTMLS) $(DOCS)/requirements.txt $(SOLS)/tutorials/index.html
+default: $(TARGETS)
 #	@echo $(HTMLS)
+
+# modification time of a repo-controlled file is the last time the branch was checkout out, which leads to annoying reproduction of everything. so...
+touch:
+	touch tmp_index.html $(TARGETS)
 
 # Note the not-foolproof translation of .ipynb to .html (for links)
 
@@ -37,6 +42,11 @@ $(DOCS)/tutorials/%.html: ../tutorials/%.ipynb
 $(SOLS)/tutorials/%.html: ../tutorials/%.ipynb
 	jupyter nbconvert --to html --execute $< --stdout | sed 's/.ipynb/.html/g' > $@
 	rsync --delete -vha ../tutorials/graphics $(SOLS)/tutorials/
+
+$(SOLS)/tutorials/index.html:
+	echo "<html><body><ul>" > $@
+	for f in $(MOREHTMLS); do echo "<li><a href=\"`basename $$f`\">`basename $$f`</a></li>"; done >> $@
+	echo "</ul></body></html>" >> $@
 
 # requirements/whatever
 $(DOCS)/%.txt: ../%.txt
