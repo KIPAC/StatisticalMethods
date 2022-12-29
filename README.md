@@ -6,7 +6,12 @@ Please see https://kipac.github.io/StatisticalMethods
 
 * [Adam Mantz](https://github.com/KIPAC/StatisticalMethods/issues/new?body=@abmantz)
 
-All materials Copyright 2015, 2017, 2019, 2021 Adam Mantz, Phil Marshall 
-and Claire Hébert, and distributed for copying and extension under the 
-GPLv2 License, unless otherwise noted. If you have any feedback for us, 
-please write us an issue.
+Unless otherwise noted, all materials are Copyright 2015, 2017, 2019, 2021, 2023 by the contributors (below), and licensed under the Creative Commons CC BY-NC (Attribution-NonCommercial) 4.0 International License. Executable code is additionally covered by the BSD 3-Clause License.
+
+Contributors:
+
+* 2023: Adam Mantz
+* 2021: Adam Mantz, Claire Hébert
+* 2019: Adam Mantz, Phil Marshall
+* 2017: Adam Mantz, Phil Marshall
+* 2015: Phil Marshall, Adam Mantz, Elisabeth Krause, Matthew Becker, Eric Charles

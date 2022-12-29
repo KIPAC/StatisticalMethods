@@ -1,12 +1,14 @@
+# available from conda
 astropy
-corner
 dynesty
-emcee
-incredible
-lrgs
 matplotlib
 numpy
 pandas
-pygtc
 scipy
 statsmodels
+# available from pip
+cashstatistic 
+emcee 
+incredible 
+lrgs 
+pygtc 
