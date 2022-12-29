@@ -1,0 +1,126 @@
+  <pre class="mermaid">
+    flowchart TB
+    classDef tutorial fill:#ffcccc, stroke:#f00;
+    classDef opttutorial fill:#ffeeee;
+    subgraph header [" "]
+	subgraph Legend [<b>Legend</b>]
+	    direction LR
+	    N[Notes] --> T{{Core Tutorial}}:::tutorial
+            N --> OT([Optional Tutorial]):::opttutorial
+        end
+	subgraph Logistics [<b>Logistics</b>]
+	    direction LR
+	    Noverview[Overview]
+	    Noverview --> Nsyllabus[Syllabus]
+	    Noverview --> Nsetup[Getting Started]
+	    Nsetup --> Tdemo([Demo]):::opttutorial     
+	end
+    end
+    style header fill:#fff,stroke:#fff
+    Logistics ==> Principles
+    subgraph Principles [<b>Principles</b>]
+        direction LR
+	Ngenmod[Generative Models]
+	Nprobability[Essential Probability]
+	Ngenmod --> Tgenmod{{Generative Models}}:::tutorial
+	Nprobability --> Tprob{{Essential Probability}}:::tutorial
+	Nprobability --> Tprobtrans([Probability Transformations]):::opttutorial
+	Tprob --> Tsamples{{Working with Samples}}:::tutorial
+	Ngenmod & Nprobability --> Nbayes[Bayes' Law]
+        Nbayes --> Ncred[Credible Regions] & Nerrorbars[''Error Bars''] & Nfreq[Frequentism] & Nmodeval1[Model Evaluation and Comparison I]
+	Nbayes --> Tbayes{{Bayes' Law}}:::tutorial
+	Ncred --> Tcred{{Credible Regions}}:::tutorial
+	Nfreq & Nerrorbars --> Tgauss([Gaussians and Least Squares]):::opttutorial
+        Nfreq & Ncred --> Tfreq([Frequentism and Maximum Likelihood]):::opttutorial
+	Ncred & Nmodeval1 --> Tgrid{{Bayes On a Grid}}:::tutorial 
+    end
+    Principles ==> Methods
+    subgraph Methods [<b>Methods</b>]
+        direction LR
+        Nsampling[Monte Carlo Sampling]
+        subgraph WorkhorseSamplers [<b>Core: at least one</b>]
+	    Tgibbs([Gibbs Sampling]):::opttutorial
+            Tmetro([Metropolis Sampling]):::opttutorial
+        end
+        style WorkhorseSamplers fill: #ffcccc,stroke:#ff0000
+        Nsampling --> Tgibbs & Tmetro
+	Nsampling --> Ndiagnostics[MCMC Diagnostics] & Nmoresampling[More Sampling Methods]
+	Ndiagnostics & Tgibbs & Tmetro --> Tdiagnostics{{MCMC diagnostics}}:::tutorial
+        Nmoresampling --> Npackages[MC Packages]
+        Npackages & Tdiagnostics --> Tmulens{{Microlensing /<br>More Samplers}}:::tutorial
+        Nsampling --> Nmodeval[Model Evaluation and Comparison II]
+	Nmodeval --> Tmodeval{{Cluster Centering /<br> Model Evaluation}}:::tutorial 
+	Tmodeval --> Tmodcomp{{Cluster Centering /<br> Model Comparison}}:::tutorial 
+    end
+    Methods ==> Practice
+    subgraph Practice [<b>Practice</b>]
+        direction LR
+        Nhier[Hierarchical Models]
+        Nhier --> Nmissing[Missing Data and<br>Selection Effects] & Nmodfree[''Model-free'' Models] & Napprox[Approximate Methods] & Nfish[How to Avoid<br>Fooling Ourselves]
+        subgraph ToughProblems [<b>Core: at least one</b>]
+            direction LR
+            Tcephone([Period-Luminosity Relation /<br> One Galaxy]):::opttutorial
+            Txmm2([X-ray Photometry]):::opttutorial
+            Tcephall([Period-Luminosity Relation /<br> Multiple Galaxies]):::opttutorial
+            Tvdisp([Cluster Membership /<br> Mixture Models]):::opttutorial 
+            Tmissing([O-ring Failures /<br> Missing Data]):::opttutorial
+            Tnew((Design Your Own)):::opttutorial 
+        end
+        style ToughProblems fill: #ffcccc,stroke:#ff0000
+        Nhier --> ToughProblems
+        Nmissing --> Tmissing
+        Nmodfree --> Tvdisp
+        Tcepheids([Cepheid Data Intro]):::opttutorial --> Tcephone & Tcephall 
+        Txmm([XMM Image Intro]):::opttutorial --> Txmm2
+    end
+click Noverview "notes/overview.html" "Overview"
+click Nsyllabus "notes/syllabus.html" "Syllabus"
+click Nsetup "notes/getting_started.html" "Getting Started"
+click Tdemo "tutorials/demo.html" "Demo"
+click Ngenmod "notes/generative_models.html" "Generative Models"
+click Nprobability "notes/essential_probability.html" "Essential Probability"
+click Tgenmod "tutorials/generative_models.html" "Generative Models"
+click Tprob "tutorials/essential_probability.html" "Essential Probability"
+click Tprobtrans "tutorials/probability_transformations.html" "Probability Transformations"
+click Tsamples "tutorials/working_with_samples.html" "Working with Samples"
+click Nbayes "notes/bayes_law.html" "Bayes' Law"
+click Ncred "notes/credible_regions.html" "Credible Regions"
+click Nerrorbars "notes/errorbars.html" "Error Bars"
+click Nfreq "notes/frequentism.html" "Frequentism"
+click Nmodeval1 "notes/goodness.html" "Model Evaluation/Comparison I"
+click Tbayes "tutorials/bayes_law.html" "Bayes' Law"
+click Tfreq "tutorials/frequentism.html" "Frequentism"
+click Txmm "tutorials/xmm_image.html" "XMM"
+click Tcred "tutorials/credible_regions.html" "Credible Regions"
+click Tgauss "tutorials/gaussians.html" "Gaussians"
+click Tgrid "tutorials/toy_photometry_grid.html" "Photometry - grid"
+click Nsampling "notes/montecarlo.html" "Monte Carlo Sampling"
+click Tgibbs "tutorials/toy_photometry_gibbs.html" "Photometry - Gibbs"
+click Tmetro "tutorials/toy_photometry_metro.html" "Photometry - Metropolis"
+click Ndiagnostics "notes/mcmc_diagnostics.html" "MCMC Diagnostics"
+click Nmoresampling "notes/more_samplers.html" "More Samplers"
+click Npackages "notes/MC_packages.html" "MC Packages"
+click Tdiagnostics "tutorials/mcmc_diagnostics.html" "MCMC Diagnostics"
+click Tmoresampling "tutorials/more_samplers.html" "Some Other Sampler"
+click Togle "tutorials/ogle_lightcurve.html" "OGLE"
+click Tmulens "tutorials/microlensing.html" "Microlensing"
+click Nhier "notes/hierarchical.html" "Hierarchical Models"
+click Tcepheids "tutorials/cepheids.html" "Cepheids"
+click Tcephone "tutorials/cepheids_one_galaxy.html" "Cepheids - One Galaxy"
+click Tcephall "tutorials/cepheids_all_galaxies.html" "Cepheids - Multiple Galaxies"
+click Nmodeval "notes/model_evaluation.html" "Model Evaluation/Comparison II"
+click Tmodeval "tutorials/model_evaluation.html" "Model Evaluation"
+click Tmodcomp "tutorials/model_comparison.html" "Model Comparison"
+click Nmissing "notes/missingdata.html" "Missing Data"
+click Tmissing "tutorials/missing_data.html" "Missing Data"
+click Nmodfree "notes/modelfreemodels.html" "Model-free Models"
+click Napprox "notes/approximate_methods.html" "Approximate Methods"
+click Nfish "notes/fishing.html" "Foolishness"
+click Tvdisp "tutorials/cl_membership.html" "Cluster Membership"
+click Txmm2 "tutorials/xmm_cluster.html" "XMM Image"
+click Tnew "tutorials/your_own.html" "Design Your Own"
+  </pre>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true });
+</script>
