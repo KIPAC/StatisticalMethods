@@ -2,7 +2,6 @@ ignore/
 tutorials/completions
 tutorials/saved/*.*
 html/tmp_index.html
-docs/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

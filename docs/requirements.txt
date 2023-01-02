@@ -1,0 +1,14 @@
+# available from conda
+astropy
+dynesty
+matplotlib
+numpy
+pandas
+scipy
+statsmodels
+# available from pip
+cashstatistic 
+emcee 
+incredible 
+lrgs 
+pygtc 
