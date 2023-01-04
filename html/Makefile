@@ -9,7 +9,7 @@ MOREHTMLS ?= $(addprefix $(SOLS)/,$(addsuffix .html,$(basename $(NOTEBOOKS2))))
 
 .PHONY: default touch
 
-TARGETS = $(HTMLS) $(MOREHTMLS) $(DOCS)/requirements.txt $(SOLS)/tutorials/index.html
+TARGETS = $(HTMLS) $(MOREHTMLS) $(DOCS)/requirements.txt $(DOCS)/environment.yml $(SOLS)/tutorials/index.html
 default: $(TARGETS)
 #	@echo $(HTMLS)
 
@@ -50,6 +50,8 @@ $(SOLS)/tutorials/index.html:
 
 # requirements/whatever
 $(DOCS)/%.txt: ../%.txt
+	cp $< $@
+$(DOCS)/%.yml: ../%.yml
 	cp $< $@
 
 # inter-tutorial dependences

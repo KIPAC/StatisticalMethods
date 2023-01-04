@@ -63,3 +63,4 @@ target/
 
 # ipython notebook checkpoints
 *-checkpoint.ipynb
+.ipynb_checkpoints
