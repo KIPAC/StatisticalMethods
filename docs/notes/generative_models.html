@@ -14656,7 +14656,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <ul>
 <li>It may be intrinsically random (e.g. quantum mechanical)</li>
 <li>It may be random in the classical statistical mechanics sense, i.e. the system is so complex that its detailed state is unknowable, such that we can only make statistical statements about it</li>
-<li>It may be <em>effectively</em> random, in the sense that there is some important parameter that in reality has a fixed value, but that we simply don't know. <a href="#Note-1">[1]</a> We could, however, vary its value according to some probability distribution when we generate different mock data sets, thus somehow propagating our ignorance of this parameter to the final result. (Note that this bullet is simply a generalization of the previous one.)</li>
+<li>It may be <em>effectively</em> random, in the sense that there is some important parameter that in reality has a fixed value, but that we simply don't know.<a href="#Note-1">$^1$</a> We could, however, vary its value according to some probability distribution when we generate different mock data sets, thus somehow propagating our ignorance of this parameter to the final result. (Note that this bullet is simply a generalization of the previous one.)</li>
 </ul>
 <p>The upshot is that, while we can think of a generative model as a recipe (or psuedo-code) for simulating mock data, many of the steps in that recipe would involve invoking a random number generator. When we do inference with real data, it's the Universe randomizing things (and/or our ignorance making them effectively random). This is the sense behind the first key idea from the overview notes: &quot;All data we collect include some degree of randomness.&quot;</p>
 
@@ -14778,7 +14778,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <li>$N_k \sim \mathrm{Poisson}(\mu_k)$</li>
 </ul>
 <p>Here &quot;$\Leftarrow$&quot; indicates a deterministic dependence, and &quot;$\sim$&quot; means &quot;is distributed as&quot; (not &quot;scales like&quot; as it is often used in physics, nor the fuzzy &quot;is kinda sorta like&quot; as it is also sometimes used in physics). Hence, every bullet corresponds to a line of code that we could, in principle, write if we were planning to simulate mock data according to this model, with &quot;$\Leftarrow$&quot; indicating ordinary function calls and &quot;$\sim$&quot; indicating calls to a random number generator. $\mathrm{Poisson}(\mu_k)$ should be read as the Poisson distribution with parameter $\mu_k$, so the last line is equivalent to wtiting $P(N_k|\mu_k) = \mathrm{Poisson}(N_k|\mu_k)$ (see &quot;Notation&quot; at the very end of the <a href="essential_probability.html">Essential Probability</a> notes). When we refer to the &quot;probabilistic expressions&quot; associated with a model, we generally mean pseudo-code like this.</p>
-<p>I haven't written a specific probability distribution (PDF) in the first line, although we would need to do so in practice. The right hand side of that line is a distribution encoding what we know about the values of $\theta$ <em>before</em> accounting for what we learn from the data (remember, this is also a recipe for simulating mock data), known as the <strong>prior distribution</strong>. We will discuss this much more in the Bayes Law notes (and beyond), so for now just know that some concrete distribution would need to be specified in practice, without minding the details.</p>
+<p>I haven't written a specific probability distribution (PDF) in the first line, although we would need to do so in practice. The right hand side of that line is a distribution encoding what we know about the values of $\theta$ <em>before</em> accounting for what we learn from the data (remember, this is also a recipe for simulating mock data), known as the <strong>prior distribution</strong>. We will discuss this much more in the Bayes' Law notes (and beyond), so for now just know that some concrete distribution would need to be specified in practice, without minding the details.</p>
 <p>Naturally, one can simplify this. You could imagine eliminating $F_k$ and $T$ by writing $\mu_k$ as a more complicated function of $\theta$ for example. The risk, just like in any other context, is that doing so might obfuscate the inner workings of the model to the point where we are more likely to get confused and make mistakes.</p>
 
 </div>
@@ -14823,7 +14823,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <li><strong>Edges</strong> (arrows) represent conditional relationships</li>
 <li><strong>Plates</strong> (rectangles) represent repeated model components whose contents are conditionally independent</li>
 </ul>
-<p>You can think of conditional relationships as comprising those things that are within &quot;one degree of separation&quot;. For example, above we see an edge connecting $\mu_k$ to $N_k$, indicating a conditional dependence of $N_k$ on $\mu_k$. Clearly, $N_k$ also depends on all of the other parameters that &quot;feed into&quot; it via $mu_k$. <em>But</em>, once $mu_k$ has been specified (conditioned on, in math words), there is no longer any additional dependence of $N_k$ on the other parameters. So, we would say that $N_k$ is <strong>conditionally independent</strong> of $\theta$, $F_k$ and $T$. Another way to think about conditional dependences is as the things appearing on the right hand side of the line of code you would write to evaluate $N_k$ (as we'll do below). As defined above, the plate indicates that $F_k$, $\mu_k$ and $N_k$ are conditionally independent of $F$, $\mu$ and $N$ for any other pixel than $k$ (all of the pixels depend on $\theta$ and $T$, but that's the extent of their interaction).</p>
+<p>You can think of conditional relationships as comprising those things that are within &quot;one degree of separation&quot;. For example, above we see an edge connecting $\mu_k$ to $N_k$, indicating a conditional dependence of $N_k$ on $\mu_k$. Clearly, $N_k$ also depends on all of the other parameters that &quot;feed into&quot; it via $\mu_k$. <em>But</em>, once $\mu_k$ has been specified (conditioned on, in math words), there is no longer any additional dependence of $N_k$ on the other parameters. So, we would say that $N_k$ is <strong>conditionally independent</strong> of $\theta$, $F_k$ and $T$. Another way to think about conditional dependences is as the things appearing on the right hand side of the line of code you would write to evaluate $N_k$ (as we'll do below). As defined above, the plate indicates that $F_k$, $\mu_k$ and $N_k$ are conditionally independent of $F$, $\mu$ and $N$ for any other pixel than $k$ (all of the pixels depend on $\theta$ and $T$, but that's the extent of their interaction).</p>
 
 </div>
 </div>
@@ -14963,7 +14963,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>array([ 0.,  0.,  0.,  0.,  7., 14.,  8.,  1.,  0.,  0.,  0.])</pre>
+<pre>array([ 0.,  0.,  0.,  6.,  6., 18.,  7.,  2.,  0.,  0.,  0.])</pre>
 </div>
 
 </div>
@@ -14993,7 +14993,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Interpreting-generative-models">Interpreting generative models<a class="anchor-link" href="#Interpreting-generative-models">&#182;</a></h2><p>As well as a recipe for producing data, we can also (more formally) interpret a generative model as encoding the joint probability of all our model parameters and data,</p>
 <p>$P(\mathrm{data},\mathrm{params}) = P(\mathrm{params}) P(\mathrm{data}|\mathrm{params})$</p>
-<p>This equality is just the definition of <strong>conditional probability</strong> (if this seems unfamiliar, or if you'd like some review, see these <a href="essential_probability.html">separate notes</a>). More generically, the joint probability of A <strong>and</strong> B is the product of the <strong>marginal probability</strong> of A (the probability of A, <em>irrespective of B</em>) and the probability of B given (conditional on) A: $P(A,B) = P(A) P(B|A)$. Symmetrically, $P(A,B)$ is also equal to $P(B)P(A|B)$.</p>
+<p>This equality is just the definition of <strong>conditional probability</strong> (if this seems unfamiliar, or if you'd like some review, see the <a href="essential_probability.html">Essential Probability notes</a>). More generically, the joint probability of A <strong>and</strong> B is the product of the <strong>marginal probability</strong> of A (the probability of A, <em>irrespective of B</em>) and the probability of B given (conditional on) A: $P(A,B) = P(A) P(B|A)$. Symmetrically, $P(A,B)$ is also equal to $P(B)P(A|B)$.</p>
 <p>The particular factorization above is sensible given the way we normally interpret a PGM: there are some parameters, and data are generated conditional on their values. To introduce some terminology, $P(\mathrm{params})$ is the prior distribution (again, much more on that coming later), and $P(\mathrm{data}|\mathrm{params})$, is called the <strong>sampling distribution</strong>. We use this particular factorization because it corresponds to the pattern of conditioning within a generative model, as illustrated in the example above: first the model parameters take on some values, and then (conditional on those values) data are generated. Making the connection between this factorization and the alternative one, $P(\mathrm{data}) P(\mathrm{params}|\mathrm{data})$ is the key to performing inference, as we'll see in <a href="bayes_law.html">Bayes' Law</a>.</p>
 
 </div>
@@ -15006,9 +15006,9 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>To be explicit, then, the joint probability encoded in the PGM above would just come from multiplying all the PDFs represented:</p>
-<p>$p(\theta,T,\{F_k, \mu_k, N_k\}) = p(\theta)\,p(T) \prod_k P(N_k|\mu_k)\,p(\mu_k|F_k,T)\,p(F_k|\theta)$. <a href="#Note-2">[2]</a></p>
-<p>Here we can factorize the PDFs associated with each pixel, $k$, into a product because of their conditional independence. The assumption that data points are (conditionally) independent isn't always valid, but it is very common, and the resulting factorization is convenient.</p>
+<p>To be explicit, then, the joint probability encoded in the PGM above would just come from multiplying all the PDFs represented:<a href="#Note-2">$^2$</a></p>
+<p>$p(\theta,T,\{F_k, \mu_k, N_k\}) = p(\theta)\,p(T) \prod_k P(N_k|\mu_k)\,p(\mu_k|F_k,T)\,p(F_k|\theta)$.</p>
+<p>Here we can factor the PDFs associated with each pixel, $k$, into a product because of their conditional independence. The assumption that data points are (conditionally) independent isn't always valid, but it is very common, and the resulting factorization is convenient.</p>
 
 </div>
 </div>

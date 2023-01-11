@@ -14621,7 +14621,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <li>$P(\Omega) = P\left(\bigcup_{\mathrm{all~}i} E_i\right) = 1$</li>
 <li>If $E_i$ are mutually exclusive, $P\left(\bigcup_i E_i\right) = \sum_i P(E_i)$</li>
 </ul>
-<p>This dry definition provides a function with the right properties to describe our intuitive understanding of probability. In particular, if some experiment can in principle be repeated many times, independently and under identical conditions, then the fraction of outcomes $E$ will tend to $P(E)$. Probabilities can also be applied in circumstances that do not lend themselves to numerous, independent and identical repetition (that is, to any circumstances whatsoever). In this case, the probability can be interpreted as a weight associated with evidence, information, knowledge, or belief. Although the word &quot;subjective&quot; is often used in this context, this doesn't imply a lack or rigor. The theory is still fully mathematical, and as such people should agree on the outcome of calculations based on the same starting assumptions, whatever their opinions might be. (They can disagree about the starting assumptions, but that's a different story.)</p>
+<p>This dry definition provides a function with the right properties to describe our intuitive understanding of probability. In particular, if some experiment can in principle be repeated many times, independently and under identical conditions, then the fraction of outcomes $E$ will tend to $P(E)$. Probabilities can also be applied in circumstances that do not lend themselves to numerous, independent and identical repetition (that is, to circumstances that might actually exist in reality). In this case, the probability can be interpreted as a weight associated with evidence, information, knowledge, or belief. Although the word &quot;subjective&quot; is often used in this context, this doesn't imply a lack or rigor. The theory is still fully mathematical, and as such people should agree on the outcome of calculations based on the same starting assumptions, whatever their opinions might be. (They can disagree about the starting assumptions, but that's a different story.)</p>
 <p>For those who have studied statistical mechanics, even if you haven't formally studied probability, the language above may seem familiar. In particular, you might have seen this when studying the microcanonical ensemble - if $\Omega$ is the set of states available to a system of fixed energy, the fundamental assumption of statistical mechanics is that all of those states are equally probable to occur.</p>
 
 </div>
@@ -14644,6 +14644,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <li>$p(x=x') \, dx'$</li>
 <li>$P(x_0 &lt; x &lt; x_1) = \int_{x_0}^{x_1} dx' \, p(x=x')$</li>
 </ul>
+<p>are both probabilities.</p>
 <p>As the notation $p(x=x')$ rapidly becomes cumbersome, we will be lazy and simply write $p(x)$ from now on. This should be interpreted as a function of $x$, the value of a random variable whose identity should normally be clear from the choice of symbol.</p>
 <p>The distinction between probability mass and density is highly relevant if we ever want to change variables, e.g. $x\rightarrow y(x)$. In particular, $p(y) \neq p[x(y)]$. Instead, it turns out,</p>
 <p>$p(y) = p(x) \left|\frac{dx}{dy}\right|$.</p>
@@ -14728,7 +14729,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>There are various meaningful manipulations and reductions of multivariate distributions to know.</p>
 <p>The <strong>marginal probability</strong> of $y$, $p(y)$, means the probability of $y$ <em>irrespective</em> of what $x$ is. Mathematically, this corresponds to summing $p(x,y)$ over all possible values of $x$, for a given $y$:</p>
-<p>$p(y) = \int dx \, p(x,y)$</p>
+<p>$p(y) = \int dx \, p(x,y)$.</p>
 <table>
     <tr>
         <td><img src="graphics/prob_joint_marginal.png" width=50% alt="Marginal distribution of y"></td>
