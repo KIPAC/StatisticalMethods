@@ -32,15 +32,15 @@
 	Ncred --> Tcred{{Credible Regions}}:::tutorial
 	Nfreq & Nerrorbars --> Tgauss([Gaussians and Least Squares]):::opttutorial
         Nfreq & Ncred --> Tfreq([Frequentism and Maximum Likelihood]):::opttutorial
-	Ncred & Nmodeval1 --> Tgrid{{Bayes On a Grid}}:::tutorial 
+	Ncred & Nmodeval1 --> Tgrid{{Toy Photometry /<br>On a Grid}}:::tutorial 
     end
     Principles ==> Methods
     subgraph Methods [<b>Methods</b>]
         direction LR
         Nsampling[Monte Carlo Sampling]
         subgraph WorkhorseSamplers [<b>Core: at least one</b>]
-	    Tgibbs([Gibbs Sampling]):::opttutorial
-            Tmetro([Metropolis Sampling]):::opttutorial
+	    Tgibbs([Toy Photometry /<br>Gibbs Sampling]):::opttutorial
+            Tmetro([Toy Photometry /<br>Metropolis Sampling]):::opttutorial
         end
         style WorkhorseSamplers fill: #ffcccc,stroke:#ff0000
         Nsampling --> Tgibbs & Tmetro
