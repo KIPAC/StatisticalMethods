@@ -1,0 +1,18 @@
+# available from conda
+astropy
+dynesty
+emcee
+matplotlib
+numba
+numpy
+pandas
+pygtc
+regions
+scipy
+statsmodels
+# available from pip
+bcgs
+incredible
+jupyterlab
+lmc
+lrgs
