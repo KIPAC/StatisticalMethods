@@ -6,12 +6,13 @@ Please see https://kipac.github.io/StatisticalMethods
 
 * [Adam Mantz](https://github.com/KIPAC/StatisticalMethods/issues/new?body=@abmantz)
 
-Unless otherwise noted, all materials are Copyright 2015, 2017, 2019, 2021, 2023, 2024 by the contributors (below), and licensed under the Creative Commons CC BY-NC (Attribution-NonCommercial) 4.0 International License. Executable code is additionally covered by the BSD 3-Clause License.
+## Copyright statement
+
+Unless otherwise noted, all materials are Copyright 2015, 2017, 2019, 2021, 2023, 2024, 2026 by the contributors (below), and licensed under the Creative Commons CC BY-NC (Attribution-NonCommercial) 4.0 International License. Any access by or on behalf of the training of so-called "AI" or "large language model" programs is considered commercial use in this context, and is prohibited. Executable code is additionally covered by the BSD 3-Clause License.
 
 Contributors:
 
-* 2024: Adam Mantz
-* 2023: Adam Mantz
+* 2023, 2024, 2026: Adam Mantz
 * 2021: Adam Mantz, Claire Hébert
 * 2019: Adam Mantz, Phil Marshall
 * 2017: Adam Mantz, Phil Marshall
