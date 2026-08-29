@@ -7913,6 +7913,15 @@ pip3<span class="w"> </span>install<span class="w"> </span>cashstatistic<span cl
 <li>You can/should remove <code>jupyterlab</code> from the <code>pip3 install</code> command.</li>
 <li>After the instructions above, also run <code>python -m ipykernel install --user --name phys267</code> . This is what makes the environment available through the JupyterLab server.</li>
 </ul>
+<p>So, all together</p>
+<div class="highlight"><pre><span></span>curl<span class="w"> </span>-O<span class="w"> </span>https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash
+conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>p267<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>astropy<span class="w"> </span>dynesty<span class="w"> </span>emcee<span class="w"> </span>matplotlib<span class="w"> </span>numba<span class="w"> </span>numdifftools<span class="w"> </span>numpy<span class="w"> </span>pandas<span class="w"> </span>pygtc<span class="w"> </span>pymc<span class="w"> </span>regions<span class="w"> </span>scipy<span class="w"> </span>statsmodels<span class="w"> </span>yaml
+conda<span class="w"> </span>activate<span class="w"> </span>p267
+python<span class="w"> </span>-m<span class="w"> </span>ensurepip<span class="w"> </span>--upgrade
+pip3<span class="w"> </span>install<span class="w"> </span>cashstatistic<span class="w"> </span>incredible<span class="w"> </span>lmc
+python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="w"> </span>phys267
+</pre></div>
 </div>
 </div>
 </div>
@@ -7930,7 +7939,7 @@ pip3<span class="w"> </span>install<span class="w"> </span>cashstatistic<span cl
 <li>Many standard packages are preinstalled, and others can be installed within notebooks via <code>!pip install &lt;package&gt;</code>. This code should already be present when needed in the notebooks, although you will have to uncomment it.</li>
 <li>Whether Colab saves notebooks with or without outputs is a per-notebook setting that you can change.</li>
 </ul>
-<p>The shared nature of a cloud service and the need to reinstall packages after an instance has been restarted can be irritants, but Colab is a good option if you are not comfortable or able to manage packages on your own system. We try to ensure that all the class notebooks are functional in Colab at the time the course begins, although we can't guarantee this forever since we have no control over the package versions they provide.</p>
+<p>The shared nature of a cloud service and the need to reinstall packages after an instance has been restarted can be irritants, but Colab is a good option if you are not comfortable or able to manage packages on your own system. We do not test that all the class notebooks are functional in Colab at any given time, and can't guarantee it since we have no control over the package versions they provide. For this reason, as well as general disgust with Google's monetization of others' intellectual property, we strongly encourage enrolled students to use one of the other options above.</p>
 </div>
 </div>
 </div>
